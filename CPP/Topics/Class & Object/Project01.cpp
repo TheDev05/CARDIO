@@ -4,7 +4,7 @@
 using namespace std;
 
 class large
-{
+{ 
 private:
     int a, b, c;
 
