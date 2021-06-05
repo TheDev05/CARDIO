@@ -1,47 +1,47 @@
 //CHECKING TWO SET OF INPUTTED NUMBER IS EQUAL OR NOT
 //USING ARRAY OPERATIONS
 
-#include <stdio.h>
-int main()
-{
-    int num, count, myarr1[20], myarr2[20], key;
-    key = 0;
+// #include <stdio.h>
+// int main()
+// {
+//     int num, count, myarr1[20], myarr2[20], key;
+//     key = 0;
 
-    printf("ENTER YOUR FIRST INPUT LIMIT:\n");
-    scanf("%d", &count);
+//     printf("ENTER YOUR FIRST INPUT LIMIT:\n");
+//     scanf("%d", &count);
 
-    printf("ENTER YOUR NUMBERS:\n");
-    for (int i = 0; i < count; i++)
-    {
-        scanf("%d", &myarr1[i]);
-    }
+//     printf("ENTER YOUR NUMBERS:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         scanf("%d", &myarr1[i]);
+//     }
 
-    printf("ENTER YOUR NUMBERS:\n");
-    for (int i = 0; i < count; i++)
-    {
-        scanf("%d", &myarr2[i]);
-    }
+//     printf("ENTER YOUR NUMBERS:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         scanf("%d", &myarr2[i]);
+//     }
 
-    for (int i = 0; i < count; i++)
-    {
-        if (myarr1[i] == myarr2[i] && (myarr1[i] != '\0') && (myarr2[i] != '\0'))
-        {
-            key++;
-        }
-        else
-        {
-            printf("ENTERED NUMBER IS NOT EQUAL:\n");
-            return (0);
-        }
-    }
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (myarr1[i] == myarr2[i] && (myarr1[i] != '\0') && (myarr2[i] != '\0'))
+//         {
+//             key++;
+//         }
+//         else
+//         {
+//             printf("ENTERED NUMBER IS NOT EQUAL:\n");
+//             return (0);
+//         }
+//     }
 
-    if (key == count)
-    {
-        printf("ENTERED TWO NUMBER IS EQUAL\n");
-    }
+//     if (key == count)
+//     {
+//         printf("ENTERED TWO NUMBER IS EQUAL\n");
+//     }
 
-    return (0);
-}
+//     return (0);
+// }
 
 // #include<stdio.h>
 // int main()
@@ -62,7 +62,6 @@ int main()
 //         scanf("%d", &array2[i]);
 //     }
 
-
 //     for (int i = 0; i < 5; i++)
 //     {
 //         if (array1[i]==array2[i]&&array1[i]!='\0'&&array2[i]!='\0') //IMPORTANT LAST TWO CONDITIONS IF NUMBER IS 123 AND 12345 THEN THIS COND IS USED
@@ -82,5 +81,39 @@ int main()
 //     printf("THE TWO INPUTTED SET IS SAME");
 // }
 
-// return 0;    
+// return 0;
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num1[count], num2[count];
+    printf("ENTER FIRST ARRAY ELEMTS:\n");
+
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num1[i]);
+    }
+
+    printf("ENTER SECOND ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num2[i]);
+
+        if (num2[i] != num1[i])
+        {
+            printf("BOTH ARRAYS ELEMTS ARE NOT EQUAL");
+            return (0);
+        }
+    }
+
+    printf("BOTH ARRAYS ELEMTS ARE EQUAL\n");
+    return (0);
+}
