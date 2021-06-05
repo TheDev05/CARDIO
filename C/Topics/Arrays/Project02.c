@@ -85,16 +85,59 @@
 //***********************************************************************************************************************************************
 //**RIVISON**
 
-#include <stdio.h>
+// #include <stdio.h>
 
+// int main()
+// {
+//     int num[20], count, res_j;
+
+//     printf("ENTER INPUT COUNT:\n");
+//     scanf("%d", &count);
+
+//     printf("ENTER YOUR NUMBERS:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         scanf("%d", &num[i]);
+//     }
+
+//     for (int i = 0; i < count - 1; i++)
+//     {
+//         for (int j = i + 1; j < count; j++)
+//         {
+//             if (num[i] == num[j])
+//             {
+//                 res_j = j;
+//                 while (j < count)
+//                 {
+//                     num[j] = num[j + 1];
+//                     j++;
+//                 }
+//                 count--;
+//                 j = res_j - 1;
+//             }
+//         }
+//     }
+
+//     printf("OUTPUT AFTER REMOVAL OF DUPLICS:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         printf("%d ", num[i]);
+//     }
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
 int main()
 {
-    int num[20], count, res_j;
-
-    printf("ENTER INPUT COUNT:\n");
+    int count;
+    printf("ENTER INPUIT LIMIT:\n");
     scanf("%d", &count);
 
-    printf("ENTER YOUR NUMBERS:\n");
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
     for (int i = 0; i < count; i++)
     {
         scanf("%d", &num[i]);
@@ -106,22 +149,23 @@ int main()
         {
             if (num[i] == num[j])
             {
-                res_j = j;
+                int res_j = j;
                 while (j < count)
                 {
                     num[j] = num[j + 1];
                     j++;
                 }
                 count--;
-                j = res_j - 1;
+                j = res_j-1; //? IMPORTANT
             }
         }
     }
 
-    printf("OUTPUT AFTER REMOVAL OF DUPLICS:\n");
+    printf("AFTER REMOVING DUPLICS:\n");
     for (int i = 0; i < count; i++)
     {
         printf("%d ", num[i]);
     }
+
     return (0);
 }

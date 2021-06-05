@@ -58,28 +58,56 @@
 //***********************************************************************************************************************************************
 //**RIVISON**
 
+// #include <stdio.h>
+// #include <conio.h>
+
+// int main()
+// {
+//     char input, str[] = "NoobCoder";
+//     int i = 0;
+
+//     printf("ENTER SOMETHING:\n");
+
+//     while (1)
+//     {
+//         getch();
+//         printf("%c", str[i]);
+//         i++;
+
+//         if (i == 9)
+//         {
+//             printf(" ", str[10]);
+//             i = 0;
+//         }
+//     }
+
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <conio.h>
 
 int main()
 {
-    char input, str[] = "NoobCoder";
+    char text[] = "I AM NOOB";
+    char ch;
     int i = 0;
 
     printf("ENTER SOMETHING:\n");
-
     while (1)
     {
-        getch();
-        printf("%c", str[i]);
+        ch = getch();
+        printf("%c", text[i]);
         i++;
 
         if (i == 9)
         {
-            printf(" ", str[10]);
+            printf(" ");
             i = 0;
         }
     }
-
     return (0);
 }

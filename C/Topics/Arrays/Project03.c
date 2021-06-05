@@ -93,22 +93,61 @@
 //***********************************************************************************************************************************************
 //**RIVISON**
 
-#include <stdio.h>
+// #include <stdio.h>
 
+// int main()
+// {
+//     int num[20], count, pos;
+
+//     printf("ENTER INPUT LIMIT:\n");
+//     scanf("%d", &count);
+
+//     printf("ENTER YOUR NUMBERS:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         scanf("%d", &num[i]);
+//     }
+
+//     printf("ENTER THE POSITION YOU WANNA REMOVE:\n");
+//     scanf("%d", &pos);
+
+//     pos = pos - 1;
+
+//     while (pos < count)
+//     {
+//         num[pos] = num[pos + 1];
+//         pos++;
+//     }
+//     count--;
+
+//     printf("ELEMENTS AFTER REMOVAL:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         printf("%d ", num[i]);
+//     }
+
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
 int main()
 {
-    int num[20], count, pos;
-
+    int count;
     printf("ENTER INPUT LIMIT:\n");
     scanf("%d", &count);
 
-    printf("ENTER YOUR NUMBERS:\n");
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
     for (int i = 0; i < count; i++)
     {
         scanf("%d", &num[i]);
     }
 
-    printf("ENTER THE POSITION YOU WANNA REMOVE:\n");
+    int pos;
+    printf("ENTER POISTION OF ELEMTS U WANNA REMOVE:\n");
     scanf("%d", &pos);
 
     pos = pos - 1;
@@ -120,7 +159,7 @@ int main()
     }
     count--;
 
-    printf("ELEMENTS AFTER REMOVAL:\n");
+    printf("REQUIRED ARRAY:\n");
     for (int i = 0; i < count; i++)
     {
         printf("%d ", num[i]);

@@ -67,35 +67,72 @@
 //***********************************************************************************************************************************************
 //**RIVISON**
 
-#include <stdio.h>
+// #include <stdio.h>
 
+// int main()
+// {
+//     int num[20], count;
+//     int pos, insert;
+
+//     printf("ENTER INPUT LIMIT:\n");
+//     scanf("%d", &count);
+
+//     printf("ENTER YOUR INPUT:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         scanf("%d", &num[i]);
+//     }
+
+//     printf("ENTER DESIRED POSITION YOU WANNA INSERT YOUR ELEMNT:\n");
+//     scanf("%d", &pos);
+
+//     printf("ENTER THE NUMBER YOU WANNA INSERT:\n");
+//     scanf("%d", &insert);
+
+//     pos = pos - 1;
+//     num[pos] = insert;
+
+//     printf("AFTER INSERTING, OUTPUT:\n");
+//     for (int i = 0; i < count; i++)
+//     {
+//         printf("%d ", num[i]);
+//     }
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
 int main()
 {
-    int num[20], count;
-    int pos, insert;
-
+    int count;
     printf("ENTER INPUT LIMIT:\n");
     scanf("%d", &count);
 
-    printf("ENTER YOUR INPUT:\n");
+    int num[count];
+    int pos, key;
+
+    printf("ENTER ARRAY ELEMTS:\n");
     for (int i = 0; i < count; i++)
     {
         scanf("%d", &num[i]);
     }
 
-    printf("ENTER DESIRED POSITION YOU WANNA INSERT YOUR ELEMNT:\n");
+    printf("ENTER ELEMT WHICH IS TO BE PUSHED:\n");
+    scanf("%d", &key);
+
+    printf("ENTER SPECIFIC POSITION TO PUT %d\n", key);
     scanf("%d", &pos);
 
-    printf("ENTER THE NUMBER YOU WANNA INSERT:\n");
-    scanf("%d", &insert);
-
     pos = pos - 1;
-    num[pos] = insert;
+    num[pos] = key;
 
-    printf("AFTER INSERTING, OUTPUT:\n");
+    printf("REQUIRED ARRAY ELEMSTS:\n");
     for (int i = 0; i < count; i++)
     {
         printf("%d ", num[i]);
     }
+
     return (0);
 }

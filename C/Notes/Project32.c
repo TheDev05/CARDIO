@@ -30,34 +30,80 @@
 //     return (0);
 // }
 
+// #include <stdio.h>
+// #define size_row 3
+// #define size_coloumn 3
+
+// int main()
+// {
+//     int matrix[size_row][size_coloumn];
+
+//     printf("ENTER YOUR MATRIX\n");
+
+//     for (int i = 0; i < size_row; i++)
+//     {
+//         for (int j = 0; j < size_coloumn; j++)
+//         {
+//             scanf("%d", &matrix[i][j]);
+//         }
+//     }
+
+//     printf("YOR ENTERED MATRIX IS:\n");
+
+//     for (int i = 0; i < size_row; i++)
+//     {
+//         printf("\n");
+//         for (int j = 0; j < size_coloumn; j++)
+//         {
+//             printf("  %d", matrix[i][j]);
+//         }
+//     }
+
+//     return 0;
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
-#define size_row 3
-#define size_coloumn 3
+#define col 10
+
+void show(int num[][col], int, int);
 
 int main()
 {
-    int matrix[size_row][size_coloumn];
+    int row;
+    printf("ENTER ROW LIMIT:\n");
+    scanf("%d", &row);
 
-    printf("ENTER YOUR MATRIX\n");
+    int num[row][col];
+    int colu;
+    printf("ENTER COLOUMN LIMIT:\n");
+    scanf("%d", &colu);
 
-    for (int i = 0; i < size_row; i++)
+    printf("ENTER YOUR MATRIX:\n");
+    for (int i = 0; i < row; i++)
     {
-        for (int j = 0; j < size_coloumn; j++)
+        for (int j = 0; j < colu; j++)
         {
-            scanf("%d", &matrix[i][j]);
+            scanf("%d", &num[i][j]);
         }
     }
 
-    printf("YOR ENTERED MATRIX IS:\n");
+    show(num, row, colu);
+    return (0);
+}
 
-    for (int i = 0; i < size_row; i++)
+void show(int num[][col], int row, int colu)
+{
+    for (int i = 0; i < row; i++)
     {
         printf("\n");
-        for (int j = 0; j < size_coloumn; j++)
+        for (int j = 0; j < colu; j++)
         {
-            printf("  %d", matrix[i][j]);
+            printf("%d ", num[i][j]);
         }
     }
 
-    return 0;
+    return;
 }
