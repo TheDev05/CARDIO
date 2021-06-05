@@ -33,7 +33,7 @@
 //                                THEN IT AUTO ASSIGNS 1 BCOZ WE PROVIDE KEY TO 1 ANY ELEMENTS OCCURS AT LEAST 1 SO KEY=1 NOT KEY=0
 //                                AND NOT EQUAL TO 0 MEANS DONT FILL OCCURENCE TWO TIMES ELEMENTS ASSIGNS 0 ARE REPETED ELEEMETS*/
 
-                            //? (=0) is duplicates item we dont have to consider coz we only consider element once.
+//? (=0) is duplicates item we dont have to consider coz we only consider element once.
 
 //         {
 //             data[i] = key;
@@ -97,3 +97,6 @@
 
 //     return (0);
 // }
+
+
+

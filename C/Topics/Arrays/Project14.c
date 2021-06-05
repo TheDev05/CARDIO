@@ -84,3 +84,46 @@
 //     }
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELMETS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    for (int i = 0; i < count - 1; i++)
+    {
+        for (int j = i + 1; j < count; j++)
+        {
+            if (num[i] == num[j])
+            {
+                int res_j = j;
+                while (j < count)
+                {
+                    num[j] = num[j + 1];
+                    j++;
+                }
+                count--;
+                j = res_j - 1;
+            }
+        }
+    }
+
+    printf("REQUIRED ARRAY:\n");
+    for (int i = 0; i < count; i++)
+    {
+        printf("%d ", num[i]);
+    }
+    return (0);
+}

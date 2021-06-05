@@ -59,8 +59,6 @@
 //             num[i] = 0;
 //         }
 
-        
-            
 //     }
 
 //     printf("EVEN: ");
@@ -83,3 +81,40 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    printf("EVEN ELEMETS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        if (num[i] % 2 == 0)
+        {
+            printf("%d ", num[i]);
+        }
+    }
+
+    printf("\nODD ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        if (num[i] % 2 != 0)
+        {
+            printf("%d ", num[i]);
+        }
+    }
+    return (0);
+}

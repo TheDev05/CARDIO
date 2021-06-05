@@ -1,5 +1,7 @@
 //FINDING SECOND LARGEST NUMBER:
-//? *UPDATED* Look at second code.
+//? *UPDATED* Look at third code.
+
+//  TODO: IMPORTANT
 
 // #include <stdio.h>
 // int main()
@@ -63,7 +65,7 @@
 //     return (0);
 // }
 
-//! * ABOVE CODE CANNT GIVE OUTPUT CORRECTLY FOR INPUTS: 1, 5, 4, 3, 2 
+//! * ABOVE CODE CANNT GIVE OUTPUT CORRECTLY FOR INPUTS: 1, 5, 4, 3, 2
 
 //**************************************************************************************************************************************
 //**REVISION|20.02.2021
@@ -115,3 +117,42 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+
+int find_max(int *p, int count, int key)
+{
+    int max = *(p + 0);
+    for (int i = 0; i < count; i++)
+    {
+        if (max < *(p + i) && *(p + i) != key)
+        {
+            max = *(p + i);
+        }
+    }
+
+    return (max);
+}
+
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    int max1 = find_max(num, count, -1);
+    int max2 = find_max(num, count, max1);
+
+    printf("SECOND MAXIMUM ELEMENT: %d", max2);
+    return (0);
+}

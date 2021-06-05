@@ -72,3 +72,38 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    int key = 0;
+    for (int i = 0; i < count; i++)
+    {
+        if (num[i] < 0)
+        {
+            key = 1;
+            printf("%d ", num[i]);
+        }
+    }
+
+    if (key == 0)
+    {
+        printf("NO NEGATIVE ELEMENT OCCURS\n");
+    }
+
+    return (0);
+}

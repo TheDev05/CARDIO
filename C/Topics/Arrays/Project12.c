@@ -64,3 +64,33 @@
 //     printf("LARGEST NUMBER IS: %d\n", num[0]);
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT COUNT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    int max = num[0];
+    for (int i = 0; i < count; i++)
+    {
+        if (max < num[i])
+        {
+            max = num[i];
+        }
+    }
+
+    printf("MAXIMUM: %d", max);
+    return (0);
+}
