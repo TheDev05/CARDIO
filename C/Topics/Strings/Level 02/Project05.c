@@ -1,6 +1,7 @@
 //** Find highest frequency character in a string.
 //** 25.02.2021
-//!! DUE WORK: PRINT EQUAL OCCURED ELEMENTS as, ankita kizz...here a, k, i ,j...all have same occurence.
+//? IMP: PRINT EQUAL OCCURED ELEMENTS as, ankita kizz...here a, k, i ,j...all have same occurence.
+//TODO: IMPORTANT
 
 // #include <stdio.h>
 // #include <string.h>
@@ -272,91 +273,91 @@
 
 //!! CONDITION AND EXECUTION OF NO REPEATITION OF CHARACTERS IS STILL LEFT
 
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
 
-int main()
-{
-    char word[20];
-    int count, key, index[20], temp, flag, repeat, meta;
+// int main()
+// {
+//     char word[20];
+//     int count, key, index[20], temp, flag, repeat, meta;
 
-    temp = meta = flag = -1;
-    repeat = 1;
+//     temp = meta = flag = -1;
+//     repeat = 1;
 
-    printf("ENTER YOUR WORD:\n");
-    scanf("%[^\n]%*c", &word);
+//     printf("ENTER YOUR WORD:\n");
+//     scanf("%[^\n]%*c", &word);
 
-    count = strlen(word);
+//     count = strlen(word);
 
-    for (int i = 0; i < count; i++)
-    {
-        // flag = -1;
-        key = 1; //? INTIALIZING COUNT TO 1 EVERY TIME OR FOR EVERY VALUE OF 'i'
-        for (int j = i + 1; j < count; j++)
-        {
-            if (isblank(word[i]))
-            {
-                index[i] = -1;
-            }
-            if (isblank(word[j]))
-            {
-                index[j] = -1;
-            }
+//     for (int i = 0; i < count; i++)
+//     {
+//         // flag = -1;
+//         key = 1; //? INTIALIZING COUNT TO 1 EVERY TIME OR FOR EVERY VALUE OF 'i'
+//         for (int j = i + 1; j < count; j++)
+//         {
+//             if (isblank(word[i]))
+//             {
+//                 index[i] = -1;
+//             }
+//             if (isblank(word[j]))
+//             {
+//                 index[j] = -1;
+//             }
 
-            if (word[i] == word[j])
-            {
-                key++;         //? COUNTING OCCURENCE
-                flag = i;      //? THIS HELPS IN DETERMING THERE IS ANY CHARACTER MORE THAN ONCE OR PRINT "NO REPETATION".
-                index[j] = -1; //? AVOIDIND REPEATATION OF OCCURENCE LIKE(A,B,A,A,A) COUNT OF ONLY ONE 'A' IS STORED
-            }
-        }
+//             if (word[i] == word[j])
+//             {
+//                 key++;         //? COUNTING OCCURENCE
+//                 flag = i;      //? THIS HELPS IN DETERMING THERE IS ANY CHARACTER MORE THAN ONCE OR PRINT "NO REPETATION".
+//                 index[j] = -1; //? AVOIDIND REPEATATION OF OCCURENCE LIKE(A,B,A,A,A) COUNT OF ONLY ONE 'A' IS STORED
+//             }
+//         }
 
-        if (index[i] != -1) //? STORING COUNT OF OCCURENCE BUT AVOIDIND REPETATAION
-        {
-            index[i] = key;
-        }
-    }
+//         if (index[i] != -1) //? STORING COUNT OF OCCURENCE BUT AVOIDIND REPETATAION
+//         {
+//             index[i] = key;
+//         }
+//     }
 
-    for (int i = 0; i < count; i++)
-    {
-        if (index[i] != -1 && index[0] < index[i]) //? CHECKING FOR THE LARGEST OCCURED CHACATER WITH THE HELP OF THAT ARRAY IN WHICH WE STORED OCCURENCE OF CHRACTERS
-        {
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (index[i] != -1 && index[0] < index[i]) //? CHECKING FOR THE LARGEST OCCURED CHACATER WITH THE HELP OF THAT ARRAY IN WHICH WE STORED OCCURENCE OF CHRACTERS
+//         {
 
-            index[0] = index[i]; //? CHANGING THE LARGETS NUMBER(HIGHEST OCCUENCE) SO THE WE CAN PUT IT TO FIRST INDEX & CAN EASILY PRINT IT
-            index[i] = -1;       //? AT FIRST WE HAVE ALREADY PUT THE HIGHEST OCCURED CHAR IN OUR FIRST INDEX SO MAKING THAT ACTUAL INDEX OF CHAR =-1
-            temp = i;            //? STORING INDEX OF CHARACTER SO THAT WE CAN PRINT THE OCCURENCE AS WELL AS THAT CHARCTER
-        }
-    }
+//             index[0] = index[i]; //? CHANGING THE LARGETS NUMBER(HIGHEST OCCUENCE) SO THE WE CAN PUT IT TO FIRST INDEX & CAN EASILY PRINT IT
+//             index[i] = -1;       //? AT FIRST WE HAVE ALREADY PUT THE HIGHEST OCCURED CHAR IN OUR FIRST INDEX SO MAKING THAT ACTUAL INDEX OF CHAR =-1
+//             temp = i;            //? STORING INDEX OF CHARACTER SO THAT WE CAN PRINT THE OCCURENCE AS WELL AS THAT CHARCTER
+//         }
+//     }
 
-    for (int j = 1; j < count; j++)
-    {
-        if (index[j] != -1 && index[0] == index[j]) //? CHECKING WITH HIGHEST OCCURED NUMBERD, AS IS THERE ANY OTHER CHAR OF THAT SAME OCCURENCE......... FOR EQUAL OCCURENCE
-        {
+//     for (int j = 1; j < count; j++)
+//     {
+//         if (index[j] != -1 && index[0] == index[j]) //? CHECKING WITH HIGHEST OCCURED NUMBERD, AS IS THERE ANY OTHER CHAR OF THAT SAME OCCURENCE......... FOR EQUAL OCCURENCE
+//         {
 
-            meta = j; //? STORING INDEX OF EQUAL OCCURED CHAR, WE HAVE ALREAY 'TEMP' OR THE HIGHEST OCCURED INDEX BUT THIS IS FOR EQUAL OCCURED CHAR
-            repeat++; //? STORING COND, IN ORDER THAT WE CAN PROVIDE A CONDITION IF THERE IS EQUAL OCCURENCE OR NOT
-        }
-    }
+//             meta = j; //? STORING INDEX OF EQUAL OCCURED CHAR, WE HAVE ALREAY 'TEMP' OR THE HIGHEST OCCURED INDEX BUT THIS IS FOR EQUAL OCCURED CHAR
+//             repeat++; //? STORING COND, IN ORDER THAT WE CAN PROVIDE A CONDITION IF THERE IS EQUAL OCCURENCE OR NOT
+//         }
+//     }
 
-    if (repeat > 1) //? EQUAL OCCURENCE CONDITION
-    {
-        if (temp != -1) //? THAT MEAN FOR LOOP OF (CHECKING HIGHEST OCCURED ELEMENT) IS EXECUTED THAT MEAN HIGEST OCCURED CHAR IS NOT AT i=0.
-        {
-            printf("THERE ARE %d CHARACTERS HAVING SAME AND HIGHEST OCCURENCE, TWO ARE THEM %c & %c AND OCCURED %d TIMES:\n", repeat, word[meta], word[temp], index[0]);
-        }
-        else //? //? THAT MEAN FOR LOOP OF (CHECKING HIGHEST OCCURED ELEMENT) IS NOT EXECUTED THAT MEAN HIGEST OCCURED CHAR IS AT i=0, OR ITSELF i=0
-            printf("THERE ARE %d CHARACTERS HAVING SAME AND HIGHEST OCCURENCE, TWO  ARE THEM %c & %c AND OCCURED %d TIMES:\n", repeat, word[meta], word[0], index[0]);
-    }
+//     if (repeat > 1) //? EQUAL OCCURENCE CONDITION
+//     {
+//         if (temp != -1) //? THAT MEAN FOR LOOP OF (CHECKING HIGHEST OCCURED ELEMENT) IS EXECUTED THAT MEAN HIGEST OCCURED CHAR IS NOT AT i=0.
+//         {
+//             printf("THERE ARE %d CHARACTERS HAVING SAME AND HIGHEST OCCURENCE, TWO ARE THEM %c & %c AND OCCURED %d TIMES:\n", repeat, word[meta], word[temp], index[0]);
+//         }
+//         else //? //? THAT MEAN FOR LOOP OF (CHECKING HIGHEST OCCURED ELEMENT) IS NOT EXECUTED THAT MEAN HIGEST OCCURED CHAR IS AT i=0, OR ITSELF i=0
+//             printf("THERE ARE %d CHARACTERS HAVING SAME AND HIGHEST OCCURENCE, TWO  ARE THEM %c & %c AND OCCURED %d TIMES:\n", repeat, word[meta], word[0], index[0]);
+//     }
 
-    else if (temp != -1) //? IF THERE IS NO EQUAL OCCURENCE
-    {
-        printf("THE MOST OCCURED CHARACTER IS %c AND OCCURED %d TIMES:\n", word[temp], index[0]);
-    }
-    else
-        printf("THE MOST OCCURED CHARACTER IS %c AND OCCURED %d TIMES:\n", word[0], index[0]);
-    return (0);
-}
+//     else if (temp != -1) //? IF THERE IS NO EQUAL OCCURENCE
+//     {
+//         printf("THE MOST OCCURED CHARACTER IS %c AND OCCURED %d TIMES:\n", word[temp], index[0]);
+//     }
+//     else
+//         printf("THE MOST OCCURED CHARACTER IS %c AND OCCURED %d TIMES:\n", word[0], index[0]);
+//     return (0);
+// }
 
 //***************************************************************************************************************************************
 //***************************************************************************************************************************************
@@ -385,7 +386,7 @@ int main()
         key = 1;
         for (int j = i + 1; j < count; j++)
         {
-            if (word[i] == word[j]&&!isblank(word[i])&&!isblank(word[j]))
+            if (word[i] == word[j] && !isblank(word[i]) && !isblank(word[j]))
             {
                 index[j] = -1;
                 key++;
@@ -436,5 +437,83 @@ int main()
         else
             printf("THE MOST OCCURED CHARACTER IS %c AND OCCURED %d TIMES:\n", word[0], index[0]);
     }
+    return (0);
+}
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    char text[20];
+    int data[20] = {'0'};
+
+    printf("ENTER YOUR STRING:\n");
+    fgets(text, 20, stdin);
+
+    int count = 0;
+    for (int i = 0; text[i] != '\0'; i++)
+    {
+        int key = 1;
+        for (int j = i + 1; text[j] != '\0'; j++)
+        {
+            if (text[i] == text[j] && data[i] != -1)
+            {
+                key++;
+                data[j] = -1;
+            }
+        }
+
+        if (text[i] == ' ')
+        {
+            data[i] = -1;
+        }
+
+        if (data[i] != -1)
+        {
+            data[i] = key;
+        }
+        count++;
+    }
+
+    int max1 = data[0];
+    int index1 = 0;
+    int temp = 0;
+
+    for (int i = 0; i < count; i++)//FINDING MAXIMUM
+    {
+        if (max1 < data[i])
+        {
+            max1 = data[i];
+            index1 = i;
+            temp++;
+        }
+    }
+
+    int index2;
+    int total = 0;
+    for (int i = 0; i < count; i++)//IF MAXIMUM OCCURENCE IN 2 OR MORE
+    {
+        if (max1 == data[i])
+        {
+            index2 = i;
+            total++;
+        }
+    }
+
+    if (max1 == 1)//IF MAXIMUM IS 1 OCCRED MEANS SAME OCCURENCE
+    {
+        printf("ALL OCCURED EQUAL TIMES\n");
+    }
+    else if (total != 0)// IF EQUAL OCCURENCE LOOP IS EXECUTED
+    {
+        printf("HIGHEST OCCURENCE: %d TIMES\n", max1);
+        printf("TOTAL NUMBER WITH EQUAL HIGHEST OCCURENCE: %d", total);
+        printf("TWO OF THEM ARE: %c AND %c", text[index1], text[index2]);
+    }
+    else    
+        printf("%c OCCURED HIGHEST WITH OCCURENCE OF: %d", text[index1], max1);
+
     return (0);
 }

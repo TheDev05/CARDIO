@@ -60,49 +60,91 @@
 //**REVISION|26.02.2021
 //**WITHOUT EXTRA ARRAY (OTHER THAN STRING ARRAY)
 
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
 
+// int main()
+// {
+//     char word[20], findme;
+//     int count, blank, key;
+
+//     key = 0;
+
+//     printf("ENTER YOUR WORD:\n");
+//     scanf("%[^\n]%*c", &word);
+
+//     printf("ENTER THE CHARACTER YOU WANNA FIND ITS ALL OCCURENCE:\n");
+//     findme = getchar();
+
+//     count = strlen(word);
+
+//     printf("%c OCCURS AT POSITION:\n",findme);
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         blank = 0;
+//         if (findme == word[i])
+//         {
+//             key++;
+
+//             for (int j = 0; j <= i; j++) //? JAHA MILA USKE PAHLE TAK KITNE BLANK SPACES HAI UTNE HAM MINUS KAR DENGE
+//             {
+//                 if (isblank(word[j]))
+//                 {
+//                     blank++;
+//                 }
+//             }
+
+//             printf("%d ", i + 1 - blank);
+//         }
+//     }
+
+//     if (key == 0)
+//     {
+//         printf("NULL; NO OCCURENCE\n");
+//     }
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
 int main()
 {
-    char word[20], findme;
-    int count, blank, key;
+    char text[20];
+    printf("ENTER YOUR STRING:\n");
+    fgets(text, 20, stdin);
 
-    key = 0;
-
-    printf("ENTER YOUR WORD:\n");
-    scanf("%[^\n]%*c", &word);
-
-    printf("ENTER THE CHARACTER YOU WANNA FIND ITS ALL OCCURENCE:\n");
+    char findme;
+    printf("ENTER THE CHARACTER U WANNA ITS OCCURENCE:\n");
     findme = getchar();
 
-    count = strlen(word);
-
-    printf("%c OCCURS AT POSITION:\n",findme);
-
-    for (int i = 0; i < count; i++)
+    for (int i = 0; text[i] != '\0'; i++) //* PRINTING INDEX POSITION
     {
-        blank = 0;
-        if (findme == word[i])
+        if (findme == text[i])
         {
-            key++;
-
-            for (int j = 0; j <= i; j++) //? JAHA MILA USKE PAHLE TAK KITNE BLANK SPACES HAI UTNE HAM MINUS KAR DENGE
-            {
-                if (isblank(word[j]))
-                {
-                    blank++;
-                }
-            }
-
-            printf("%d ", i + 1 - blank);
+            printf("AT INDEX text[%d]\n", i);
         }
     }
 
-    if (key == 0)
-    {
-        printf("NULL; NO OCCURENCE\n");
-    }
+    // for (int i = 0; text[i] != '\0'; i++) //* PRINTING COUNTING POSITION
+    // {
+    //     if (findme == text[i])
+    //     {
+    //         int blank = 0;
+    //         for (int j = 0; j <= i; j++)
+    //         {
+    //             if (text[j] == ' ')
+    //             {
+    //                 blank++;
+    //             }
+    //         }
+
+    //         printf("AT POSITION %d\n", i + 1 - blank);
+    //     }
+    // }
+
     return (0);
 }

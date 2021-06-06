@@ -18,7 +18,7 @@
 
 //     printf("ENTER SECOND WORD:\n");
 //     // fgets(word2, 20, stdin);
-//     scanf("%[^\n]%*c", &word2); //? ***WE CANNT USE FGETS WITH STRLEN IT GIVES WRONG COUNT BUT OKAY WITH GETS AND SCAN[^]
+//     scanf("%[^\n]%*c", &word2); //? ***WE CANNT USE FGETS WITH STRLEN IT GIVES WRONG COUNT BUT OKAY WITH GETS AND SCAN[^]..refer notes
 
 //     count1 = strlen(word1);
 //     count2 = strlen(word2);
@@ -36,7 +36,7 @@
 //         }
 //     }
 
-//     printf("%d\n", key); //!!! **DONT KNOW WHY BUT AFTER UNCOMMENTING IT THE COUNT OF SECOND VALUE GIVE WRONG OUTPUTS
+//     printf("%d\n", key);
 
 //     if (key == count2 || key == count1)
 //     {
@@ -79,7 +79,6 @@
 //                 key++;
 //             }
 
-           
 //         }
 //     }
 
@@ -91,5 +90,46 @@
 //     else
 //         printf("WORD IS NOT ANAGRAM\n");
 
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+//     char text[20], test[10];
+
+//     printf("ENTER YOUR TEXT:\n");
+//     fgets(text, 20, stdin);
+
+//     printf("ENTER YOUR WORD TO TEST;\n");
+//     fgets(test, 10, stdin);
+
+//     int count_test = strlen(test) - 1;
+//     int count_text = strlen(text) - 1;
+
+//     for (int i = 0; i < count_test; i++)
+//     {
+//         int key = 0;
+//         for (int j = 0; j < count_text; j++)
+//         {
+//             if (test[i] == text[j])
+//             {
+//                 key = 1;
+//                 break;
+//             }
+//         }
+//         if (key == 0)
+//         {
+//             printf("%s IS NOT A ANAGRAM", test);
+//             return (0);
+//         }
+//     }
+
+//     printf("%s IS ANAGRAM", test);
 //     return (0);
 // }

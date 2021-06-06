@@ -1,30 +1,74 @@
 #include <stdio.h>
-#include <string.h>
-
 int main()
 {
-    char word[20], find, fill;
-    int count, key;
+    char text[20];
+    int data[20] = {'0'};
 
-    printf("ENTER YOUR WORD:\n");
-    scanf("%[^\n]%*c", word);
+    printf("ENTER YOUR STRING:\n");
+    fgets(text, 20, stdin);
 
-    count = strlen(word);
-    printf("ENTER THE CHARACTER YOU WANT TO REMOVE AND THE CHARACTER YOU WANT TO REPLACE WITH:\n");
+    int count = 0;
+    for (int i = 0; text[i] != '\0'; i++)
+    {
+        int key = 1;
+        for (int j = i + 1; text[j] != '\0'; j++)
+        {
+            if (text[i] == text[j] && data[i] != -1)
+            {
+                key++;
+                data[j] = -1;
+            }
+        }
 
-    find = getchar();
-    fflush(stdin);
-    fill = getchar();
+        if (text[i] == ' ')
+        {
+            data[i] = -1;
+        }
+
+        if (data[i] != -1)
+        {
+            data[i] = key;
+        }
+        count++;
+    }
+
+    int max1 = data[0];
+    int index1 = 0;
+    int temp = 0;
 
     for (int i = 0; i < count; i++)
     {
-        if (word[i] == find)
+        if (max1 < data[i])
         {
-            word[i] = fill;
-            break;
+            max1 = data[i];
+            index1 = i;
+            temp++;
         }
     }
 
-    printf("YOUR STRING AFTER REPLACING OF %c' WITH '%c' IS %s:\n", find, fill, word);
+    int index2;
+    int total = 0;
+    for (int i = 0; i < count; i++)
+    {
+        if (max1 == data[i])
+        {
+            index2 = i;
+            total++;
+        }
+    }
+
+    if (max1 == 1)
+    {
+        printf("ALL OCCURED EQUAL TIMES\n");
+    }
+    else if (total != 0)
+    {
+        printf("HIGHEST OCCURENCE: %d TIMES\n", max1);
+        printf("TOTAL NUMBER WITH EQUAL HIGHEST OCCURENCE: %d", total);
+        printf("TWO OF THEM ARE: %c AND %c", text[index1], text[index2]);
+    }
+    else
+        printf("%c OCCURED HIGHEST WITH OCCURENCE OF: %d", text[index1], max1);
+
     return (0);
 }

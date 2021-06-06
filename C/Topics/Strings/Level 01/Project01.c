@@ -71,3 +71,34 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[20];
+    printf("ENTER YOUR TEXT:\n");
+    fgets(text, 20, stdin);
+
+    int count = strlen(text) - 1;
+    printf("COUNT:%d", count);
+
+    for (int i = 0; i < count; i++)
+    {
+        if ((text[i] >= 'A') && (text[i] <= 'Z'))
+        {
+            text[i] = text[i] + 0x20;
+        }
+        else if ((text[i] >= 'a') && (text[i] <= 'z'))
+        {
+            text[i] = text[i] - 0x20;
+        }
+    }
+
+    printf("REQUIRED STRING: %s", text);
+    return (0);
+}

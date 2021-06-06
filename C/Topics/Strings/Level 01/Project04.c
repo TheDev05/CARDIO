@@ -20,3 +20,42 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+//TODO:IMPORTANT: WITHOUT HEADER AND WITHOUT KMOWING THE LENGTH OF STRING
+
+
+#include <stdio.h>
+// #include <string.h>
+
+
+void copy(char *p1, char *p2)
+{
+    int i;
+    for (i = 0; *(p2 + i) != '\0'; i++)
+    {
+        *(p1 + i) = *(p2 + i);
+    }
+    *(p1 + i) = '\0';
+}
+
+int main()
+{
+    char text1[20];
+    char text2[20];
+    int count = 20;
+
+    printf("ENTER FIRST STYRING:\n");
+    fgets(text1, 20, stdin);
+
+    printf("ENTER SECOND STRING:\n");
+    fgets(text2, 20, stdin);
+
+    // strcpy(text1, text2);
+    copy(text1, text2);
+
+    printf("TEXT 01: %s", text1);
+
+    return (0);
+}
