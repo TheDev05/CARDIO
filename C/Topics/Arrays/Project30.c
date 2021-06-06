@@ -1,4 +1,5 @@
 //**Left rotate an array.
+//! NOT COMPLETED
 
 #include <stdio.h>
 

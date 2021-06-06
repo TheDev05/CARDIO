@@ -2,36 +2,40 @@
 
 int main()
 {
-    int arr[20], count, loc, pos;
+    int num[20], data[20], count, key, findme;
+    key = 0;
 
-    printf("ENTER THR TOTAL DGITS IN YOUR INPUT:\n");
+    printf("ENTER INPUT LIMIT:\n");
     scanf("%d", &count);
 
     printf("ENTER YOUR NUMBERS:\n");
     for (int i = 0; i < count; i++)
     {
-        scanf("%d", &arr[i]);
+        scanf("%d", &num[i]);
+        data[i] = 0;
     }
 
-    printf("ENTER THE POSITION OF ELEMENT YOU WANT TO DELETE:\n");
-    scanf("%d", &loc);
+    printf("ENTER THE NUMBER YOU WANT TO SEARCH:\n");
+    scanf("%d", &findme);
 
-    pos=loc-1; //THE ACTUATL COUNT OR USER COUNT IS DIFFER FROM THE POINT OF VIEW FROM ARRAY SIDE; USER COUNT FROM 1 BUT ARRAY 0.
-
-   while (pos<count)
-   {
-       arr[pos]=arr[pos+1]; //DELETING MEANS WE SLIIDES VALUE A POINT ABOVE THIS IS DONE FOR ALL VALUE WHICH BELONGS BELOW THE PARTICULAR CHOICE GIVEN BY USER!
-       pos++;
-   }
-
-   count--; //THIS MODIFIER IS NOT FOR WHILE LOOP BUT FOR NEXT ITERATION HERE FOR PRINTING VALUE
-            //COUNT VALUE O LENGTH OF ARRAY DEC AS ANY VALUE DELETES FROM THAT.
-
-    printf("YOUR REQUIRED SET OF INPUT AFTER DELETION IS :\n");
     for (int i = 0; i < count; i++)
     {
-        printf("%d", arr[i]);
+        if (findme == num[i])
+        {
+            data[i] = i + 1;
+            key++;
+        }
+    }
 
+    printf("OCCURENCE: %d", key);
+    printf("\nPOSITIONS: ");
+
+    for (int i = 0; i < count; i++)
+    {
+        if (data[i] != 0)
+        {
+            printf(" \n %d", data[i]);
+        }
     }
 
     return (0);

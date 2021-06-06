@@ -96,3 +96,61 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count], even_count = 0, odd_count = 0;
+    printf("ENTER ARRAY EKEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+
+        if (num[i] % 2 == 0)
+        {
+            even_count++;
+        }
+        else
+            odd_count++;
+    }
+
+    int even[even_count], odd[odd_count];
+    int j = 0, k = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+
+        if (num[i] % 2 == 0)
+        {
+            even[j] = num[i];
+            j++;
+        }
+
+        else
+        {
+            odd[k] = num[i];
+            k++;
+        }
+    }
+
+    printf("EVEN NUMBERS:\n");
+    for (int i = 0; i < even_count; i++)
+    {
+        printf("%d ", even[i]);
+    }
+
+    printf("ODD NUMBERS:\n");
+    for (int i = 0; i < odd_count; i++)
+    {
+        printf("%d ", odd[i]);
+    }
+
+    return (0);
+}

@@ -97,3 +97,55 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+
+void fill_array(int *p, int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", (p + i));
+    }
+}
+
+int main()
+{
+    int count1, count2, count3;
+    printf("ENTER FIRST ARRAY INPUT LIMIT:\n");
+    scanf("%d", &count1);
+
+    printf("ENTER SECOND ARRAY INPUT LIMIT:\n");
+    scanf("%d", &count2);
+
+    count3 = count1 + count2;
+
+    int num1[count1], num2[count2], num3[count3];
+    printf("ENTER FIRST ARRAY ELEMTS:\n");
+    fill_array(num1, count1);
+
+    printf("ENTER SECOND ARRAY ELEMTS:\n");
+    fill_array(num2, count2);
+
+    for (int i = 0; i < count1; i++)
+    {
+        num3[i] = num1[i];
+    }
+
+    int j = count1;
+    for (int i = 0; i < count2; i++)
+    {
+        num3[j] = num2[i];
+        j++;
+    }
+
+    printf("REQUIRED ARRAY:\n");
+    for (int i = 0; i < count3; i++)
+    {
+        printf("%d ", num3[i]);
+    }
+
+    return (0);
+}

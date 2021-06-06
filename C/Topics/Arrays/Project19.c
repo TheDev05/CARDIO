@@ -1,4 +1,5 @@
 //Count frequency of each element in an array.
+// TODO: IMPORTANT
 
 // #include <stdio.h>
 // int main()
@@ -55,6 +56,7 @@
 //**************************************************************************************************************************************
 //**REVISION|20.02.2021
 //!! *LIMITATIONS: CANNOT USE 0 IN INPUTS.
+//!! *ALSO: WE ARE LOOSING OUR BASE ARRAY.
 
 // #include <stdio.h>
 // int main()
@@ -82,7 +84,7 @@
 //                 key++;
 //                 num[j] = 0;
 //             }
-//             //? *IF WE PUT DATA[i]=KAY AT HERE THE FOR LAST i NO ANY j IS EXECUTED SO LAST NO CANNT BE PRINTED.
+//             //? *IF WE PUT DATA[i]=KEY AT HERE THE FOR LAST i NO ANY j IS EXECUTED SO LAST NO CANNT BE PRINTED.
 //         }
 //         data[i] = key; //? *USE HERE.
 //     }
@@ -98,5 +100,49 @@
 //     return (0);
 // }
 
+// *********************************************************************************************************************************************
+// **RIVISON**
 
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
 
+    int num[count], res[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+        res[i] = 0;
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        int key = 1;
+        for (int j = i + 1; j < count; j++)
+        {
+            if (num[i] == num[j])
+            {
+                key++;
+                res[j] = -1;
+            }
+        }
+        if (res[i] != -1)
+        {
+            res[i] = key;
+        }
+    }
+
+    printf("OCCURENCE IS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        if (res[i] != -1)
+        {
+            printf("%d= %d\n", num[i], res[i]);
+        }
+    }
+
+    return (0);
+}

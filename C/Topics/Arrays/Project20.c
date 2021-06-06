@@ -99,6 +99,8 @@
 
 // //**************************************************************************************************************************************
 // //**REVISION|20.02.2021
+//! NOTE: FALSE FOR 1,2,1,3,2,1
+//! THIS CODE IS OKAY IF CONSERCUTIVE REPEATING TERM ARE THERE AS 1,2,2,3,4 BUT NOT WAORK FOR 1,2,1,3,2..NON-CONSECUTIVE
 
 // #include <stdio.h>
 // int main()
@@ -134,3 +136,40 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+//! GOOD
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        int key = 0;
+        for (int j = 0; j < count; j++)//? J=0 BCOZ CHECK FROM FIRST ELEMENBST EXCEPT THE CURRENTLY i VALUE
+        {
+            if (num[i] == num[j] && j != i)
+            {
+                key++;
+            }
+        }
+        if (key == 0)
+        {
+            printf("%d ", num[i]);
+        }
+    }
+
+    return (0);
+}

@@ -98,3 +98,43 @@
 
 //     return (0);
 // }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+int main()
+{
+    int count;
+    printf("ENTER INPUT LIMIT:\n");
+    scanf("%d", &count);
+
+    int num[count];
+    printf("ENTER ARRAY ELEMTS:\n");
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    int occcurence = 0, pos, find;
+    printf("ENTER ELEMT U WANNA FIND:\n");
+    scanf("%d", &find);
+
+    int res[count], j = 0; //? WE CAN ALSO DECLARE RES[COUNT] AT TOP AND FILL -1 IN ALL POSITIONS THEN THAT TIME WE NO NEED TO USE J.
+    for (int i = 0; i < count; i++)
+    {
+        if (find == num[i])
+        {
+            occcurence++;
+            res[j] = i + 1;
+            j++;
+        }
+    }
+
+    printf("%d OCCUR TOTAL %d TIMES AT FOLLOWING POSITIUONS:\n", find, occcurence);
+    for (int i = 0; i < occcurence; i++)
+    {
+        printf("%d ", res[i]);
+    }
+    return (0);
+}
