@@ -115,7 +115,7 @@ int main()
 {
     char text[20];
     printf("ENTER YOUR STRING:\n");
-    fgets(text, 20, stdin);
+     scanf("%[^\n]%*c", text);
 
     char findme;
     printf("ENTER THE CHARACTER U WANNA ITS OCCURENCE:\n");

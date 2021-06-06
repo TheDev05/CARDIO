@@ -1,37 +1,74 @@
 //**Remove the first occurrence of a character(given by user) from a string.
 //**04.03.2021
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
+
+// int main()
+// {
+//     char word[20], remove;
+//     int count, key;
+
+//     printf("ENTER YOUR STRING:\n");
+//     scanf("%[^\n]%*c", word);
+
+//     count = strlen(word);
+
+//     printf("ENTER THE CHAREACTER YOU WANNA REMOVE:\n");
+//     remove = getchar();
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (remove == word[i])
+//         {
+//             while (i < count)
+//             {
+//                 word[i] = word[i + 1];
+//                 i++;
+//             }
+//             count--;
+//             break;
+//         }
+//     }
+
+//     printf("%s", word);
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 int main()
 {
-    char word[20], remove;
-    int count, key;
-
+    char text[20];
     printf("ENTER YOUR STRING:\n");
-    scanf("%[^\n]%*c", word);
+    scanf("%[^\n]%*c", text);
 
-    count = strlen(word);
-
-    printf("ENTER THE CHAREACTER YOU WANNA REMOVE:\n");
+    char remove;
+    printf("ENTER CHARACTER TO REMOVE: ");
     remove = getchar();
+
+    int count = strlen(text);
 
     for (int i = 0; i < count; i++)
     {
-        if (remove == word[i])
+        if (remove == text[i])
         {
-            while (i < count)
+            int index = i;
+            while (index < count)
             {
-                word[i] = word[i + 1];
-                i++;
+                text[index] = text[index + 1];
+                index++;
             }
-            count--;
+            text[count - 1] = '\0';
             break;
         }
     }
 
-    printf("%s", word);
+    printf("REQUIRED STRING: %s", text);
     return (0);
 }

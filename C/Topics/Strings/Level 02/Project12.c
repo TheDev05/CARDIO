@@ -36,36 +36,72 @@
 //**RIVISON|02.04.21
 //**Replace the first occurrence of a character with another in a string.
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+//     char sen[20], find, set;
+//     int count;
+
+//     printf("ENTER YOUR STRING:\n");
+//     scanf("%[^\n]%*c", sen);
+
+//     count = strlen(sen);
+
+//     printf("ENTER THE CHARCTER YOU WANNA REMOVE:\n");
+//     find = getchar();
+
+//     fflush(stdin);
+
+//     printf("ENTER THE CHARACTER THRU WHICH YOU WANNA REPLACE:\n");
+//     set = getchar();
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (find == sen[i])
+//         {
+//             sen[i] = set; //? IMPORATNT: we can use direct assign if we have to copy a single chacter one at a time.
+//             break;
+//         }
+//     }
+
+//     printf("OUTPUT STRING: %s\n", sen);
+//     return (0);
+// }
+
+// *********************************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
-#include <string.h>
+#include <conio.h>
 
 int main()
 {
-    char sen[20], find, set;
-    int count;
+    char text[20];
+    char remove, replace;
 
     printf("ENTER YOUR STRING:\n");
-    scanf("%[^\n]%*c", sen);
+    scanf("%[^\n]%*c", text);
 
-    count = strlen(sen);
+    printf("ENTER CHARCATER WANNA REMOVE\n");
+    remove = getchar();
 
-    printf("ENTER THE CHARCTER YOU WANNA REMOVE:\n");
-    find = getchar();
-
+    // getchar();
     fflush(stdin);
 
-    printf("ENTER THE CHARACTER THRU WHICH YOU WANNA REPLACE:\n");
-    set = getchar();
+    printf("ENTER CHARACTER WANNA REPLACE WITH:\n");
+    replace = getchar();
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; text[i] != '\0'; i++)
     {
-        if (find == sen[i])
+        if (remove == text[i])
         {
-            sen[i] = set; //? IMPORATNT: we can use direct assign if we have to copy a single chacter one at a time.
-            break;
+            text[i] = replace;
+            break;//for only first occurence
         }
     }
 
-    printf("OUTPUT STRING: %s\n", sen);
+    printf("REQUIRED STRING: %s", text);
     return (0);
 }

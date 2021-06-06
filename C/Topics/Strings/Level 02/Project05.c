@@ -450,7 +450,7 @@ int main()
     int data[20] = {'0'};
 
     printf("ENTER YOUR STRING:\n");
-    fgets(text, 20, stdin);
+     scanf("%[^\n]%*c", text);
 
     int count = 0;
     for (int i = 0; text[i] != '\0'; i++)

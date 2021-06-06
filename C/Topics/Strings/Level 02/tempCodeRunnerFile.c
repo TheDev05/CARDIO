@@ -1,74 +1,50 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
 int main()
 {
-    char text[20];
-    int data[20] = {'0'};
+    char sen[20], word[10];
+    int count1, count2, store, key;
+    key = store = 0;
 
-    printf("ENTER YOUR STRING:\n");
-    fgets(text, 20, stdin);
+    printf("ENTER YOUR WORD:\n");
+    scanf("%[^\n]%*c", sen);
 
-    int count = 0;
-    for (int i = 0; text[i] != '\0'; i++)
+    count1 = strlen(sen);
+
+    printf("ENTER TEH WORD YOU WANNA FIND:\n");
+    scanf("%[^\n]%*c", word);
+
+    count2 = strlen(word);
+
+    for (int i = 0; i < count2; i++)
     {
-        int key = 1;
-        for (int j = i + 1; text[j] != '\0'; j++)
+        for (int j = 0; j < count1; j++)
         {
-            if (text[i] == text[j] && data[i] != -1)
+            if (word[i] == sen[j])
             {
-                key++;
-                data[j] = -1;
+                store = j;
+                while (i < count2)
+                {
+                    if (word[i] == sen[j])
+                    {
+                        key++;
+                    }
+
+                    i++; //? **HERE i AND j BOTH ARE INCRESING SIMMUNTENOUSLY THAT MEANS WORD IS MATCHING CONTINOUSLY
+                    j++;
+                }
+
+                if (key == count2)
+                {
+                    // printf("STORE: %d\n J:%d\n", store, j); //? J gives on more count because j is counted alrady at fsecond for loop then it alagin increamented count2 times so 1 more is because of second for loop
+                    printf("ENTERED WORD '%s' EXISTS IN STRING AT INDEX: %d\n", word, store);
+                    return (0);
+                }
             }
         }
-
-        if (text[i] == ' ')
-        {
-            data[i] = -1;
-        }
-
-        if (data[i] != -1)
-        {
-            data[i] = key;
-        }
-        count++;
     }
-
-    int max1 = data[0];
-    int index1 = 0;
-    int temp = 0;
-
-    for (int i = 0; i < count; i++)
-    {
-        if (max1 < data[i])
-        {
-            max1 = data[i];
-            index1 = i;
-            temp++;
-        }
-    }
-
-    int index2;
-    int total = 0;
-    for (int i = 0; i < count; i++)
-    {
-        if (max1 == data[i])
-        {
-            index2 = i;
-            total++;
-        }
-    }
-
-    if (max1 == 1)
-    {
-        printf("ALL OCCURED EQUAL TIMES\n");
-    }
-    else if (total != 0)
-    {
-        printf("HIGHEST OCCURENCE: %d TIMES\n", max1);
-        printf("TOTAL NUMBER WITH EQUAL HIGHEST OCCURENCE: %d", total);
-        printf("TWO OF THEM ARE: %c AND %c", text[index1], text[index2]);
-    }
-    else
-        printf("%c OCCURED HIGHEST WITH OCCURENCE OF: %d", text[index1], max1);
-
+    printf("YOUR WORD '%s' DOESNOT EXIST IN THIS STRING\n", word);
     return (0);
 }
