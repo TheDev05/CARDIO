@@ -42,45 +42,81 @@
 // ************************************************************************************************************************************************
 // *RIVISON|17.03.21
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
+
+// int main()
+// {
+//     char sen[20];
+//     int count, key, j;
+//     key = 0;
+
+//     printf("ENTER YOUR SENTENCE:\n");
+//     scanf("%[^\n]%*c", sen);
+
+//     count = strlen(sen);
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (!isblank(sen[i]))
+//         {
+//             break;
+//         }
+
+//         else
+//         {
+//             key++;
+//         }
+//     }
+
+//     for (int i = 0; i < key; i++)
+//     {
+//         j = 0; //? *when we delete something offset is at one point..if anything removed count becomes short
+//         while (j < count)
+//         {
+//             sen[j] = sen[j + 1];
+//             j++;
+//         }
+//         count--;
+//     }
+
+//     printf("SEN:\n%s\n", sen);
+//     return (0);
+// }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 int main()
 {
-    char sen[20];
-    int count, key, j;
-    key = 0;
+    char text[20];
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
 
-    printf("ENTER YOUR SENTENCE:\n");
-    scanf("%[^\n]%*c", sen);
+    int count = strlen(text);
 
-    count = strlen(sen);
-
-    for (int i = 0; i < count; i++)
+    if (text[0] == ' ')
     {
-        if (!isblank(sen[i]))
-        {
-            break;
-        }
+        int i = 0;
 
-        else
+        for (int j = 0; text[j] == ' '; j++)
         {
-            key++;
+            while (i < count)
+            {
+                text[i] = text[i + 1];
+                i++;
+            }
+
+            count--;
+            i = 0;
+            j--;
         }
     }
-   
-    for (int i = 0; i < key; i++)
-    {
-        j = 0; //? *when we delete something offset is at one point..if anything removed count becomes short
-        while (j < count)
-        {
-            sen[j] = sen[j + 1];
-            j++;
-        }
-        count--;
-    }
 
-    printf("SEN:\n%s\n", sen);
+    printf("REQUIRD STRING:%sM", text);
     return (0);
 }

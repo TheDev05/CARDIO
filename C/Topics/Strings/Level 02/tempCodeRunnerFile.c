@@ -1,33 +1,38 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main()
 {
-    char sen[20], word[10];
-    int count1, count2, key, p, res_j, res_i;
+    char sen[50], word[10], insert[10];
+    int key, count_sen, count_word, count_insert, res_i, res_j, count_sen2, index;
 
     printf("ENTER YOUR SENTENCE:\n");
     scanf("%[^\n]%*c", sen);
 
-    printf("ENTER YOUR WORD:\n");
+    printf("ENTER THE WORD YOU WANNA REPLACE:\n");
     scanf("%[^\n]%*c", word);
 
-    count1 = strlen(sen);
-    count2 = strlen(word);
+    // printf("ENTER THE WORD YOU WANNA INSERT:\n");
+    // scanf("%[^\n]%*c", insert);
 
-    for (int i = 0; i < count2; i++)
+    count_sen = strlen(sen);
+    // count_sen2 = count_sen;
+    // count_sen2=index;
+    count_word = strlen(word);
+    // count_insert = strlen(insert);
+
+    for (int i = 0; i < count_word; i++)
     {
-        for (int j = 0; j < count1; j++)
+        for (int j = 0; j < count_sen; j++)
         {
-
-            key = 0;
-            p = j;
-            res_j = j;
-            res_i = i;
-
             if (word[i] == sen[j])
             {
-                while (i < count2)
+
+                res_i = i;
+                res_j = j;
+                key = 0;
+                while (i < count_word)
                 {
                     if (word[i] == sen[j])
                     {
@@ -36,27 +41,50 @@ int main()
                     i++;
                     j++;
                 }
-            }
-
-            if (key == count2)
-            {
-                for (int m = 0; m < count2 + 1; m++)
+                i = res_i;
+                j = res_j;
+                if (key == count_word) //? word exists
                 {
-                    while (p < count1)
+
+                    for (int p = 0; p < count_word + 1; p++) //? delete
                     {
-                        sen[p] = sen[p + 1];
-                        p++;
+                        while (j < count_sen)
+                        {
+                            sen[j] = sen[j + 1];
+                            j++;
+                        }
+                        count_sen--;
+                        j = res_j;
                     }
-                    count1--;
-                    p = res_j;
+
+                    // for (int t = 0; t < count_insert + 1; t++)
+                    // {
+                    //     sen[count_sen] = '\b';
+                    //     count_sen++;
+                    // }
+
+                    // for (int k = 0; k < count_insert + 1; k++) //? insert space creation
+                    // {
+                    //     while (count_sen2 > j)
+                    //     {
+                    //         sen[count_sen2 + 1] = sen[count_sen2];
+                    //         count_sen2--;
+                    //     }
+                    //     // count_sen++;
+                    //     count_sen2 = index;
+                    // }
+
+                    // for (int q = 0; q < count_insert; q++)
+                    // {
+                    //     sen[j] = insert[q];
+                    //     j++;
+                    // }
+                    break;
                 }
             }
-            j = res_j;
-            i = res_i;
-            // printf("I:%d\n j:%d", i, j);
         }
         break;
     }
-    printf("YOUR SEN AFTER REMOVING '%s' IS:\n%s\n", word, sen);
+    printf("SEN:\n%s\n", sen);
     return (0);
 }

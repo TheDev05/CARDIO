@@ -1,16 +1,33 @@
 #include <stdio.h>
-#include <string.h>
+void copy(int *, int *, int);//? function prototype
 
-const char *show() //? const return keyword is because we are returning string literal or constant's address.
-{
-    return ("ANKIT");
-}
 int main()
 {
-    char name[10];
+    int num[20], data[30], count;
 
-    // strcpy(name, show());
+    printf("ENTER YOUR INPUT LIMIT:\n");
+    scanf("%d", &count);
 
-    printf("COUNT: %s", show());
+    printf("ENTER %d NUMBERS:\n", count);
+    for (int i = 0; i < count; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+
+    copy(num, data, count);//? function call
+
+    printf("OUTPUT:\n");
+    for (int i = 0; i < count; i++)
+    {
+        printf("%d ", data[i]);
+    }
     return (0);
+}
+
+void copy(int num[], int data[], int count)//? function
+{
+    for (int i = 0; i < count; i++)
+    {
+        data[i] = num[i];
+    }
 }

@@ -47,46 +47,80 @@
 // ***********************************************************************************************************************************************
 // *REVISION|17.03.21
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
+
+// int main()
+// {
+//     char sen[20];
+//     int count, key, j, res_j;
+//     key = 0;
+
+//     printf("ENTER YOUR SENTENCE:\n");
+//     scanf("%[^\n]%*c", sen);
+
+//     count = strlen(sen);
+
+//     for (int i = count - 1; i >= 0; i--) //? couting number of blanks from last
+//     {
+//         if (!isblank(sen[i]))
+//         {
+//             break;
+//         }
+
+//         else
+//         {
+//             key++;
+//             j = i;
+//             res_j = j;
+//         }
+//     }
+
+//     for (int i = 0; i < key; i++) //? removing blanks
+//     {
+//         while (j < count)
+//         {
+//             sen[j] = sen[j + 1];
+//             j++;
+//         }
+//         count--;
+//         j = res_j;
+//     }
+//     printf("SEN:\n%s\n", sen);
+//     return (0);
+// }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 int main()
 {
-    char sen[20];
-    int count, key, j, res_j;
-    key=0;
+    char text[20];
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
 
-    printf("ENTER YOUR SENTENCE:\n");
-    scanf("%[^\n]%*c", sen);
+    int count = strlen(text);
 
-    count = strlen(sen);
-
-    for (int i = count - 1; i >= 0; i--) //? couting number of blanks from last
+    if (text[count - 1] == ' ')
     {
-        if (!isblank(sen[i]))
-        {
-            break;
-        }
+        int index = count - 1;
 
-        else
+        for (int i = count - 1; text[i] == ' '; i--)
         {
-            key++;
-            j = i;
-            res_j = j;
+            while (index < count)
+            {
+                text[index] = text[index + 1];
+                index++;
+            }
+            count--;
+            index = count - 1;
         }
     }
 
-    for (int i = 0; i < key; i++) //? removing blanks
-    {
-        while (j < count)
-        {
-            sen[j] = sen[j + 1];
-            j++;
-        }
-        count--;
-        j = res_j;
-    }
-    printf("SEN:\n%s\n", sen);
+    printf("REQUIRED STRING: %s", text);
     return (0);
 }

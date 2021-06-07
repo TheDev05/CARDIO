@@ -1,5 +1,6 @@
 //** Delete all occurrence of a word in a given string.
 //** 12.03.21
+//TODO: IMPORTANT | RIVISE NEEDED
 
 // #include <stdio.h>
 // #include <string.h>
@@ -72,23 +73,23 @@
 
 int main()
 {
-    char text[20];
-    char word[10];
-
+    char text[20], word[10];
     printf("ENTER YOUR STRING:\n");
     scanf("%[^\n]%*c", text);
 
     printf("ENTER YOUR WORD:\n");
     scanf("%[^\n]%*c", word);
 
-    int count_word = strlen(word);
     int count_text = strlen(text);
+    int count_word = strlen(word);
+    int first = 1;
 
-    for (int i = 0; i < count_word; i++)
+    for (int i = 0; i < count_text; i++)
     {
         if (word[0] == text[i])
         {
             int key = 0;
+
             int res_i = i;
 
             for (int j = 0; j < count_word; j++)
@@ -104,6 +105,13 @@ int main()
 
             if (key == count_word)
             {
+                if (first == 1)//* REMOVE ALL OCCURENCE EXCEPT ONE..IF COMMENTED THIS IF PART, REMOVE ALL OCCURENCE OF THAT WORD
+                {
+                    i = (i + count_word);
+                    first = 0;
+                    continue;
+                }
+
                 for (int k = 0; k < count_word + 1; k++)
                 {
                     while (i < count_text)
@@ -111,13 +119,14 @@ int main()
                         text[i] = text[i + 1];
                         i++;
                     }
-                    i = res_i;
                     count_text--;
+                    i = res_i;
                 }
+                i = res_i - 1;
             }
-            i = res_i;
         }
     }
-    printf("REQUIRED STRING: %s", text);
+
+    printf("REQUIRED STRING:%s", text);
     return (0);
 }

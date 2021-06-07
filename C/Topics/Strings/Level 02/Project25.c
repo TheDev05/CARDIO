@@ -74,65 +74,117 @@
 //  Trim both leading and trailing white space characters from a given string.
 //  **REVISION|21.03.21
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <ctype.h>
+
+// int main()
+// {
+//     char sen[20];
+//     int count, key, i, res_i, index;
+//     i = res_i = 0;
+
+//     printf("ENTER YOUR SENTENCE:\n");
+//     scanf("%[^\n]%*c", sen);
+
+//     count = strlen(sen);
+
+//     key = 0;
+
+//     while (isblank(sen[i])) //? couting blank from strting
+//     {
+//         key++;
+//         i++;
+//     }
+
+//     i = res_i;
+
+//     for (int j = 0; j < key; j++) //? removing blank from starting
+//     {
+//         while (i < count)
+//         {
+//             sen[i] = sen[i + 1];
+//             i++;
+//         }
+//         count--;
+//         i = res_i;
+//     }
+
+//     key = 0;
+//     i = count - 1;
+
+//     while (isblank(sen[i])) //? counting blank from end
+//     {
+//         key++;
+//         i--;
+//     }
+
+//     i = i + 1;
+//     res_i = i;
+
+//     for (int j = 0; j < key; j++) //?  rmoving blank from end
+//     {
+//         while (i < count)
+//         {
+//             sen[i] = sen[i + 1];
+//             i++;
+//         }
+//         count--;
+//         i = res_i;
+//     }
+
+//     printf("SENTENCE:%s\n", sen);
+//     return (0);
+// }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 int main()
 {
-    char sen[20];
-    int count, key, i, res_i, index;
-    i = res_i = 0;
+    char text[20];
 
-    printf("ENTER YOUR SENTENCE:\n");
-    scanf("%[^\n]%*c", sen);
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
 
-    count = strlen(sen);
+    int count = strlen(text);
 
-    key = 0;
-
-    while (isblank(sen[i])) //? couting blank from strting
+    if (text[0] == ' ')
     {
-        key++;
-        i++;
-    }
+        int index = 0;
 
-    i = res_i;
-
-    for (int j = 0; j < key; j++) //? removing blank from starting
-    {
-        while (i < count)
+        for (int i = 0; text[i] == ' '; i++)
         {
-            sen[i] = sen[i + 1];
-            i++;
+            while (index < count)
+            {
+                text[index] = text[index + 1];
+                index++;
+            }
+            count--;
+            i--;
+            index = 0;
         }
-        count--;
-        i = res_i;
     }
 
-    key = 0;
-    i = count - 1;
-
-    while (isblank(sen[i])) //? counting blank from end
+    if (text[count - 1] == ' ')
     {
-        key++;
-        i--;
-    }
+        int index = count - 1;
 
-    i = i + 1;
-    res_i = i;
-
-    for (int j = 0; j < key; j++) //?  rmoving blank from end
-    {
-        while (i < count)
+        for (int i = count - 1; text[count - 1] == ' '; i--)
         {
-            sen[i] = sen[i + 1];
-            i++;
+            while (index < count)
+            {
+                text[index] = text[index + 1];
+                index++;
+            }
+            count--;
+            index = count - 1;
         }
-        count--;
-        i = res_i;
     }
 
-    printf("SENTENCE:%s\n", sen);
+    printf("REQUIRD STRING:%s", text);
     return (0);
 }
