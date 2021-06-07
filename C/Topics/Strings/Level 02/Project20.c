@@ -136,3 +136,71 @@
 //     printf("AFTER REMOVING '%s' YOUR SEN IS:\n%s\n", word, sen);
 //     return (0);
 // }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[20], word[10];
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
+
+    printf("ENTER YOUR WORD:\n");
+    scanf("%[^\n]%*c", word);
+
+    int count_word = strlen(word);
+    int count_text = strlen(text);
+
+    for (int i = count_text - 1; i >= 0; i--)
+    {
+        if (word[count_word - 1] == text[i])
+        {
+            int key = 0;
+            int res_i = i;
+
+            for (int j = 0; j < count_word; j++)
+            {
+                if (word[(count_word - 1) - j] == text[i])
+                {
+                    key++;
+                    i--;
+                }
+            }
+
+            if (key == count_word)
+            {
+                if (text[res_i + 1] == '\0')
+
+                    i = i;
+
+                else
+                    i = res_i - (count_word - 1);
+
+                int index = i;
+                for (int k = 0; k < count_word + 1; k++)
+                {
+                    while (i < count_text)
+                    {
+                        text[i] = text[i + 1];
+                        i++;
+                    }
+                    count_text--;
+                    i = index;
+                }
+
+                i = res_i;
+                break;
+            }
+        }
+    }
+
+    count_word = strlen(word);
+    count_text = strlen(text);
+
+    printf("REQUIRD STRING: %s", text);
+    return (0);
+}

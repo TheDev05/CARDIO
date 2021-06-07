@@ -3,11 +3,8 @@
 
 int main()
 {
-    char word[10], sen[20];
-    int count1, count2, key, occur, res_i, res_j;
-    int index[10];
-
-    occur = 0;
+    char sen[20], word[10];
+    int count1, count2, key, p, res_j, res_i;
 
     printf("ENTER YOUR SENTENCE:\n");
     scanf("%[^\n]%*c", sen);
@@ -22,11 +19,13 @@ int main()
     {
         for (int j = 0; j < count1; j++)
         {
-            index[j] = -1;
+
             key = 0;
-            res_j = j; //? RESERVING ITERATIONS VALUES
+            p = j;
+            res_j = j;
             res_i = i;
-            if (sen[j] == word[i])
+
+            if (word[i] == sen[j])
             {
                 while (i < count2)
                 {
@@ -34,38 +33,30 @@ int main()
                     {
                         key++;
                     }
-                    i++; //? HERE i AND j VALUE GET CHANGED RESULTING WRONG ITERATIONS
+                    i++;
                     j++;
                 }
+            }
 
-                if (key == count2)
+            if (key == count2)
+            {
+                for (int m = 0; m < count2 + 1; m++)
                 {
-                    occur++;
-                    index[res_j] = res_j;
-
+                    while (p < count1)
+                    {
+                        sen[p] = sen[p + 1];
+                        p++;
+                    }
+                    count1--;
+                    p = res_j;
                 }
             }
-            j = res_j; //? ASSIGNING RESERVED CORRECT ITERATIONS VALUES
+            j = res_j;
             i = res_i;
+            // printf("I:%d\n j:%d", i, j);
         }
-        break; //WE HOLD FIRST LETTER OF WORD AND THEN CHECK THIS TO WHOLE SENTENCE.. NO NEED TO GO WITH SECOND LETTER
+        break;
     }
-
-    if (occur > 0)
-    {
-        printf("TOTAL OCCURENCE: %d\n", occur);
-        printf("AT INDICES: \n");
-        for (int i = 0; i < count1; i++)
-        {
-
-            if (index[i] != -1)
-            {
-                printf("%d\n", index[i]);
-            }
-        }
-    }
-    else
-        printf("NO OCCURENCE");
-
+    printf("YOUR SEN AFTER REMOVING '%s' IS:\n%s\n", word, sen);
     return (0);
 }
