@@ -74,60 +74,118 @@
 // RIVISON|12.03.21
 //** Remove the first occurrence of a word from string.
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+//     char sen[20], word[10];
+//     int count1, count2, key, res_i, res_j, p;
+
+//     printf("ENTER YOUR SENTENCE:\n");
+//     scanf("%[^|\n]%*c", sen);
+
+//     printf("ENTER YOUR WORD:\n");
+//     scanf("%[^\n]%*c", word);
+
+//     count1 = strlen(sen);
+//     count2 = strlen(word);
+
+//     for (int i = 0; i < count2; i++)
+//     {
+//         for (int j = 0; j < count1; j++)
+//         {
+//             key = 0;
+//             res_i = i;
+//             res_j = j;
+//             p = j;
+//             if (word[i] == sen[j])
+//             {
+//                 while (i < count2)
+//                 {
+//                     if (word[i] == sen[j])
+//                     {
+//                         key++;
+//                     }
+//                     i++;
+//                     j++;
+//                 }
+//             }
+//             if (key == count2)
+//             {
+//                 for (int m = 0; m < count2 + 1; m++)
+//                 {
+//                     while (p < count1)
+//                     {
+//                         sen[p] = sen[p + 1];
+//                         p++;
+//                     }
+//                     count1--;
+//                     p=res_j;
+//                 }
+//                 break;
+//             }
+//         }
+//     }
+
+//     printf("AFTER DELETION OF '%s' YOUR SEN IS:\n%s\n", word, sen);
+//     return (0);
+// }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
 #include <stdio.h>
 #include <string.h>
 
 int main()
 {
-    char sen[20], word[10];
-    int count1, count2, key, res_i, res_j, p;
+    char text[20], word[10];
 
-    printf("ENTER YOUR SENTENCE:\n");
-    scanf("%[^|\n]%*c", sen);
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
 
-    printf("ENTER YOUR WORD:\n");
+    printf("ENTER YOUR WORTD:\n");
     scanf("%[^\n]%*c", word);
 
-    count1 = strlen(sen);
-    count2 = strlen(word);
+    int count_text = strlen(text);
+    int count_word = strlen(word);
 
-    for (int i = 0; i < count2; i++)
+    for (int i = 0; i < count_text; i++)
     {
-        for (int j = 0; j < count1; j++)
+        if (word[0] == text[i])
         {
-            key = 0;
-            res_i = i;
-            res_j = j;
-            p = j;
-            if (word[i] == sen[j])
+            int key = 0;
+            int res_i = i;
+
+            for (int j = 0; j < count_word; j++)
             {
-                while (i < count2)
+                if (word[j] == text[i])
                 {
-                    if (word[i] == sen[j])
-                    {
-                        key++;
-                    }
+                    key++;
                     i++;
-                    j++;
                 }
             }
-            if (key == count2)
+
+            i = res_i;
+
+            if (key == count_word)
             {
-                for (int m = 0; m < count2 + 1; m++)
+                for (int k = 0; k < count_word + 1; k++)
                 {
-                    while (p < count1)
+                    while (i < count_text)
                     {
-                        sen[p] = sen[p + 1];
-                        p++;
+                        text[i] = text[i + 1];
+                        i++;
                     }
-                    count1--;
-                    p=res_j;
+                    count_text--;
+                    i = res_i;
                 }
+
                 break;
             }
         }
     }
-
-    printf("AFTER DELETION OF '%s' YOUR SEN IS:\n%s\n", word, sen);
+    printf("REQUIRED STRING: %s", text);
     return (0);
 }

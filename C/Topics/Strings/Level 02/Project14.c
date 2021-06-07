@@ -1,33 +1,64 @@
 //** Put all occurrences of a character with another in a string.
 //** 09.03.2021
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
+// int main()
+// {
+//     char word[20], find, fill;
+//     int count;
+
+//     printf("ENTER YOUR WORD:\n");
+//     scanf("%[^\n]%*c", word);
+
+//     count = strlen(word);
+
+//     printf("ENTER THE CHARACTER YOU WANNA REMOVE AND REPLACE WITG:\n");
+//     find = getchar();
+//     fflush(stdin);
+//     fill = getchar();
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         if (word[i] == find)
+//         {
+//             word[i] = fill;
+//         }
+//     }
+
+//     printf("YOUR WORD AFTER REMOVING '%c' AND REPLACING WITH '%c' IS: %s\n", find, fill, word);
+
+//     return (0);
+// }
+
+// *******************************************************************************************************************************
+// **RIVISON**
+
+#include <stdio.h>
 int main()
 {
-    char word[20], find, fill;
-    int count;
+    char text[20];
+    printf("ENTER YOUR STRING:\n");
+    scanf("%[^\n]%*c", text);
 
-    printf("ENTER YOUR WORD:\n");
-    scanf("%[^\n]%*c", word);
+    char replace, remove;
+    printf("ENTER TYHE CHARACTER U WANNA REMOVE:\n");
+    remove = getchar();
 
-    count = strlen(word);
+    getchar();
 
-    printf("ENTER THE CHARACTER YOU WANNA REMOVE AND REPLACE WITG:\n");
-    find = getchar();
-    fflush(stdin);
-    fill = getchar();
+    printf("ENTER THE CHARACTER U WANNA REPLACE WITH:\n");
+    replace = getchar();
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; text[i] != '\0'; i++)
     {
-        if (word[i] == find)
+        if (remove == text[i])
         {
-            word[i] = fill;
+            text[i] = replace;
         }
     }
 
-    printf("YOUR WORD AFTER REMOVING '%c' AND REPLACING WITH '%c' IS: %s\n", find, fill, word);
-
+    printf("REQUIRD STRING: %s\n", text);
     return (0);
 }

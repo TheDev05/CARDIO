@@ -55,7 +55,7 @@
 
 // ******************************************************************************************************************************
 // **RIVISON**
-//!NOT DONE: ANKIT IS ABOY, HERE BOY IS ALSO SHOWN AS WORD, CHECK AFTER BEFORE WORD A BLANK THEN THATS WORD
+// *DONE: ANKIT IS ABOY, HERE BOY IS ALSO SHOWN AS WORD, CHECK AFTER BEFORE WORD A BLANK THEN THATS WORD
 
 #include <stdio.h>
 #include <string.h>
@@ -89,7 +89,9 @@ int main()
                     j++;
                 }
             }
-            if (key == count_word)
+            if (key == count_word && text[res_j - 1] == ' ' && (text[j] == ' ' || text[j] == '\0'))
+            //* this is for finding excat word: he is ankit: word=ankit, not nkit
+            
             {
                 printf("%s EXIST AT INDEX text[%d]", word, res_j);
                 return (0);
