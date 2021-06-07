@@ -81,24 +81,15 @@
 
 // }
 #include <stdio.h>
+void count(int *p)
+{
+    printf("*(p+0):%d\n", *(p + 0));
+    printf("*(p): %d\n", *(p));
+    printf("p: %d\n", (p + 0));
+}
 int main()
 {
-    int num[4] = {1, 2, 3, 4};
-
-    int i = 3;
-    int count = 4;
-
-    while (i < count)
-    {
-        num[i] = num[i + 1];
-        i++;
-    }
-    count--;
-
-    printf("REQUIRED ARRAY:");
-    for (int i = 0; i < count; i++)
-    {
-        printf("%d ", num[i]);
-    }
+    int num[3] = {1, 2, 3};
+    count(num);
     return (0);
 }
