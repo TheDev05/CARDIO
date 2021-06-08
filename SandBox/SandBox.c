@@ -82,25 +82,17 @@
 // }
 
 #include <stdio.h>
-#include <string.h>
-struct data
+
+int main(void)
 {
-    int count;
-    char text[20];
-};
+    char *s = "abc";
+    // s = "ankit raj";
 
-int main()
-{
-    struct data var;
+    // s[2] = 'p';
+    // *(s + 2) = 'p';
 
-    var.count = 1001;
-    // var.text = {"ankit"};
-    // var.text = "ankit";
-    // var.text = {'a', 'n', 'k', 'i', 't'};
-    strcpy(var.text, "ankit");
+    char x = *(s + 2);
 
-    printf("VAR.TEXT: %s ", var.text);
-    printf("VAR.COUNT: %d", var.count);
-
-    return (0);
+    printf("%c\n", x);
+    return 0;
 }
