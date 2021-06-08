@@ -80,16 +80,27 @@
 //     printf(" The value of Sin(%f) = %.4f", x, sum);
 
 // }
+
 #include <stdio.h>
-void count(int *p)
+#include <string.h>
+struct data
 {
-    printf("*(p+0):%d\n", *(p + 0));
-    printf("*(p): %d\n", *(p));
-    printf("p: %d\n", (p + 0));
-}
+    int count;
+    char text[20];
+};
+
 int main()
 {
-    int num[3] = {1, 2, 3};
-    count(num);
+    struct data var;
+
+    var.count = 1001;
+    // var.text = {"ankit"};
+    // var.text = "ankit";
+    // var.text = {'a', 'n', 'k', 'i', 't'};
+    strcpy(var.text, "ankit");
+
+    printf("VAR.TEXT: %s ", var.text);
+    printf("VAR.COUNT: %d", var.count);
+
     return (0);
 }
