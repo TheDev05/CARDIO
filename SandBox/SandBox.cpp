@@ -108,27 +108,89 @@
 
 #include <iostream>
 
-using namespace std;
-class TEMP
+class student
 {
-  int x;
-  public:
-  TEMP();
-  ~TEMP();
-  void show() const;
-};
-TEMP::TEMP()
-{
-  x=50;
-}
+private:
+  int age;
+  char first_name[55];
+  char last_name[55];
+  int standard;
 
-void TEMP::show() const{
-  cout<<x;
-}
+public:
+  void set_age()
+  {
+    std::cin >> age;
+  }
+
+  void get_age()
+  {
+    std::cout << age;
+  }
+
+  void set_first_name()
+  {
+    std::cin >> first_name;
+  }
+
+  void get_first_name()
+  {
+    std::cout << first_name;
+  }
+
+  void set_last_name()
+  {
+    std::cin >> last_name;
+  }
+
+  void get_last_name()
+  {
+    std::cout << last_name;
+  }
+
+  void set_standard()
+  {
+    std::cin >> standard;
+  }
+
+  void get_standard()
+  {
+    std::cout << standard;
+  }
+};
 
 int main()
 {
-  TEMP obj;
-  obj.show();
-  return(0);
+  student stud;
+
+  stud.set_age();
+  stud.set_first_name();
+  stud.set_last_name();
+  stud.set_standard();
+
+  stud.get_age();
+  std::cout << std::endl;
+
+  stud.get_last_name();
+  std::cout << ","
+            << " ";
+
+  stud.get_first_name();
+  std::cout << std::endl;
+
+  stud.get_standard();
+  std::cout << std::endl
+            << std::endl;
+
+  stud.get_age();
+  std::cout << ",";
+
+  stud.get_first_name();
+  std::cout << ",";
+
+  stud.get_last_name();
+  std::cout << ",";
+
+  stud.get_standard();
+
+  return (0);
 }

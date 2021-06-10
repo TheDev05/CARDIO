@@ -81,18 +81,19 @@
 
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-    char *s = "abc";
-    // s = "ankit raj";
+// int main(void)
+// {
+//     char *s = "abc";
+//     // s = "ankit raj";
 
-    // s[2] = 'p';
-    // *(s + 2) = 'p';
+//     // s[2] = 'p';
+//     // *(s + 2) = 'p';
 
-    char x = *(s + 2);
+//     char x = *(s + 2);
 
-    printf("%c\n", x);
-    return 0;
-}
+//     printf("%c\n", x);
+//     return 0;
+// }
+
