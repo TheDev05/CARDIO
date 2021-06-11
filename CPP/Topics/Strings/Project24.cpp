@@ -32,4 +32,36 @@
 
 // ********************************************************************************************************************************************
 // *RIVISON
+//TODO: IMPORTANT : KEY TERM
 
+#include <iostream>
+int main()
+{
+    char text[20];
+    std::cout << "ENTER YOUR STRING: " << std::endl;
+    std::cin.getline(text, 20);
+
+    for (int i = 0; text[i] != '\0'; i++)
+    {
+        int key = 0;
+
+        if (i == 0)
+        {
+            text[i] = (text[i] >= 'a' && text[i] <= 'z') ? text[i] = text[i] - 0x20 : text[i];
+        }
+
+        while (text[i] == ' ')// if user input two or more blanks then this works too.
+        {
+            i++;
+            key = 1;
+        }
+
+        if (text[i] >= 'a' && text[i] <= 'z' && key == 1)
+        {
+            text[i] = text[i] - 0x20;
+        }
+    }
+
+    std::cout << "TEXT: " << text << std::endl;
+    return (0);
+}
