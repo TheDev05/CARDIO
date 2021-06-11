@@ -1,21 +1,6 @@
 //**C program to create and print array of strings
 //** (not array of characters but array of strings)
 
-//**PRE-INITIALISED**
-
-// #include <iostream>
-// int main()
-// {
-//     char str[6][20] = {{"HELLO BUDDY!"}, {"HOW ARE YOU?"}, {"ASK ME SOMETHING"}, {"DO YOU KNOW INDIA?"}, {"THANK YOU!"}};
-
-//     for (int i = 0; i < 6; i++)
-//     {
-
-//         std::cout << str[i] << std::endl;
-//     }
-
-//     return (0);
-// }
 
 //**USER-INPUT**
 
@@ -32,14 +17,13 @@ int main()
 
     fflush(stdin);
     // std::cin.sync();
-    
 
     std::cout << "ENTER YOUR STRING: " << std::endl;
     for (int i = 0; i < strings; i++)
     {
 
         std::cout << "String " << i + 1 << " : ";
-        std::cin.getinel(str[i], 20);
+        std::cin.getline(str[i], 20);
     }
 
     std::cout << "STRINGS GIVEN AS, " << std::endl;
@@ -49,5 +33,58 @@ int main()
         std::cout << "String " << i << " : " << str[i] << std::endl;
     }
 
+    return (0);
+}
+
+// ********************************************************************************************************************************************
+// *RIVISON
+
+#include <iostream>
+int main()
+{
+    char bot[10][30] = {
+        "Hello!",
+        "What's Your Name?",
+        "How is Your, Maths Buddy!",
+        "Okay so, Lets Solve 4+5", "Nice To Talk With You!"};
+
+    char user[10][20];
+    int input;
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (i == 2)
+        {
+            std::cout << "How're You, " << user[1] << std::endl;
+            std::cin >> user[i];
+        }
+
+        std::cout << bot[i] << std::endl;
+
+        if (i == 3)
+        {
+            std::cin >> input;
+
+            if (input == 9)
+            {
+                std::cout << "Whoa!, Great" << std::endl;
+            }
+            else
+                std::cout << "Oops!, I Think You Should Practice more." << std::endl;
+        }
+        else
+            std::cin >> user[i];
+
+        if (i == 4)
+        {
+            break;
+        }
+    }
+
+    std::cout << "USER INPUT HISTORY: " << std::endl;
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << user[i] << std::endl;
+    }
     return (0);
 }

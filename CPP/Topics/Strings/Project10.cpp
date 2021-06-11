@@ -20,3 +20,16 @@ int main()
 
     return (0);
 }
+
+// ********************************************************************************************************************************************
+// *RIVISON
+
+// #include <iostream>
+// int main()
+// {
+//     char text[20];
+//     std::cout << "ENTER YOUR STRING: " << std::endl;
+//     std::cin.getline(text, 20);
+
+//     while
+// }

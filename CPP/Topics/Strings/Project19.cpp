@@ -33,23 +33,44 @@
 //*******************************************************************************************************************************************
 //**RIVISON**
 
-#include <iostream>
+// #include <iostream>
 
+// int main()
+// {
+//     char input[] = "*****";
+
+//     int count;
+//     for (count = 0; input[count] != '\0'; count++)
+//     {
+//     }
+
+//     for (int i = count - 1; i >= 0; i--)
+//     {
+//         for (int j = 0; j < i + 1; j++)
+//         {
+//             std::cout << input[j] << " ";
+//         }
+//         std::cout << std::endl;
+//     }
+
+//     return (0);
+// }
+
+// ********************************************************************************************************************************************
+// *RIVISON
+
+#include <iostream>
 int main()
 {
-    char input[] = "*****";
+    char text[6] = "Hello";
 
-    int count;
-    for (count = 0; input[count] != '\0'; count++)
-    {
-    }
-
-    for (int i = count - 1; i >= 0; i--)
+    for (int i = 4; i >= 0; i--)
     {
         for (int j = 0; j < i + 1; j++)
         {
-            std::cout << input[j] << " ";
+            std::cout << text[j];
         }
+
         std::cout << std::endl;
     }
 
