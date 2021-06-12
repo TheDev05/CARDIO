@@ -106,13 +106,55 @@
 //   }
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
+// int main()
+// {
+//     char text[20] = "ankit";
+//     char *p = "ankit";
+//     // std::cout << p;
+
+//     printf("%s", p);
+//     return (0);
+// }
+
+#include <iostream>
+#include <iomanip>
+
+// double fact(int num)
+// {
+//     double prod = 1;
+//     for (num; num >= 1; num--)
+//     {
+//         prod *= num;
+//     }
+
+//     return (prod);
+// }
+
 int main()
 {
-    char text[20] = "ankit";
-    char *p = "ankit";
-    // std::cout << p;
+    // int count;
+    // std::cin >> count;
+    // int num[count];
 
-    printf("%s", p);
+    int num;
+    std::cin >> num;
+
+    int temp = num, prod = 1;
+    for (temp; temp >= 1; temp--)
+    {
+        prod *= temp;
+    }
+
+    // for (int i = 0; i < count; i++)
+    // {
+    //     std::cin >> num[i];
+    // }
+
+    // for (int i = 0; i < count; i++)
+    // {
+    std::cout << fact(num) << std::endl;
+    // }
+
     return (0);
 }
