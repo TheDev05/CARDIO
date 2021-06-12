@@ -106,91 +106,13 @@
 //   }
 // }
 
-#include <iostream>
-
-class student
-{
-private:
-  int age;
-  char first_name[55];
-  char last_name[55];
-  int standard;
-
-public:
-  void set_age()
-  {
-    std::cin >> age;
-  }
-
-  void get_age()
-  {
-    std::cout << age;
-  }
-
-  void set_first_name()
-  {
-    std::cin >> first_name;
-  }
-
-  void get_first_name()
-  {
-    std::cout << first_name;
-  }
-
-  void set_last_name()
-  {
-    std::cin >> last_name;
-  }
-
-  void get_last_name()
-  {
-    std::cout << last_name;
-  }
-
-  void set_standard()
-  {
-    std::cin >> standard;
-  }
-
-  void get_standard()
-  {
-    std::cout << standard;
-  }
-};
-
+#include <stdio.h>
 int main()
 {
-  student stud;
+    char text[20] = "ankit";
+    char *p = "ankit";
+    // std::cout << p;
 
-  stud.set_age();
-  stud.set_first_name();
-  stud.set_last_name();
-  stud.set_standard();
-
-  stud.get_age();
-  std::cout << std::endl;
-
-  stud.get_last_name();
-  std::cout << ","
-            << " ";
-
-  stud.get_first_name();
-  std::cout << std::endl;
-
-  stud.get_standard();
-  std::cout << std::endl
-            << std::endl;
-
-  stud.get_age();
-  std::cout << ",";
-
-  stud.get_first_name();
-  std::cout << ",";
-
-  stud.get_last_name();
-  std::cout << ",";
-
-  stud.get_standard();
-
-  return (0);
+    printf("%s", p);
+    return (0);
 }

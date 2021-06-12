@@ -95,14 +95,14 @@
 
 //     printf("%c\n", x);
 //     return 0;
-// }
-#include <stdio.h>
-int main()
-{
-    char c = '3';
-    int num[6] = {0, 1, 2, 3, 4, 5};
+// // }
+// #include <stdio.h>
+// int main()
+// {
+//     char c = '3';
+//     int num[6] = {0, 1, 2, 3, 4, 5};
 
-    num[c] = 0;
-    printf("%d", num[3]);
-    return 0;
-}
+//     num[c] = 0;
+//     printf("%d", num[3]);
+//     return 0;
+// }
