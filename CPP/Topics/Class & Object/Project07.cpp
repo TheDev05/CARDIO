@@ -45,6 +45,7 @@
 //TODO: RIVISE NEEDED
 
 #include <iostream>
+#include <ios>
 
 class data
 {
@@ -56,8 +57,9 @@ private:
 public:
     void read()
     {
+        getchar();
+        // std::cin.get();
         // std::cin.ignore();
-        std::cin.sync();
 
         std::cout << "ENTER STUDENT NAME: " << std::endl;
         std::cin.getline(name, 20);
