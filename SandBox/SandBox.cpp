@@ -117,8 +117,8 @@
 //     return (0);
 // }
 
-#include <iostream>
-#include <iomanip>
+// #include <iostream>
+// #include <iomanip>
 
 // double fact(int num)
 // {
@@ -131,30 +131,57 @@
 //     return (prod);
 // }
 
-int main()
+// int main()
+// {
+//     int count;
+//     std::cin >> count;
+//     int num[count];
+
+//     for (int i = 0; i < count; i++)
+//     {
+//         std::cin >> num[i];
+//     }
+
+//     for (int i = 0; i < count; i++)
+//     {
+//     std::cout << fact(num[i]) << std::endl;
+//     }
+
+//     return (0);
+// }
+
+#include <iostream>
+#include <cmath>
+
+int fact(int num)
 {
-    // int count;
-    // std::cin >> count;
-    // int num[count];
-
-    int num;
-    std::cin >> num;
-
-    int temp = num, prod = 1;
-    for (temp; temp >= 1; temp--)
+    int prod = 1;
+    for (num; num >= 1; num--)
     {
-        prod *= temp;
+        prod *= num;
     }
 
-    // for (int i = 0; i < count; i++)
-    // {
-    //     std::cin >> num[i];
-    // }
+    return (prod);
+}
 
-    // for (int i = 0; i < count; i++)
-    // {
-    std::cout << fact(num) << std::endl;
-    // }
+int store(int num)
+{
+    
+}
 
-    return (0);
+int main()
+{
+    int takes;
+    std::cin >> takes;
+    int num[takes];
+
+    for (int i = 0; i < takes; i++)
+    {
+        std::cin >> num[i];
+    }
+
+    for (int i = 0; i < takes; i++)
+    {
+        store(num[i]);
+    }
 }
