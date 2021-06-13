@@ -106,3 +106,39 @@
 //     printf("%d", num[3]);
 //     return 0;
 // }
+
+#include <stdio.h>
+
+int main(void)
+{
+    int t;
+    scanf("%d", &t);
+    while (t--)
+    {
+        long long int n, m, b, q, total = 0;
+        scanf("%lld%lld%lld", &n, &b, &m);
+        while (n > 0)
+        {
+            if (n % 2 == 0)
+            {
+                q = n / 2;
+                total = total + (q * m) + b;
+                n = n - q;
+                m *= 2;
+            }
+            else
+            {
+                q = (n + 1) / 2;
+                total = total + (q * m) + b;
+                n = n - q;
+                m *= 2;
+            }
+            if (n == 0)
+            {
+                printf("%lld\n", total - b);
+                break;
+            }
+        }
+    }
+    return 0;
+}

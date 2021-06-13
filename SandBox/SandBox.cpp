@@ -150,38 +150,68 @@
 //     return (0);
 // }
 
-#include <iostream>
-#include <cmath>
+// #include <iostream>
+// #include <cmath>
 
-int fact(int num)
-{
-    int prod = 1;
-    for (num; num >= 1; num--)
+// int fact(int num)
+// {
+//     int prod = 1;
+//     for (num; num >= 1; num--)
+//     {
+//         prod *= num;
+//     }
+
+//     return (prod);
+// }
+
+// int store(int num)
+// {
+
+// }
+
+// int main()
+// {
+//     int takes;
+//     std::cin >> takes;
+//     int num[takes];
+
+//     for (int i = 0; i < takes; i++)
+//     {
+//         std::cin >> num[i];
+//     }
+
+//     for (int i = 0; i < takes; i++)
+//     {
+//         store(num[i]);
+//     }
+// }
+
+#include<iostream>
+using namespace std;
+int main(){
+    int t;
+    long long int n,b,m,ans;
+    cin>>t;
+    while(t--)
     {
-        prod *= num;
-    }
-
-    return (prod);
-}
-
-int store(int num)
-{
-    
-}
-
-int main()
-{
-    int takes;
-    std::cin >> takes;
-    int num[takes];
-
-    for (int i = 0; i < takes; i++)
+        ans=0;
+        cin>>n>>b>>m;
+    while(n>1)
     {
-        std::cin >> num[i];
+        if(n%2==0)
+        {
+            n=n/2;
+            ans=ans+m*n + b;
+            m=m*2;
+        }
+        else
+        {
+            ans+=m*((n+1)/2)+b;
+            m=m*2;
+            n=n-((n+1)/2);
+        }
     }
-
-    for (int i = 0; i < takes; i++)
-    {
-        store(num[i]);
+    cout<<(ans+m)<<endl;
     }
+return 0;
 }
