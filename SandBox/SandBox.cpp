@@ -186,32 +186,33 @@
 //     }
 // }
 
-#include<iostream>
-using namespace std;
-int main(){
-    int t;
-    long long int n,b,m,ans;
-    cin>>t;
-    while(t--)
-    {
-        ans=0;
-        cin>>n>>b>>m;
-    while(n>1)
-    {
-        if(n%2==0)
-        {
-            n=n/2;
-            ans=ans+m*n + b;
-            m=m*2;
-        }
-        else
-        {
-            ans+=m*((n+1)/2)+b;
-            m=m*2;
-            n=n-((n+1)/2);
-        }
-    }
-    cout<<(ans+m)<<endl;
-    }
-return 0;
-}
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int t;
+//     long long int n,b,m,ans;
+//     cin>>t;
+//     while(t--)
+//     {
+//         ans=0;
+//         cin>>n>>b>>m;
+//     while(n>1)
+//     {
+//         if(n%2==0)
+//         {
+//             n=n/2;
+//             ans=ans+m*n + b;
+//             m=m*2;
+//         }
+//         else
+//         {
+//             ans+=m*((n+1)/2)+b;
+//             m=m*2;
+//             n=n-((n+1)/2);
+//         }
+//     }
+//     cout<<(ans+m)<<endl;
+//     }
+// return 0;
+// }
+
