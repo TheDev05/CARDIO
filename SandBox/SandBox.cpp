@@ -216,3 +216,56 @@
 // return 0;
 // }
 
+#include <iostream>
+int main()
+{
+    int count;
+    std::cin >> count;
+
+    int num[count];
+    int data[count];
+
+    for (int i = 0; i < count; i++)
+    {
+        std::cin >> num[i];
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        int val, key = 0;
+
+        int temp = num[i];
+      
+
+        while (1)
+        {
+
+            for (int j = 1; (j * j) <= temp; j++)
+            {
+                val = j;
+            }
+
+            // std::cout << val << std::endl;
+
+            if ((val * val) == temp)
+            {
+                key++;
+                break;
+            }
+            else if (temp > (val * val))
+            {
+                temp = temp - (val * val);
+                key++;
+            }
+        }
+
+        data[i] = key;
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        std::cout << data[i] << std::endl;
+    }
+
+    return (0);
+}
