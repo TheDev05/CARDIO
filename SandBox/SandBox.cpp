@@ -217,55 +217,71 @@
 // }
 
 #include <iostream>
+
+void positive(long long *p)
+{
+    if (*p < 0)
+    {
+        *p = -(*p);
+    }
+}
+
 int main()
 {
+
     int count;
     std::cin >> count;
-
-    int num[count];
     int data[count];
 
     for (int i = 0; i < count; i++)
     {
-        std::cin >> num[i];
-    }
+        long long n;
+        std::cin >> n;
+        long long num[n];
 
-    for (int i = 0; i < count; i++)
-    {
-        int val, key = 0;
-
-        int temp = num[i];
-      
-
-        while (1)
+        for (int p = 0; p < n; p++)
         {
-
-            for (int j = 1; (j * j) <= temp; j++)
-            {
-                val = j;
-            }
-
-            // std::cout << val << std::endl;
-
-            if ((val * val) == temp)
-            {
-                key++;
-                break;
-            }
-            else if (temp > (val * val))
-            {
-                temp = temp - (val * val);
-                key++;
-            }
+            std::cin >> num[p];
         }
 
-        data[i] = key;
+        for (int k = 1; k < n; k++)
+        {
+            long long temp = num[k];
+            int j = k - 1;
+
+            while (num[j] > temp && j >= 0)
+            {
+                num[j + 1] = num[j];
+                j--;
+            }
+            num[j + 1] = temp;
+        }
+
+        long long trip1 = num[n - 1];
+        long long trip2 = num[n - 2];
+        long long trip3 = num[n - 3];
+
+        long long sum = 0;
+        long long val = 0;
+
+        val = trip1 - trip2;
+        positive(&val);
+        sum += val;
+
+        val = trip2 - trip3;
+        positive(&val);
+        sum += val;
+
+        val = trip1 - trip3;
+        positive(&val);
+        sum += val;
+
+        data[i] = sum;
     }
 
     for (int i = 0; i < count; i++)
     {
         std::cout << data[i] << std::endl;
     }
-
     return (0);
 }
