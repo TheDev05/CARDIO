@@ -216,72 +216,59 @@
 // return 0;
 // }
 
-#include <iostream>
+// #include <iostream>
+// int main()
+// {
+//     int friend_hour_strt, friend_hour_last;
+//     int friend_min_strt, friend_min_last;
+//     char friend_day_strt[3], friend_day_last[3];
+//     char friend_timing[20];
 
-void positive(long long *p)
+//     std::cin.getline(friend_timing, 19);
+
+//     sscanf(friend_timing, "%d:%d %s %d:%d %s", &friend_hour_strt, &friend_min_strt, friend_day_strt, &friend_hour_last, &friend_min_last, friend_day_last);
+//     std::cout << friend_hour_strt << ":" << friend_hour_strt << " " << friend_day_strt << " " << friend_hour_last << ":" << friend_min_last << " " << friend_day_last << std::endl;
+
+//     return (0);
+// }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool compare(string a, string b)
 {
-    if (*p < 0)
-    {
-        *p = -(*p);
-    }
+    int ans1 = stoi(a.substr(0, 2)) * 60 * (a.substr(0, 2) != "12") + stoi(a.substr(3, 2)) + 720 * (a.substr(5, 1) == "P");
+    int ans2 = stoi(b.substr(0, 2)) * 60 * (b.substr(0, 2) != "12") + stoi(b.substr(3, 2)) + 720 * (b.substr(5, 1) == "P");
+
+    return (ans1 <= ans2);
 }
 
 int main()
 {
-
-    int count;
-    std::cin >> count;
-    int data[count];
-
-    for (int i = 0; i < count; i++)
+    // your code goes here
+    int t;
+    cin >> t;
+    while (t--)
     {
-        long long n;
-        std::cin >> n;
-        long long num[n];
+        string s1, s2;
+        cin >> s1 >> s2;
+        s1 += s2;
 
-        for (int p = 0; p < n; p++)
+        int n;
+        cin >> n;
+        while (n--)
         {
-            std::cin >> num[p];
+            string k11, k12, k21, k22;
+            cin >> k11 >> k12 >> k21 >> k22;
+            k11 += k12;
+            k21 += k22;
+            /* cout << k11 << " " <<  k21 << endl;*/
+            if (compare(k11, s1) && compare(s1, k21))
+                cout << "1";
+            else
+                cout << "0";
         }
-
-        for (int k = 1; k < n; k++)
-        {
-            long long temp = num[k];
-            int j = k - 1;
-
-            while (num[j] > temp && j >= 0)
-            {
-                num[j + 1] = num[j];
-                j--;
-            }
-            num[j + 1] = temp;
-        }
-
-        long long trip1 = num[n - 1];
-        long long trip2 = num[n - 2];
-        long long trip3 = num[n - 3];
-
-        long long sum = 0;
-        long long val = 0;
-
-        val = trip1 - trip2;
-        positive(&val);
-        sum += val;
-
-        val = trip2 - trip3;
-        positive(&val);
-        sum += val;
-
-        val = trip1 - trip3;
-        positive(&val);
-        sum += val;
-
-        data[i] = sum;
+        cout << endl;
     }
-
-    for (int i = 0; i < count; i++)
-    {
-        std::cout << data[i] << std::endl;
-    }
-    return (0);
+    return 0;
 }
