@@ -232,43 +232,93 @@
 //     return (0);
 // }
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-bool compare(string a, string b)
-{
-    int ans1 = stoi(a.substr(0, 2)) * 60 * (a.substr(0, 2) != "12") + stoi(a.substr(3, 2)) + 720 * (a.substr(5, 1) == "P");
-    int ans2 = stoi(b.substr(0, 2)) * 60 * (b.substr(0, 2) != "12") + stoi(b.substr(3, 2)) + 720 * (b.substr(5, 1) == "P");
+// bool compare(string a, string b)
+// {
+//     int ans1 = stoi(a.substr(0, 2)) * 60 * (a.substr(0, 2) != "12") + stoi(a.substr(3, 2)) + 720 * (a.substr(5, 1) == "P");
+//     int ans2 = stoi(b.substr(0, 2)) * 60 * (b.substr(0, 2) != "12") + stoi(b.substr(3, 2)) + 720 * (b.substr(5, 1) == "P");
 
-    return (ans1 <= ans2);
-}
+//     return (ans1 <= ans2);
+// }
 
-int main()
-{
-    // your code goes here
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        string s1, s2;
-        cin >> s1 >> s2;
-        s1 += s2;
+// int main()
+// {
+//     // your code goes here
+//     int t;
+//     cin >> t;
+//     while (t--)
+//     {
+//         string s1, s2;
+//         cin >> s1 >> s2;
+//         s1 += s2;
 
-        int n;
-        cin >> n;
-        while (n--)
-        {
-            string k11, k12, k21, k22;
-            cin >> k11 >> k12 >> k21 >> k22;
-            k11 += k12;
-            k21 += k22;
-            /* cout << k11 << " " <<  k21 << endl;*/
-            if (compare(k11, s1) && compare(s1, k21))
-                cout << "1";
-            else
-                cout << "0";
-        }
-        cout << endl;
-    }
-    return 0;
-}
+//         int n;
+//         cin >> n;
+//         while (n--)
+//         {
+//             string k11, k12, k21, k22;
+//             cin >> k11 >> k12 >> k21 >> k22;
+//             k11 += k12;
+//             k21 += k22;
+//             /* cout << k11 << " " <<  k21 << endl;*/
+//             if (compare(k11, s1) && compare(s1, k21))
+//                 cout << "1";
+//             else
+//                 cout << "0";
+//         }
+//         cout << endl;
+//     }
+//     return 0;
+// }
+
+// #include <iostream>
+// int main()
+// {
+//     int n;
+//     std::cin >> n;
+//     while (n--)
+//     {
+//         int D, d, p, q;
+//         std::cin >> D >> d >> p >> q;
+
+//         int mod, div;
+//         div = D / d;
+//         mod = D % d;
+
+//         int sum;
+//         sum = (div / 2) * ((2 * p) + ((div - 1) * q)) * d;
+
+//         if (mod != 0)
+//         {
+//             sum += (p + (D)) * mod;
+//         }
+
+//         std::cout << sum << '\n';
+//     }
+
+//     return (0);
+// }
+
+// #include <iostream>
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         int x, y, x1, y1;
+//         std::cin >> x>> y>> x1>> y1;
+//         int sum = 0;
+
+//         sum += x1 / x;
+//         sum += y1 / y;
+
+//         std::cout << sum << '\n';
+//     }
+
+//     return (0);
+// }
+

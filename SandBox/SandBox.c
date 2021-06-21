@@ -108,9 +108,15 @@
 // }
 
 #include <stdio.h>
+#include <chrono>
 
 int main(void)
 {
+
+    auto start = chrono::high_resolution_clock::now();
+
+    // CODE
+
     int t;
     scanf("%d", &t);
     while (t--)
@@ -140,5 +146,10 @@ int main(void)
             }
         }
     }
+
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << duration.count() << endl;
+
     return 0;
 }

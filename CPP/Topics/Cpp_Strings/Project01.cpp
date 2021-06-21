@@ -34,7 +34,7 @@ int main()
     // std::cout << text[2] << std::endl;
 
     // std::string str2 = "3.14159";
-    std::string str3 = "31337 geek 000";
+    std::string str3 = "31337 geek 000"; //*why not 000 or when "geek 000" putted error encountered
     int myint3 = stoi(str3);
     std::cout << "stoi(\"" << str3 << "\") is "
               << myint3 << '\n';
