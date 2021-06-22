@@ -322,3 +322,51 @@
 //     return (0);
 // }
 
+#include <iostream>
+int main()
+{
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        int n, e, h, a, b, c;
+        std::cin >> n >> e >> h >> a >> b >> c;
+
+        int items = 0, cost = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (e >= 2) //omelette
+            {
+                items++;
+                e = e - 2;
+                cost += a;
+            }
+
+            if (h >= 3) //chocolate shake
+            {
+                items++;
+                h = h - 3;
+                cost += b;
+            }
+
+            if (e >= 1 && h >= 1) //chocolate cake
+            {
+                items++;
+                e = e - 1;
+                h = h - 1;
+                cost += c;
+            }
+        }
+
+        if (items < n)
+        {
+            std::cout << "-1" << '\n';
+        }
+        else
+            std::cout << cost << "\n";
+    }
+
+    return (0);
+}
