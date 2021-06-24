@@ -330,42 +330,20 @@ int main()
 
     while (t--)
     {
-        int n, e, h, a, b, c;
-        std::cin >> n >> e >> h >> a >> b >> c;
+        int num;
+        std::cin >> num;
 
-        int items = 0, cost = 0;
-
-        for (int i = 0; i < n; i++)
+        if (num == 2)
         {
-            if (e >= 2) //omelette
-            {
-                items++;
-                e = e - 2;
-                cost += a;
-            }
-
-            if (h >= 3) //chocolate shake
-            {
-                items++;
-                h = h - 3;
-                cost += b;
-            }
-
-            if (e >= 1 && h >= 1) //chocolate cake
-            {
-                items++;
-                e = e - 1;
-                h = h - 1;
-                cost += c;
-            }
+            std::cout << "2";
         }
 
-        if (items < n)
+        if (num % 2 == 0)
         {
-            std::cout << "-1" << '\n';
+            std::cout << (num / 2 + 1) << '\n';
         }
         else
-            std::cout << cost << "\n";
+            std::cout << ((num + 1) / 2) << '\n';
     }
 
     return (0);
