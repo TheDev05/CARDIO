@@ -323,27 +323,18 @@
 // }
 
 #include <iostream>
+#include <string>
+
 int main()
 {
-    int t;
-    std::cin >> t;
+    std::string s1, s2;
 
-    while (t--)
+    s1 = "ankit";
+    s2 = "ankit";
+
+    if (s1 == s2)
     {
-        int num;
-        std::cin >> num;
-
-        if (num == 2)
-        {
-            std::cout << "2";
-        }
-
-        if (num % 2 == 0)
-        {
-            std::cout << (num / 2 + 1) << '\n';
-        }
-        else
-            std::cout << ((num + 1) / 2) << '\n';
+        std::cout << "WE PASSED";
     }
 
     return (0);

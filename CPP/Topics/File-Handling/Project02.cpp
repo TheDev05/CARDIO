@@ -1,18 +1,13 @@
-//** FILE-HANDLING:IFSTREAM**
+/*  Read file contents and display on the console. */
 
 #include <iostream>
+#include <string>
 #include <fstream>
 
 int main()
 {
-
-    std::ofstream fout;
-    fout.open("abc.txt");
-    fout << "hello";
-    fout.close();
-
     std::ifstream fin;
-    fin.open("abc.txt");
+    fin.open("data.txt");
 
     char ch;
     std::string s;
@@ -20,7 +15,6 @@ int main()
     while (!fin.eof())
     {
         ch = fin.get();
-        // fin >> ch;
         s += ch;
     }
 

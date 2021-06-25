@@ -1,29 +1,27 @@
-//** FILE-HANDLING:IFSTREAM**
+/* Append content to a file. */
 
 #include <iostream>
 #include <fstream>
 
 int main()
 {
-
     std::ofstream fout;
-    fout.open("abc.txt");
-    fout << "hello";
+    fout.open("data.txt", std::ios::app);
+    fout << "HELLO SIR!";
     fout.close();
 
     std::ifstream fin;
-    fin.open("abc.txt");
-
-    char ch;
+    fin.open("data.txt");
     std::string s;
+    char ch;
 
     while (!fin.eof())
     {
         ch = fin.get();
-        // fin >> ch;
         s += ch;
     }
 
     std::cout << s;
+
     return (0);
 }
