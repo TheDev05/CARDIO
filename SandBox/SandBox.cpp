@@ -323,18 +323,67 @@
 // }
 
 #include <iostream>
-#include <string>
+#include <cctype>
 
 int main()
 {
-    std::string s1, s2;
+    int t;
+    std::cin >> t;
+    std::cin.ignore();
 
-    s1 = "ankit";
-    s2 = "ankit";
-
-    if (s1 == s2)
+    while (t--)
     {
-        std::cout << "WE PASSED";
+        std::string s;
+
+        std::getline(std::cin, s);
+        // std::cin >> s;
+
+        int len = 0;
+        len = s.size();
+        std::cout << "l: " << len;
+       
+
+        if (s[0] != '<' || s[1] != '/' || s[len - 1] != '>')
+        {
+            std::cout << "Errorsdsdfs" << '\n';
+            continue;
+        }
+
+        int key = 0, count = 0;
+        for (int i = 2; i < len - 1; i++)
+        {
+
+            if (isblank(s[i]))
+            {
+                count++;
+            }
+
+            if (!((int)s[i] >= 33 && (int)s[i] <= 126))
+            {
+
+                if (s[i] == ' ')
+                {
+                }
+
+                else
+                {
+                    std::cout << "Error" << '\n';
+                    key = 1;
+                    break;
+                }
+            }
+        }
+
+        if (count == len - 3)
+        {
+            std::cout << "Error" << '\n';
+            continue;
+        }
+
+        if (key == 0)
+        {
+            std::cout << "Success" << '\n';
+        }
     }
 
     return (0);

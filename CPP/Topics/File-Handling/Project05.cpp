@@ -12,6 +12,7 @@ int main()
     std::getline(std::cin, str);
 
     std::ifstream is(str); // open file
+    // is.open(str);
 
     char c;
     while (is.get(c)) // loop getting single characters
