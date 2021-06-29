@@ -11,7 +11,7 @@
 //     int age;
 //     string name;
 //         Records() {};
-//         Records(string n,int a): name(n),age(a) {}//! IMPORTANT SHORTCUT
+//         Records(string n,int a): name(n),age(a) {}//! IMPORTANT : INITIALIZER CONCEPT
 //         void show()
 //         {
 //             cout<<name<<" : "<<age<<endl;
