@@ -46,7 +46,7 @@ int main()
     fin.open("id.txt");
 
     char ch;
-    while (!fin.eof())
+    while (!fin.eof()) //Error Encounterd, check stackoverflow query
     {
         ch = fin.get();
         verify_id += ch;

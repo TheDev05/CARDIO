@@ -341,7 +341,6 @@ int main()
         int len = 0;
         len = s.size();
         std::cout << "l: " << len;
-       
 
         if (s[0] != '<' || s[1] != '/' || s[len - 1] != '>')
         {
@@ -385,6 +384,6 @@ int main()
             std::cout << "Success" << '\n';
         }
     }
-
+   
     return (0);
 }

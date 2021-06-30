@@ -1,47 +1,80 @@
 // #include <iostream>
-#include <stdio.h>
+// #include <cctype>
+// #include <cstring>
+
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+//     std::cin.ignore();
+
+//     while (t--)
+//     {
+
+//         std::string s;
+//         std::getline(std::cin, s);
+
+//         int count = s.size();
+//         std::cout << count;
+
+//         if (s[0] != '<' || s[1] != '/' || s[count - 1] != '>')
+//         {
+//             std::cout << "Error" << '\n';
+//             continue;
+//         }
+
+//         int blank = 0, key = 0;
+
+//         for (int i = 2; i < count - 1; i++)
+//         {
+
+//             if (!islower(s[i]) && !isdigit(s[i]))
+//             {
+//                 if (isblank(s[i]))
+//                 {
+//                     blank++;
+//                 }
+//                 else
+//                 {
+//                     std::cout << "Error" << '\n';
+//                     key = 1;
+//                     break;
+//                 }
+//             }
+//         }
+
+//         if (blank == count - 3 && count != 3)
+//         {
+//             std::cout << "Error" << '\n';
+//             continue;
+//         }
+
+//         if (key == 0)
+//         {
+//             std::cout << "Success" << '\n';
+//         }
+//     }
+
+//     return (0);
+// }
+
+#include <iostream>
+#include <string>
 
 int main()
 {
-    int t;
-    // std::cin >> t;
-    scanf("%d", &t);
+    int count;
+    std::cin >> count;
 
-    while (t--)
+    std::cin.ignore();
+
+    while (count--)
     {
-        long long a, b;
-        // std::cin >> a >> b;
-        scanf("%lld %lld", &a, &b);
 
-        double div = (float)a / b;
-        int key = 0;
+        std::string s;
+        std::getline(std::cin, s);
 
-        if (div + div == 1 && div - div == 0)
-        {
-            // std::cout << "Yes" << '\n';
-            printf("Yes\n");
-            continue;
-        }
-
-        while (!(div + div == 1 && div - div == 0) && div < 1 && div > 0)
-        {
-
-            div += div;
-
-            if (div + div == 1 && div - div == 0)
-            {
-                // std::cout << "Yes" << '\n';
-                printf("Yes\n");
-                key = 1;
-                break;
-            }
-        }
-
-        if (key == 0)
-        {
-            // std::cout << "No" << '\n';
-            printf("No\n");
-        }
+        std::cout << s.size() << '\n';
     }
 
     return (0);
