@@ -323,67 +323,19 @@
 // }
 
 #include <iostream>
-#include <cctype>
-
 int main()
 {
     int t;
     std::cin >> t;
-    std::cin.ignore();
 
     while (t--)
     {
-        std::string s;
+        int g, c;
+        std::cin >> g >> c;
 
-        std::getline(std::cin, s);
-        // std::cin >> s;
-
-        int len = 0;
-        len = s.size();
-        std::cout << "l: " << len;
-
-        if (s[0] != '<' || s[1] != '/' || s[len - 1] != '>')
-        {
-            std::cout << "Errorsdsdfs" << '\n';
-            continue;
-        }
-
-        int key = 0, count = 0;
-        for (int i = 2; i < len - 1; i++)
-        {
-
-            if (isblank(s[i]))
-            {
-                count++;
-            }
-
-            if (!((int)s[i] >= 33 && (int)s[i] <= 126))
-            {
-
-                if (s[i] == ' ')
-                {
-                }
-
-                else
-                {
-                    std::cout << "Error" << '\n';
-                    key = 1;
-                    break;
-                }
-            }
-        }
-
-        if (count == len - 3)
-        {
-            std::cout << "Error" << '\n';
-            continue;
-        }
-
-        if (key == 0)
-        {
-            std::cout << "Success" << '\n';
-        }
+        std::cout << (c * c) / (2 * g) << "\n";
     }
-   
+
     return (0);
+    
 }
