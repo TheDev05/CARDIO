@@ -322,6 +322,171 @@
 //     return (0);
 // }
 
+// #include <iostream>
+
+// int check(std::string s, int count)
+// {
+
+//     int b = 0, o = 0;
+
+//     for (int j = 0; j < count; j++)
+//     {
+//         if (s[j] == 'b')
+//         {
+//             b++;
+//         }
+
+//         if (s[j] == 'o')
+//         {
+//             o++;
+//         }
+//     }
+
+//     if (b >= 2 && o >= 1)
+//     {
+//         return (1);
+//     }
+//     else
+//         return (0);
+// }
+
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         char text1[4];
+//         char text2[4];
+
+//         std::string s;
+
+//         std::cin >> text1;
+//         std::cin >> text2;
+
+//         for (int i = 0; i < 4; i++)
+//         {
+
+//             if (text1[i] == 'b' || text1[i] == 'o')
+//             {
+//                 s += text1[i];
+//             }
+//         }
+
+//         if (check(s, s.length()))
+//         {
+//             std::cout << "yes" << '\n';
+//             continue;
+//         }
+
+//               for (int j = 0; j < 4; j++)
+//         {
+
+//             if (text2[j] == 'b' || text2[j] == 'o')
+//             {
+//                 s += text2[j];
+//             }
+//         }
+
+//         if (check(s, s.length()))
+//         {
+//             std::cout << "yes" << '\n';
+//         }
+//         else
+//             std::cout << "no" << '\n';
+//     }
+
+//     return (0);
+// }
+
+// #include <iostream>
+// int main()
+// {
+
+//     std::ios_base::sync_with_stdio(false);
+//     std::cin.tie(NULL);
+
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         int n;
+//         long long a, b;
+
+//         std::cin >> a >> b >> n;
+
+//         for (int i = 1; n >= 1; i++)
+//         {
+
+//             if (i % 2 == 0)
+//             {
+//                 b = b * 2;
+//             }
+//             else
+//                 a = a * 2;
+
+//             n--;
+//         }
+
+//         if (a > b)
+//         {
+//             std::cout << a / b << '\n';
+//         }
+//         else
+//             std::cout << b / a << '\n';
+//     }
+
+//     return (0);
+// }
+
+// #include <iostream>
+// #include <cmath>
+
+// int main()
+// {
+
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         long long a, b, n;
+//         std::cin >> a >> b >> n;
+
+//         int key = 0;
+//         long long val1, val2;
+
+//         if (n % 2 == 0)
+//         {
+//             long long p = n / 2;
+//             val1 = ((pow(2, p)) * b);
+
+//             n--;
+//             key = 1;
+//         }
+
+//         if (n % 2 != 0)
+//         {
+//             long long p = ((n + 1) / 2);
+//             val2 = ((pow(2, p)) * a);
+
+//             n--;
+
+//             if (key == 0)
+//             {
+//                 long long int q = (n / 2);
+//                 val1 = ((pow(2, q)) * b);
+//             }
+//         }
+
+//         std::cout << std::max(val1, val2) / std::min(val1, val2) << '\n';
+//     }
+
+//     return 0;
+// }
+
 #include <iostream>
 int main()
 {
@@ -330,12 +495,53 @@ int main()
 
     while (t--)
     {
-        int g, c;
-        std::cin >> g >> c;
+        int n, k;
+        std::cin >> n >> k;
 
-        std::cout << (c * c) / (2 * g) << "\n";
+        int num[n];
+        int p = 0, odd[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            std::cin >> num[i];
+
+            if (num[i] % 2 != 0)
+            {
+                odd[p] = i;
+                p++;
+            }
+            else
+                odd[p] = -1;
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+
+            for (int j = 0; k > 0; j++)
+            {
+                if (num[j] % 2 != 0)
+                {
+                    key = 1;
+
+                    if (num[j] == 1)
+                    {
+                        k--;
+                    }
+
+                    else
+                    {
+                        num[j] = num[j] - 1;
+                        k--;
+                    }
+                }
+                else if()
+                {
+                    
+                }
+                
+            }
+
+            count++;
+        }
     }
-
-    return (0);
-    
 }
