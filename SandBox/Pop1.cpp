@@ -62,85 +62,63 @@
 // }
 
 #include <iostream>
-
-class Option
-
-{
-    char smt[40];
-};
-
-class Question
-{
-    int qno;
-    Option *a, *b, *c, *d;
-
-public:
-    /* When the constructor of question class is invoked 
-    at that time option class get memory or came to existence */
-
-    Question()
-    {
-
-        a = new Option();
-        b = new Option();
-        c = new Option();
-        d = new Option();
-    }
-
-    /* Here if the destructor is called or if life-span of 
-    question class object is about to finish then the memory of
-    option object gets released that means option class 
-    existence depends on question class*/
-
-    ~Question()
-    {
-
-        delete a;
-        delete b;
-        delete c;
-        delete d;
-    }
-};
-
-int main()
-{
-    Question q1;
-}
-
 int main()
 {
     int t;
     std::cin >> t;
+
     while (t--)
     {
-        int n;
-        std::cin >> n;
+        std::string s, s1;
+        int key = 0;
 
-        int num[n];
+        std::cin >> s;
+        std::cin >> s1;
 
-        for (int i = 0; i < n; i++)
+        int p = s.find('b', 0);
+        int p1 = s.find('b', p + 1);
+        int p2 = s.find('o', 0);
+
+        if (p != -1 && p1 != -1 && p2 != -1)
         {
-            std::cin >> num[i];
+            std::cout << "yes" << '\n';
+            continue;
         }
 
-        int count = n;
+        int q = s1.find('b', 0);
+        int q1 = s1.find('b', q + 1);
+        int q2 = s1.find('o', 0);
 
-        for (int j = 0; j < n - 1; j++)
+        if (q != -1 && q1 != -1 && q2 != -1)
         {
-            for (int p = j + 1; p < n; p++)
-            {
-                int sum = num[j] + num[p];
-                int prod = num[j] * num[p];
-
-                if (sum == prod)
-                {
-                    count++;
-                    // std::cout << num[j] << " " << num[p] << '\n';
-                }
-            }
+            std::cout << "yes" << '\n';
+            continue;
         }
 
-        std::cout << count << '\n';
+        s = s + s1;
+
+        int count = s.length();
+
+        int index = s.find('b', 0);
+        (index + 3 < count && index != -1) ? s[index + 3] = 'z' : s[index + 3] = s[index + 3];
+        (index - 3 >= 0 && index != -1) ? s[index - 3] = 'z' : s[index - 3] = s[index - 3];
+        (index != -1) ? key += 1 : key = key;
+
+        int index1 = s.find('b', index + 1);
+        (index1 + 3 < count && index1 != -1) ? s[index1 + 3] = 'z' : s[index1 + 3] = s[index1 + 3];
+        (index1 - 3 >= 0 && index1 != -1) ? s[index1 - 3] = 'z' : s[index1 - 3] = s[index1 - 3];
+        (index1 != -1) ? key += 1 : key = key;
+
+        int index3 = s.find('o', 0);
+        (index3 + 3 < count && index3 != -1) ? s[index3 + 3] = 'z' : s[index3 + 3] = s[index3 + 3];
+        (index3 - 3 >= 0 && index3 != -1) ? s[index3 - 3] = 'z' : s[index3 - 3] = s[index3 - 3];
+        (index3 != -1) ? key += 1 : key = key;
+
+        if (key == 3)
+        {
+            std::cout << "yes" << '\n';
+        }
+        else
+            std::cout << "no" << '\n';
     }
-    return (0);
 }

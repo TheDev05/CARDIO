@@ -499,49 +499,52 @@ int main()
         std::cin >> n >> k;
 
         int num[n];
-        int p = 0, odd[n];
 
         for (int i = 0; i < n; i++)
         {
             std::cin >> num[i];
-
-            if (num[i] % 2 != 0)
-            {
-                odd[p] = i;
-                p++;
-            }
-            else
-                odd[p] = -1;
         }
 
-        for (int i = 0; i < n; i++)
+        for (int j = 0; j < count; j++)
         {
-
-            for (int j = 0; k > 0; j++)
+            for (int p = 0; k > 0; p++)
             {
-                if (num[j] % 2 != 0)
+                if (num[p] % 2 != 0)// infinite loop cause use key here if odd not foun then k--
                 {
-                    key = 1;
-
-                    if (num[j] == 1)
+                    if (num[p] == 1)
                     {
+
                         k--;
+                        num[p] = 0
                     }
 
                     else
                     {
-                        num[j] = num[j] - 1;
+                        num[p] = num[p] - 1;
                         k--;
                     }
                 }
-                else if()
-                {
-                    
-                }
-                
             }
 
-            count++;
+            for (int q = 0; k > 0; q++)
+            {
+                if (num[q] % 2 == 0)
+                {
+                    float temp = sqrt((float)num[q]);
+
+                    if (num[q] == 1 || num[q] == 2 || ceil(temp) == num[q] || num[q] % 4 == 0)
+                    {
+
+                        k--;
+                        num[q] = 0
+                    }
+                    else
+                    {
+                        num[q] = num[q] - 2;
+                        k--;
+                    }
+                }
+            }
         }
     }
 }
