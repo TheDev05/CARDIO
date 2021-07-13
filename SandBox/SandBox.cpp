@@ -441,52 +441,6 @@
 //     return (0);
 // }
 
-// #include <iostream>
-// #include <cmath>
-
-// int main()
-// {
-
-//     int t;
-//     std::cin >> t;
-
-//     while (t--)
-//     {
-//         long long a, b, n;
-//         std::cin >> a >> b >> n;
-
-//         int key = 0;
-//         long long val1, val2;
-
-//         if (n % 2 == 0)
-//         {
-//             long long p = n / 2;
-//             val1 = ((pow(2, p)) * b);
-
-//             n--;
-//             key = 1;
-//         }
-
-//         if (n % 2 != 0)
-//         {
-//             long long p = ((n + 1) / 2);
-//             val2 = ((pow(2, p)) * a);
-
-//             n--;
-
-//             if (key == 0)
-//             {
-//                 long long int q = (n / 2);
-//                 val1 = ((pow(2, q)) * b);
-//             }
-//         }
-
-//         std::cout << std::max(val1, val2) / std::min(val1, val2) << '\n';
-//     }
-
-//     return 0;
-// }
-
 #include <iostream>
 int main()
 {
@@ -495,56 +449,48 @@ int main()
 
     while (t--)
     {
-        int n, k;
-        std::cin >> n >> k;
+        int n, index = 0;
+        std::cin >> n;
 
-        int num[n];
+        int num[n], res[n];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i <= n; i++)
         {
-            std::cin >> num[i];
-        }
+            std::cin >> num[index];
 
-        for (int j = 0; j < count; j++)
-        {
-            for (int p = 0; k > 0; p++)
+            if (num[index] % i == 0 && num[index] >= 0)
             {
-                if (num[p] % 2 != 0)// infinite loop cause use key here if odd not foun then k--
-                {
-                    if (num[p] == 1)
-                    {
-
-                        k--;
-                        num[p] = 0
-                    }
-
-                    else
-                    {
-                        num[p] = num[p] - 1;
-                        k--;
-                    }
-                }
+                res[index] = 0;
+            }
+            else if (num[index] < i)
+            {
+                res[index] = num[index] - i;
             }
 
-            for (int q = 0; k > 0; q++)
+            else if (num[index] > i)
             {
-                if (num[q] % 2 == 0)
-                {
-                    float temp = sqrt((float)num[q]);
+                int temp = num[index] / i;
+                temp = temp * i;
 
-                    if (num[q] == 1 || num[q] == 2 || ceil(temp) == num[q] || num[q] % 4 == 0)
-                    {
-
-                        k--;
-                        num[q] = 0
-                    }
-                    else
-                    {
-                        num[q] = num[q] - 2;
-                        k--;
-                    }
-                }
+                int xflag = num[index] - temp;
+                res[index] = xflag - i;
             }
+
+            index++;
         }
+
+        int sum = 0;
+        for (int j = 0; j < n; j++)
+        {
+            sum += res[j];
+            // std::cout << res[j] << " ";
+        }
+
+        if (sum == 0)
+        {
+            std::cout << "YES" << '\n';
+        }
+        else
+            std::cout << "NO" << '\n';
     }
 }
