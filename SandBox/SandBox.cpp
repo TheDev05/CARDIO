@@ -441,3 +441,52 @@
 //     return (0);
 // }
 
+#include <iostream>
+int main()
+{
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        int xf, xc;
+        std::cin >> xf >> xc;
+
+        int xfoot[xf], xcric[xc];
+        for (int i = 0; i < xf; i++)
+        {
+            std::cin >> xfoot[i];
+        }
+
+        for (int i = 0; i < xc; i++)
+        {
+            std::cin >> xcric[i];
+        }
+
+        int xcount = (xf > xc) ? xc : xf;
+        int xval = 1, xsum = 0;
+
+        for (int i = 0; i < xcount; i++)
+        {
+
+            int xflag;
+
+            int xmin = std::min(xfoot[i], xcric[i]);
+            int xkey = (xmin == xfoot[i]) ? 1 : 0;
+
+            if (xkey == xval)
+            {
+                xval = 0;
+                xsum += 1;
+            }
+            else
+            {
+                xsum += 2;
+                xval = 1;
+            }
+        }
+        std::cout << xsum << '\n';
+    }
+
+    return (0);
+}

@@ -61,3 +61,9 @@
 //     return (0);
 // }
 
+#include <iostream>
+int main()
+{
+    std::string s = "ankit";
+    std::cout << s.erase(0, 2);
+}
