@@ -61,9 +61,58 @@
 //     return (0);
 // }
 
+// #include <iostream>
+
+// int main()
+// {
+//     int x;
+//     while (std::cin >> x)
+//     {
+//         std::cout << x++;
+//     }
+// }
+
 #include <iostream>
 int main()
 {
-    std::string s = "ankit";
-    std::cout << s.erase(0, 2);
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        std::string xtext;
+        std::cin >> xtext;
+
+        int xzero = 0, xone = 0;
+        // std::string xtext = std::to_string(xnum);
+
+        int xcount = xtext.size();
+
+        for (int i = 0; i < xcount; i++)
+        {
+            if (xtext[i] == '0')
+            {
+                xzero++;
+            }
+            else if (xtext[i] == '1')
+            {
+                xone++;
+            }
+        }
+
+        if (xzero == 1 && xone == xcount - 1)
+        {
+            std::cout << "Yes" << '\n';
+            continue;
+        }
+        else if (xone == 1 && xzero == xcount - 1)
+        {
+            std::cout << "Yes" << '\n';
+            continue;
+        }
+
+        std::cout << "No" << '\n';
+    }
+
+    return (0);
 }

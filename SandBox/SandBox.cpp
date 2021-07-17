@@ -441,52 +441,66 @@
 //     return (0);
 // }
 
+// #include <iostream>
+// #include <cmath>
+
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         long long xnum;
+//         std::cin >> xnum;
+
+//         long long xzero = 0, xone = 0;
+
+//         long long xcount = floor(log10(xnum) + 1);
+//         // std::cout << "count: " << xcount << '\n';
+
+//         for (long long i = 0; xnum > 0; i++)
+//         {
+//             int xrem = xnum % 10;
+
+//             if (xrem == 0)
+//             {
+//                 xzero++;
+//             }
+//             else
+//                 xone++;
+
+//             xnum = xnum / 10;
+//         }
+
+//         // std::cout << "zero: " << xzero << '\n';
+//         // std::cout << "one: " << xone << '\n';
+
+//         if (xcount == 1)
+//         {
+//             std::cout << "YES" << '\n';
+//             continue;
+//         }
+
+//         if (xzero == 1 && xone == xcount - 1)
+//         {
+//             std::cout << "YES" << '\n';
+//             continue;
+//         }
+//         else if (xone == 1 && xzero == xcount - 1)
+//         {
+//             std::cout << "YES" << '\n';
+//             continue;
+//         }
+
+//         std::cout << "NO" << '\n';
+//     }
+
+//     return (0);
+// }
+
 #include <iostream>
 int main()
 {
-    int t;
-    std::cin >> t;
-
-    while (t--)
-    {
-        int xf, xc;
-        std::cin >> xf >> xc;
-
-        int xfoot[xf], xcric[xc];
-        for (int i = 0; i < xf; i++)
-        {
-            std::cin >> xfoot[i];
-        }
-
-        for (int i = 0; i < xc; i++)
-        {
-            std::cin >> xcric[i];
-        }
-
-        int xcount = (xf > xc) ? xc : xf;
-        int xval = 1, xsum = 0;
-
-        for (int i = 0; i < xcount; i++)
-        {
-
-            int xflag;
-
-            int xmin = std::min(xfoot[i], xcric[i]);
-            int xkey = (xmin == xfoot[i]) ? 1 : 0;
-
-            if (xkey == xval)
-            {
-                xval = 0;
-                xsum += 1;
-            }
-            else
-            {
-                xsum += 2;
-                xval = 1;
-            }
-        }
-        std::cout << xsum << '\n';
-    }
-
-    return (0);
+    
 }
