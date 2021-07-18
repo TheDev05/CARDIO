@@ -91,3 +91,29 @@ LINK: https://www.codechef.com/problems/UNONE */
 //     }
 // }
 
+#include <iostream>
+int main()
+{
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        float a, b, c, k;
+        std::cin >> a >> b >> c >> k;
+
+        float xprod = a * b * c * k;
+        float xval = (int)100 / xprod;
+        xval = (int)((xval * 100) + 0.5);
+        xval = xval / 100;
+
+        if (xval < (float)9.58)
+        {
+            std::cout << "YES" << '\n';
+        }
+        else
+            std::cout << "NO" << '\n';
+    }
+
+    return (0);
+}

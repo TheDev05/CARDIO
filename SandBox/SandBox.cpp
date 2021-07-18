@@ -502,5 +502,21 @@
 #include <iostream>
 int main()
 {
-    
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        int a, b;
+        std::cin >> a >> b;
+
+        if (a == 0)
+        {
+            std::cout << "1" << '\n';
+        }
+        else
+            std::cout << "2" << '\n';
+    }
+
+    return (0);
 }
