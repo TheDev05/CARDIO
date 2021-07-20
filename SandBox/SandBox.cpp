@@ -500,7 +500,6 @@
 // }
 
 #include <iostream>
-#include <algorithm>
 
 int main()
 {
@@ -509,51 +508,39 @@ int main()
 
     while (t--)
     {
-        int age[3], pay[3];
-        int key = 1;
+        int season;
+        std::cin >> season;
 
-        std::cin >> age[0] >> age[1] >> age[2];
-        std::cin >> pay[0] >> pay[1] >> pay[2];
-
-        int age_max = std::max({age[0], age[1], age[2]});
-        int age_min = std::min({age[0], age[1], age[2]});
-
-        int pay_max = std::max({pay[0], pay[1], pay[2]});
-        int pay_min = std::min({pay[0], pay[1], pay[2]});
-
-        for (int i = 0; i < 3; i++)
+        int song[season];
+        for (int i = 0; i < season; i++)
         {
-            for (int j = i + 1; j < 3; j++)
-            {
-                if (age[i] == age[j] && pay[i] != pay[j])
-                {
-                    key = 0;
-                    break;
-                }
-            }
-
-            if (age_max == age[i] && pay_max != pay[i])
-            {
-                key = 0;
-            }
-
-            if (age_min == age[i] && pay_min != pay[i])
-            {
-                key = 0;
-            }
-
-            if (key == 0)
-            {
-                break;
-            }
-        } 
-
-        if (key == 0)
-        {
-            std::cout << "NOT FAIR" << '\n';
+            std::cin >> song[i];
         }
-        else
-            std::cout << "FAIR" << '\n';
+
+        long long sum = 0;
+        for (int i = 0; i < season; i++)
+        {
+            int n;
+            std::cin >> n;
+
+            for (int j = 0; j < n; j++)
+            {
+
+                int a;
+
+                std::cin >> a;
+                sum += a;
+            }
+
+            if (n != 1)
+            {
+                long long val = n - 1;
+                val = val * song[i];
+                sum = sum - val;
+            }
+        }
+
+        std::cout << sum << '\n';
     }
 
     return (0);
