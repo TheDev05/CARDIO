@@ -500,6 +500,8 @@
 // }
 
 #include <iostream>
+#include <algorithm>
+
 int main()
 {
     int t;
@@ -507,15 +509,51 @@ int main()
 
     while (t--)
     {
-        int a, b;
-        std::cin >> a >> b;
+        int age[3], pay[3];
+        int key = 1;
 
-        if (a == 0)
+        std::cin >> age[0] >> age[1] >> age[2];
+        std::cin >> pay[0] >> pay[1] >> pay[2];
+
+        int age_max = std::max({age[0], age[1], age[2]});
+        int age_min = std::min({age[0], age[1], age[2]});
+
+        int pay_max = std::max({pay[0], pay[1], pay[2]});
+        int pay_min = std::min({pay[0], pay[1], pay[2]});
+
+        for (int i = 0; i < 3; i++)
         {
-            std::cout << "1" << '\n';
+            for (int j = i + 1; j < 3; j++)
+            {
+                if (age[i] == age[j] && pay[i] != pay[j])
+                {
+                    key = 0;
+                    break;
+                }
+            }
+
+            if (age_max == age[i] && pay_max != pay[i])
+            {
+                key = 0;
+            }
+
+            if (age_min == age[i] && pay_min != pay[i])
+            {
+                key = 0;
+            }
+
+            if (key == 0)
+            {
+                break;
+            }
+        } 
+
+        if (key == 0)
+        {
+            std::cout << "NOT FAIR" << '\n';
         }
         else
-            std::cout << "2" << '\n';
+            std::cout << "FAIR" << '\n';
     }
 
     return (0);
