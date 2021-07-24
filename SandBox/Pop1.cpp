@@ -72,47 +72,92 @@
 //     }
 // }
 
-#include <iostream>
+// #include <iostream>
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         std::string xtext;
+//         std::cin >> xtext;
+
+//         int xzero = 0, xone = 0;
+//         // std::string xtext = std::to_string(xnum);
+
+//         int xcount = xtext.size();
+
+//         for (int i = 0; i < xcount; i++)
+//         {
+//             if (xtext[i] == '0')
+//             {
+//                 xzero++;
+//             }
+//             else if (xtext[i] == '1')
+//             {
+//                 xone++;
+//             }
+//         }
+
+//         if (xzero == 1 && xone == xcount - 1)
+//         {
+//             std::cout << "Yes" << '\n';
+//             continue;
+//         }
+//         else if (xone == 1 && xzero == xcount - 1)
+//         {
+//             std::cout << "Yes" << '\n';
+//             continue;
+//         }
+
+//         std::cout << "No" << '\n';
+//     }
+
+//     return (0);
+// }
+
+#include <bits/stdc++.h>
+using namespace std;
+
 int main()
 {
-    int t;
-    std::cin >> t;
-
-    while (t--)
+	int t;
+	cin>>t;
+	while(t--)
     {
-        std::string xtext;
-        std::cin >> xtext;
+        int n;
+        cin>>n;
 
-        int xzero = 0, xone = 0;
-        // std::string xtext = std::to_string(xnum);
-
-        int xcount = xtext.size();
-
-        for (int i = 0; i < xcount; i++)
+        int arr[n];
+        for(int i=0; i<n; i++)
         {
-            if (xtext[i] == '0')
+            cin>>arr[i];
+        }
+
+        int pointer = 0;
+        int min = arr[0];
+
+        for(int i=0; i<n; i++)
+        {
+            if(arr[i] < min)
             {
-                xzero++;
+                min = arr[i];
+                pointer = i;
             }
-            else if (xtext[i] == '1')
+        }
+
+        int ans = 0;
+
+        for(int i=0; i<n; i++)
+        {
+            if(i != pointer)
             {
-                xone++;
+                ans += (arr[i] - min);
             }
         }
 
-        if (xzero == 1 && xone == xcount - 1)
-        {
-            std::cout << "Yes" << '\n';
-            continue;
-        }
-        else if (xone == 1 && xzero == xcount - 1)
-        {
-            std::cout << "Yes" << '\n';
-            continue;
-        }
+        cout<<ans<<endl;
 
-        std::cout << "No" << '\n';
     }
-
-    return (0);
 }
