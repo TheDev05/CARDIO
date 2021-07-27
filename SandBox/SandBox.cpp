@@ -499,3 +499,30 @@
 //     return (0);
 // }
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    std::vector<int> num1{1, 2, 3, 4, 5};
+    std::vector<int> num2{1, 2, 3, 4, 5};
+
+    // std::cout << num[4];
+    // num.pop_back();
+    // std::cout << num[4];
+
+    num1 = num1 + num2;
+    for (int i = 0; i < 12; i++)
+    {
+        std::cout << num1[i] << " ";
+    }
+}
+
+#include <iostream> 
+int main()
+{
+    int this;
+    what is thi sbehavioir bit_orand why 
+}
