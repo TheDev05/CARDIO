@@ -499,30 +499,49 @@
 //     return (0);
 // }
 
+/* Following Testcases won't work perfecly: 
+   12312312, 1231237 etc */
+
 #include <iostream>
-#include <vector>
-
-using namespace std;
-
 int main()
 {
-    std::vector<int> num1{1, 2, 3, 4, 5};
-    std::vector<int> num2{1, 2, 3, 4, 5};
+    int t;
+    std::cin >> t;
 
-    // std::cout << num[4];
-    // num.pop_back();
-    // std::cout << num[4];
-
-    num1 = num1 + num2;
-    for (int i = 0; i < 12; i++)
+    while (t--)
     {
-        std::cout << num1[i] << " ";
-    }
-}
+        int n, k;
+        std::cin >> n >> k;
 
-#include <iostream> 
-int main()
-{
-    int this;
-    what is thi sbehavioir bit_orand why 
+        int lim = n - k;
+        std::string s1, s2, ch;
+
+        for (int i = 0; i < n; i++)
+        {
+            int val;
+            std::cin >> val;
+
+            if (i < k)
+            {
+                ch = std::to_string(val);
+                s1 += ch;
+            }
+            else
+            {
+                ch = std::to_string(val);
+                s2 += ch;
+            }
+        }
+
+        if (s1 == s2)
+        {
+            std::cout << "0" << '\n';
+        }
+        else
+        {
+            std::cout << n - k << '\n';
+        }
+    }
+
+    return (0);
 }

@@ -91,7 +91,36 @@ LINK: https://www.codechef.com/problems/UNONE */
 //     }
 // }
 
+/* Hello Stalker!,
+ * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+ * With God's Grace, Let's Begin this journey!
+*/
+
 #include <iostream>
+#include <cmath>
+
+int checkprime(int i)
+{
+    int temp=1;
+
+    for (int j = 2; j <= sqrt(i); j++)
+    {
+
+        if (i % j == 0)
+        {
+            temp = 0;
+            break;
+        }
+    }
+
+    if (temp == 0)
+    {
+        return (0);
+    }
+    else
+        return (1);
+}
+
 int main()
 {
     int t;
@@ -99,21 +128,64 @@ int main()
 
     while (t--)
     {
-        float a, b, c, k;
-        std::cin >> a >> b >> c >> k;
+        int n, m;
+        std::cin >> n >> m;
 
-        float xprod = a * b * c * k;
-        float xval = (int)100 / xprod;
-        xval = (int)((xval * 100) + 0.5);
-        xval = xval / 100;
-
-        if (xval < (float)9.58)
+        for (long long i = n; i <= m; i++)
         {
-            std::cout << "YES" << '\n';
+            int key = 0;
+
+            key = checkprime(i);
+
+            if (key == 1 && i != 1)
+            {
+                std::cout << i << '\n';
+            }
         }
-        else
-            std::cout << "NO" << '\n';
+
+        std::cout << '\n';
     }
 
     return (0);
 }
+
+
+
+// #include <iostream>
+// #include <cmath>
+
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         int n, m;
+//         std::cin >> n >> m;
+
+//         for (long long i = n; i <= m; i++)
+//         {
+//             int key = 0;
+
+//             for (int j = 2; j <= sqrt(i); j++)
+//             {
+
+//                 if (i % j == 0)
+//                 {
+//                     key = 1;
+//                     break;
+//                 }
+//             }
+
+//             if (key == 0 && i != 1)
+//             {
+//                 std::cout << i << '\n';
+//             }
+//         }
+
+//         std::cout << '\n';
+//     }
+
+//     return (0);
+// }

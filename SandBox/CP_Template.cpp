@@ -3,11 +3,9 @@
  * With God's Grace, Let's Begin this journey!
 */
 
-
-/* Following Testcases won't work perfecly: 
-   12312312, 1231237 etc */
-
 #include <iostream>
+#include <algorithm>
+
 int main()
 {
     int t;
@@ -15,38 +13,39 @@ int main()
 
     while (t--)
     {
-        int n, k;
-        std::cin >> n >> k;
+        int n;
+        std::cin >> n;
 
-        int lim = n - k;
-        std::string s1, s2, ch;
+        int num[n];
+        for (int i = 0; i < n; i++)
+        {
+            std::cin >> num[i];
+        }
+
+        std::sort(num, num + n);
+        int sum = 0;
 
         for (int i = 0; i < n; i++)
         {
-            int val;
-            std::cin >> val;
+            int p = i;
+            int count = 0;
 
-            if (i < k)
+            while (num[i] == num[p])
             {
-                ch = std::to_string(val);
-                s1 += ch;
+                count++;
+                p++;
+
+                i = p - 1;
+            }
+
+            if (count >= num[i] - 1)
+            {
+                sum += num[i] - 1;
             }
             else
-            {
-                ch = std::to_string(val);
-                s2 += ch;
-            }
+                sum += count;
         }
 
-        if (s1 == s2)
-        {
-            std::cout << "0" << '\n';
-        }
-        else
-        {
-            std::cout << n - k << '\n';
-        }
+        std::cout << sum << '\n';
     }
-
-    return (0);
 }
