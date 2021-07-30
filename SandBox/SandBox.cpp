@@ -502,7 +502,55 @@
 /* Following Testcases won't work perfecly: 
    12312312, 1231237 etc */
 
+// #include <iostream>
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         int n, k;
+//         std::cin >> n >> k;
+
+//         int lim = n - k;
+//         std::string s1, s2, ch;
+
+//         for (int i = 0; i < n; i++)
+//         {
+//             int val;
+//             std::cin >> val;
+
+//             if (i < k)
+//             {
+//                 ch = std::to_string(val);
+//                 s1 += ch;
+//             }
+//             else
+//             {
+//                 ch = std::to_string(val);
+//                 s2 += ch;
+//             }
+//         }
+
+//         if (s1 == s2)
+//         {
+//             std::cout << "0" << '\n';
+//         }
+//         else
+//         {
+//             std::cout << n - k << '\n';
+//         }
+//     }
+
+//     return (0);
+// }
+
 #include <iostream>
+#include <cmath>
+
+int pop = 0;
+
 int main()
 {
     int t;
@@ -510,37 +558,32 @@ int main()
 
     while (t--)
     {
-        int n, k;
-        std::cin >> n >> k;
+        int n, m;
+        std::cin >> n >> m;
 
-        int lim = n - k;
-        std::string s1, s2, ch;
-
-        for (int i = 0; i < n; i++)
+        for (long long i = n; i <= m; i++)
         {
-            int val;
-            std::cin >> val;
+            int key = 0;
+            pop++;
 
-            if (i < k)
+            for (int j = 2; j <= sqrt(i); j++)
             {
-                ch = std::to_string(val);
-                s1 += ch;
+                pop++;
+                if (i % j == 0)
+                {
+                    key = 1;
+                    break;
+                }
             }
-            else
+
+            if (key == 0 && i != 1)
             {
-                ch = std::to_string(val);
-                s2 += ch;
+                std::cout << i << '\n';
             }
         }
 
-        if (s1 == s2)
-        {
-            std::cout << "0" << '\n';
-        }
-        else
-        {
-            std::cout << n - k << '\n';
-        }
+        std::cout << '\n';
+       
     }
 
     return (0);

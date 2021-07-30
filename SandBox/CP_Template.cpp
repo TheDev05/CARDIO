@@ -22,30 +22,22 @@ int main()
             std::cin >> num[i];
         }
 
-        std::sort(num, num + n);
-        int sum = 0;
+        int result = num[0];
+        for (int i = 1; i < n; i++)
+        {
+            result = std::__gcd(result, num[i]);
+
+            if (result == 1)
+            {
+                break;
+            }
+        }
 
         for (int i = 0; i < n; i++)
         {
-            int p = i;
-            int count = 0;
-
-            while (num[i] == num[p])
-            {
-                count++;
-                p++;
-
-                i = p - 1;
-            }
-
-            if (count >= num[i] - 1)
-            {
-                sum += num[i] - 1;
-            }
-            else
-                sum += count;
+            std::cout << (num[i] / result) << " ";
         }
 
-        std::cout << sum << '\n';
+        std::cout << '\n';
     }
 }

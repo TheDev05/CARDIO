@@ -101,22 +101,23 @@ LINK: https://www.codechef.com/problems/UNONE */
 
 int checkprime(int i)
 {
-    int temp=1;
+    int key = 1;
 
     for (int j = 2; j <= sqrt(i); j++)
     {
 
         if (i % j == 0)
         {
-            temp = 0;
+            key = 0;
             break;
         }
     }
 
-    if (temp == 0)
+    if (key == 0)
     {
         return (0);
     }
+
     else
         return (1);
 }
@@ -148,44 +149,3 @@ int main()
 
     return (0);
 }
-
-
-
-// #include <iostream>
-// #include <cmath>
-
-// int main()
-// {
-//     int t;
-//     std::cin >> t;
-
-//     while (t--)
-//     {
-//         int n, m;
-//         std::cin >> n >> m;
-
-//         for (long long i = n; i <= m; i++)
-//         {
-//             int key = 0;
-
-//             for (int j = 2; j <= sqrt(i); j++)
-//             {
-
-//                 if (i % j == 0)
-//                 {
-//                     key = 1;
-//                     break;
-//                 }
-//             }
-
-//             if (key == 0 && i != 1)
-//             {
-//                 std::cout << i << '\n';
-//             }
-//         }
-
-//         std::cout << '\n';
-//     }
-
-//     return (0);
-// }
