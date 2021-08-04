@@ -1,39 +1,63 @@
 /* Hello Stalker!,
  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
- * With God's Grace, Let's Begin this journey!
+ * With Gods' Grace, Let's begin today's journey!
+ * UserID: TheDev05, Happy Coding >_<
 */
 
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define imax INT_MAX
+#define imin INT_MIN
+#define f first
+#define s second
+#define ll long long
+#define loop(x, n) for (ll i = x; i < n; ++i)
+#define look(x) cout << #x << "-> " << x << endl
+
+void solve();
 
 int main()
 {
-    int t;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
+
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t = 1;
     std::cin >> t;
 
     while (t--)
     {
-        long long n;
-        std::cin >> n;
-
-        std::vector<int> res;
-        for (int i = 2; i * i <= n; i++)
-        {
-
-            if (n % i == 0)
-            {
-                res.push_back(i);
-            }
-        }
-
-        int count = res.size();
-
-        if (res[0] * res[count - 1] * res[count - 2] == n)
-        {
-            std::cout << "YES\n";
-            std::cout << res[0] << " " << res[count - 2] << " " << res[count - 1] << '\n';
-        }
-        else
-            std::cout << "NO\n";
+        solve();
     }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+void solve()
+{
+    int n, k;
+    std::cin >> n >> k;
+
+    int num1[n], num2[n];
+    loop(0, n) std::cin >> num1[i];
+    loop(0, n) std::cin >> num2[i];
+
+    sort(num1, num1 + n);
+    sort(num2, num2 + n, greater<int>());
+
+    loop(0, k)
+    {
+        if (num2[i] > num1[i])
+        {
+            num1[i] = num2[i];
+        }
+    }
+
+    int sum = 0;
+    loop(0, n) sum += num1[i];
+    std::cout << sum << '\n';
 }
