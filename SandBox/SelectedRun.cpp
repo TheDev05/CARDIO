@@ -1,2 +1,2 @@
 
-            std::cin >> num[i];
+{
