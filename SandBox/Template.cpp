@@ -7,13 +7,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* Limits */
 #define imax INT_MAX
 #define imin INT_MIN
+
+/* Pairs */
+#define pi pair<int, int>
+#define ps pair<string, string>
+#define mp make_pair
 #define f first
 #define s second
+
+/* Extras */
+#define en cout << '\n' // NewLine
 #define ll long long
-#define loop(x, n) for (ll i = x; i < n; ++i)
-#define look(x) cout << #x << "-> " << x << endl
+#define loop(x, n) for (ll i = x; i < n; ++i)  // Loop
+#define db(x) cout << #x << "-> " << x << endl // Debug
 
 void solve();
 
@@ -27,7 +36,7 @@ int main()
     cout.tie(NULL);
 
     int t = 1;
-    std::cin >> t;
+    // std::cin >> t;
 
     while (t--)
     {
@@ -35,29 +44,9 @@ int main()
     }
 }
 
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* -- -- Here We Go -- -- */
 
 void solve()
 {
-    int n, k;
-    std::cin >> n >> k;
-
-    int num1[n], num2[n];
-    loop(0, n) std::cin >> num1[i];
-    loop(0, n) std::cin >> num2[i];
-
-    sort(num1, num1 + n);
-    sort(num2, num2 + n, greater<int>());
-
-    loop(0, k)
-    {
-        if (num2[i] > num1[i])
-        {
-            num1[i] = num2[i];
-        }
-    }
-
-    int sum = 0;
-    loop(0, n) sum += num1[i];
-    std::cout << sum << '\n';
+    
 }
