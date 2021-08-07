@@ -546,45 +546,46 @@
 //     return (0);
 // }
 
-#include <iostream>
-#include <cmath>
+// #include <iostream>
+// #include <cmath>
 
-int pop = 0;
+// int pop = 0;
 
-int main()
-{
-    int t;
-    std::cin >> t;
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
 
-    while (t--)
-    {
-        int n, m;
-        std::cin >> n >> m;
+//     while (t--)
+//     {
+//         int n, m;
+//         std::cin >> n >> m;
 
-        for (long long i = n; i <= m; i++)
-        {
-            int key = 0;
-            pop++;
+//         for (long long i = n; i <= m; i++)
+//         {
+//             int key = 0;
+//             pop++;
 
-            for (int j = 2; j <= sqrt(i); j++)
-            {
-                pop++;
-                if (i % j == 0)
-                {
-                    key = 1;
-                    break;
-                }
-            }
+//             for (int j = 2; j <= sqrt(i); j++)
+//             {
+//                 pop++;
+//                 if (i % j == 0)
+//                 {
+//                     key = 1;
+//                     break;
+//                 }
+//             }
 
-            if (key == 0 && i != 1)
-            {
-                std::cout << i << '\n';
-            }
-        }
+//             if (key == 0 && i != 1)
+//             {
+//                 std::cout << i << '\n';
+//             }
+//         }
 
-        std::cout << '\n';
-       
-    }
+//         std::cout << '\n';
 
-    return (0);
-}
+//     }
+
+//     return (0);
+// }
+

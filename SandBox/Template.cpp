@@ -48,5 +48,11 @@ int main()
 
 void solve()
 {
-    
+    string s1 = "Ankit", s2 = "amkit";
+    if (s1 > s2)
+    {
+        std::cout << "hello\n";
+    }
+    else
+        std::cout << "lol\n";
 }
