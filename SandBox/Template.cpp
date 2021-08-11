@@ -28,31 +28,25 @@ void solve();
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(10);
-    std::cout << std::fixed;
+	ios_base::sync_with_stdio(false);
+	std::cout << std::setprecision(10);
+	std::cout << std::fixed;
 
-    cin.tie(NULL);
-    cout.tie(NULL);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-    int t = 1;
-    // std::cin >> t;
+	int t = 1;
+	std::cin >> t;
 
-    while (t--)
-    {
-        solve();
-    }
+	while (t--)
+	{
+		solve();
+	}
 }
 
 /* -- -- Here We Go -- -- */
 
 void solve()
 {
-    string s1 = "Ankit", s2 = "amkit";
-    if (s1 > s2)
-    {
-        std::cout << "hello\n";
-    }
-    else
-        std::cout << "lol\n";
+	
 }
