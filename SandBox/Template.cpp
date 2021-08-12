@@ -1,8 +1,8 @@
-/* Hello Stalker!,
- * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
- * With Gods' Grace, Let's begin today's journey!
- * UserID: TheDev05, Happy Coding >_<
-*/
+/*** Hello Stalker!,
+  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+  * With Gods' Grace, Let's begin today's journey!
+  * UserID: TheDev05, Happy Coding >_<
+ ***/
 
 #include <bits/stdc++.h>
 using namespace std;
