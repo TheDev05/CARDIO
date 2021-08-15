@@ -48,5 +48,25 @@ int main()
 
 void solve()
 {
-	
+	ll a, b, x, y, p, q;
+	std::cin >> a >> b >> x >> y >> p >> q;
+
+	if (a <= x && a <= p && x <= p && y == q)
+	{
+		std::cout << "YES\n";
+	}
+	else if (a >= x && a >= p && x >= p && y == q)
+	{
+		std::cout << "YES\n";
+	}
+	else if (b <= y && b <= q && y <= q && x == p)
+	{
+		std::cout << "YES\n";
+	}
+	else if (b >= y && b >= q && y >= q && x == p)
+	{
+		std::cout << "YES\n";
+	}
+	else
+		std::cout << "NO\n";
 }
