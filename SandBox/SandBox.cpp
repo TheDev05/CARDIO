@@ -589,3 +589,42 @@
 //     return (0);
 // }
 
+//By-Ashutosh Kumar Pathak
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+
+using namespace __gnu_pbds;
+using namespace std;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+
+#define ll long long
+#define mod 1000000007
+
+void solve()
+{
+   int x, y;
+   cin >> x >> y;
+   double ans = (double)(6 - (x + y));
+
+   if (ans <= 0)
+   {
+      std::cout << "0\n";
+   }
+   else
+      cout << fixed << setprecision(10) << ans / 6 << '\n';
+}
+
+int main()
+{
+   ios::sync_with_stdio(0);
+   cin.tie(0);
+   cout.tie(0);
+   int t = 1;
+   cin >> t;
+   while (t--)
+      solve();
+   return 0;
+}
