@@ -36,7 +36,7 @@ int main()
 	cout.tie(NULL);
 
 	int t = 1;
-	std::cin >> t;
+	// std::cin >> t;
 
 	while (t--)
 	{
@@ -48,25 +48,26 @@ int main()
 
 void solve()
 {
-	ll a, b, x, y, p, q;
-	std::cin >> a >> b >> x >> y >> p >> q;
+	int n;
+	std::cin >> n;
 
-	if (a <= x && a <= p && x <= p && y == q)
+	int num[n], cost[n];
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << "YES\n";
+		std::cin >> num[i];
 	}
-	else if (a >= x && a >= p && x >= p && y == q)
+
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << "YES\n";
+		std::cin >> cost[i];
 	}
-	else if (b <= y && b <= q && y <= q && x == p)
+
+	int temp = num[n / 2], sum = 0;
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << "YES\n";
+		int val = abs(temp - num[i]);
+		sum += val*cost[i];
 	}
-	else if (b >= y && b >= q && y >= q && x == p)
-	{
-		std::cout << "YES\n";
-	}
-	else
-		std::cout << "NO\n";
+
+	std::cout << sum << '\n';
 }
