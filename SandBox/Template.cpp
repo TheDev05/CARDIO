@@ -1,7 +1,7 @@
 /*** Hello Stalker!,
   * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
   * With Gods' Grace, Let's begin today's journey!
-  * UserID: TheDev05, Happy Coding >_<
+  * Handle: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
  ***/
 
 #include <bits/stdc++.h>
@@ -16,7 +16,6 @@ using namespace std;
 #define ps pair<string, string>
 #define mp make_pair
 #define f first
-#define s second
 
 /* Extras */
 #define en cout << '\n' // NewLine
@@ -35,10 +34,10 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int t = 1;
-	// std::cin >> t;
+	int test = 1;
+	std::cin >> test;
 
-	while (t--)
+	while (test--)
 	{
 		solve();
 	}
@@ -48,26 +47,58 @@ int main()
 
 void solve()
 {
-	int n;
-	std::cin >> n;
+	int n, t, q;
+	std::cin >> n >> t >> q;
 
-	int num[n], cost[n];
-	for (int i = 0; i < n; i++)
+	int count = 0, key = 1;
+
+	std::vector<int> res;
+	std::vector<int>::iterator index;
+
+	for (int i = 0; i < q; i++)
 	{
-		std::cin >> num[i];
+		string temp;
+		int num;
+
+		std::cin >> temp;
+		std::cin >> num;
+
+		db(temp[0]);
+		db(num);
+
+		if (temp[0] == '+')
+		{
+			count++;
+			res.push_back(num);
+		}
+		else if (temp[0] == '-')
+		{
+			count--;
+
+			if (std::find(res.begin(), res.end(), num) == res.end())
+			{
+
+				key = 0;
+			}
+		}
+
+		db(count);
+		if (count > t)
+		{
+			key = 0;
+			break;
+		}
+
+		if (key == 0)
+		{
+			// break;
+		}
 	}
 
-	for (int i = 0; i < n; i++)
+	if (key)
 	{
-		std::cin >> cost[i];
+		std::cout << "Consistent\n";
 	}
-
-	int temp = num[n / 2], sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		int val = abs(temp - num[i]);
-		sum += val*cost[i];
-	}
-
-	std::cout << sum << '\n';
+	else
+		std::cout << "Inconsistent\n";
 }

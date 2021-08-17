@@ -589,42 +589,93 @@
 //     return (0);
 // }
 
-//By-Ashutosh Kumar Pathak
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
+/*** Hello Stalker!,
+  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+  * With Gods' Grace, Let's begin today's journey!
+  * Handle: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+ ***/
 
-using namespace __gnu_pbds;
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+// /* Limits */
+// #define imax INT_MAX
+// #define imin INT_MIN
 
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+// /* Pairs */
+// #define pi pair<int, int>
+// #define ps pair<string, string>
+// #define mp make_pair
+// #define f first
+// #define s second
 
-#define ll long long
-#define mod 1000000007
+// /* Extras */
+// #define en cout << '\n' // NewLine
+// #define ll long long
+// #define loop(x, n) for (ll i = x; i < n; ++i)  // Loop
+// #define db(x) cout << #x << "-> " << x << endl // Debug
 
-void solve()
-{
-   int x, y;
-   cin >> x >> y;
-   double ans = (double)(6 - (x + y));
+// void solve();
 
-   if (ans <= 0)
-   {
-      std::cout << "0\n";
-   }
-   else
-      cout << fixed << setprecision(10) << ans / 6 << '\n';
-}
+// int main()
+// {
+// 	ios_base::sync_with_stdio(false);
+// 	std::cout << std::setprecision(10);
+// 	std::cout << std::fixed;
 
+// 	cin.tie(NULL);
+// 	cout.tie(NULL);
+
+// 	int t = 1;
+// 	// std::cin >> t;
+
+// 	while (t--)
+// 	{
+// 		solve();
+// 	}
+// }
+
+// /* -- -- Here We Go -- -- */
+
+// void solve()
+// {
+// 	int n;
+// 	std::cin >> n;
+
+// 	int num[n], cost[n];
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		std::cin >> num[i];
+// 	}
+
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		std::cin >> cost[i];
+// 	}
+
+// 	std::vector<std::pair<int, int>> res(n);
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		res[i] = {num[i], cost[i]};
+// 	}
+
+// 	std::sort(res.begin(), res.end());
+// 	int temp = res[n / 2].first, sum = 0;
+
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		int val = abs(temp - res[i].first);
+// 		sum += val * res[i].second;
+// 	}
+
+// 	std::cout << sum << '\n';
+// }
+
+#include <iostream>
+#include <string>
 int main()
 {
-   ios::sync_with_stdio(0);
-   cin.tie(0);
-   cout.tie(0);
-   int t = 1;
-   cin >> t;
-   while (t--)
-      solve();
-   return 0;
+	std::string s;
+	std::getline(std::cin, s);
+	std::cout << s;
 }
