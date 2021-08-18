@@ -35,7 +35,7 @@ int main()
 	cout.tie(NULL);
 
 	int test = 1;
-	std::cin >> test;
+	// std::cin >> test;
 
 	while (test--)
 	{
@@ -47,58 +47,52 @@ int main()
 
 void solve()
 {
-	int n, t, q;
-	std::cin >> n >> t >> q;
+	int n, q;
+	std::cin >> n >> q;
 
-	int count = 0, key = 1;
+	vector<vector<int>> num(n);
 
-	std::vector<int> res;
-	std::vector<int>::iterator index;
+	// for (int i = 0; i < n; i++)
+	// {
+	// 	for (int j = 0; j < 3; j++)
+	// 	{
+	// 		std::cin >> num[i][j];
+	// 	}
+	// }
 
-	for (int i = 0; i < q; i++)
+	for (int i = 0; i < n; i++)
 	{
-		string temp;
-		int num;
+		int count;
+		std::cin >> count;
 
-		std::cin >> temp;
-		std::cin >> num;
+		num[i] = vector<int>(count);
 
-		db(temp[0]);
-		db(num);
-
-		if (temp[0] == '+')
+		for (int j = 0; j < count; j++)
 		{
-			count++;
-			res.push_back(num);
-		}
-		else if (temp[0] == '-')
-		{
-			count--;
+			int temp;
+			std::cin >> temp;
 
-			if (std::find(res.begin(), res.end(), num) == res.end())
-			{
-
-				key = 0;
-			}
-		}
-
-		db(count);
-		if (count > t)
-		{
-			key = 0;
-			break;
-		}
-
-		if (key == 0)
-		{
-			// break;
+			num[i].push_back(temp);
 		}
 	}
 
-	if (key)
+	// for (int i = 0; i < q; i++)
+	// {
+	// 	int a, b;
+	// 	std::cin >> a >> b;
+
+	// 	std::cout << num[a][b] << '\n';
+	// }
+
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << "Consistent\n";
+		for (int j = 0; j < num[i].size(); j++)
+		{
+			std::cout<<num[i][j]<<" ";
+		}
+
+		std::cout<<'\n';
+		
 	}
-	else
-		std::cout << "Inconsistent\n";
+	
 }
