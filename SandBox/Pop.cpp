@@ -96,56 +96,140 @@ LINK: https://www.codechef.com/problems/UNONE */
  * With God's Grace, Let's Begin this journey!
 */
 
-#include <iostream>
-#include <cmath>
+// #include <iostream>
+// #include <cmath>
 
-int checkprime(int i)
+// int checkprime(int i)
+// {
+//     int key = 1;
+
+//     for (int j = 2; j <= sqrt(i); j++)
+//     {
+
+//         if (i % j == 0)
+//         {
+//             key = 0;
+//             break;
+//         }
+//     }
+
+//     if (key == 0)
+//     {
+//         return (0);
+//     }
+
+//     else
+//         return (1);
+// }
+
+// int main()
+// {
+//     int t;
+//     std::cin >> t;
+
+//     while (t--)
+//     {
+//         int n, m;
+//         std::cin >> n >> m;
+
+//         for (long long i = n; i <= m; i++)
+//         {
+//             int key = 0;
+
+//             key = checkprime(i);
+
+//             if (key == 1 && i != 1)
+//             {
+//                 std::cout << i << '\n';
+//             }
+//         }
+
+//         std::cout << '\n';
+//     }
+
+//     return (0);
+// }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Limits */
+#define imax INT_MAX
+#define imin INT_MIN
+
+/* Pairs */
+#define pi pair<int, int>
+#define ps pair<string, string>
+#define mp make_pair
+#define f first
+#define s second
+
+/* Vectors */
+#define vi vector<int>
+#define vpi vector<pair<int, int>>
+#define vvi vector<vector<int>>
+
+template <class data>
+class AddElements
 {
-    int key = 1;
-
-    for (int j = 2; j <= sqrt(i); j++)
+public:
+    data a;
+    AddElements(data x)
     {
-
-        if (i % j == 0)
-        {
-            key = 0;
-            break;
-        }
+        a = x;
     }
 
-    if (key == 0)
+    data add(data x)
     {
-        return (0);
+        return (a + x);
+    }
+};
+
+template <>
+class AddElements<string>
+{
+public:
+    string a;
+    AddElements(string x)
+    {
+        a = x;
     }
 
-    else
-        return (1);
-}
+    string concatenate(string x)
+    {
+        return (a + x);
+    }
+};
 
 int main()
 {
-    int t;
-    std::cin >> t;
-
-    while (t--)
+    int n, i;
+    cin >> n;
+    for (i = 0; i < n; i++)
     {
-        int n, m;
-        std::cin >> n >> m;
-
-        for (long long i = n; i <= m; i++)
+        string type;
+        cin >> type;
+        if (type == "float")
         {
-            int key = 0;
-
-            key = checkprime(i);
-
-            if (key == 1 && i != 1)
-            {
-                std::cout << i << '\n';
-            }
+            double element1, element2;
+            cin >> element1 >> element2;
+            AddElements<double> myfloat(element1);
+            cout << myfloat.add(element2) << endl;
         }
-
-        std::cout << '\n';
+        else if (type == "int")
+        {
+            int element1, element2;
+            cin >> element1 >> element2;
+            AddElements<int> myint(element1);
+            cout << myint.add(element2) << endl;
+        }
+        else if (type == "string")
+        {
+            string element1, element2;
+            cin >> element1 >> element2;
+            AddElements<string> mystring(element1);
+            cout << mystring.concatenate(element2) << endl;
+        }
     }
-
-    return (0);
+    return 0;
 }

@@ -1,3 +1,5 @@
+/* Insert, Delete, Find an element in an array */
+
 #include <iostream>
 
 void show(int *p, int count)
@@ -66,17 +68,19 @@ int main()
 
    std::cout << "INITIALLAY UR ARRAY IS: ";
    show(num, count);
-   std::cout << '\n\n';
+   std::cout << "\n\n";
 
    int find_me, delete_me, insert_me, index;
    std::cout << "ENTER THE ELEMTS YOU WANNA FIND:\n";
    std::cin >> find_me;
+   std::cout << "You Entered --> " << find_me << "\n\n";
 
    int val = find(num, find_me, count);
-   std::cout << find_me << " found at index: " << val << '\n';
+   std::cout << find_me << " found at index: " << val << "\n\n";
 
    std::cout << "ENTER THE ELEMENTS U WANNA INSERT AND ITS INDEX:\n";
    std::cin >> insert_me >> index;
+   std::cout << "You Entered --> " << insert_me << " " << index << "\n\n";
 
    count++;
 
@@ -85,6 +89,7 @@ int main()
 
    std::cout << "ENTER THE ELEMTS U WANNA DELETE:\n";
    std::cin >> delete_me;
+   std::cout << "You Entered --> " << delete_me << '\n';
 
    remove(num, delete_me, count);
    count--;

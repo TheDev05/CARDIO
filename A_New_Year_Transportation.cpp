@@ -16,12 +16,6 @@ using namespace std;
 #define ps pair<string, string>
 #define mp make_pair
 #define f first
-#define s second
-
-/* Vectors */
-#define vi vector<int>
-#define vpi vector<pair<int, int>>
-#define vvi vector<vector<int>>
 
 /* Extras */
 #define en cout << '\n' // NewLine
@@ -53,5 +47,5 @@ int main()
 
 void solve()
 {
-	
+   
 }
