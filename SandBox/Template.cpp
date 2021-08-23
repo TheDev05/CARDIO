@@ -20,8 +20,11 @@ using namespace std;
 
 /* Vectors */
 #define vi vector<int>
+#define vs vector<string>
 #define vpi vector<pair<int, int>>
 #define vvi vector<vector<int>>
+#define pb push_back
+#define ppb pop_back
 
 /* Extras */
 #define en cout << '\n' // NewLine
@@ -49,9 +52,35 @@ int main()
 	}
 }
 
+int atom = 0, node = 0;
+
 /* -- -- Here We Go -- -- */
 
 void solve()
 {
-	
+	int n;
+	std::cin >> n;
+
+	string str;
+	std::cin >> str;
+
+	vi data;
+	sort(str.begin(), str.end());
+
+	for (int i = 0; i < str.size(); i++)
+	{
+		int count = 1;
+		int index = i + 1;
+
+		while (str[i] == str[index] && str[i] != '-1')
+		{
+			count++;
+			str[index] = '-1';
+			index++;
+		}
+
+		data.pb(count);
+	}
+
+	int val;
 }
