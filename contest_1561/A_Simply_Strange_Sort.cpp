@@ -16,12 +16,22 @@ using namespace std;
 #define ps pair<string, string>
 #define mp make_pair
 #define f first
+#define s second
+
+/* Vectors */
+#define vi vector<int>
+#define vs vector<string>
+#define vpi vector<pair<int, int>>
+#define vvi vector<vector<int>>
+#define pb push_back
+#define ppb pop_back
 
 /* Extras */
 #define en cout << '\n' // NewLine
 #define ll long long
 #define loop(x, n) for (ll i = x; i < n; ++i)  // Loop
 #define db(x) cout << #x << "-> " << x << endl // Debug
+#define xx cout << "Executed Succesfully" << '\n'
 
 void solve();
 
@@ -35,7 +45,7 @@ int main()
 	cout.tie(NULL);
 
 	int test = 1;
-	// std::cin >> test;
+	std::cin >> test;
 
 	while (test--)
 	{
@@ -43,9 +53,35 @@ int main()
 	}
 }
 
+int atom = 0, node = 0;
+
 /* -- -- Here We Go -- -- */
 
 void solve()
 {
-   
+	int n;
+	std::cin >> n;
+
+	int key = 0, count = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int temp;
+		std::cin >> temp;
+
+		if ((temp - 1) == key)
+		{
+			// db(temp);
+			count++;
+		}
+
+		key = temp;
+	}
+
+	if (count == n)
+	{
+		std::cout << "0\n";
+		return;
+	}
+
+	std::cout << (n - (count * 2)) << '\n';
 }
