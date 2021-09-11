@@ -12,7 +12,7 @@ int findme(int *p, int count, int value)
          return (i);
       }
    }
-   
+
    return (0);
 }
 
