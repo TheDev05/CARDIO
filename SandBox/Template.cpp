@@ -79,63 +79,60 @@ int atom = 0, node = 0;
 
 void solve()
 {
-	ll n, k;
-	std::cin >> n >> k;
+	int n;
+	std::cin >> n;
 
-	vector<ll> num;
-	map<ll, ll> res;
-
+	vi num;
 	for (int i = 0; i < n; i++)
 	{
-		ll val;
+		int val;
 		std::cin >> val;
 
 		num.pb(val);
 	}
 
-	if (k > n - 1)
-	{
-		std::cout << *max_element(num.begin(), num.end());
-		return;
-	}
+	int l = imin, r = imax;
+	vpi res;
 
-	for (int i = 0; i < num.size(); i++)
+	for (int i = 2; i < n; i++)
 	{
-		for (int j = i + 1; j < num.size(); j++)
+		int min = std::min(num[i - 1], num[i - 2]);
+		int max = std::max(num[i - 2], num[i - 1]);
+
+		if (num[i] < max && num[i] > min)
 		{
-			if (num[i] > num[j])
+			l = min;
+			r = max;
+		}
+		else
+		{
+
+			int temp1 = min;
+			int temp2 = max;
+
+			res.pb(mp(temp1, temp2));
+		}
+
+		for (int j = 0; j < res.size(); j++)
+		{
+			if (num[i] > res[j].first && num[i] < res[j].second)
 			{
-				int temp = num[j];
-
-				res[num[j]] = 0;
-				res[num[i]]++;
-
-				num.erase(num.begin() + j);
-				num.push_back(temp);
-
-				j--;
-			}
-			else
-			{
-				int temp = num[i];
-
-				res[num[i]] = 0;
-				res[num[j]]++;
-
-				num.erase(num.begin() + i);
-				num.push_back(temp);
-
-				i--;
-				break;
-			}
-
-			if (res[num[i]] >= k)
-			{
-				std::cout << num[i] << '\n';
+				std::cout << "yes\n";
 				return;
 			}
 		}
+
+		if (num[i] > l && num[i] < r)
+		{
+		}
+		else
+		{
+			std::cout << "yes\n";
+			return;
+		}
 	}
+
+	std::cout << "no\n";
 }
 
 /* Reminder:

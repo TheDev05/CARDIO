@@ -1,7 +1,7 @@
 /*** Hello Stalker!,
   * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
   * With Gods' Grace, Let's begin today's journey!
-  * Handle: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
  ***/
 
 #include <bits/stdc++.h>
@@ -18,12 +18,16 @@ using namespace std;
 #define f first
 #define s second
 
+/* Maps */
+#define mpi map<int, int>
+#define mps map<string, string>
+
 /* Vectors */
 #define vi vector<int>
 #define vs vector<string>
 #define vpi vector<pair<int, int>>
 #define vvi vector<vector<int>>
-#define pb push_back
+#define pb emplace_back
 #define ppb pop_back
 
 /* Extras */
@@ -53,8 +57,12 @@ int main()
 	cout.tie(NULL);
 	srand(time(NULL));
 
+	/* Input-Output data from text file */
+	// freopen("input.txt", "r", stdin);
+	// freopen("output.txt", "w", stdout);
+
 	int test = 1;
-	// std::cin >> test;
+	std::cin >> test;
 
 	while (test--)
 	{
@@ -62,14 +70,47 @@ int main()
 	}
 
 	double sec = getCurrentTime();
-	// cout << sec << "\n";
+	// cout << "\n"<< sec << "\n";
 }
 
 int atom = 0, node = 0;
 
-/* -- -- Here We Go -- -- */
+/* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+	ll n;
+	std::cin >> n;
+
+	ll ev1 = 0, ev2 = 0, od1 = 0, od2 = 0;
+	for (ll i = 1; i <= n; i++)
+	{
+		ll val;
+		std::cin >> val;
+
+		if (i % 2 == 0)
+		{
+			ev1++;
+		}
+		else
+			od1++;
+
+		if (val % 2 == 0)
+		{
+			ev2++;
+		}
+		else
+			od2++;
+	}
+
+	std::cout << std::min(ev1, od2) + std::min(ev2, od1) << '\n';
 }
+
+/* Reminder:
+1. Check Corner Cases, Least Input & Max Input.
+2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
+3. Long Long vs Int vs unsigned.
+4. All input equal, Input Repeated, Negative.
+5. Time Complexity.
+6. Float-Double Precisions.
+*/

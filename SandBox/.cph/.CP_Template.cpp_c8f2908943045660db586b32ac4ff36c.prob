@@ -1,1 +1,0 @@
-{"name":"Local: CP_Template","url":"c:\\Users\\DELL\\OneDrive\\Documents\\NoobCoder\\SandBox\\CP_Template.cpp","tests":[{"id":1627313262783,"input":"2\n1 10\n3 5","output":"2\n3\n5\n7\n\n3\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\DELL\\OneDrive\\Documents\\NoobCoder\\SandBox\\CP_Template.cpp","group":"local","local":true}

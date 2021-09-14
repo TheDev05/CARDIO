@@ -1,7 +1,7 @@
 /*** Hello Stalker!,
   * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
   * With Gods' Grace, Let's begin today's journey!
-  * Handle: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
  ***/
 
 #include <bits/stdc++.h>
@@ -18,12 +18,16 @@ using namespace std;
 #define f first
 #define s second
 
+/* Maps */
+#define mpi map<int, int>
+#define mps map<string, string>
+
 /* Vectors */
 #define vi vector<int>
 #define vs vector<string>
 #define vpi vector<pair<int, int>>
 #define vvi vector<vector<int>>
-#define pb push_back
+#define pb emplace_back
 #define ppb pop_back
 
 /* Extras */
@@ -33,16 +37,29 @@ using namespace std;
 #define db(x) cout << #x << "-> " << x << endl // Debug
 #define xx cout << "Executed Succesfully" << '\n'
 
+clock_t startTime;
+double getCurrentTime()
+{
+	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+}
+
 void solve();
 
 int main()
 {
+	startTime = clock();
+
 	ios_base::sync_with_stdio(false);
 	std::cout << std::setprecision(10);
 	std::cout << std::fixed;
 
 	cin.tie(NULL);
 	cout.tie(NULL);
+	srand(time(NULL));
+
+	/* Input-Output data from text file */
+	// freopen("input.txt", "r", stdin);
+	// freopen("output.txt", "w", stdout);
 
 	int test = 1;
 	std::cin >> test;
@@ -51,37 +68,42 @@ int main()
 	{
 		solve();
 	}
+
+	double sec = getCurrentTime();
+	// cout << "\n"<< sec << "\n";
 }
 
 int atom = 0, node = 0;
 
-/* -- -- Here We Go -- -- */
+/* Check: Single testCase or muntiple */
 
 void solve()
 {
-	int n;
-	std::cin >> n;
+	ll n, a, b;
+	std::cin >> n >> a >> b;
 
-	int key = 0, count = 0;
-	for (int i = 0; i < n; i++)
+	std::string text;
+	std::cin >> text;
+
+	ll total = 0;
+	for (ll i = 0; i < text.size(); i++)
 	{
-		int temp;
-		std::cin >> temp;
-
-		if ((temp - 1) == key)
+		if (text[i] == '0')
 		{
-			// db(temp);
-			count++;
+			total += a;
 		}
-
-		key = temp;
+		else
+			total += b;
 	}
 
-	if (count == n)
-	{
-		std::cout << "0\n";
-		return;
-	}
-
-	std::cout << (n - (count * 2)) << '\n';
+	std::cout << total << '\n';
 }
+
+/* Reminder:
+1. Check Corner Cases, Least Input & Max Input.
+2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
+3. Long Long vs Int vs unsigned.
+4. All input equal, Input Repeated, Negative.
+5. Time Complexity.
+6. Float-Double Precisions.
+*/
