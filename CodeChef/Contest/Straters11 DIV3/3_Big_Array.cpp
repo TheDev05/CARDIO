@@ -12,40 +12,29 @@ using namespace std;
 #define imin INT_MIN
 
 /* Pairs */
-#define pi pair<ll, ll>
+#define pi pair<int, int>
 #define ps pair<string, string>
-#define pis pair<ll, string>
-#define psi pair<string, ll>
 #define mp make_pair
 #define f first
 #define s second
 
 /* Maps */
-#define mpi map<ll, ll>
+#define mpi map<int, int>
 #define mps map<string, string>
-#define mpis map<ll, string>
-#define mpsi map<string, ll>
-#define mpic map<ll, char>
-#define mpci map<char, ll>
 
 /* Vectors */
-#define vi vector<ll>
+#define vi vector<int>
 #define vs vector<string>
-#define vpi vector<pair<ll, ll>>
-#define vvi vector<vector<ll>>
+#define vpi vector<pair<int, int>>
+#define vvi vector<vector<int>>
 #define pb emplace_back
 #define ppb pop_back
 
 /* Extras */
 #define en cout << '\n' // NewLine
 #define ll long long
-#define maxin(v) *max_element(v.begin(), v.end())
-#define minin(v) *min_element(v.begin(), v.end())
-#define gcd(a, b) __gcd(a, b)
-#define lcm(a, b) (a * b) / gcd(a, b)
-#define srt(v) sort(v.begin(), v.end())
-#define loop(x, n) for (ll i = x; i < n; ++i)
-#define db(x) cout << #x << "-> " << x << endl
+#define loop(x, n) for (ll i = x; i < n; ++i)  // Loop
+#define db(x) cout << #x << "-> " << x << endl // Debug
 #define xx cout << "Executed Succesfully" << '\n'
 
 clock_t startTime;
@@ -73,7 +62,7 @@ int main()
 	// freopen("output.txt", "w", stdout);
 
 	int test = 1;
-	// std::cin >> test;
+	std::cin >> test;
 
 	while (test--)
 	{
@@ -90,32 +79,18 @@ int atom = 0, node = 0;
 
 void solve()
 {
-	int m, n;
-	std::cin >> m >> n;
+	ll n, s;
+	std::cin >> n >> s;
 
-	mpi num1, num2;
+	ll sum = (n * (n + 1)) / 2;
+	ll val = sum - s;
 
-	for (int i = 0; i < m; i++)
+	if (val >= 1 && val <= n)
 	{
-		int val;
-		std::cin >> val;
-
-		num1[val] = -1;
+		std::cout << val << '\n';
 	}
-
-	int count = 0;
-	for (int i = 0; i < n; i++)
-	{
-		int val;
-		std::cin >> val;
-
-		if (num1[val] == -1)
-		{
-			count++;
-		}
-	}
-
-	std::cout << count << '\n';
+	else
+		std::cout << "-1\n";
 }
 
 /* Reminder:

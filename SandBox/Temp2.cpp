@@ -12,27 +12,27 @@ using namespace std;
 #define imin INT_MIN
 
 /* Pairs */
-#define pi pair<ll, ll>
+#define pi pair<int, int>
 #define ps pair<string, string>
-#define pis pair<ll, string>
-#define psi pair<string, ll>
+#define pis pair<int, string>
+#define psi pair<string, int>
 #define mp make_pair
 #define f first
 #define s second
 
 /* Maps */
-#define mpi map<ll, ll>
+#define mpi map<int, int>
 #define mps map<string, string>
-#define mpis map<ll, string>
-#define mpsi map<string, ll>
-#define mpic map<ll, char>
-#define mpci map<char, ll>
+#define mpis map<int, string>
+#define mpsi map<string, int>
+#define mpic map<int, char>
+#define mpci map<char, int>
 
 /* Vectors */
-#define vi vector<ll>
+#define vi vector<int>
 #define vs vector<string>
-#define vpi vector<pair<ll, ll>>
-#define vvi vector<vector<ll>>
+#define vpi vector<pair<int, int>>
+#define vvi vector<vector<int>>
 #define pb emplace_back
 #define ppb pop_back
 
@@ -51,37 +51,37 @@ using namespace std;
 clock_t startTime;
 double getCurrentTime()
 {
-	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
 
 void solve();
 
 int main()
 {
-	startTime = clock();
+    startTime = clock();
 
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
-	srand(time(NULL));
+    cin.tie(NULL);
+    cout.tie(NULL);
+    srand(time(NULL));
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	int test = 1;
-	// std::cin >> test;
+    int test = 1;
+    std::cin >> test;
 
-	while (test--)
-	{
-		solve();
-	}
+    while (test--)
+    {
+        solve();
+    }
 
-	double sec = getCurrentTime();
-	// cout << "\n"<< sec << "\n";
+    double sec = getCurrentTime();
+    // cout << "\n"<< sec << "\n";
 }
 
 int atom = 0, node = 0;
@@ -90,32 +90,33 @@ int atom = 0, node = 0;
 
 void solve()
 {
-	int m, n;
-	std::cin >> m >> n;
+    int n;
+    std::cin >> n;
 
-	mpi num1, num2;
+    string text;
+    for (int i = 0; i < n * 2; i++)
+    {
+        if (i < n)
+        {
+            text += '(';
+        }
+        else
+            text += ')';
+    }
 
-	for (int i = 0; i < m; i++)
-	{
-		int val;
-		std::cin >> val;
+    std::cout << text << '\n';
+    int pos = text.size() - 1;
+    int index = 0;
 
-		num1[val] = -1;
-	}
+    for (int i = 0; i < n - 1; i++)
+    {
+        text.insert(pos, 1, '(');
+        text.erase(index, 1);
+        
+        std::cout << text << '\n';
 
-	int count = 0;
-	for (int i = 0; i < n; i++)
-	{
-		int val;
-		std::cin >> val;
-
-		if (num1[val] == -1)
-		{
-			count++;
-		}
-	}
-
-	std::cout << count << '\n';
+        pos = pos - 2;
+    }
 }
 
 /* Reminder:
