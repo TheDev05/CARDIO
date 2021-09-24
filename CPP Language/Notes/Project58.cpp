@@ -1,3 +1,4 @@
+/* Print all numbers after decimal of a large data-float type */
 /*** Hello Stalker!,
   * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
   * With Gods' Grace, Let's begin today's journey!
@@ -90,48 +91,18 @@ int atom = 0, node = 0;
 
 void solve()
 {
-	int n, k;
-	std::cin >> n >> k;
+	std::string text;
+	std::cin >> text;
 
-	unordered_map<string, pair<pair<string, int>, pair<string, int>>> num;
+	int index = text.find('.');
+	index++;
 
-	for (int i = 0; i < k; i++)
+	for (int i = index; i < text.size(); i++)
 	{
-		std::string text1, text2;
-		std::cin >> text1 >> text2;
-
-		num[text1] = mp(mp(text1, text1.size()), mp(text2, text2.size()));
+		std::cout << text[i];
 	}
-
-	cin.ignore();
-
-	string text, temp;
-	getline(std::cin, text);
-
-	for (int i = 0; i < text.size(); i++)
-	{
-		if (text[i] != ' ')
-		{
-			temp += text[i];
-		}
-
-		if (text[i] == ' ' || i == text.size() - 1)
-		{
-			if (num[temp].first.second <= num[temp].second.second)
-			{
-				std::cout << num[temp].first.first << " ";
-			}
-			else
-			{
-				std::cout << num[temp].second.first << " ";
-			}
-
-			temp.clear();
-		}
-	}
-
-	en;
 }
+
 /* Reminder:
 1. Check Corner Cases, Least Input & Max Input.
 2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
