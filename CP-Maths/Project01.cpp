@@ -1,3 +1,5 @@
+/* Find all prime factors of a given number in O(sqrt(N)) */
+
 /*** Hello Stalker!,
   * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
   * With Gods' Grace, Let's begin today's journey!
@@ -51,37 +53,37 @@ using namespace std;
 clock_t startTime;
 double getCurrentTime()
 {
-	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
 
 void solve();
 
 int main()
 {
-	startTime = clock();
+    startTime = clock();
 
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
-	srand(time(NULL));
+    cin.tie(NULL);
+    cout.tie(NULL);
+    srand(time(NULL));
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	int test = 1;
-	// std::cin >> test;
+    int test = 1;
+    // std::cin >> test;
 
-	while (test--)
-	{
-		solve();
-	}
+    while (test--)
+    {
+        solve();
+    }
 
-	double sec = getCurrentTime();
-	// cout << "\n"<< sec << "\n";
+    double sec = getCurrentTime();
+    // cout << "\n"<< sec << "\n";
 }
 
 int atom = 0, node = 0;
@@ -90,27 +92,27 @@ int atom = 0, node = 0;
 
 void solve()
 {
-	int n;
-	std::cin >> n;
+    int n;
+    std::cin >> n;
 
-	set<int> num;
+    set<int> num;
 
-	for (int i = 2; i * i <= n; i++)
-	{
-		while (n % i == 0)
-		{
-			num.insert(i);
-			n = n / i;
-		}
-	}
+    for (int i = 2; i * i <= n; i++)
+    {
+        while (n % i == 0)
+        {
+            num.insert(i);
+            n = n / i;
+        }
+    }
 
-	if (n > 1)
-	{
-		num.insert(n);
-	}
+    if (n > 1)
+    {
+        num.insert(n);
+    }
 
-	for (auto i : num)
-		std::cout << i << " ";
+    for (auto i : num)
+        std::cout << i << " ";
 }
 
 /* Reminder:
