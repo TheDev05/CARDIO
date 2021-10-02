@@ -108,7 +108,19 @@ int main()
 
 void solve()
 {
+	int a, b;
+	std::cin >> a >> b;
+
+	if (a == b)
+	{
+		std::cout << "1\n";
+		return;
+	}
+
+	int diff = a - b;
+	int val = pow(32, diff);
 	
+	std::cout<<val<<'\n';
 }
 
 /* Reminder:

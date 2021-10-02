@@ -108,7 +108,53 @@ int main()
 
 void solve()
 {
-	
+	string text1, text2;
+	std::cin >> text1 >> text2;
+
+	if (text1.size() != text2.size())
+	{
+		std::cout << "No\n";
+		return;
+	}
+	else if (text1 == text2)
+	{
+		std::cout << "Yes\n";
+		return;
+	}
+
+	int index1, index2, key = 1, count = 0;
+	char a1, a2, b1, b2;
+
+	for (int i = 0; i < text1.size(); i++)
+	{
+		if (text1[i] != text2[i])
+		{
+			count++;
+
+			if (key == 1)
+			{
+				a1 = text1[i];
+				b1 = text2[i];
+
+				index1 = i;
+				key = 0;
+			}
+			else
+			{
+				index2 = i;
+
+				a2 = text1[i];
+				b2 = text2[i];
+			}
+		}
+	}
+
+	if (count == 2 && abs(index1 - index2) == 1 && a1 == b2 && b1 == a2)
+	{
+		std::cout << "Yes\n";
+	}
+	else
+		std::cout << "No\n";
 }
 
 /* Reminder:
