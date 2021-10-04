@@ -142,7 +142,7 @@ void solve()
 
 		if (A[index] < 0 && neg.size() != 0)
 		{
-			A.erase(0);
+			neg.erase(neg.begin());
 		}
 
 		if (neg.size() != 0)
