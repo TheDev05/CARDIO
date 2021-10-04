@@ -109,34 +109,53 @@ int main()
 
 void solve()
 {
-	int N, K, sum = 0;
-	std::cin >> N >> K;
+	/* Given an array A[] of size N and a positive integer K, find the first negative integer for each and every window(contiguous subarray) of size K.
 
-	vector<int> Arr;
-	for (int i = 0; i < N; i++)
+	https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#
+    */
+
+	/* Modification in sliding window problem */
+
+	vector<int> neg, result;
+	for (int i = 0; i < K; i++)
 	{
-		int val;
-		std::cin >> val;
-
-		if (i < K)
+		if (A[i] < 0)
 		{
-			sum += val;
+			neg.push_back(A[i]);
 		}
-
-		Arr.pb(val);
 	}
 
-	int index = 0, max = sum;
+	if (neg.size() != 0)
+	{
+		result.push_back(neg[0]);
+	}
+	else
+		result.push_back(0);
+
+	int index = 0;
 	for (int i = K; i < N; i++)
 	{
-		sum += Arr[i];
-		sum -= Arr[index];
+		if (A[i] < 0)
+		{
+			neg.push_back(A[i]);
+		}
 
-		max = std::max(max, sum);
-		index++;
+		if (A[index] < 0 && neg.size() != 0)
+		{
+			A.erase(0);
+		}
+
+		if (neg.size() != 0)
+		{
+			result.push_back(neg[0]);
+		}
+		else
+			result.push_back(0);
+
+		index++
 	}
 
-	return (max);
+	return (result);
 }
 
 /* Reminder:
