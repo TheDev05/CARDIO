@@ -1,8 +1,6 @@
-/*** Hello Stalker!,
-  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
-  * With Gods' Grace, Let's begin today's journey!
-  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
- ***/
+/* Maximum Sliding Window
+  array, length of window, maximum sum of window/subarray
+ */
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -52,7 +50,7 @@ using namespace std;
 clock_t startTime;
 double getCurrentTime()
 {
-	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
 
 void solve();
@@ -62,81 +60,81 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	startTime = clock();
+    startTime = clock();
 
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
-	srand(time(NULL));
+    cin.tie(NULL);
+    cout.tie(NULL);
+    srand(time(NULL));
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int test = 1;
-	std::cin >> test;
+    int test = 1;
+    std::cin >> test;
 
-	while (test--)
-	{
-		solve();
-	}
+    while (test--)
+    {
+        solve();
+    }
 
-	double sec = getCurrentTime();
-	// cout << "\n"<< sec << "\n";
+    double sec = getCurrentTime();
+    // cout << "\n"<< sec << "\n";
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	int N, K, sum = 0;
-	std::cin >> N >> K;
+    int N, K, sum = 0;
+    std::cin >> N >> K;
 
-	vector<int> Arr;
-	for (int i = 0; i < N; i++)
-	{
-		int val;
-		std::cin >> val;
+    vector<int> Arr;
+    for (int i = 0; i < N; i++)
+    {
+        int val;
+        std::cin >> val;
 
-		if (i < K)
-		{
-			sum += val;
-		}
+        if (i < K)
+        {
+            sum += val;
+        }
 
-		Arr.pb(val);
-	}
+        Arr.pb(val);
+    }
 
-	int index = 0, max = sum;
-	for (int i = K; i < N; i++)
-	{
-		sum += Arr[i];
-		sum -= Arr[index];
+    int index = 0, max = sum;
+    for (int i = K; i < N; i++)
+    {
+        sum += Arr[i];
+        sum -= Arr[index];
 
-		max = std::max(max, sum);
-		index++;
-	}
+        max = std::max(max, sum);
+        index++;
+    }
 
-	return (max);
+    return (max);
 }
 
 /* Reminder:
