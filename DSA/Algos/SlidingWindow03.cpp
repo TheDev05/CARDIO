@@ -109,41 +109,72 @@ int main()
 
 void solve()
 {
-	/* Given an array arr[] of size N and an integer K. Find the maximum for each and every contiguous subarray of size K.
+	/* Given a word pat and a text txt. Return the count of the occurences of anagrams of the word in the text.
 
-	https://practice.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1
+	https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1
     
-	Modification in sliding window problem */
+	 Modification in sliding window problem
+	 Naive: TLE */
 
-	int n, k;
-	std::cin >> n >> k;
+	string pat, txt;
+	std::cin >> pat >> txt;
 
-	int arr[n];
-	loop(0, n) std::cin >> arr[i];
+	std::string window, temp;
 
-	vector<int> result;
-	multiset<int, greater<int>> num;
+	bool ok = true;
+	int count = 0;
 
-	int sum = 0;
-	for (int i = 0; i < k; i++)
+	window = txt.substr(0, pat.size());
+	temp = window;
+
+	for (int j = 0; j < pat.size(); j++)
 	{
-		num.insert(arr[i]);
+		if (temp.find(pat[j], 0) == string::npos)
+		{
+			ok = false;
+		}
+		else
+		{
+			int index = temp.find(pat[j], 0);
+			temp[index] = '0';
+		}
 	}
 
-	result.push_back(*(num.begin()));
-
-	int index = 0;
-	for (int i = k; i < n; i++)
+	if (ok)
 	{
-
-		num.insert(arr[i]);
-		num.erase(num.find(arr[index]));
-
-		result.push_back(*(num.begin()));
-		index++;
+		count++;
 	}
 
-	return (result);
+	for (int i = window.size(); i < txt.size(); i++)
+	{
+		ok = true;
+
+		window += txt[i];
+		window.erase(0, 1);
+
+		temp = window;
+
+		for (int j = 0; j < pat.size(); j++)
+		{
+			if (temp.find(pat[j], 0) == string::npos)
+			{
+				ok = false;
+				break;
+			}
+			else
+			{
+				int index = temp.find(pat[j], 0);
+				temp[index] = '0';
+			}
+		}
+
+		if (ok)
+		{
+			count++;
+		}
+	}
+
+	return (count);
 }
 
 /* Reminder:
