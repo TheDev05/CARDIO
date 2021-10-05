@@ -1,91 +1,178 @@
+/*** Hello Stalker!,
+  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+  * With Gods' Grace, Let's begin today's journey!
+  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+ ***/
+
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+/* Limits */
+#define imax INT_MAX
+#define imin INT_MIN
+
+/* Pairs */
+#define pi pair<ll, ll>
+#define ps pair<string, string>
+#define pis pair<ll, string>
+#define psi pair<string, ll>
+#define mp make_pair
+#define f first
+#define s second
+
+/* Maps */
+#define mpi map<ll, ll>
+#define mps map<string, string>
+#define mpis map<ll, string>
+#define mpsi map<string, ll>
+#define mpic map<ll, char>
+#define mpci map<char, ll>
+
+/* Vectors */
+#define vi vector<ll>
+#define vs vector<string>
+#define vpi vector<pair<ll, ll>>
+#define vvi vector<vector<ll>>
+#define pb emplace_back
+#define ppb pop_back
+
+/* Extras */
+#define en cout << '\n' // NewLine
+#define ll long long
+#define maxin(v) *max_element(v.begin(), v.end())
+#define minin(v) *min_element(v.begin(), v.end())
+#define gcd(a, b) __gcd(a, b)
+#define lcm(a, b) (a * b) / gcd(a, b)
+#define srt(v) sort(v.begin(), v.end())
+#define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
+#define loop(x, n) for (ll i = x; i < n; ++i)
+#define db(x) cout << #x << "[" << x << "]" << '\n';
+#define xx cout << "Executed Succesfully" << '\n'
+
+clock_t startTime;
+double getCurrentTime()
 {
-    int t;
-    std::cin >> t;
+    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+}
 
-    while (t--)
+void solve();
+
+const ll maxlimit = 1e7 + 10;
+vector<bool> isPrime(maxlimit, 1);
+
+void fillPrimes()
+{
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
     {
-        int n, key = 0, mid;
-        std::cin >> n;
-
-        vector<int> num1, num2;
-
-        for (int i = 0; i < n; i++)
+        if (isPrime[i] == true)
         {
-            int val;
-            std::cin >> val;
-
-            if (i < n / 2)
+            for (int j = 2 * i; j < maxlimit; j += i)
             {
-                num1.push_back(val);
-            }
-            else if (i > n / 2)
-            {
-                num2.push_back(val);
-            }
-            else if (i == n / 2)
-            {
-                if (n % 2 != 0)
-                {
-                    mid = val;
-                }
-                else
-                    num2.push_back(val);
-            }
-
-            if (!(val >= 1 && val <= 7))
-            {
-                key = 1;
+                isPrime[j] = false;
             }
         }
-
-        if (n % 2 != 0)
-        {
-            if ((mid - num1[num1.size() - 1]) != 1 && (mid - num1[num1.size() - 1]) != 0)
-            {
-                key = 1;
-            }
-        }
-
-        reverse(num2.begin(), num2.end());
-
-        if (num1 != num2)
-        {
-            key = 1;
-        }
-
-        if (key)
-        {
-            std::cout << "no\n";
-            continue;
-        }
-
-        int temp = 0, count = 1;
-        for (int i = 0; i < num1.size(); i++)
-        {
-            if (num1[i] != temp)
-            {
-                if (num1[i] != count)
-                {
-                    key = 1;
-                    break;
-                }
-                else
-                    count++;
-            }
-
-            temp = num1[i];
-        }
-
-        if (key)
-        {
-            std::cout << "no\n";
-            continue;
-        }
-
-        std::cout << "yes\n";
     }
 }
+
+int main()
+{
+    startTime = clock();
+
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
+
+    cin.tie(NULL);
+    cout.tie(NULL);
+    srand(time(NULL));
+
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+
+    // fillPrimes();
+
+    int test = 1;
+    // std::cin >> test;
+
+    while (test--)
+    {
+        solve();
+    }
+
+    double sec = getCurrentTime();
+    // cout << "\n"<< sec << "\n";
+}
+
+/* Check: Single testCase or muntiple */
+
+void solve()
+{
+    /* Given a word pat and a text txt. Return the count of the occurences of anagrams of the word in the text.
+
+	https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1
+    
+	Modification in sliding window problem
+    TC: O(N*26) */
+
+    string pat, txt, temp;
+    std::cin >> pat >> txt;
+
+    map<char, int> num1, num2;
+
+    /* Window characters is initialised in num2 */
+    for (int i = 0; i < pat.size(); i++)
+    {
+        num1[pat[i]]++;
+        num2[pat[i]] = 0;
+    }
+
+    /* Finding matches in first window size in array text */
+    for (int i = 0; i < pat.size(); i++)
+    {
+        if (num2.count(txt[i]))
+        {
+            num2[txt[i]]++;
+        }
+    }
+
+    int count = 0, index = 0;
+
+    if (num1 == num2)
+    {
+        count++;
+    }
+
+    for (int i = pat.size(); i < txt.size(); i++)
+    {
+
+        if (num2.count(txt[i]))
+        {
+            num2[txt[i]]++;
+        }
+
+        if (num2.count(txt[index]))
+        {
+            num2[txt[index]]--;
+        }
+
+        if (num1 == num2)
+        {
+            count++;
+        }
+
+        index++;
+    }
+
+    return (count);
+}
+
+/* Reminder:
+1. Check Corner Cases, Least Input & Max Input.
+2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
+3. Long Long vs Int vs unsigned.
+4. All input equal, Input Repeated, Negative.
+5. Time Complexity.
+6. Float-Double Precisions.
+*/
