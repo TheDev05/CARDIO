@@ -1,4 +1,1 @@
-This is my private repo: Programs inside this repo. has been written while solving DSA, CP problems or during practice on a specific topic.
-[Not Categorized]
-
-100DaysOfCode
+This is my private repository: Programs inside this repository has been written while solving DSA, CP or during practice on a specific topic. All work, Not Categorized.
