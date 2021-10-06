@@ -115,7 +115,42 @@ void solve()
     
 	Modification in varaiable sliding window problem */
 
-	
+	string s;
+	int k;
+
+	std::cin >> s >> k;
+
+	map<char, int> num;
+	int index = 0, result = INT_MIN;
+
+	for (int i = 0; i < s.size(); i++)
+	{
+		num[s[i]]++;
+
+		while (num.size() > k)
+		{
+			num[s[index]]--;
+
+			if (num[s[index]] == 0)
+			{
+				num.erase(num.find(s[index]));
+			}
+
+			index++;
+		}
+
+		if (num.size() == k)
+		{
+			result = std::max((i - index) + 1, result);
+		}
+	}
+
+	if (result == INT_MIN)
+	{
+		result = -1;
+	}
+
+	return (result);
 }
 
 /* Reminder:

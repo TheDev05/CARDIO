@@ -118,8 +118,13 @@ void solve()
     int N, K;
     std::cin >> N >> K;
 
-    int A[N];
-    loop(0, N) std::cin >> A[i];
+    vector<int> A;
+    loop(0, N)
+    {
+        int val;
+        std::cin >> val;
+        A.push_back(val);
+    }
 
     map<int, int> num;
     num[0] = -1;
@@ -150,6 +155,7 @@ void solve()
     }
 
     return (result);
+    
 }
 
 /* Reminder:
