@@ -109,38 +109,41 @@ int main()
 
 void solve()
 {
-	/* Given an array arr[] of size N and an integer K. Find the maximum for each and every contiguous subarray of size K.
+	/* Given an array containing N integers and an integer K., Your task is to find the length of the longest Sub-Array with the sum of the elements equal to the given value K.
 
-	https://practice.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1
+	https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
     
-	Modification in sliding window problem */
+	Modification in varaiable sliding window problem */
 
-	int n, k;
-	std::cin >> n >> k;
+	int N, K;
+	std::cin >> N >> K;
 
-	int arr[n];
-	loop(0, n) std::cin >> arr[i];
+	int A[N];
+	loop(0, N) std::cin >> A[i];
 
-	vector<int> result;
-	multiset<int, greater<int>> num;
+	map<int, int> num;
+	num[0] = -1;
 
-	int sum = 0;
-	for (int i = 0; i < k; i++)
+	int sum = 0, result = INT_MIN;
+	for (int i = 0; i < N; i++)
 	{
-		num.insert(arr[i]);
+		sum += A[i];
+
+		if (num.count(sum) == false)
+		{
+			num[sum] = i;
+		}
+
+		if (num.count(sum - K))
+		{
+			int index = i - num[sum - K];
+			result = std::max(result, index);
+		}
 	}
 
-	result.push_back(*(num.begin()));
-
-	int index = 0;
-	for (int i = k; i < n; i++)
+	if (result == INT_MIN)
 	{
-
-		num.insert(arr[i]);
-		num.erase(num.find(arr[index]));
-
-		result.push_back(*(num.begin()));
-		index++;
+		result = 0;
 	}
 
 	return (result);
