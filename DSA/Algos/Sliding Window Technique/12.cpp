@@ -58,7 +58,7 @@ double getCurrentTime()
 void solve();
 
 const ll maxlimit = 1e7 + 10;
-vector<bool> isPrime(maxlimit, true);
+vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
@@ -105,17 +105,50 @@ int main()
 	// cout << "\n"<< sec << "\n";
 }
 
-// Check: Single testCase or muntiple
+/* Check: Single testCase or muntiple */
 
 void solve()
 {
-	/* Smallest window in a string containing all the characters of another string.
+	/* Given an array containing N integers and an integer K., Your task is to find the length of the longest Sub-Array with the sum of the elements equal to the given value K.
 
-	https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1
+	https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
     
-	Modification in varaiable sliding window problem */
+	Modification in varaiable sliding window problem
+	Work even with neg numbers: using MAP 
+	 */
 
-	
+	int N, K;
+	std::cin >> N >> K;
+
+	int A[N];
+	loop(0, N) std::cin >> A[i];
+
+	map<int, int> num;
+	num[0] = -1;
+
+	int sum = 0, result = INT_MIN;
+	for (int i = 0; i < N; i++)
+	{
+		sum += A[i];
+
+		if (num.count(sum) == false)
+		{
+			num[sum] = i;
+		}
+
+		if (num.count(sum - K))
+		{
+			int index = i - num[sum - K];
+			result = std::max(result, index);
+		}
+	}
+
+	if (result == INT_MIN)
+	{
+		result = 0;
+	}
+
+	return (result);
 }
 
 /* Reminder:

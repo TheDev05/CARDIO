@@ -114,7 +114,10 @@ void solve()
 	https://practice.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1
     
 	Modification in varaiable sliding window problem
-    First Aproach, Second is more efficient
+    First Aproach, This is more efficient
+    using string for stroring datas
+	
+	Imp: Rivise both appraoch
     */
 
 	std::string S, text;
@@ -132,9 +135,6 @@ void solve()
 
 		if (num.find(text[i]) != string::npos)
 		{
-			int size = num.size();
-			result = std::max(size, result);
-
 			while (index < i)
 			{
 				if (text[index] == text[i])
@@ -157,10 +157,10 @@ void solve()
 		}
 
 		num += text[i];
-	}
 
-	int size = num.size();
-	result = std::max(size, result);
+		int size = num.size();
+		result = std::max(size, result);
+	}
 
 	// return (result);
 	db(result);

@@ -109,13 +109,47 @@ int main()
 
 void solve()
 {
-	/* Smallest window in a string containing all the characters of another string.
+	/* Given a string S, find the length of the longest substring without repeating characters..
 
-	https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1
+	https://practice.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1
     
-	Modification in varaiable sliding window problem */
+	Modification in varaiable sliding window problem
+    Second approach: using maps
+    */
 
-	
+	std::string S;
+	std::cin >> S;
+
+	string text = S;
+
+	map<char, int> num;
+
+	int index = 0, result = 0;
+	for (int i = 0; i < text.size(); i++)
+	{
+		num[text[i]]++;
+
+		while (num.size() < (i - index) + 1)
+		{
+			num[text[index]]--;
+
+			if (num[text[index]] == 0)
+			{
+				num.erase(num.find(text[index]));
+			}
+
+			index++;
+		}
+
+		if (num.size() == (i - index) + 1)
+		{
+			int size = num.size();
+			result = max(result, size);
+		}
+	}
+
+	// std::cout << result << '\n';
+	return (result);
 }
 
 /* Reminder:

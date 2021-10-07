@@ -113,40 +113,37 @@ void solve()
 
 	https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
     
-	Modification in varaiable sliding window problem */
+	Modification in varaiable sliding window problem
+	Work only with pos numbers: using SW-T 
+	 */
 
-	int N, K;
-	std::cin >> N >> K;
+		int N, k;
+	std::cin >> N >> k;
 
 	int A[N];
 	loop(0, N) std::cin >> A[i];
 
-	map<int, int> num;
-	num[0] = -1;
-
-	int sum = 0, result = INT_MIN;
+	int index = 0, result = 0, sum = 0;
 	for (int i = 0; i < N; i++)
 	{
 		sum += A[i];
 
-		if (num.count(sum) == false)
+		if (sum > k)
 		{
-			num[sum] = i;
+			while (sum > k)
+			{
+				sum -= A[index];
+				index++;
+			}
 		}
 
-		if (num.count(sum - K))
+		if (sum == k)
 		{
-			int index = i - num[sum - K];
-			result = std::max(result, index);
+			result = std::max(result, (i - index) + 1);
 		}
 	}
 
-	if (result == INT_MIN)
-	{
-		result = 0;
-	}
-
-	return (result);
+	std::cout << result;
 }
 
 /* Reminder:
