@@ -58,7 +58,7 @@ double getCurrentTime()
 void solve();
 
 const ll maxlimit = 1e7 + 10;
-vector<bool> isPrime(maxlimit, 1);
+vector<bool> isPrime(maxlimit, true);
 
 void fillPrimes()
 {
@@ -105,17 +105,63 @@ int main()
 	// cout << "\n"<< sec << "\n";
 }
 
-/* Check: Single testCase or muntiple */
+// Check: Single testCase or muntiple
 
 void solve()
 {
-	/* Given a string you need to print the size of the longest possible substring that has exactly K unique characters. If there is no possible substring then print -1.
+	/* Given a string S, find the length of the longest substring without repeating characters..
 
-	https://practice.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
+	https://practice.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1
     
 	Modification in varaiable sliding window problem */
 
-	
+	std::string S, text;
+	std::cin >> S;
+
+	text = S;
+	string num;
+
+	bool ok;
+
+	int index = 0, result = 0;
+	for (int i = 0; i < text.size(); i++)
+	{
+		ok = false;
+
+		if (num.find(text[i]) != string::npos)
+		{
+			int size = num.size();
+			result = std::max(size, result);
+
+			while (index < i)
+			{
+				if (text[index] == text[i])
+				{
+					ok = true;
+				}
+
+				index++;
+
+				if (num.size() != 0)
+				{
+					num.erase(num.begin());
+				}
+
+				if (ok)
+				{
+					break;
+				}
+			}
+		}
+
+		num += text[i];
+	}
+
+	int size = num.size();
+	result = std::max(size, result);
+
+	// return (result);
+	db(result);
 }
 
 /* Reminder:
