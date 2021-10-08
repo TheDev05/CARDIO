@@ -109,7 +109,58 @@ int main()
 
 void solve()
 {
+	/* Given an array of 0s and 1s. Find the length of the largest subarray with     equal number of 0s and 1s..
+
+	https://practice.geeksforgeeks.org/problems/largest-subarray-of-0s-and-1s/1/?category[]=sliding-window&category[]=sliding-window&difficulty[]=-1&difficulty[]=0&page=1&sortBy=submissions&query=category[]sliding-windowdifficulty[]-1difficulty[]0page1sortBysubmissionscategory[]sliding-window
+    
+	Modification in varaiable sliding window problem */
+
+	int N;
+    std::cin >> N;
+
+    int arr[N];
+    for (int i = 0; i < N; i++)
+    {
+        std::cin >> arr[i];
+    }
+
+    int res[N];
+    for (int i = 0; i < N; i++)
+    {
+        if (arr[i] == 1)
+        {
+            res[i] = 1;
+        }
+        else
+            res[i] = -1;
+    }
+
+    map<int, int> num;
+    num[0] = -1;
+
+    int result = INT_MIN;
+    int sum = 0, k = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        sum += res[i];
+
+        if (num.count(sum - k))
+        {
+            result = std::max(result, (i - num[sum - k]));
+        }
+        else
+            num[sum] = i;
+    }
+
+    if (result == INT_MIN)
+    {
+        result = 0;
+    }
+
+    return (result);
 	
+    // std::cout << result;
 }
 
 /* Reminder:

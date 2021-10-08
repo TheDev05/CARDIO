@@ -109,7 +109,78 @@ int main()
 
 void solve()
 {
-	
+	/* Smallest window in a string containing all the characters of another string.
+
+	https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1
+    
+	Modification in varaiable sliding window problem */
+
+	std::string s, p;
+	std::cin >> s >> p;
+
+	std::string text = s, res = p;
+
+	unordered_map<char, int> num1, num2;
+	for (int i = 0; i < res.size(); i++)
+	{
+		num1[res[i]]++;
+	}
+
+	int count = num1.size(), index = 0, result = INT_MAX;
+	int first = 0, last = 0;
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (num1.count(text[i]))
+		{
+			num1[text[i]]--;
+
+			if (num1[text[i]] == 0)
+			{
+				count--;
+			}
+		}
+
+		if (count == 0)
+		{
+			if ((i - index) + 1 < result)
+			{
+				result = (i - index) + 1;
+				first = index;
+			}
+
+			while (count == 0)
+			{
+				if (num1.count(text[index]))
+				{
+					num1[text[index]]++;
+
+					if (num1[text[index]] > 0)
+					{
+						count++;
+					}
+
+					if ((i - index) + 1 < result)
+					{
+						result = (i - index) + 1;
+						first = index;
+					}
+				}
+
+				index++;
+			}
+		}
+	}
+
+	string ans = text.substr(first, result);
+
+	if (result == INT_MAX)
+	{
+		ans = "-1";
+	}
+
+	// return (ans);
+	std::cout << ans;
 }
 
 /* Reminder:

@@ -109,7 +109,52 @@ int main()
 
 void solve()
 {
-	
+	/* Count distinct elements in every window.
+
+	https://practice.geeksforgeeks.org/problems/count-distinct-elements-in-every-window/1/?category[]=sliding-window&category[]=sliding-window&page=1&sortBy=submissions&query=category[]sliding-windowpage1sortBysubmissionscategory[]sliding-window
+    
+	Modification in varaiable sliding window problem */
+
+	int n, k;
+	std::cin >> n >> k;
+
+	int A[n];
+	loop(0, n) std::cin >> A[i];
+
+	vector<int> result;
+	map<int, int> data;
+
+	int index = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (i < k)
+		{
+			data[A[i]]++;
+		}
+		else
+		{
+			data[A[i]]++;
+
+			if (data.count(A[index]))
+			{
+				data[A[index]]--;
+
+				if (data[A[index]] == 0)
+				{
+					data.erase(data.find(A[index]));
+				}
+			}
+
+			index++;
+		}
+
+		if ((i - index) + 1 == k)
+		{
+			result.push_back(data.size());
+		}
+	}
+
+	return (result);
 }
 
 /* Reminder:
