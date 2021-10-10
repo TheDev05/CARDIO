@@ -109,48 +109,47 @@ int main()
 
 void solve()
 {
-	/* Longest subarray with sum divisible by K 
+	/* Maximum sum of subarray less than or equal to x
 	
-	 https://practice.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1/?category[]=sliding-window&category[]=sliding-window&problemStatus=unsolved&difficulty[]=-1&difficulty[]=0&difficulty[]=1&page=1&sortBy=submissions&query=category[]sliding-windowproblemStatusunsolveddifficulty[]-1difficulty[]0difficulty[]1page1sortBysubmissionscategory[]sliding-window
+	 https://practice.geeksforgeeks.org/problems/maximum-sum-of-subarray-less-than-or-equal-to-x4033/1/?category[]=sliding-window&category[]=sliding-window&difficulty[]=-1&difficulty[]=0&page=1&sortBy=submissions&query=category[]sliding-windowdifficulty[]-1difficulty[]0page1sortBysubmissionscategory[]sliding-window
 
 	Modification in varaiable sliding window problem */
 
-	int n, k;
-	std::cin >> n >> k;
+	int n;
+	long long sum;
+	std::cin >> n >> sum;
 
-	int arr[n];
-	loop(0, n) std::cin >> arr[i];
-
-	map<int, int> num;
-	num[0] = -1;
-
-	int sum = 0, rem = 0, result = INT_MIN;
+	long long arr[n];
 	for (int i = 0; i < n; i++)
 	{
-		sum += arr[i];
-
-		if (sum % k < 0)
-		{
-			rem = (sum % k) + k;
-		}
-		else
-			rem = sum % k;
-
-		if (num.count(rem))
-		{
-			result = std::max(result, (i - num[rem]));
-		}
-		else
-			num[rem] = i;
+		std::cin >> arr[i];
 	}
 
-	if (result == INT_MIN)
+	long long k = sum;
+
+	int index = 0, val = 0, result = INT_MIN;
+	for (int i = 0; i < n; i++)
 	{
-		result = 0;
+
+		val += arr[i];
+
+		if (val > k)
+		{
+			while (val > k)
+			{
+				val -= arr[index];
+				index++;
+			}
+		}
+
+		if (val <= k)
+		{
+			result = std::max(result, val);
+		}
 	}
 
-	std::cout << result;
-	// return (result);
+	// std::cout << result;
+	return (result);
 }
 
 /* Reminder:

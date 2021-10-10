@@ -130,7 +130,7 @@ void solve()
     num[0] = -1;
 
     N = A.size();
-    K = 0;
+    K = 25;
 
     int sum = 0, result = INT_MIN;
     for (int i = 0; i < N; i++)
