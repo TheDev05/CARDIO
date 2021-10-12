@@ -109,48 +109,41 @@ int main()
 
 void solve()
 {
-	/* Longest subarray with sum divisible by K 
+	/* Smallest distinct window
 	
-	 https://practice.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1/?category[]=sliding-window&category[]=sliding-window&problemStatus=unsolved&difficulty[]=-1&difficulty[]=0&difficulty[]=1&page=1&sortBy=submissions&query=category[]sliding-windowproblemStatusunsolveddifficulty[]-1difficulty[]0difficulty[]1page1sortBysubmissionscategory[]sliding-window
+	 https://www.codingninjas.com/codestudio/problems/interview-shuriken-33-smallest-window-that-contains-all-distinct-characters_188409?leftPanelTab=0
 
 	Modification in varaiable sliding window problem */
 
-	int n, k;
-	std::cin >> n >> k;
-
-	int arr[n];
-	loop(0, n) std::cin >> arr[i];
-
-	map<int, int> num;
-	num[0] = -1;
-
-	int sum = 0, rem = 0, result = INT_MIN;
+	long long int dp[n];
+	long long cs = 0;
+	long long ans = 0;
 	for (int i = 0; i < n; i++)
 	{
-		sum += arr[i];
-
-		if (sum % k < 0)
-		{
-			rem = (sum % k) + k;
-		}
-		else
-			rem = sum % k;
-
-		if (num.count(rem))
-		{
-			result = std::max(result, (i - num[rem]));
-		}
-		else
-			num[rem] = i;
+		cs += a[i];
+		dp[i] = cs;
+		if (cs < 0)
+			cs = 0;
 	}
-
-	if (result == INT_MIN)
+	long long winsum = 0;
+	for (int i = 0; i < k; i++)
+		winsum += a[i];
+	for (int i = k - 1; i < n; i++)
 	{
-		result = 0;
+		if (i == k - 1)
+			ans = winsum;
+		else
+		{
+			long long temp = winsum + dp[i - k];
+			if (winsum > ans)
+				ans = winsum;
+			if (temp > ans)
+				ans = temp;
+		}
+		winsum -= a[i - k + 1];
+		winsum += a[i + 1];
 	}
-
-	std::cout << result;
-	// return (result);
+	return ans;
 }
 
 /* Reminder:
