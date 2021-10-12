@@ -12,22 +12,25 @@ int main()
         int n;
         std::cin >> n;
 
-        vector<int> num;
+        int count = 0, result = INT_MIN;
+
         for (int i = 0; i < n; i++)
         {
             int val;
             std::cin >> val;
 
-            num.push_back(val);
+            if (val % 2 == 0)
+            {
+                count++;
+            }
+
+            if (val % 2 != 0 || i == n - 1)
+            {
+                result = std::max(result, count);
+                count = 0;
+            }
         }
 
-        sort(num.begin(), num.end());
-
-        if (num[n - 1] == num[n - 2])
-        {
-            std::cout << "fight:(\n";
-        }
-        else
-            std::cout << "peace:)\n";
+        std::cout << result << '\n';
     }
 }
