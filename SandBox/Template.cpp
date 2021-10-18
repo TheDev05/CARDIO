@@ -1,7 +1,7 @@
 /*** Hello Stalker!,
-  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
-  * With Gods' Grace, Let's begin today's journey!
-  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+ * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+ * With Gods' Grace, Let's begin today's journey!
+ * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
  ***/
 
 #include <bits/stdc++.h>
@@ -85,7 +85,7 @@ int main()
 	// fillPrimes();
 
 	int test = 1;
-	// std::cin >> test;
+	std::cin >> test;
 
 	while (test--)
 	{
@@ -97,28 +97,15 @@ int main()
 
 void solve()
 {
-	int n;
-	std::cin >> n;
+	int a, b, c;
+	std::cin >> a >> b >> c;
 
-	map<string, int> num;
-	std::string text;
-
-	for (int i = 0; i < n; i++)
+	if (a == 7 || b == 7 || c == 7)
 	{
-		std::string temp;
-		std::cin >> temp;
-
-		if (num.count(temp) == false)
-		{
-			std::cout << "OK\n";
-			num[temp]++;
-		}
-		else
-		{
-			std::cout << temp << num[temp] << '\n';
-			num[temp]++;
-		}
+		std::cout << "YES\n";
 	}
+	else
+		std::cout << "NO\n";
 }
 
 /* Reminder:
