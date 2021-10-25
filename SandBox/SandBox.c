@@ -1,155 +1,83 @@
-// ********************************************************SPACE FOR LOGIC CHECK****************************************************************
-// *****************NOTE: THESE MAY OR MAY NOT BE MY CODE, IT MAY BE POSSIBLE THEY ARE ACCOMANDATED FROM WEB.***********************************
-//**********************************************************************************************************************************************
-//*********************************************************WORK BELOW THIS LINE*****************************************************************
-//! NOT DONE
-
-// #include <stdio.h>
-
-// int main()
-// {
-//     char sentence[] = "00:16AM";
-//     char str[20];
-//     int i,j;
-
-//     sscanf(sentence, "%d:%d%s %*s", &i,&j, str);
-//     printf("%s  %d %d\n", str, i,j);
-
-//     return 0;
-// }
-// #include <stdio.h>
-// #include <string.h>
-
-// int main()
-// {
-//     char sentence[20];
-//     char str[20];
-//     int hour, min, sec;
-
-//     printf("ENTER TIME:\n");
-//     scanf("%[^\n]%*c", sentence);
-
-//     sscanf(sentence, "%d:%d:%d%s %*s", &hour, &min, &sec, str);
-//     printf("%s %d\n", str, hour);
-
-//     if (strcmp(str, "AM") == 0)
-//     {
-//         if (hour == 12)
-//         {
-//             hour = 0;
-//         }
-//     }
-//     else
-//     {
-//         if (hour >= 1 && hour != 12)
-//         {
-//             hour = hour + 12;
-//         }
-//     }
-
-//     printf("%d:%d:%d", hour, min, sec);
-
-//     return 0;
-// }
-
-// #include <stdio.h>
-// #include <conio.h>
-
-// void main()
-// {
-//     int i, n;
-//     float x, sum, t;
-
-//     printf(" Enter the value for x : ");
-//     scanf("%f", &x);
-
-//     printf(" Enter the value for n : ");
-//     scanf("%d", &n);
-
-//     x = x * 3.14159 / 180;
-//     t = x;
-//     sum = x;
-
-//     /* Loop to calculate the value of Sine */
-//     for (i = 1; i <= n; i++)
-//     {
-//         t = (t * (-1) * x * x) / (2 * i * (2 * i + 1));
-//         sum = sum + t;
-//     }
-
-//     printf(" The value of Sin(%f) = %.4f", x, sum);
-
-// }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-//     char *s = "abc";
-//     // s = "ankit raj";
-
-//     // s[2] = 'p';
-//     // *(s + 2) = 'p';
-
-//     char x = *(s + 2);
-
-//     printf("%c\n", x);
-//     return 0;
-// // }
-// #include <stdio.h>
-// int main()
-// {
-//     char c = '3';
-//     int num[6] = {0, 1, 2, 3, 4, 5};
-
-//     num[c] = 0;
-//     printf("%d", num[3]);
-//     return 0;
-// }
-
 #include <stdio.h>
-#include <chrono>
 
-int main(void)
+void mergeSort(int[], int, int, int);
+void partition(int[], int, int);
+
+int main()
 {
+    int list[50];
+    int i, size;
 
-    auto start = chrono::high_resolution_clock::now();
-
-    // CODE
-
-    int t;
-    scanf("%d", &t);
-    while (t--)
+    printf("Enter total number of elements:");
+    scanf("%d", &size);
+    printf("Enter the elements:\n");
+    for (i = 0; i < size; i++)
     {
-        long long int n, m, b, q, total = 0;
-        scanf("%lld%lld%lld", &n, &b, &m);
-        while (n > 0)
+        scanf("%d", &list[i]);
+    }
+    partition(list, 0, size - 1);
+    printf("After merge sort:\n");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d   ", list[i]);
+    }
+
+    return 0;
+}
+
+void partition(int list[], int low, int high)
+{
+    int mid;
+
+    if (low < high)
+    {
+        mid = (low + high) / 2;
+        partition(list, low, mid);
+        partition(list, mid + 1, high);
+        mergeSort(list, low, mid, high);
+    }
+}
+
+void mergeSort(int list[], int low, int mid, int high)
+{
+    int i, mi, k, lo, temp[50];
+
+    lo = low;
+    i = low;
+    mi = mid + 1;
+    while ((lo <= mid) && (mi <= high))
+    {
+        if (list[lo] <= list[mi])
         {
-            if (n % 2 == 0)
-            {
-                q = n / 2;
-                total = total + (q * m) + b;
-                n = n - q;
-                m *= 2;
-            }
-            else
-            {
-                q = (n + 1) / 2;
-                total = total + (q * m) + b;
-                n = n - q;
-                m *= 2;
-            }
-            if (n == 0)
-            {
-                printf("%lld\n", total - b);
-                break;
-            }
+            temp[i] = list[lo];
+            lo++;
+        }
+        else
+        {
+            temp[i] = list[mi];
+            mi++;
+        }
+        i++;
+    }
+    if (lo > mid)
+    {
+        for (k = mi; k <= high; k++)
+        {
+            temp[i] = list[k];
+            i++;
+        }
+    }
+    else
+    {
+        for (k = lo; k <= mid; k++)
+        {
+            temp[i] = list[k];
+            i++;
         }
     }
 
-    auto stop = chrono::high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << duration.count() << endl;
-
-    return 0;
+    for (k = low; k <= high; k++)
+    {
+        list[k] = temp[k];
+    }
 }
