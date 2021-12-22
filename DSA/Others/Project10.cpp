@@ -1,7 +1,7 @@
 /*** Hello Stalker!,
- * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
- * With Gods' Grace, Let's begin today's journey!
- * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+  * With Gods' Grace, Let's begin today's journey!
+  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
  ***/
 
 #include <bits/stdc++.h>
@@ -49,6 +49,12 @@ using namespace std;
 #define db(x) cout << #x << "[" << x << "]" << '\n';
 #define xx cout << "Executed Succesfully" << '\n'
 
+clock_t startTime;
+double getCurrentTime()
+{
+    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+}
+
 void solve();
 
 const ll maxlimit = 1e7 + 10;
@@ -56,48 +62,61 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    startTime = clock();
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    srand(time(NULL));
 
-	// fillPrimes();
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	int test = 1;
-	// std::cin >> test;
+    // fillPrimes();
 
-	while (test--)
-	{
-		solve();
-	}
+    int test = 1;
+    std::cin >> test;
+
+    while (test--)
+    {
+        solve();
+    }
+
+    double sec = getCurrentTime();
+    // cout << "\n"<< sec << "\n";
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    /* Given an array A[] of size N and a positive integer K, find the first negative integer for each and every window(contiguous subarray) of size K.
+
+	https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#
+    */
+
+    /* Modification in sliding window problem */
+
+  
 }
 
 /* Reminder:
