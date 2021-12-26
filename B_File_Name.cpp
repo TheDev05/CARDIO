@@ -85,7 +85,7 @@ int main()
 	// fillPrimes();
 
 	int test = 1;
-	std::cin >> test;
+	// std::cin >> test;
 
 	while (test--)
 	{
@@ -97,35 +97,42 @@ int main()
 
 void solve()
 {
-	int count;
-	std::cin >> count;
+	int n;
+	std::cin >> n;
 
 	std::string text;
-	for (int i = 0; i < count; i++)
-	{
-		std::string temp;
-		std::cin >> temp;
+	std::cin >> text;
 
-		text += temp;
-	}
-
-	map<char, int> num;
-
+	int sum = 0;
 	for (int i = 0; i < text.size(); i++)
 	{
-		num[text[i]]++;
-	}
-
-	for (auto i : num)
-	{
-		if (i.second % count != 0)
+		if (text[i] == 'x')
 		{
-			std::cout << "NO\n";
-			return;
+			int index = i;
+			int count = 0;
+
+			while (text[index] == 'x' && index < text.size())
+			{
+				count++;
+				index++;
+			}
+
+			if (count >= 3)
+			{
+				sum += count - 2;
+			}
+
+			i = index;
 		}
 	}
 
-	std::cout << "YES\n";
+	if (sum == 0)
+	{
+		std::cout << "0\n";
+		return;
+	}
+
+	std::cout << sum << '\n';
 }
 
 /* Reminder:
