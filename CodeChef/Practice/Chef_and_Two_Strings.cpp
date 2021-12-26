@@ -97,26 +97,34 @@ int main()
 
 void solve()
 {
-	std::string text1;
-	std::cin >> text1;
+	string text1, text2;
+	std::cin >> text1 >> text2;
 
-	if (text1.size() & 1)
+	int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+	for (int i = 0; i < text1.size(); i++)
 	{
-		std::cout << "NO\n";
-		return;
+		if (text1[i] != '?' && text2[i] != '?' && text1[i] != text2[i])
+		{
+			count1++;
+		}
+
+		if (text1[i] == '?' && text2[i] == '?')
+		{
+			count3++;
+		}
+
+		if (text2[i] == '?')
+		{
+			count2++;
+		}
+
+		if (text1[i] == '?')
+		{
+			count2++;
+		}
 	}
 
-	std::string text2, text3;
-
-	text2 = text1.substr(0, text1.size() / 2);
-	text3 = text1.substr(text1.size() / 2, text1.size());
-
-	if (text2 == text3)
-	{
-		std::cout << "YES\n";
-	}
-	else
-		std::cout << "NO\n";
+	std::cout << count1 << " " << count1 + (count2 - count3) << '\n';
 }
 
 /* Reminder:

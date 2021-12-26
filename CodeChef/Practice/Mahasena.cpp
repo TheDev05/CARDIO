@@ -85,7 +85,7 @@ int main()
 	// fillPrimes();
 
 	int test = 1;
-	std::cin >> test;
+	// std::cin >> test;
 
 	while (test--)
 	{
@@ -97,26 +97,27 @@ int main()
 
 void solve()
 {
-	std::string text1;
-	std::cin >> text1;
+	int n;
+	std::cin >> n;
 
-	if (text1.size() & 1)
+	int even = 0, odd = 0;
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << "NO\n";
-		return;
+		int val;
+		std::cin >> val;
+
+		if (val & 1)
+		{
+			odd++;
+		}
+		else
+			even++;
 	}
 
-	std::string text2, text3;
-
-	text2 = text1.substr(0, text1.size() / 2);
-	text3 = text1.substr(text1.size() / 2, text1.size());
-
-	if (text2 == text3)
-	{
-		std::cout << "YES\n";
-	}
+	if (odd < even)
+		std::cout << "READY FOR BATTLE\n";
 	else
-		std::cout << "NO\n";
+		std::cout << "NOT READY\n";
 }
 
 /* Reminder:

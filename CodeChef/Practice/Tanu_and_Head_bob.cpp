@@ -97,26 +97,22 @@ int main()
 
 void solve()
 {
-	std::string text1;
-	std::cin >> text1;
+	int n;
+	std::cin >> n;
 
-	if (text1.size() & 1)
+	std::string text;
+	std::cin >> text;
+
+	if (text.find('I') != string::npos)
 	{
-		std::cout << "NO\n";
-		return;
+		std::cout << "INDIAN\n";
 	}
-
-	std::string text2, text3;
-
-	text2 = text1.substr(0, text1.size() / 2);
-	text3 = text1.substr(text1.size() / 2, text1.size());
-
-	if (text2 == text3)
+	else if (text.find('Y') != string::npos)
 	{
-		std::cout << "YES\n";
+		std::cout << "NOT INDIAN\n";
 	}
 	else
-		std::cout << "NO\n";
+		std::cout << "NOT SURE\n";
 }
 
 /* Reminder:

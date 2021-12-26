@@ -97,26 +97,17 @@ int main()
 
 void solve()
 {
-	std::string text1;
-	std::cin >> text1;
+	int a, b, k;
+	std::cin >> a >> b >> k;
 
-	if (text1.size() & 1)
+	int diff = abs(a - b);
+
+	if (k >= diff)
 	{
-		std::cout << "NO\n";
-		return;
-	}
-
-	std::string text2, text3;
-
-	text2 = text1.substr(0, text1.size() / 2);
-	text3 = text1.substr(text1.size() / 2, text1.size());
-
-	if (text2 == text3)
-	{
-		std::cout << "YES\n";
+		std::cout << "0\n";
 	}
 	else
-		std::cout << "NO\n";
+		std::cout << diff - k << '\n';
 }
 
 /* Reminder:
