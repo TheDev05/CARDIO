@@ -1,8 +1,7 @@
-/*** Hello Stalker!,
-  * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
-  * With Gods' Grace, Let's begin today's journey!
-  * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
- ***/
+/*
+ StayWithKarma & repeat with me, "Hare Krishna!"
+ Username: TheDev05, Happy Coding <3
+*/
 
 #include <bits/stdc++.h>
 using namespace std;

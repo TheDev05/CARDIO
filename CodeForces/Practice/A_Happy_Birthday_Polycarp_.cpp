@@ -96,11 +96,34 @@ int main()
 
 void solve()
 {
-	ll a, b, k;
-	std::cin >> a >> b >> k;
+	int n;
+	std::cin >> n;
 
-	a--;
-	std::cout << 1 + (a - 1) * 2<< '\n';
+	int count = log10(n) + 1;
+	// db(count);
+
+	int rem, first, res = n;
+	while (res)
+	{
+		rem = res % 10;
+		res = res / 10;
+	}
+
+	// db(rem);
+	int temp = rem;
+
+	for (int i = 0; i < (count - 1); i++)
+	{
+		temp = (temp * 10) + rem;
+	}
+	// db(temp);
+
+	if (n >= temp)
+	{
+		std::cout << 9 * (count - 1) + rem << '\n';
+	}
+	else
+		std::cout << 9 * (count - 1) + (rem - 1) << '\n';
 }
 
 /* Reminder:

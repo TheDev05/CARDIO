@@ -1,7 +1,8 @@
-/*
- StayWithKarma & repeat with me, "Hare Krishna!"
- Username: TheDev05, Happy Coding <3
-*/
+/*** Hello Stalker!,
+ * Just Believe in Yourself, Its Okay to Inspire/ Learn from others' code but never copy them,
+ * With Gods' Grace, Let's begin today's journey!
+ * Username: at all platform: TheDev05, except CodeChef: WhoCares05; Happy Coding >_<
+ ***/
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -84,7 +85,7 @@ int main()
 	// fillPrimes();
 
 	int test = 1;
-	std::cin >> test;
+	// std::cin >> test;
 
 	while (test--)
 	{
@@ -96,11 +97,32 @@ int main()
 
 void solve()
 {
-	ll a, b, k;
-	std::cin >> a >> b >> k;
 
-	a--;
-	std::cout << 1 + (a - 1) * 2<< '\n';
+	int n, count = 0;
+	std::cin >> n;
+
+	bool key1 = true, key2 = true;
+	for (int i = 0; i < n; i++)
+	{
+		int data;
+		std::cin >> data;
+
+		if (data == 10 && key1 == true)
+		{
+			count++;
+			key1 = false;
+			key2 = true;
+		}
+
+		if (data == 01 && key2 == true)
+		{
+			count++;
+			key2 = false;
+			key1 = true;
+		}
+	}
+
+	std::cout << count << '\n';
 }
 
 /* Reminder:
