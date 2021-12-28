@@ -84,7 +84,7 @@ int main()
 	// fillPrimes();
 
 	int test = 1;
-	std::cin >> test;
+	// std::cin >> test;
 
 	while (test--)
 	{
@@ -96,11 +96,7 @@ int main()
 
 void solve()
 {
-	ll a, b, k;
-	std::cin >> a >> b >> k;
-
-	a--;
-	std::cout << 1 + (a - 1) * 2<< '\n';
+	
 }
 
 /* Reminder:
