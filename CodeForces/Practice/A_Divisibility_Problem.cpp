@@ -84,7 +84,7 @@ int main()
     // fillPrimes();
 
     int test = 1;
-    // std::cin >> test;
+    std::cin >> test;
 
     while (test--)
     {
@@ -96,33 +96,19 @@ int main()
 
 void solve()
 {
-    int data[4];
-    ll count;
-    std::cin >> data[0] >> data[1] >> data[2] >> data[3] >> count;
+    int a, b;
+    std::cin >> a >> b;
 
-    vector<bool> num(count, false);
-
-    for (int i = 0; i < 4; i++)
+    if (a % b == 0)
     {
-        for (int j = data[i]; j <= count; j = j + data[i])
-        {
-            if (num[j] == false)
-            {
-                num[j] = true;
-            }
-        }
+        std::cout << "0\n";
+        return;
     }
 
-    int result = 0;
-    for (int i = 0; i < num.size(); i++)
-    {
-        if (num[i] == true)
-        {
-            result++;
-        }
-    }
+    int temp = a % b;
+    temp = a - temp;
 
-    std::cout << (result + 1) << '\n';
+    std::cout << (temp + b) - a << '\n';
 }
 
 /* Reminder:
