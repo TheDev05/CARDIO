@@ -96,68 +96,36 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    int a, b;
+    std::cin >> a >> b;
 
-    vector<int> num1, num2;
-    for (int i = 0; i < n; i++)
+    int diff = abs(a - b);
+
+    if (a == b)
     {
-        int val;
-        std::cin >> val;
-
-        num1.pb(val);
-    }
-
-    map<int, int> dot;
-
-    for (int i = 0; i < n; i++)
-    {
-        int val1;
-        std::cin >> val1;
-
-        if (val1 - num1[i] < 0)
-        {
-            std::cout << "NO\n";
-            return;
-        }
-
-        if (val1 - num1[i] != 0)
-        {
-            num2.push_back(i + 1);
-            int temp = abs(val1 - num1[i]);
-            dot[temp]++;
-        }
-    }
-
-    if (num2.size() == 0)
-    {
-        std::cout << "YES\n";
+        std::cout << "0\n";
         return;
     }
 
-    if (dot.size() != 1)
+    if (a > b)
     {
-        std::cout << "NO\n";
-        return;
-    }
-
-    int temp1 = num2[0] - 1;
-    for (int i = 0; i < num2.size(); i++)
-    {
-        if (abs(num2[i] - temp1) != 1)
+        if (diff % 2 == 0)
         {
-            std::cout << "NO\n";
-            return;
+            std::cout << "1\n";
         }
-
-        temp1 = num2[i];
+        else
+            std::cout << "2\n";
     }
 
-    std::cout << "YES\n";
-
-    dot.clear();
-    num1.clear();
-    num2.clear();
+    if (a < b)
+    {
+        if (diff % 2 != 0)
+        {
+            std::cout << "1\n";
+        }
+        else
+            std::cout << "2\n";
+    }
 }
 
 /* Reminder:
