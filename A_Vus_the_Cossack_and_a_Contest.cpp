@@ -84,7 +84,7 @@ int main()
     // fillPrimes();
 
     int test = 1;
-    std::cin >> test;
+    // std::cin >> test;
 
     while (test--)
     {
@@ -96,10 +96,15 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    int n, m, k;
+    std::cin >> n >> m >> k;
 
-    std::cout << 19 + ((n - 1) * 9) << '\n';
+    if (std::min(m, k) >= n)
+    {
+        std::cout << "Yes\n";
+    }
+    else
+        std::cout << "No\n";
 }
 
 /* Reminder:
