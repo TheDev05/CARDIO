@@ -96,48 +96,32 @@ int main()
 
 void solve()
 {
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int n;
+    std::cin >> n;
 
-    int res_a = a, res_b = b;
+    vi num;
+    int sum = 0;
 
-    int result1 = 0, result2 = 0;
-    for (int i = 0;; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (i & 1)
-        {
-            b = a + b;
-        }
-        else
-            a = a + b;
+        int val;
+        std::cin >> val;
 
-        if (a > k || b > k)
-        {
-            result1 = i + 1;
-            break;
-        }
+        num.pb(val);
+        sum += val;
     }
 
-    a = res_a;
-    b = res_b;
-    
-    for (int i = 0;; i++)
+    if (sum <= 0 || sum < n)
     {
-        if (i & 1)
-        {
-            a = a + b;
-        }
-        else
-            b = a + b;
-
-        if (a > k || b > k)
-        {
-            result2 = i + 1;
-            break;
-        }
+        std::cout << "1\n";
+        return;
     }
 
-    std::cout << std::min(result1, result2) << '\n';
+    if (sum >= n)
+    {
+        std::cout << sum - n << '\n';
+        return;
+    }
 }
 
 /* Reminder:

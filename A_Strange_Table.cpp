@@ -96,48 +96,20 @@ int main()
 
 void solve()
 {
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    ll r, c, x;
+    std::cin >> r >> c >> x;
 
-    int res_a = a, res_b = b;
+    ll col = ceil((double)x / r);
+    ll row;
 
-    int result1 = 0, result2 = 0;
-    for (int i = 0;; i++)
+    if (x % r == 0)
     {
-        if (i & 1)
-        {
-            b = a + b;
-        }
-        else
-            a = a + b;
-
-        if (a > k || b > k)
-        {
-            result1 = i + 1;
-            break;
-        }
+        row = r;
     }
+    else
+        row = x % r;
 
-    a = res_a;
-    b = res_b;
-    
-    for (int i = 0;; i++)
-    {
-        if (i & 1)
-        {
-            a = a + b;
-        }
-        else
-            b = a + b;
-
-        if (a > k || b > k)
-        {
-            result2 = i + 1;
-            break;
-        }
-    }
-
-    std::cout << std::min(result1, result2) << '\n';
+    std::cout << ((row - 1) * c) + col << '\n';
 }
 
 /* Reminder:

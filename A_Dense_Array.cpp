@@ -96,48 +96,53 @@ int main()
 
 void solve()
 {
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int n;
+    std::cin >> n;
 
-    int res_a = a, res_b = b;
-
-    int result1 = 0, result2 = 0;
-    for (int i = 0;; i++)
+    vi num, res;
+    for (int i = 0; i < n; i++)
     {
-        if (i & 1)
+        int val;
+        std::cin >> val;
+
+        num.pb(val);
+    }
+
+    int size = num.size();
+
+    int count = 0;
+    for (int i = 0; i < num.size(); i++)
+    {
+        int temp = num[i];
+        int next = num[i + 1];
+
+        int upper = temp * 2;
+        int lower = ceil((float)temp / 2);
+
+        if (next <= upper && next >= lower)
         {
-            b = a + b;
+            continue;
         }
         else
-            a = a + b;
-
-        if (a > k || b > k)
         {
-            result1 = i + 1;
-            break;
+
+            if (i == num.size() - 1)
+            {
+                break;
+            }
+
+            if (next > upper)
+            {
+                num.insert(num.begin() + (i + 1), upper);
+            }
+            else
+            {
+                num.insert(num.begin() + (i + 1), lower);
+            }
         }
     }
 
-    a = res_a;
-    b = res_b;
-    
-    for (int i = 0;; i++)
-    {
-        if (i & 1)
-        {
-            a = a + b;
-        }
-        else
-            b = a + b;
-
-        if (a > k || b > k)
-        {
-            result2 = i + 1;
-            break;
-        }
-    }
-
-    std::cout << std::min(result1, result2) << '\n';
+    std::cout << num.size() - size << '\n';
 }
 
 /* Reminder:

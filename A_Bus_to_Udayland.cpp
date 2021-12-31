@@ -84,7 +84,7 @@ int main()
     // fillPrimes();
 
     int test = 1;
-    std::cin >> test;
+    // std::cin >> test;
 
     while (test--)
     {
@@ -96,48 +96,67 @@ int main()
 
 void solve()
 {
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int r;
+    std::cin >> r;
 
-    int res_a = a, res_b = b;
+    int c = 5;
+    char num[r][c];
 
-    int result1 = 0, result2 = 0;
-    for (int i = 0;; i++)
+    for (int i = 0; i < r; i++)
     {
-        if (i & 1)
+        for (int j = 0; j < c; j++)
         {
-            b = a + b;
+            std::cin >> num[i][j];
         }
-        else
-            a = a + b;
+    }
 
-        if (a > k || b > k)
+    bool ok = false;
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c; j++)
         {
-            result1 = i + 1;
+            if (j == 1 || j == 4)
+            {
+                if (j == 1 && num[i][1] == 'O' && num[i][0] == 'O')
+                {
+                    num[i][0] = '+';
+                    num[i][1] = '+';
+
+                    ok = true;
+                    break;
+                }
+                else if (j == 4 && num[i][4] == 'O' && num[i][3] == 'O')
+                {
+                    num[i][4] = '+';
+                    num[i][3] = '+';
+
+                    ok = true;
+                    break;
+                }
+            }
+        }
+
+        if (ok)
+        {
             break;
         }
     }
 
-    a = res_a;
-    b = res_b;
-    
-    for (int i = 0;; i++)
+    if (ok)
     {
-        if (i & 1)
+        std::cout << "YES\n";
+        for (int i = 0; i < r; i++)
         {
-            a = a + b;
-        }
-        else
-            b = a + b;
-
-        if (a > k || b > k)
-        {
-            result2 = i + 1;
-            break;
+            for (int j = 0; j < c; j++)
+            {
+                std::cout << num[i][j];
+            }
+            en;
         }
     }
-
-    std::cout << std::min(result1, result2) << '\n';
+    else
+        std::cout << "NO\n";
+    en;
 }
 
 /* Reminder:

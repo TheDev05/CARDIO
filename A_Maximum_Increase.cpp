@@ -84,7 +84,7 @@ int main()
     // fillPrimes();
 
     int test = 1;
-    std::cin >> test;
+    // std::cin >> test;
 
     while (test--)
     {
@@ -96,48 +96,40 @@ int main()
 
 void solve()
 {
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int n;
+    std::cin >> n;
 
-    int res_a = a, res_b = b;
-
-    int result1 = 0, result2 = 0;
-    for (int i = 0;; i++)
+    vi num;
+    for (int i = 0; i < n; i++)
     {
-        if (i & 1)
-        {
-            b = a + b;
-        }
-        else
-            a = a + b;
+        int val;
+        std::cin >> val;
 
-        if (a > k || b > k)
-        {
-            result1 = i + 1;
-            break;
-        }
+        num.pb(val);
     }
 
-    a = res_a;
-    b = res_b;
-    
-    for (int i = 0;; i++)
+    int count = 0, result = 1;
+    for (int i = 0; i < num.size(); i++)
     {
-        if (i & 1)
-        {
-            a = a + b;
-        }
-        else
-            b = a + b;
+        int index, p;
 
-        if (a > k || b > k)
+        count = 1;
+        index = i + 1;
+        p = i;
+
+        while (num[index] > num[p] && index < num.size())
         {
-            result2 = i + 1;
-            break;
+            count++;
+
+            p = index;
+            index++;
         }
+
+        result = std::max(count, result);
+        i = p;
     }
 
-    std::cout << std::min(result1, result2) << '\n';
+    std::cout << result << '\n';
 }
 
 /* Reminder:
