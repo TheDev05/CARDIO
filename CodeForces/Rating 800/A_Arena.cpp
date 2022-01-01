@@ -38,7 +38,6 @@ using namespace std;
 /* Extras */
 #define en cout << '\n' // NewLine
 #define ll long long
-#define rn return
 #define maxin(v) *max_element(v.begin(), v.end())
 #define minin(v) *min_element(v.begin(), v.end())
 #define gcd(a, b) __gcd(a, b)
@@ -56,48 +55,68 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int test = 1;
-	// std::cin >> test;
+    int test = 1;
+    std::cin >> test;
 
-	while (test--)
-	{
-		solve();
-	}
+    while (test--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    int n;
+    std::cin >> n;
+
+    int min = imax, num[n];
+
+    loop(0, n)
+    {
+        std::cin >> num[i];
+        min = std::min(min, num[i]);
+    }
+
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (min < num[i])
+        {
+            count++;
+        }
+    }
+
+    std::cout << count << '\n';
 }
 
 /* Reminder:
