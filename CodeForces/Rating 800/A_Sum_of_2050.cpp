@@ -1,5 +1,10 @@
+
 /*
- StayWithKarma & repeat with me, "Hare Krishna!"
+ StayWithKarma & repeat this,
+
+    "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
+     Hare Rama Hare Rama, Rama Rama Hare Hare !!"
+
  Username: TheDev05, Happy Coding <3
 */
 
@@ -56,48 +61,82 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	/* Input-Output data from text file */
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int test = 1;
-	// std::cin >> test;
+    int test = 1;
+    std::cin >> test;
 
-	while (test--)
-	{
-		solve();
-	}
+    while (test--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    ll n;
+    std::cin >> n;
+
+    if (n < 2050)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+
+    ll temp = n, count = 0;
+    for (ll i = 0;; i++)
+    {
+        ll dig = log10(temp) + 1;
+        ll val = 2050 * pow(10, dig - 4);
+
+        if (temp < val)
+        {
+            val/= 10;
+        }
+
+        temp = temp - val;
+        count = i;
+
+        if (temp == 0)
+        {
+            break;
+        }
+        else if (temp < 2050)
+        {
+            std::cout << "-1\n";
+            rn;
+        }
+    }
+
+    std::cout << count + 1 << '\n';
 }
 
 /* Reminder:
