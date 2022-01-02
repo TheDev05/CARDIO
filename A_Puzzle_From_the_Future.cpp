@@ -1,8 +1,8 @@
 /*
  StayWithKarma & chant with me,
 
-	"Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
-	 Hare Rama Hare Rama, Rama Rama Hare Hare !!"
+    "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
+     Hare Rama Hare Rama, Rama Rama Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -61,46 +61,86 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
+    int n;
+    std::cin >> n;
+
+    std::string result, text, alt;
+    std::cin >> text;
+
+    for (int i = 0; i < text.size(); i++)
+    {
+        char atom;
+        int max = imin;
+
+        if (i == 0)
+        {
+            int val = (int)(text[i] - '0') + 1;
+            result += to_string(val);
+            alt += '1';
+
+            continue;
+        }
+
+        int temp1 = (int)(text[i] - '0');
+        int temp2 = (int)(result[i - 1] - '0');
+
+        if (temp1 + 0 != temp2 && temp1 + 0 > max)
+        {
+            atom = '0';
+            max = temp1 + 0;
+        }
+
+        if (temp1 + 1 != temp2 && temp1 + 1 > max)
+        {
+            atom = '1';
+            max = temp1 + 1;
+        }
+
+        alt += atom;
+        result += to_string(max);
+    }
+
+    std::cout << alt << '\n';
 }
 
 /* Reminder:

@@ -1,8 +1,8 @@
 /*
  StayWithKarma & chant with me,
 
-	"Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
-	 Hare Rama Hare Rama, Rama Rama Hare Hare !!"
+    "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
+     Hare Rama Hare Rama, Rama Rama Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -61,46 +61,89 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    // std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
+    int a, b, c;
+    std::cin >> a >> b >> c;
+
+    int x, y, z;
+    std::cin >> x >> y >> z;
+
+    int n;
+    std::cin >> n;
+
+    int sum1 = a + b + c;
+    int sum2 = x + y + z;
+
+    for (int i = 0; i < n; i++)
+    {
+
+        if (sum2 != 0)
+        {
+            if (sum2 > 10)
+            {
+                sum2 = sum2 - 10;
+            }
+            else
+                sum2 = 0;
+        }
+        else if (sum1 != 0)
+        {
+            if (sum1 > 5)
+            {
+                sum1 = sum1 - 5;
+            }
+            else
+                sum1 = 0;
+        }
+        else
+            break;
+    }
+
+    if (sum2 == 0 && sum1 == 0)
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }
 
 /* Reminder:

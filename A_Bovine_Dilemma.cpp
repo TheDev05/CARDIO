@@ -1,8 +1,8 @@
 /*
  StayWithKarma & chant with me,
 
-	"Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
-	 Hare Rama Hare Rama, Rama Rama Hare Hare !!"
+    "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
+     Hare Rama Hare Rama, Rama Rama Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -61,46 +61,72 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(3);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    /* Input-Output data from text file */
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
+    int n;
+    std::cin >> n;
+
+    vi num;
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        std::cin >> val;
+
+        num.pb(val);
+    }
+
+    set<float> data;
+    for (int i = 0; i < num.size(); i++)
+    {
+        for (int j = i + 1; j < num.size(); j++)
+        {
+            float temp = abs(num[i] - num[j]);
+            temp = temp / 2;
+
+            data.insert(temp);
+        }
+    }
+
+    std::cout << data.size() << '\n';
 }
 
 /* Reminder:
