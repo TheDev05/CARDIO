@@ -89,7 +89,7 @@ int main()
 	// fillPrimes();
 
 	int testCase = 1;
-	// std::cin >> testCase;
+	std::cin >> testCase;
 
 	while (testCase--)
 	{
@@ -101,6 +101,34 @@ int main()
 
 void solve()
 {
+	int n, k;
+	std::cin >> n >> k;
+
+	if (ceil(((float)n / 2)) < k)
+	{
+		std::cout << "-1\n";
+		rn;
+	}
+
+	int index1 = 0, index2 = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (i == index1 && j == index2 && k > 0)
+			{
+				std::cout << "R";
+				k--;
+				
+				index1 += 2;
+				index2 += 2;
+			}
+			else
+				std::cout << ".";
+		}
+
+		en;
+	}
 }
 
 /* Reminder:
