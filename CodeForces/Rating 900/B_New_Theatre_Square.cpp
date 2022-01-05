@@ -90,7 +90,7 @@ int main()
 	// fillPrimes();
 
 	int testCase = 1;
-	// std::cin >> testCase;
+	std::cin >> testCase;
 
 	while (testCase--)
 	{
@@ -102,11 +102,56 @@ int main()
 
 void solve()
 {
-	std::string text;
-	std::cin >> text;
+	int m, n, ks, kh;
+	std::cin >> m >> n >> ks >> kh;
 
-	int val = count(text.begin(),text.end(),"aa");
-	std::cout << val;
+	vector<string> num;
+	for (int i = 0; i < m; i++)
+	{
+		std::string temp;
+		std::cin >> temp;
+
+		num.pb(temp);
+	}
+
+	int sum = 0;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (num[i][j] == '.')
+			{
+				int index = j + 1;
+				int count = 1;
+				bool ok = false;
+
+				while (num[i][index] == '.' && index < num[i].size())
+				{
+					index++;
+					count++;
+
+					ok = true;
+				}
+
+				if (ok)
+				{
+					int sq = count % 2;
+					int hz = count / 2;
+
+					int val1 = hz * kh;
+					int val2 = hz * 2 * ks;
+
+					sum += std::min(val1, val2) + sq * ks;
+					j = index - 1;
+				}
+				else
+
+					sum += ks;
+			}
+		}
+	}
+
+	std::cout << sum << '\n';
 }
 
 /* Reminder:
