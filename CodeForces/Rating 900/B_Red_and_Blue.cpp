@@ -1,8 +1,8 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -47,7 +47,6 @@ using namespace std;
 #define srt(v) sort(v.begin(), v.end())
 #define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
 #define loop(x, n) for (ll i = x; i < n; ++i)
-#define rloop(x, n) for (ll i = x; i >= n; i--)
 #define db(x) cout << #x << "[" << x << "]" << '\n';
 #define xx cout << "I am good!" << '\n'
 
@@ -58,47 +57,89 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    int n;
+    std::cin >> n;
+
+    vi num(n);
+    loop(0, n) std::cin >> num[i];
+
+    int m;
+    std::cin >> m;
+
+    vi res(m);
+    loop(0, m) std::cin >> res[i];
+
+    int sum = 0, count = 0;
+    for (int i = 0; i < num.size(); i++)
+    {
+        count += num[i];
+
+        if ((i == num.size() - 1) || (num[i] >= 0 && num[i + 1] < 0))
+        {
+            if (count > 0)
+            {
+                sum += count;
+                count = 0;
+            }
+        }
+    }
+
+    count = 0;
+    for (int i = 0; i < res.size(); i++)
+    {
+        count += res[i];
+
+        if ((i == res.size() - 1) || (res[i] >= 0 && res[i + 1] < 0))
+        {
+            if (count > 0)
+            {
+                sum += count;
+                count = 0;
+            }
+        }
+    }
+
+    std::cout << sum << '\n';
 }
 
 /* Reminder:

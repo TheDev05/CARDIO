@@ -1,8 +1,8 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -58,47 +58,70 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    std::string text1, text2;
+    std::cin >> text1 >> text2;
+
+    int result = 0;
+    for (int j = 0; j < text2.size(); j++)
+    {
+        if (text1[0] == text2[j])
+        {
+            int index1 = 1, index2 = j + 1, count = 1;
+            while (text1[index1] == text2[index2] && index1 < text1.size() && index2 < text2.size())
+            {
+                count++;
+
+                index1++;
+                index2++;
+            }
+
+            result = std::max(count, result);
+        }
+    }
+
+    // db(result);
+
+    std::cout << (text1.size() + text2.size()) - (result * 2) << '\n';
 }
 
 /* Reminder:

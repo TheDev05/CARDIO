@@ -98,7 +98,18 @@ int main()
 
 void solve()
 {
-	
+	int n;
+	std::cin >> n;
+
+	double val1 = sqrt((double)n / 2);
+	double val2 = sqrt((double)n / 4);
+
+	if (ceil(val1) == floor(val1) || ceil(val2) == floor(val2))
+	{
+		std::cout << "YES\n";
+	}
+	else
+		std::cout << "NO\n";
 }
 
 /* Reminder:

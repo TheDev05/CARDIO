@@ -1,8 +1,8 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -47,7 +47,6 @@ using namespace std;
 #define srt(v) sort(v.begin(), v.end())
 #define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
 #define loop(x, n) for (ll i = x; i < n; ++i)
-#define rloop(x, n) for (ll i = x; i >= n; i--)
 #define db(x) cout << #x << "[" << x << "]" << '\n';
 #define xx cout << "I am good!" << '\n'
 
@@ -58,47 +57,101 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-	
+    vi num;
+
+    int odd = 0, odd1 = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        int val;
+        std::cin >> val;
+
+        num.pb(val);
+
+        if (val & 1)
+        {
+            odd++;
+        }
+    }
+
+    if (num[0] > 0 && num[1] > 0 && num[2] > 0)
+    {
+        num[0]--;
+        num[1]--;
+        num[2]--;
+        num[3]++;
+
+        if (num[0] & 1)
+        {
+            odd1++;
+        }
+        if (num[1] & 1)
+        {
+            odd1++;
+        }
+        if (num[2] & 1)
+        {
+            odd1++;
+        }
+        if (num[3] & 1)
+        {
+            odd1++;
+        }
+
+        if (odd > 1 && odd1 > 1)
+        {
+            std::cout << "No\n";
+        }
+        else
+            std::cout << "Yes\n";
+        rn;
+    }
+
+    if (odd > 1)
+    {
+        std::cout << "No\n";
+    }
+    else
+        std::cout << "Yes\n";
 }
 
 /* Reminder:

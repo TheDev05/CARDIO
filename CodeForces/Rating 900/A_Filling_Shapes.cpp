@@ -85,7 +85,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -97,33 +97,16 @@ int main()
 
 void solve()
 {
-    int odd = 0, even = 0;
-    vi num(4);
+    int n;
+    std::cin >> n;
 
-    loop(0, 4)
+    if (n & 1)
     {
-        std::cin >> num[i];
-
-        if (num[i] % 2 == 0)
-        {
-            even++;
-        }
-        else if (num[i] % 2 != 0)
-            odd++;
-    }
-
-    if (maxin(num) == minin(num) && maxin(num) % 2 == 0)
-    {
-        std::cout << "Yes\n";
+        std::cout << "0\n";
         rn;
     }
 
-    if ((odd == 3 && even == 1) || (even == 3 && odd == 1) && (even == 4))
-    {
-        std::cout << "Yes\n";
-    }
-    else
-        std::cout << "No\n";
+    std::cout << (int)(pow(2, n / 2)) << '\n';
 }
 
 /* Reminder:
