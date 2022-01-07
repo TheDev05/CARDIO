@@ -74,7 +74,7 @@ void fillPrimes()
 int main()
 {
     ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(10);
+    std::cout << std::setprecision(12);
     std::cout << std::fixed;
 
     cin.tie(NULL);
@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,25 +98,17 @@ int main()
 
 void solve()
 {
-    std::string text1, text2;
-    std::cin >> text1 >> text2;
+    int n;
+    std::cin >> n;
 
-    int result = 0;
-    for (int i = 0; i < text1.size(); i++)
+    double sum = 0, val = n;
+    for (int i = 0; i < n; i++)
     {
-        std::string temp;
-        for (int j = i; j < text1.size(); j++)
-        {
-            temp += text1[j];
-            if (text2.find(temp) != string::npos)
-            {
-                int val = temp.size();
-                result = std::max(val, result);
-            }
-        }
+        sum += (1 / val);
+        val--;
     }
-    
-    std::cout << text1.size() + text2.size() - (result * 2) << '\n';
+
+    std::cout << sum << '\n';
 }
 
 /* Reminder:

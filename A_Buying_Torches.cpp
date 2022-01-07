@@ -38,6 +38,8 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
+#define ull unsigned long long
+#define ld long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -98,25 +100,18 @@ int main()
 
 void solve()
 {
-    std::string text1, text2;
-    std::cin >> text1 >> text2;
+    ull a, b, k;
+    std::cin >> a >> b >> k;
 
-    int result = 0;
-    for (int i = 0; i < text1.size(); i++)
-    {
-        std::string temp;
-        for (int j = i; j < text1.size(); j++)
-        {
-            temp += text1[j];
-            if (text2.find(temp) != string::npos)
-            {
-                int val = temp.size();
-                result = std::max(val, result);
-            }
-        }
-    }
-    
-    std::cout << text1.size() + text2.size() - (result * 2) << '\n';
+    ull coal = k;
+    ull stick = k;
+
+    ull total = stick + (b * coal);
+
+    ull diff = a - 1;
+    ull result = ceil((((ld)total - a) / diff) + 1);
+
+    std::cout << result + coal << "\n";
 }
 
 /* Reminder:

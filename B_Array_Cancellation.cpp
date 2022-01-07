@@ -98,25 +98,71 @@ int main()
 
 void solve()
 {
-    std::string text1, text2;
-    std::cin >> text1 >> text2;
+    int n;
+    std::cin >> n;
 
-    int result = 0;
-    for (int i = 0; i < text1.size(); i++)
+    vi num(n);
+    ll sum = 0;
+
+    for (int i = 0; i < n; i++)
     {
-        std::string temp;
-        for (int j = i; j < text1.size(); j++)
+        std::cin >> num[i];
+
+        if (num[i] > 0)
         {
-            temp += text1[j];
-            if (text2.find(temp) != string::npos)
+            sum += num[i];
+        }
+    }
+
+    ll due = 0, left = -sum;
+    for (int i = 0; i < n; i++)
+    {
+        if (num[i] < 0)
+        {
+            left = left - num[i];
+
+            if (due == abs(num[i]))
             {
-                int val = temp.size();
-                result = std::max(val, result);
+                num[i] = 0;
+                due = 0;
+            }
+            else if (due > abs(num[i]))
+            {
+                due = due - abs(num[i]);
+                num[i] = 0;
+            }
+            else
+            {
+                num[i] = -(abs(num[i]) - due);
+                due = 0;
+            }
+        }
+
+        if (num[i] > 0)
+        {
+            if (abs(left) >= num[i])
+            {
+                due += num[i];
+                num[i] = 0;
+            }
+            else if (abs(left) < num[i])
+            {
+                num[i] = num[i] - abs(left);
+                due += abs(left);
             }
         }
     }
-    
-    std::cout << text1.size() + text2.size() - (result * 2) << '\n';
+
+    sum = 0;
+    for (auto i : num)
+    {
+        if (i < 0)
+        {
+            sum += abs(i);
+        }
+    }
+
+    std::cout << sum << '\n';
 }
 
 /* Reminder:

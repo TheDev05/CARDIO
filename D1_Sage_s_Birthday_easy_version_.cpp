@@ -1,8 +1,8 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-    "Hare Rama Hare Rama, Rama Rama Hare Hare,
-     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+	"Hare Rama Hare Rama, Rama Rama Hare Hare,
+	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -58,65 +58,75 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-    isPrime[0] = isPrime[1] = false;
-    for (ll i = 2; i < maxlimit; i++)
-    {
-        if (isPrime[i] == true)
-        {
-            for (int j = 2 * i; j < maxlimit; j += i)
-            {
-                isPrime[j] = false;
-            }
-        }
-    }
+	isPrime[0] = isPrime[1] = false;
+	for (ll i = 2; i < maxlimit; i++)
+	{
+		if (isPrime[i] == true)
+		{
+			for (int j = 2 * i; j < maxlimit; j += i)
+			{
+				isPrime[j] = false;
+			}
+		}
+	}
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(10);
-    std::cout << std::fixed;
+	ios_base::sync_with_stdio(false);
+	std::cout << std::setprecision(10);
+	std::cout << std::fixed;
 
-    cin.tie(NULL);
-    cout.tie(NULL);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
+	// freopen("input.txt", "r", stdin);
+	// freopen("output.txt", "w", stdout);
 
-    // fillPrimes();
+	// fillPrimes();
 
-    int testCase = 1;
-    std::cin >> testCase;
+	int testCase = 1;
+	// std::cin >> testCase;
 
-    while (testCase--)
-    {
-        solve();
-    }
+	while (testCase--)
+	{
+		solve();
+	}
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
 {
-    std::string text1, text2;
-    std::cin >> text1 >> text2;
+	ll n;
+	std::cin >> n;
 
-    int result = 0;
-    for (int i = 0; i < text1.size(); i++)
-    {
-        std::string temp;
-        for (int j = i; j < text1.size(); j++)
-        {
-            temp += text1[j];
-            if (text2.find(temp) != string::npos)
-            {
-                int val = temp.size();
-                result = std::max(val, result);
-            }
-        }
-    }
-    
-    std::cout << text1.size() + text2.size() - (result * 2) << '\n';
+	vi num(n);
+	loop(0, n) std::cin >> num[i];
+
+	ll val = floor((((double)n - 3) / 2) + 1), index = val - 1;
+
+	if (n == 1 || n == 2)
+	{
+		std::cout << "0\n";
+	}
+	else
+		std::cout << val << '\n';
+
+	srt(num);
+
+	for (int i = 0; i < n - val; i++)
+	{
+		std::cout << num[n - 1 - i] << " ";
+
+		if (index >= 0)
+		{
+			std::cout << num[index] << " ";
+			index--;
+		}
+	}
+
+	en;
 }
 
 /* Reminder:
