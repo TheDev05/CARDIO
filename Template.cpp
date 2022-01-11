@@ -38,6 +38,7 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
+#define ull unsigned long long
 #define ld long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
@@ -99,6 +100,7 @@ int main()
 
 void solve()
 {}
+
 
 
 /* Reminder:

@@ -83,7 +83,7 @@ int main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    fillPrimes();
+    // fillPrimes();
 
     int testCase = 1;
     std::cin >> testCase;
@@ -98,67 +98,29 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    int a, b;
+    std::cin >> a >> b;
 
-    std::string result, text;
-    std::cin >> text;
-
-    map<char, int> num;
-
-    bool ok = true;
-    for (int i = 0; i < text.size(); i++)
+    if (a <= 3 )
     {
-        int temp = (int)(text[i] - '0');
-        if (isPrime[temp] == false)
+        if (a == b)
         {
-            result = text[i];
-            ok = false;
-
-            break;
+            std::cout << "YES\n";
         }
-    }
-
-    if (ok == false)
-    {
-        std::cout << "1\n";
-        std::cout << result << '\n';
+        else if ((a == 2) && (b == 3 || b == 1))
+        {
+            std::cout << "YES\n";
+        }
+        else if ((a == 3) && (b == 1 || b == 2))
+        {
+            std::cout << "YES\n";
+        }
+        else
+            std::cout << "NO\n";
         rn;
     }
-    else
-    {
-        loop(0, n)
-        {
-            num[text[i]]++;
-            if (num[text[i]] > 1)
-            {
-                result = text[i];
 
-                std::cout << "2\n";
-                std::cout << result << result << '\n';
-                rn;
-            }
-        }
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
-            string temp;
-
-            temp += text[i];
-            temp += text[j];
-
-            int val = stoi(temp);
-            if (isPrime[val] == false)
-            {
-                std::cout << "2\n";
-                std::cout << temp << '\n';
-                rn;
-            }
-        }
-    }
+    std::cout << "YES\n";
 }
 
 /* Reminder:

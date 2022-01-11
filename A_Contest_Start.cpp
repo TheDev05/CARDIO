@@ -38,6 +38,7 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
+#define ull unsigned long long
 #define rn return
 #define all(x) (x).begin(), (x).end()
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -83,7 +84,7 @@ int main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    fillPrimes();
+    // fillPrimes();
 
     int testCase = 1;
     std::cin >> testCase;
@@ -98,67 +99,23 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    ull n, a, t;
+    std::cin >> n >> a >> t;
 
-    std::string result, text;
-    std::cin >> text;
-
-    map<char, int> num;
-
-    bool ok = true;
-    for (int i = 0; i < text.size(); i++)
+    ull locate = (t / a) + 1;
+    if (locate >= n)
     {
-        int temp = (int)(text[i] - '0');
-        if (isPrime[temp] == false)
-        {
-            result = text[i];
-            ok = false;
-
-            break;
-        }
+        locate = n;
     }
 
-    if (ok == false)
-    {
-        std::cout << "1\n";
-        std::cout << result << '\n';
-        rn;
-    }
-    else
-    {
-        loop(0, n)
-        {
-            num[text[i]]++;
-            if (num[text[i]] > 1)
-            {
-                result = text[i];
+    ull prop = (locate - 1) * a;
+    prop = prop / a;
 
-                std::cout << "2\n";
-                std::cout << result << result << '\n';
-                rn;
-            }
-        }
-    }
+    ull result = ((n - prop) * prop);
+    ull left = ((n - (n - prop)) - 1);
+    result += (left * (left + 1)) / 2;
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
-            string temp;
-
-            temp += text[i];
-            temp += text[j];
-
-            int val = stoi(temp);
-            if (isPrime[val] == false)
-            {
-                std::cout << "2\n";
-                std::cout << temp << '\n';
-                rn;
-            }
-        }
-    }
+    std::cout << result << '\n';
 }
 
 /* Reminder:
