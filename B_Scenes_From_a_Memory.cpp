@@ -38,7 +38,6 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
-#define ld long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -87,7 +86,7 @@ int main()
 	// fillPrimes();
 
 	int testCase = 1;
-	// std::cin >> testCase;
+	std::cin >> testCase;
 
 	while (testCase--)
 	{
@@ -98,8 +97,9 @@ int main()
 /* Check: Single testCase or muntiple */
 
 void solve()
-{}
-
+{
+	
+}
 
 /* Reminder:
 1. Check Corner Cases, Least Input & Max Input.
