@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    // std::cin >> testCase;
+    std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,16 +98,31 @@ int main()
 
 void solve()
 {
-    int a, b;
-    std::cin >> a >> b;
+    int n;
+    std::cin >> n;
 
-    int d = 1 + (4 * (b * 2));
-    double val = sqrt((double)d);
+    bool ok = false;
 
-    int n = ceil((-1 + val) / 2);
-    int sum = (n * (n + 1)) / 2;
+    map<int, int> num;
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        std::cin >> val;
 
-    std::cout << sum - b << '\n';
+        num[val]++;
+
+        if (num[val] > 1)
+        {
+            ok = true;
+        }
+    }
+
+    if (ok)
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }
 
 /* Reminder:
