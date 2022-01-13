@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,55 +98,16 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    int l, r;
+    std::cin >> l >> r;
 
-    if (n & 1)
+    if (l == r)
     {
-        int count = 1;
-        int rcount = n;
-        int dot = ceil((float)n / 2);
-        dot++;
-
-        std::cout << dot << '\n';
-
-        for (int i = 0; i < dot - 1; i++)
-        {
-            std::cout << count << " " << rcount << '\n';
-            count++;
-            rcount--;
-        }
-
-        for (int i = 0; i < dot - 1; i++)
-        {
-            std::cout << dot << " " << dot << '\n';
-        }
-    }
-    else
-    {
-        int dot = (n / 2) + 1;
-
-        int count = 2;
-        int rcount = n;
-
-        std::cout << (dot + 1) / 2 << '\n';
-
-        for (int i = 0; i < n - dot; i++)
-        {
-            std::cout << count << " " << rcount << '\n';
-            count++;
-            rcount--;
-        }
-
-        for (int i = 0; i < n - dot; i++)
-        {
-            std::cout << dot << " " << dot << '\n';
-        }
-
-        std::cout << "1 " << dot;
+        std::cout << l << '\n';
+        rn;
     }
 
-    en;
+    std::cout << "2\n";
 }
 
 /* Reminder:
