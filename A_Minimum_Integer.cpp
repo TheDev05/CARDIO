@@ -74,7 +74,7 @@ void fillPrimes()
 int main()
 {
     ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(20);
+    std::cout << std::setprecision(10);
     std::cout << std::fixed;
 
     cin.tie(NULL);
@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    // std::cin >> testCase;
+    std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,10 +98,38 @@ int main()
 
 void solve()
 {
-    ll h, l;
-    std::cin >> h >> l;
+    ll l, r, n;
+    std::cin >> l >> r >> n;
 
-    std::cout << (((double)l * l) - (h * h)) / (2 * h) << '\n';
+    ll index;
+    double val1 = (double)l / n;
+
+    if (ceil(val1) == floor(val1))
+    {
+        index = val1 - 1; 
+    }
+    else
+        index = floor(val1);
+
+    if (index > 0)
+    {
+        std::cout << n << '\n';
+        rn;
+    }
+
+    double val2 = r / n;
+    if (ceil(val2) == floor(val2))
+    {
+        index = val2 + 1;
+    }
+    else
+        index = ceil(val2);
+
+    if (index > 0)
+    {
+        std::cout << index * n << '\n';
+        rn;
+    }
 }
 
 /* Reminder:

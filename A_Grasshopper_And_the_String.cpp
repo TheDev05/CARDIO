@@ -74,7 +74,7 @@ void fillPrimes()
 int main()
 {
     ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(20);
+    std::cout << std::setprecision(10);
     std::cout << std::fixed;
 
     cin.tie(NULL);
@@ -98,10 +98,30 @@ int main()
 
 void solve()
 {
-    ll h, l;
-    std::cin >> h >> l;
+    std::string text, vowel = "AEIOUY";
+    std::cin >> text;
 
-    std::cout << (((double)l * l) - (h * h)) / (2 * h) << '\n';
+    vi num;
+    num.pb(0);
+
+    for (int i = 0; i < text.size(); i++)
+    {
+        if (vowel.find(text[i]) != string::npos)
+        {
+            num.pb(i + 1);
+        }
+    }
+
+    num.pb(text.size() + 1);
+
+    int max = imin;
+    for (int i = 0; i < num.size() - 1; i++)
+    {
+        int temp = abs(num[i] - num[i + 1]);
+        max = std::max(max, temp);
+    }
+
+    std::cout << max << '\n';
 }
 
 /* Reminder:

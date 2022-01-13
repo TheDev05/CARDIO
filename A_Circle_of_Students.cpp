@@ -74,7 +74,7 @@ void fillPrimes()
 int main()
 {
     ios_base::sync_with_stdio(false);
-    std::cout << std::setprecision(20);
+    std::cout << std::setprecision(10);
     std::cout << std::fixed;
 
     cin.tie(NULL);
@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    // std::cin >> testCase;
+    std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,10 +98,64 @@ int main()
 
 void solve()
 {
-    ll h, l;
-    std::cin >> h >> l;
+    int n;
+    std::cin >> n;
 
-    std::cout << (((double)l * l) - (h * h)) / (2 * h) << '\n';
+    vi num(n), fsort, rsort;
+    loop(0, n) std::cin >> num[i];
+
+    fsort = num;
+    rsort = num;
+
+    srt(fsort);
+    rsrt(rsort);
+
+    if (fsort == num || rsort == num)
+    {
+        std::cout << "YES\n";
+        rn;
+    }
+
+    auto it = find(all(num), 1);
+    auto i = it + 1;
+
+    if ((*i) == n)
+    {
+        reverse(all(num));
+
+        it = find(all(num), 1);
+        i = it + 1;
+    }
+
+    if (it == num.end() - 1)
+    {
+        i = num.begin();
+    }
+
+    for (i; i != it; i++)
+    {
+        if (i == num.end() - 1)
+        {
+            if (num.front() < (*i) && num.front() != 1)
+            {
+                std::cout << "NO\n";
+                rn;
+            }
+
+            i = num.begin() - 1;
+        }
+        else
+        {
+
+            if ((*(i + 1)) < (*i) && (*(i + 1)) != 1)
+            {
+                std::cout << "NO\n";
+                rn;
+            }
+        }
+    }
+
+    std::cout << "YES\n";
 }
 
 /* Reminder:
