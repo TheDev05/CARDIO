@@ -86,7 +86,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    // std::cin >> testCase;
+    std::cin >> testCase;
 
     while (testCase--)
     {
@@ -95,68 +95,42 @@ int main()
 }
 
 /* Check: Single testCase or muntiple */
+ll n;
+
+ll get(ll x, ll diff)
+{
+    if (n >= diff)
+    {
+        x = x - diff;
+        n = n - diff;
+    }
+    else
+    {
+        x = x - n;
+        n = 0;
+    }
+
+    return (x);
+}
 
 void solve()
 {
-    int n, t;
-    std::cin >> n >> t;
+    ll a, b, x, y;
+    std::cin >> a >> b >> x >> y >> n;
 
-    vi num(n), res;
-    map<int, int> data, alt;
+    ll res_n = n;
 
-    loop(0, n)
-    {
-        std::cin >> num[i];
-        data[num[i]]++;
-    }
+    ll diff_a = a - x;
+    ll diff_b = b - y;
 
-    // for (auto i : data)
-    // std::cout << i.first << " " << i.second << '\n';
+    ll result_a = get(a, diff_a) * get(b, diff_b);
+    n = res_n;
+    ll result_b = get(b, diff_b) * get(a, diff_a);
 
-    int count = data.size(), res_count;
+    // db(result_a);
+    // db(result_b);
 
-    res_count = count;
-    alt = data;
-
-    while (t--)
-    {
-        int temp;
-        std::cin >> temp;
-
-        int left = temp - 1;
-        int right = n - temp;
-
-        if (left < right)
-        {
-            for (int i = 0; i < temp - 1; i++)
-            {
-                if (data[num[i]] > 0)
-                {
-                    data[num[i]]--;
-                }
-
-                if (data[num[i]] == 0)
-                {
-                    count--;
-                }
-            }
-
-            std::cout << count << '\n';
-        }
-        else
-        {
-            data.clear();
-            for (int i = temp - 1; i < n; i++)
-            {
-                data[num[i]]++;
-            }
-
-            std::cout << data.size() << '\n';
-        }
-
-        count = res_count;
-        data = alt;
-    }
+    std::cout << std::min(result_a, result_b) << '\n';
 }
 
 /* Reminder:
