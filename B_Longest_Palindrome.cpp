@@ -1,8 +1,8 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
@@ -38,8 +38,6 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
-#define ull unsigned long long
-#define ld long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -60,46 +58,95 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    // std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
 void solve()
-{}
+{
+    int n, m;
+    std::cin >> n >> m;
+
+    vector<string> text;
+    for (int i = 0; i < n; i++)
+    {
+        string temp;
+        std::cin >> temp;
+
+        text.pb(temp);
+    }
+
+    string result, special;
+    bool ok = true;
+
+    for (int i = 0; i < n; i++)
+    {
+        string temp;
+        temp = text[i];
+
+        reverse(all(temp));
+        if (i < n - 1)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                if (text[j] == temp)
+                {
+                    result += text[i];
+                }
+            }
+        }
+
+        if (temp == text[i] && temp.size() > special.size())
+        {
+            special += text[i];
+        }
+    }
+
+    if (result.size() == 0 && special.size() == 0)
+    {
+        std::cout << "0\n";
+        rn;
+    }
+
+    std::cout << (result.size() * 2) + special.size() << '\n';
+    std::cout << result << special;
+    reverse(all(result));
+    std::cout << result << '\n';
+}
 
 /* Reminder:
 1. Check Corner Cases, Least Input & Max Input.

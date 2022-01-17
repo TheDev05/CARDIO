@@ -98,8 +98,40 @@ int main()
 
 /* Check: Single testCase or muntiple */
 
+int cmp(pi a, pi b)
+{
+	if (a.first != b.first)
+	{
+		return (b.first > a.first);
+	}
+	else
+		return (a.second > b.second);
+}
+
 void solve()
-{}
+{
+	vpi num;
+	for (int i = 0; i < 10; i++)
+	{
+		int val;
+		std::cin >> val;
+
+		num.pb(mp(val, i + 1));
+	}
+
+	for (int i = 0; i < num.size(); i++)
+	{
+		std::cout << num[i].first << " " << num[i].second << "\n";
+	}
+
+	en;
+	
+	sort(all(num), cmp);
+	for (int i = 0; i < num.size(); i++)
+	{
+		std::cout << num[i].first << " " << num[i].second << "\n";
+	}
+}
 
 /* Reminder:
 1. Check Corner Cases, Least Input & Max Input.
