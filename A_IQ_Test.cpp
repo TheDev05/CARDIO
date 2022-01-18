@@ -96,61 +96,98 @@ int main()
 
 /* Check: Single testCase or muntiple */
 
+int check(vector<string> text)
+{
+    bool ok = false;
+    for (int i = 1; i < text.size() - 1; i++)
+    {
+        for (int j = 1; j < text[i].size() - 1; j++)
+        {
+            if (text[i][j] == text[i][j + 1])
+            {
+                if (text[i][j] == text[i + 1][j] && text[i + 1][j] == text[i + 1][j + 1] || text[i][j] == text[i - 1][j] && text[i - 1][j] == text[i - 1][j + 1])
+                {
+                    ok = true;
+                }
+                else if (text[i + 1][j] != text[i][j] && text[i + 1][j + 1] == text[i][j])
+                {
+                    ok = true;
+                }
+                else if (text[i + 1][j] == text[i][j] && text[i + 1][j + 1] != text[i][j])
+                {
+                    ok = true;
+                }
+                else if (text[i - 1][j] != text[i][j] && text[i - 1][j + 1] == text[i][j])
+                {
+                    ok = true;
+                }
+                else if (text[i - 1][j] == text[i][j] && text[i - 1][j + 1] != text[i][j])
+                {
+                    ok = true;
+                }
+            }
+        }
+
+        if (ok)
+        {
+            return (1);
+        }
+    }
+
+    return (0);
+}
+
 void solve()
 {
-    int n;
-    std::cin >> n;
+    vector<string> text;
+    text.pb("000000");
 
-    set<int> data;
-    vi num(n);
-
-    loop(0, n)
+    for (int i = 0; i < 4; i++)
     {
-        std::cin >> num[i];
-        data.insert(i + 1);
+        string temp, dope = "0";
+        std::cin >> temp;
+
+        temp += "0";
+        dope += temp;
+
+        text.pb(dope);
     }
 
-    // vvi res;
-    // vector<set<int>> res;
-    set<int> temp;
-    map<int, int> put;
+    text.pb("000000");
+    bool ok = false;
 
-    int max = n, atom = n + 1;
+    // for (auto i : text)
+    //     std::cout << i << " " << '\n';
+    // en;
 
-    for (int i = 0; i < n; i++)
+    if (check(text))
     {
-        temp.insert(num[i]);
-        data.erase(num[i]);
+        std::cout << "YES\n";
+        rn;
+    }
 
-        if (num[i] == max)
+    vector<string> data;
+    for (int i = 0; i < 6; i++)
+    {
+        string temp;
+        for (int j = 0; j < 6; j++)
         {
-            if (data.size() > 0)
-            {
-                auto locate = data.end();
-                locate--;
-                max = *(locate);
-            }
-
-            for (auto j = temp.rbegin(); j != temp.rend(); j++)
-            {
-                if (put[*(j)] != 1)
-                {
-                    if (atom - *(j) == 1)
-                    {
-                        std::cout << *(j) << " ";
-                        atom = *(j);
-
-                        put[*(j)] = 1;
-                    }
-                    else
-                        break;
-                }  
-            }
-            en;
+            temp += text[j][i];
         }
-        else
-            std::cout << "\n";
+
+        data.pb(temp);
     }
+
+    if (check(data))
+    {
+        std::cout << "YES\n";
+        rn;
+    }
+
+    // for (auto i : data)
+    //     std::cout << i << " " << '\n';
+
+    std::cout << "NO\n";
 }
 
 /* Reminder:

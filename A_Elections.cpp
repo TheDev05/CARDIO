@@ -1,15 +1,13 @@
 /*
  Believe-In-your-Karma & chant with me,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding <3
 */
 
 #include <bits/stdc++.h>
-#include <boost/range/adaptor/reversed.hpp>
-
 using namespace std;
 
 #define imax INT_MAX
@@ -40,8 +38,6 @@ using namespace std;
 
 #define en cout << '\n'
 #define ll long long
-#define ull unsigned long long
-#define ld long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -62,52 +58,87 @@ vector<bool> isPrime(maxlimit, 1);
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i < maxlimit; i++)
+    {
+        if (isPrime[i] == true)
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    // std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Check: Single testCase or muntiple */
 
+int cmp(pi a, pi b)
+{
+    if (a.first != b.first)
+    {
+        return (a.first > b.first);
+    }
+    else
+        return (a.second < b.second);
+}
+
 void solve()
 {
+    int n, m;
+    std::cin >> n >> m;
 
-	vi num = {1, 2, 3};
-	for (auto i : boost::adaptors::reverse(num))
-	{
-		std::cout << i << " ";
-	}
+    map<int, int> data;
+
+    while (m--)
+    {
+        vpi num;
+        for (int j = 1; j <= n; j++)
+        {
+            int temp;
+            std::cin >> temp;
+
+            num.pb(mp(temp, j));
+        }
+
+        sort(all(num), cmp);
+        data[num[0].second]++;
+    }
+
+    int max = imin, result;
+    for (auto i : data)
+    {
+        if (i.second > max)
+        {
+            max = i.second;
+            result = i.first;
+        }
+    }
+
+    std::cout << result << '\n';
 }
 
 /* Reminder:
