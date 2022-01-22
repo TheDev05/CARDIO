@@ -88,7 +88,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    // std::cin >> testCase;
+    std::cin >> testCase;
 
     while (testCase--)
     {
@@ -100,15 +100,43 @@ int main()
 
 void solve()
 {
-    ll n;
-    std::cin >> n;
+    int l, r, k;
+    std::cin >> l >> r >> k;
 
-    ll locate = n / 10;
-    locate = pow(2, locate - 1);
-    locate += n;
+    if (l == r && l == 1)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
 
-    ll val = 19 + ((locate - 1) * 9);
-    std::cout << val << '\n';
+    if (k == 0)
+    {
+        if (r == l && r != 1)
+        {
+            std::cout << "YES\n";
+        }
+        else
+            std::cout << "NO\n";
+        rn;
+    }
+
+    if (l % 2 == 0)
+    {
+        l++;
+    }
+
+    if (r % 2 == 0)
+    {
+        r--;
+    }
+
+    int total = ((r - l) / 2) + 1;
+    if (total <= k)
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }
 
 /* Reminder:

@@ -100,40 +100,50 @@ int main()
 
 void solve()
 {
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    vi num(n);
-    int index = 0, min = imax;
+    vpi num;
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        std::cin >> val;
+
+        num.pb(mp(val, 0));
+    }
 
     for (int i = 0; i < n; i++)
     {
-        std::cin >> num[i];
+        int val;
+        std::cin >> val;
 
-        if (num[i] < min)
+        num[i].second = val;
+    }
+
+    int sum = 0;
+    bool ok;
+
+    while (1)
+    {
+        ok = true;
+        for (int i = 0; i < n; i++)
         {
-            min = num[i];
-            index = i + 1;
+            if (num[i].first <= k && num[i].first != -1)
+            {
+                k += num[i].second;
+                num[i].first = -1;
+
+                ok = false;
+            }
+        }
+
+        if (ok)
+        {
+            break;
         }
     }
 
-    if ((n & 1) && (min & 1))
-    {
-        if (index & 1)
-        {
-            std::cout << "First\n";
-        }
-        else
-            std::cout << "Second\n";
-        rn;
-    }
-
-    if (index & 1)
-    {
-        std::cout << "Second\n";
-    }
-    else
-        std::cout << "First\n";
+    std::cout << k << '\n';
 }
 
 /* Reminder:
