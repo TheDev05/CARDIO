@@ -103,32 +103,36 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n);
+    vi num(n), data;
     loop(0, n) std::cin >> num[i];
 
-    for (int i = 0; i < n - 1; i++)
+    if (maxin(num) == minin(num))
     {
-        if (num[i] != 0 && num[i] % 3 != 0)
+        std::cout << "-1\n";
+        rn;
+    }
+
+    ll min = minin(num);
+    loop(0, n)
+    {
+        if (num[i] != min)
         {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (num[j] != 0 && num[j] % 3 != 0 && (num[i] + num[j]) % 3 == 0)
-                {
-                    num[i] = 3;
-                    num[j] = 0;
-                }
-            }
+            data.pb(num[i] - min);
         }
     }
 
-    int count = 0;
-    for (auto i : num)
+    // for (auto i : data)
+    // std::cout << i << " ";
+
+    bool ok = false;
+    min = minin(data);
+
+    for (int i = 0; i < data.size(); i++)
     {
-        if (i != 0 && i % 3 == 0)
-            count++;
+        min = gcd(data[i], min);
     }
 
-    std::cout << count << '\n';
+    std::cout << min << '\n';
 }
 
 /* Reminder:

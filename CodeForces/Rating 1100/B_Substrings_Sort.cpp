@@ -88,7 +88,7 @@ int main()
     // fillPrimes();
 
     int testCase = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -98,23 +98,57 @@ int main()
 
 /* Check Single testCase or muntiple & 👌Never Give Up👌, Keep Hustling! */
 
-int find(int a, int b)
-{
-    int temp = a;
-    a = std::max(a, b);
-    b = std::min(temp, b);
-
-    int val = a / 2;
-    val = (val - 1) * 2;
-    
-}
-
 void solve()
 {
-    int a, b;
-    std::cin >> a >> b;
+    int n;
+    std::cin >> n;
 
-    int val1 = find(a, b);
+    set<string> num;
+    map<string, int> res;
+    vector<pair<int, string>> data;
+
+    for (int i = 0; i < n; i++)
+    {
+        std::string temp;
+        std::cin >> temp;
+
+        num.insert(temp);
+        res[temp]++;
+    }
+
+    int count = 0;
+    for (auto i : num)
+    {
+        int icon = 0;
+        for (auto j : num)
+        {
+            if (j.find(i, 0) != string::npos)
+            {
+                count++;
+                icon++;
+            }
+        }
+
+        data.pb(mp(icon, i));
+    }
+
+    n = num.size();
+    sort(all(data), greater<>());
+    int val = (n * (n + 1)) / 2;
+
+    if (val == count)
+    {
+        std::cout << "YES\n";
+        for (int i = 0; i < data.size(); i++)
+        {
+            for (int j = 0; j < res[data[i].second]; j++)
+            {
+                std::cout << data[i].second << '\n';
+            }
+        }
+    }
+    else
+        std::cout << "NO\n";
 }
 
 /* Reminder:
