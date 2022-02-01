@@ -96,64 +96,43 @@ int main()
     }
 }
 
-/* Recall Rule'5: 👌Never Give Up👌 & Keep Hustling */
-
-int find(vi num, int coin)
-{
-    int sum = 0, n = num.size();
-    for (int i = 0; i < n; i++)
-    {
-        if (num[i] > coin)
-        {
-            sum += num[i] - (coin + 1);
-        }
-        else if (num[i] < coin)
-        {
-            sum += (coin - 1) - num[i];
-        }
-    }
-
-    return (sum);
-}
+/* Recall Rule'5: 👌Never Give Up👌 & Keep Hustling! */
 
 void solve()
 {
     // Reminder: TestCases are single/multiple?
 
-    int n;
-    std::cin >> n;
+    std::string text;
+    std::cin >> text;
 
-    vi num(n);
-    loop(0, n) std::cin >> num[i];
+    vector<string> data = {"Danil", "Olya", "Slava", "Ann", "Nikita"};
 
-    srt(num);
-    int coin;
-
-    vi result;
-    if (n & 1)
+    int count = 0;
+    for (int i = 0; i < 5; i++)
     {
-        coin = num[n / 2];
-        std::cout << coin << " " << find(num, coin) << '\n';
+        auto it1 = text.find(data[i]);
+        if (it1 != string::npos)
+        {
+            count++;
+            
+            auto it2 = text.find(data[i], it1 + 1);
+            if (it2 != string::npos)
+            {
+                count++;
+            }
+        }
     }
+
+    if (count == 1)
+        std::cout << "YES\n";
     else
-    {
-        vpi val;
-        coin = num[n / 2];
-        val.pb(mp(find(num, coin), coin));
-
-        coin = num[(n / 2) - 1];
-        val.pb(mp(find(num, coin), coin));
-
-        srt(val);
-        std::cout << val[1].second << " " << val[1].first << '\n';
-    }
+        std::cout << "NO\n";
 }
 
-/* Reminder:
-1. Check Corner Cases, Least Input & Max Input.
+/*
+1. Check for Neg Input, Least Input & Max Input.
 2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
 3. Long Long vs Int vs unsigned.
-4. All input equal, Input Repeated, Negative.
-5. Time Complexity.
-6. Float-Double Precisions.
+4. All Input equal, Input Repeated, Negative.
+5. Float-Double Precisions, Check float errors!?
 */

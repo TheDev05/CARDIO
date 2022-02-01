@@ -96,42 +96,37 @@ int main()
     }
 }
 
-/* Check Single testCase or muntiple & 👌Never Give Up👌, Keep Hustling! */
+/* Recall Rule'5: 👌Never Give Up👌 & Keep Hustling! */
 
 void solve()
 {
-    int a, b, c;
-    std::cin >> a >> b >> c;
+    // Reminder: TestCases are single/multiple?
 
-    while (c)
+    ll n;
+    std::cin >> n;
+
+    double val = sqrt(n);
+    if ((ceil(val) == floor(val)))
     {
-        if (a <= c && (a <= c - a || b <= c - a))
-        {
-            c = c - a;
-        }
-        else if (b <= c && (a <= c - b || b <= c - b))
-        {
-            c = c - b;
-        }
-        else
-        {
-            std::cout << "NO\n";
-            rn;
-        }
-
-        if (c == 0)
-        {
-            std::cout << "YES\n";
-            rn;
-        }
+        std::cout << (ll)val * 2 << '\n';
+        rn;
     }
+
+    ll temp = val;
+    int delta = n - (temp * temp);
+
+    if (delta <= temp)
+    {
+        std::cout << (temp * 2) + 1 << '\n';
+    }
+    else
+        std::cout << (temp * 2) + 2 << '\n';
 }
 
-/* Reminder:
-1. Check Corner Cases, Least Input & Max Input.
+/*
+1. Check for Neg Input, Least Input & Max Input.
 2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
 3. Long Long vs Int vs unsigned.
-4. All input equal, Input Repeated, Negative.
-5. Time Complexity.
-6. Float-Double Precisions.
+4. All Input equal, Input Repeated, Negative.
+5. Float-Double Precisions, Check float errors!?
 */
