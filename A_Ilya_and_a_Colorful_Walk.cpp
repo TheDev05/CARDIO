@@ -105,45 +105,51 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n), data;
-    loop(0, n)
-    {
-        std::cin >> num[i];
-        data.pb(i);
-    }
+    vi num(n);
+    map<int, int> data;
+    map<int, int> res;
 
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        std::cin >> num[i];
+
+        data[num[i]] = i + 1;
+        res[num[i]] = 0;
+    }
+
+    if (data.size() == 1)
+    {
+        std::cout << "0\n";
+        rn;
+    }
+
+    vpi inox;
+    for (auto i : data)
+    {
+        inox.pb(mp(i.second, i.first));
+    }
+
+    srt(inox);
+
+    ll delta = imin;
+    for (int i = 0; i < n; i++)
+    {
+        if (res[num[i]] == 0)
         {
-            if (j % 2 == 0)
+            int index = inox.size() - 1;
+            
+            if (inox[index].second == num[i])
             {
-                num[j]--;
-
-                if (num[j] == -1)
-                {
-                    num[j] = n - 1;
-                }
+                index--;
             }
-            else
-            {
-                num[j]++;
 
-                if (num[j] == n)
-                {
-                    num[j] = 0;
-                }
-            }
-        }
+            delta = std::max(delta, abs(inox[index].first - (i + 1)));
 
-        if (num == data)
-        {
-            std::cout << "Yes\n";
-            rn;
+            res[num[i]] = -1;
         }
     }
 
-    std::cout << "No\n";
+    std::cout << delta << '\n';
 }
 
 /*

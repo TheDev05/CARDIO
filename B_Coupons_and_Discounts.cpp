@@ -105,45 +105,48 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n), data;
-    loop(0, n)
-    {
-        std::cin >> num[i];
-        data.pb(i);
-    }
+    vi num(n);
+    loop(0, n) std::cin >> num[i];
 
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        if (i < n - 1 && num[i] != -1)
         {
-            if (j % 2 == 0)
+            if (num[i] & 1)
             {
-                num[j]--;
-
-                if (num[j] == -1)
+                if (num[i + 1] % 2 == 0 && num[i + 1] > 0)
                 {
-                    num[j] = n - 1;
+                    num[i] = -1;
+                    num[i + 1]--;
+                }
+                else if (num[i + 1] & 1)
+                {
+                    num[i] = -1;
+                    num[i + 1] = -1;
                 }
             }
             else
+                num[i] = -1;
+        }
+        else
+        {
+            if (num[i] % 2 == 0)
             {
-                num[j]++;
-
-                if (num[j] == n)
-                {
-                    num[j] = 0;
-                }
+                num[i] = -1;
             }
         }
+    }
 
-        if (num == data)
+    for (auto i : num)
+    {
+        if (i != -1)
         {
-            std::cout << "Yes\n";
+            std::cout << "NO\n";
             rn;
         }
     }
 
-    std::cout << "No\n";
+    std::cout << "YES\n";
 }
 
 /*

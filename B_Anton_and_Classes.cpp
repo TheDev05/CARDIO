@@ -105,45 +105,36 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n), data;
-    loop(0, n)
-    {
-        std::cin >> num[i];
-        data.pb(i);
-    }
-
+    int left = imax, right = imin;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        int val1, val2;
+        std::cin >> val1 >> val2;
+
+        right = std::max(right, val1);
+        left = std::min(left, val2);
+    }
+
+    int m, inox = 0;
+    std::cin >> m;
+
+    for (int i = 0; i < m; i++)
+    {
+        int val1, val2;
+        std::cin >> val1 >> val2;
+
+        if (left < val1)
         {
-            if (j % 2 == 0)
-            {
-                num[j]--;
-
-                if (num[j] == -1)
-                {
-                    num[j] = n - 1;
-                }
-            }
-            else
-            {
-                num[j]++;
-
-                if (num[j] == n)
-                {
-                    num[j] = 0;
-                }
-            }
+            inox = std::max(inox, abs(left - val1));
         }
 
-        if (num == data)
+        if (right > val2)
         {
-            std::cout << "Yes\n";
-            rn;
+            inox = std::max(inox, abs(right - val2));
         }
     }
 
-    std::cout << "No\n";
+    std::cout << inox << '\n';
 }
 
 /*
