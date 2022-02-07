@@ -53,17 +53,22 @@ using namespace std;
 #define db(x) cout << #x << "[" << x << "]" << '\n';
 #define xx cout << "I am good!" << '\n'
 
-void solve();
-
 const ll maxlimit = 1e7 + 10;
 vector<bool> isPrime(maxlimit, 1);
+
+bool isPalin(std::string text)
+{
+    ll n = text.size();
+    loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
+    return true;
+}
 
 void fillPrimes()
 {
     isPrime[0] = isPrime[1] = false;
-    for (ll i = 2; i < maxlimit; i++)
+    loop(2, maxlimit)
     {
-        if (isPrime[i] == true)
+        if (isPrime[i])
         {
             for (int j = 2 * i; j < maxlimit; j += i)
             {
@@ -73,6 +78,7 @@ void fillPrimes()
     }
 }
 
+void solve();
 int32_t main()
 {
     ios_base::sync_with_stdio(false);
@@ -108,29 +114,49 @@ void solve()
     std::string text;
     std::cin >> text;
 
-    if (k == 0)
+    int count = 0;
+    for (int i = 0; i < n / 2; i++)
     {
-        std::cout << "1\n";
-        rn;
-    }
-
-    bool ok = true;
-    for (int i = 0; i < text.size() / 2; i++)
-    {
-        if (text[i] != text[text.size() - 1 - i])
+        if (text[i] != text[n - 1 - i])
         {
-            ok = false;
+            count++;
         }
     }
 
-    if (ok)
+    if (count == 0)
     {
-        std::cout << "1\n";
+        if (n & 1)
+        {
+            std::cout << "YES\n";
+        }
+        else if (k % 2 == 0)
+        {
+            std::cout << "YES\n";
+        }
+        else
+            std::cout << "NO\n";
+
+        rn;
+    }
+
+    if (k < count)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    int delta = k - count;
+
+    if (n & 1)
+    {
+        std::cout << "YES\n";
+    }
+    else if (delta % 2 == 0)
+    {
+        std::cout << "YES\n";
     }
     else
-    {
-        std::cout << "2\n";
-    }
+        std::cout << "NO\n";
 }
 
 /*
