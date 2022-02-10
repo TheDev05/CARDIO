@@ -1,0 +1,1 @@
+{"name":"Local: SandBox","url":"c:\\Users\\DELL\\OneDrive\\Documents\\Hare Krishna\\SandBox\\SandBox.cpp","tests":[{"id":1644500455468,"input":"2\n4\n3","output":"0\n1\n2\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\DELL\\OneDrive\\Documents\\Hare Krishna\\SandBox\\SandBox.cpp","group":"local","local":true}
