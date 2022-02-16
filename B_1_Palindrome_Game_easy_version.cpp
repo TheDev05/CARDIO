@@ -51,7 +51,7 @@ using namespace std;
 #define loop(x, n) for (ll i = x; i < n; ++i)
 #define rloop(x, n) for (ll i = x; i >= n; i--)
 #define db(x) cout << #x << "[" << x << "]" << '\n';
-#define xx cout << "🌻|Hare Krishna|🌻" << '\n';
+#define xx cout << "Good 😊" << '\n';
 
 const ll maxlimit = 1e7 + 10;
 vector<bool> isPrime(maxlimit, 1);
@@ -92,7 +92,6 @@ int32_t main()
     // freopen("output.txt", "w", stdout);
 
     // fillPrimes();
-    // db();
 
     int testCase = 1;
     std::cin >> testCase;
@@ -113,95 +112,22 @@ void solve()
     int n;
     std::cin >> n;
 
-    multiset<int, greater<>> even, odd;
-    vi num(n);
+    std::string text;
+    std::cin >> text;
 
-    loop(0, n)
+    int size = count(all(text), '0');
+    if (size == 0)
     {
-        std::cin >> num[i];
-
-        if (num[i] & 1)
-        {
-            odd.insert(num[i]);
-        }
-        else
-            even.insert(num[i]);
+        std::cout << "DRAW\n";
+        rn;
     }
 
-    int alice = 0, bob = 0;
-    for (int i = 0; 1; i++)
+    if ((size & 1) && text[n / 2] == '0' && size > 1)
     {
-        if (std::max(even.size(), odd.size()) <= 0)
-        {
-            break;
-        }
-
-        if (i & 1)
-        {
-            auto it1 = odd.begin();
-            auto it2 = even.begin();
-
-            int val1, val2;
-            if (odd.size() > 0)
-            {
-                val1 = (*(it1));
-            }
-            else
-            {
-                even.erase(it2);
-                continue;
-            }
-
-            val2 = (*(it2));
-            if (bob + val1 < alice + val2)
-            {
-                even.erase(it2);
-            }
-            else
-            {
-                bob += val1;
-                odd.erase(it1);
-            }
-        }
-        else
-        {
-            auto it1 = even.begin();
-            auto it2 = odd.begin();
-
-            int val1, val2;
-            if (even.size() > 0)
-            {
-                val1 = (*(it1));
-            }
-            else
-            {
-                odd.erase(it2);
-                continue;
-            }
-
-            val2 = (*(it2));
-            if (alice + val1 < bob + val2)
-            {
-                odd.erase(it2);
-            }
-            else
-            {
-                alice += val1;
-                even.erase(it1);
-            }
-        }
-    }
-
-    if (alice > bob)
-    {
-        std::cout << "Alice\n";
-    }
-    else if (bob > alice)
-    {
-        std::cout << "Bob\n";
+        std::cout << "ALICE\n";
     }
     else
-        std::cout << "Tie\n";
+        std::cout << "BOB\n";
 }
 
 /*
