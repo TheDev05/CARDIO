@@ -194,8 +194,47 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-  
+    std::string text2, text1;
+    std::cin >> text2 >> text1;
+
+    vi result;
+    for (int i = 0; i < text1.size(); i++)
+    {
+        bool ok = true;
+        for (int j = i; j < text2.size(); j++)
+        {
+            if (text2[j] == text1[i])
+            {
+                for (int k = j - 1; k >= i; k--)
+                {
+                    swap(text2[k], text2[k + 1]);
+                    result.pb(k + 1);
+                }
+
+                ok = false;
+                break;
+            }
+        }
+
+        if (ok)
+        {
+            std::cout << "-1\n";
+            rn;
+        }
+    }
+
+    if (text1 != text2)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+
+    std::cout << result.size() << '\n';
+    for (int i = 0; i < result.size(); i++)
+    {
+        std::cout << result[i] << ' ';
+    }
 }
