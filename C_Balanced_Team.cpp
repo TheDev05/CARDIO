@@ -194,12 +194,37 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, a, b;
-    std::cin >> n >> a >> b;
+    ll n;
+    std::cin >> n;
 
-    int div1 = n / 2;
-    int div2 = n - div1;
+    vi num(n);
+    map<ll, ll> data;
 
-    
+    loop(0, n)
+    {
+        std::cin >> num[i];
+        data[num[i]]++;
+    }
 
+    ll max = imin;
+    for (auto i = data.begin(); i != data.end(); i++)
+    {
+        ll sum = 0, inox = i->first + 5;
+        auto index = i;
+
+        for (ll j = 0; (j < 6) && i != data.end(); j++)
+        {
+            if (i->first <= inox)
+            {
+                sum += i->second;
+            }
+
+            i++;
+        }
+
+        max = std::max(sum, max);
+        i = index;
+    }
+
+    std::cout << max << '\n';
 }
