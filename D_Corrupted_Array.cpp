@@ -209,7 +209,7 @@ void solve()
         data.insert(num[i]);
         res[num[i]]++;
 
-        sum += num[i];
+        sum += num[i]; 
     }
 
     bool ok = true;
