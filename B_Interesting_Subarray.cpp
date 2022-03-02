@@ -1,8 +1,8 @@
 /*
  Believe in your Karma & Keep chanting,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Username: TheDev05, Happy Coding. <3
 */
@@ -58,34 +58,34 @@ vector<bool> isPrime(maxlimit, 1);
 
 bool isPalin(std::string text)
 {
-	ll n = text.size();
-	loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
-	return true;
+    ll n = text.size();
+    loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
+    return true;
 }
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	loop(2, maxlimit)
-	{
-		if (isPrime[i])
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    loop(2, maxlimit)
+    {
+        if (isPrime[i])
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 #define db(x)          \
-	cerr << #x << " "; \
-	read(x);           \
-	cerr << endl;
+    cerr << #x << " "; \
+    read(x);           \
+    cerr << endl;
 
 void read(ll t)
 {
-	cerr << t;
+    cerr << t;
 }
 
 void read(int t) { cerr << t; }
@@ -112,112 +112,157 @@ void read(multiset<T> v);
 template <class T, class V>
 void read(pair<T, V> p)
 {
-	cerr << " {";
-	read(p.first);
-	cerr << ",";
-	read(p.second);
-	cerr << "}";
+    cerr << " {";
+    read(p.first);
+    cerr << ",";
+    read(p.second);
+    cerr << "}";
 }
 
 template <class T>
 void read(vector<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T>
 void read(set<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T>
 void read(multiset<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T, class V>
 void read(map<T, V> v)
 {
-	cerr << ": ";
-	for (auto i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (auto i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <typename T1, typename T2>
 istream &operator>>(istream &istream, pair<T1, T2> &p)
 {
-	return (istream >> p.first >> p.second);
+    return (istream >> p.first >> p.second);
 }
 template <typename T>
 istream &operator>>(istream &istream, vector<T> &v)
 {
-	for (auto &it : v)
-		cin >> it;
-	return istream;
+    for (auto &it : v)
+        cin >> it;
+    return istream;
 }
 template <typename T1, typename T2>
 ostream &operator<<(ostream &ostream, const pair<T1, T2> &p)
 {
-	return (ostream << p.first << " " << p.second);
+    return (ostream << p.first << " " << p.second);
 }
 template <typename T>
 ostream &operator<<(ostream &ostream, const vector<T> &c)
 {
-	for (auto &it : c)
-		cout << it << " ";
-	return ostream;
+    for (auto &it : c)
+        cout << it << " ";
+    return ostream;
 }
 
 void solve();
 int32_t main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCase = 1;
-	// std::cin >> testCase;
+    int testCase = 1;
+    std::cin >> testCase;
 
-	while (testCase--)
-	{
-		solve();
-	}
+    while (testCase--)
+    {
+        solve();
+    }
 }
 
 /* Recall Rule'5: Never Give Up & Keep Hustling! */
 
 void solve()
 {
-	// Reminder: TestCases are single/multiple?
-	// 🌻|Hare Krishna|🌻
+    // Reminder: TestCases are single/multiple?
+    // 🌻|Hare Krishna|🌻
 
-	int 
+    int n;
+    std::cin >> n;
+
+    vi num(n);
+    set<pair<int, int>> data;
+
+    loop(0, n)
+    {
+        std::cin >> num[i];
+
+        int delta = num[i] - (i + 1);
+        if (delta > 0)
+        {
+            data.insert(mp(delta, i + 1));
+        }
+    }
+
+    if (minin(num) == minin(num) && maxin(num) == 0)
+    {
+        std::cout << "YES\n";
+        std::cout << "0 1\n";
+        rn;
+    }
+
+    db(data);
+
+    for (int i = 0; i < n; i++)
+    {
+        auto it1 = data.begin();
+        auto it2 = data.end();
+
+        if (data.size())
+        {
+            it2--;
+        }
+
+        if ((it1->first) <= num[i] && num[i] <= ((it2)->first))
+        {
+            std::cout << "YES\n";
+            std::cout << i + 1 << " " << (it2)->second << '\n';
+
+            rn;
+        }
+    }
+
+    std::cout << "NO\n";
 }
