@@ -204,7 +204,7 @@ int32_t main()
     // fillPrimes();
 
     int testCase = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -219,50 +219,37 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, m;
+    std::cin >> n >> m;
 
-    vi num(n);
-    set<pair<int, int>> data;
+    vi num(n), data(m);
 
-    loop(0, n)
-    {
-        std::cin >> num[i];
+    std::cin >> num;
+    std::cin >> data;
 
-        int delta = num[i] - (i + 1);
-        if (delta > 0)
-        {
-            data.insert(mp(delta, i + 1));
-        }
-    }
-
-    if (minin(num) == minin(num) && maxin(num) == 0)
-    {
-        std::cout << "YES\n";
-        std::cout << "0 1\n";
-        rn;
-    }
-
-    db(data);
+    srt(num);
+    srt(data);
 
     for (int i = 0; i < n; i++)
     {
-        auto it1 = data.begin();
-        auto it2 = data.end();
-
-        if (data.size())
+        for (int j = 0; j < m; j++)
         {
-            it2--;
-        }
+            if (num[i] != 0 && data[j] >= num[i])
+            {
+                data[j] = 0;
+                num[i] = 0;
 
-        if ((it1->first) <= num[i] && num[i] <= ((it2)->first))
-        {
-            std::cout << "YES\n";
-            std::cout << i + 1 << " " << (it2)->second << '\n';
-
-            rn;
+                break;
+            }
         }
     }
 
-    std::cout << "NO\n";
+    int count = 0;
+    for (auto i : num)
+    {
+        if (i != 0)
+            count++;
+    }
+
+    std::cout << count << '\n';
 }
