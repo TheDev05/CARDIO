@@ -3,25 +3,41 @@ using namespace std;
 
 int main()
 {
-    int t;
-    std::cin >> t;
+    int n;
+    std::cin >> n;
 
-    while (t--)
+    std::string text;
+    std::cin >> text;
+
+    string numbers = "0123456789";
+    string lower_case = "abcdefghijklmnopqrstuvwxyz";
+    string upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string special_characters = "!@#$%^&*()-+";
+
+    bool ok1 = false, ok2 = false, ok3 = false, ok4 = false;
+    for (int i = 0; i < n; i++)
     {
-        int n;
-        std::cin >> n;
-
-        int sum = 0;
-        for (int i = 0; i <= n; i++)
+        if (numbers.find(text[i]) != string::npos)
         {
-            if (i & 1)
-            {
-                sum += sum;
-            }
-            else
-                sum++;
+            ok1 = true;
         }
-
-        std::cout << sum  << '\n';
+        else if (lower_case.find(text[i]) != string::npos)
+        {
+            ok2 = true;
+        }
+        else if (upper_case.find(text[i]) != string::npos)
+        {
+            ok3 = true;
+        }
+        else if (special_characters.find(text[i]) != string::npos)
+        {
+            ok4 = true;
+        }
     }
+
+    if ()
+    {
+        /* code */
+    }
+    
 }
