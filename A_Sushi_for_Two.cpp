@@ -252,8 +252,6 @@ void solve()
         rn;
     }
 
-    // db(data);
-
     ll max = imin;
     for (int i = 0; i < data.size() - 1; i++)
     {
