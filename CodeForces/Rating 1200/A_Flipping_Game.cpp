@@ -220,8 +220,80 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, m;
-    std::cin >> n >> m;
+    int n;
+    std::cin >> n;
 
-    
+    vi num(n);
+    int ones = 0;
+
+    loop(0, n)
+    {
+        std::cin >> num[i];
+        if (num[i] == 1)
+        {
+            ones++;
+        }
+    }
+
+    if (maxin(num) == minin(num) && maxin(num) == 1)
+    {
+        std::cout << n - 1 << '\n';
+        rn;
+    }
+
+    vpi data;
+    for (int i = 0; i < n; i++)
+    {
+        if (num[i] == 0)
+        {
+            int index = i, count = 0;
+            while (num[index] == 0 && index < n)
+            {
+                index++;
+                count++;
+            }
+
+            i = index - 1;
+            data.pb(mp(0, count));
+        }
+        else
+        {
+            int index = i, count = 0;
+            while (num[index] == 1 && index < n)
+            {
+                index++;
+                count++;
+            }
+
+            i = index - 1;
+            data.pb(mp(1, count));
+        }
+    }
+
+    // db(data);
+    // db(ones);
+
+    int max = imin;
+    for (int i = 0; i < data.size(); i++)
+    {
+        if (data[i].first == 0)
+        {
+            int sum = ones;
+            for (int j = i; j < data.size(); j++)
+            {
+                if (data[j].first == 1)
+                {
+                    sum = sum - data[j].second;
+                }
+                else
+                {
+                    sum += data[j].second;
+                }
+
+                max = std::max(max, sum);
+            }
+        }
+    }
+
+    std::cout << max << '\n';
 }
