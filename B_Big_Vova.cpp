@@ -227,123 +227,43 @@ void solve()
     ll n;
     std::cin >> n;
 
-    vi num(n);
-    vpi res;
+    vi num(n), res;
+    loop(0, n) std::cin >> num[i];
 
-    bool pos = false, neg = false;
-    loop(0, n)
-    {
-        std::cin >> num[i];
-
-        if (num[i] < 0)
-        {
-            neg = true;
-        }
-        else if (num[i] > 0)
-        {
-            pos = true;
-        }
-    }
-
-    if (neg == false && pos == false)
-    {
-        std::cout << "NO\n";
-        rn;
-    }
-
-    if (neg == false)
-    {
-        std::cout << "YES\n";
-        rn;
-    }
-
-    if (pos == false)
-    {
-        std::cout << "NO\n";
-        rn;
-    }
-
-    ll total = sumof(num);
-    // db(total);
+    rsrt(num);
+    ll inox = num[0];
 
     for (ll i = 0; i < n; i++)
     {
-        ll sum = 0, index = i, inox;
-        if (num[i] > 0)
+        ll max = imin, index;
+        bool ok = true;
+
+        for (ll j = 0; j < n; j++)
         {
-            index = i;
-            while (num[index] > 0 && index < n)
+            if (num[j] != -1)
             {
-                sum += num[index];
-                index++;
-            }
-
-            inox = 1;
-            res.pb(mp(sum, inox));
-            i = index - 1;
-        }
-        else if (num[i] < 0)
-        {
-            index = i;
-            while (num[index] < 0 && index < n)
-            {
-                sum += num[index];
-                index++;
-            }
-
-            inox = -1;
-            res.pb(mp(sum, inox));
-            i = index - 1;
-        }
-    }
-
-    // db(res);
-
-    ll max = imin, count = 0;
-    for (ll i = 0; i < res.size(); i++)
-    {
-        if (res[i].second > 0)
-        {
-            ll sum = res[i].first;
-            max = std::max(max, sum);
-
-            for (ll j = i + 1; j < res.size(); j++)
-            {
-                sum += res[j].first;
-                max = std::max(max, sum);
-
-                // db(sum);
-                if (sum == total)
+                ll val = gcd(inox, num[j]);
+                if (val > max)
                 {
-                    if (i != 0 || j != res.size() - 1)
-                    {
-                        count++;
-                    }
+                    max = val;
+                    index = j;
                 }
+
+                ok = false;
             }
         }
 
-        if (res[i].first >= total)
+        if (ok)
         {
-            std::cout << "NO\n";
-            rn;
+            break;
         }
+        
+        res.pb(num[index]);
+        inox = gcd(inox, num[index]);
+
+        num[index] = -1;
     }
 
-    // db(max);
-    // db(total);
-    // db(count);
-
-    if (max == total && count > 0)
-    {
-        std::cout << "NO\n";
-        rn;
-    }
-
-    if (max > total)
-    {
-        std::cout << "NO\n";
-    }
-    else
-        std::cout << "YES\n";
+    std::cout << res;
+    en;
 }
