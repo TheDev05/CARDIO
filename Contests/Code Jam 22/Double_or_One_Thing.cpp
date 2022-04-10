@@ -208,8 +208,8 @@ int32_t main()
 
     while (testCase--)
     {
-        // std::cout << "Case #" << gcode << ":" << '\n';
-        // gcode++;
+        std::cout << "Case #" << gcode << ": ";
+        gcode++;
 
         solve();
     }
@@ -224,33 +224,58 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n;
-    std::cin >> n;
+    std::string text;
+    std::cin >> text;
 
-    if (n % 2 == 0)
+    if (text.size() == 1)
     {
-        std::cout << n / 2 << " " << n / 2 << '\n';
+        std::cout << text << '\n';
         rn;
     }
 
-    ll min = n - 1;
-    for (ll i = 2; i <= sqrt(n); i++)
+    vector<pair<char, int>> data;
+    for (int i = 0; i < text.size(); i++)
     {
-        if (n % i == 0)
+        int index = i, count = 0;
+        while (text[i] == text[index] && index < text.size())
         {
-            ll div1 = i;
-            ll div2 = n / i;
+            index++;
+            count++;
+        }
 
-            // db(div1);
-            // db(n - div1);
+        i = index - 1;
+        data.pb(mp(text[i], count));
+    }
 
-            // db(div2);
-            // db(n - div2);
+    if (data.size() == 1)
+    {
+        std::cout << text  << '\n';
+        rn;
+    }
 
-            min = std::min(min, lcm(div1, abs(n - div1)));
-            min = std::min(min, lcm(div2, abs(n - div2)));
+    std::string result;
+    for (int i = 0; i < data.size() - 1; i++)
+    {
+        if (data[i + 1].first > data[i].first)
+        {
+            for (int j = 0; j < (data[i].second * 2); j++)
+            {
+                result += data[i].first;
+            }
+        }
+        else
+        {
+            for (int j = 0; j < (data[i].second); j++)
+            {
+                result += data[i].first;
+            }
         }
     }
 
-    std::cout << n - min << " " << min << '\n';
+    for (int i = 0; i < data[data.size() - 1].second; i++)
+    {
+        result += data[data.size() - 1].first;
+    }
+
+    std::cout << result << '\n';
 }

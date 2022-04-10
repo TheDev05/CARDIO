@@ -219,38 +219,102 @@ int32_t main()
 /* Work hard in silence let success make the noise */
 /* Rise, Grind and Repeat */
 
+int foo(int n)
+{
+    for (int i = 2; i <= sqrt(n); i++)
+    {
+        if (n % i == 0)
+        {
+            return (i);
+        }
+    }
+
+    return (n);
+}
+
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n;
+    int n, temp;
     std::cin >> n;
 
-    if (n % 2 == 0)
-    {
-        std::cout << n / 2 << " " << n / 2 << '\n';
-        rn;
-    }
+    temp = n;
 
-    ll min = n - 1;
-    for (ll i = 2; i <= sqrt(n); i++)
+    map<int, int> data;
+    while (n > 1)
     {
-        if (n % i == 0)
+        int val = foo(n);
+        while (n % val == 0)
         {
-            ll div1 = i;
-            ll div2 = n / i;
-
-            // db(div1);
-            // db(n - div1);
-
-            // db(div2);
-            // db(n - div2);
-
-            min = std::min(min, lcm(div1, abs(n - div1)));
-            min = std::min(min, lcm(div2, abs(n - div2)));
+            n = n / val;
+            data[val]++;
         }
     }
 
-    std::cout << n - min << " " << min << '\n';
+    vi res;
+    int prod = 1;
+
+    for (auto i : data)
+    {
+        if (res.size() < 2)
+        {
+            res.pb(i.first);
+            prod *= pow(i.first, (i.second - 1));
+        }
+        else
+            prod *= pow(i.first, i.second);
+    }
+
+    res.pb(prod);
+
+    if (data.size() >= 3)
+    {
+        std::cout << "YES\n";
+        for (auto i : res)
+            std::cout << i << " ";
+
+        en;
+        rn;
+    }
+
+    if (data.size() == 1)
+    {
+        auto it = data.begin();
+        if (it->second >= 6)
+        {
+            std::cout << "YES\n";
+            auto it = data.begin();
+
+            int val1 = it->first;
+            int val2 = it->first * it->first;
+            int val3 = it->first * it->first * it->first;
+
+            std::cout << val1 << " " << val2 << " " << temp / val3 << '\n';
+        }
+        else
+            std::cout << "NO\n";
+        rn;
+    }
+
+    if (data.size() == 2)
+    {
+        auto it1 = data.begin();
+        int val1 = it1->second;
+
+        it1++;
+        int val2 = it1->second;
+
+        if (val1 + val2 >= 4)
+        {
+            std::cout << "YES\n";
+            for (auto i : res)
+                std::cout << i << " ";
+            en;
+        }
+        else
+            std::cout << "NO\n";
+        rn;
+    }
 }

@@ -224,33 +224,34 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n;
+    int n;
     std::cin >> n;
 
-    if (n % 2 == 0)
-    {
-        std::cout << n / 2 << " " << n / 2 << '\n';
-        rn;
-    }
+    vi num(n);
+    std::cin >> num;
 
-    ll min = n - 1;
-    for (ll i = 2; i <= sqrt(n); i++)
+    map<int, int> data;
+    loop(0, n) data[num[i]]++;
+
+    int max = 1;
+    for (auto i : data)
+        max = std::max(max, i.second);
+
+    int inox = n - max, sum = 0, count = 0;
+    for (int i = max; sum < inox; i = i * 2)
     {
-        if (n % i == 0)
+        if (sum + i <= inox)
         {
-            ll div1 = i;
-            ll div2 = n / i;
-
-            // db(div1);
-            // db(n - div1);
-
-            // db(div2);
-            // db(n - div2);
-
-            min = std::min(min, lcm(div1, abs(n - div1)));
-            min = std::min(min, lcm(div2, abs(n - div2)));
+            sum += i;
+            count++;
+        }
+        else
+        {
+            sum += (sum + i) - inox;
+            count++;
+            break;
         }
     }
 
-    std::cout << n - min << " " << min << '\n';
+    std::cout << count + inox << '\n';
 }

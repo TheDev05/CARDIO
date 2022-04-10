@@ -1,43 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int foo(int n)
+{
+    for (int i = 2; i <= sqrt(n); i++)
+    {
+        if (n % i == 0)
+        {
+            return (i);
+        }
+    }
+
+    return (n);
+}
+
 int main()
 {
     int n;
     std::cin >> n;
 
-    std::string text;
-    std::cin >> text;
+    vector<int> pf;
+    map<>
 
-    string numbers = "0123456789";
-    string lower_case = "abcdefghijklmnopqrstuvwxyz";
-    string upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string special_characters = "!@#$%^&*()-+";
-
-    bool ok1 = false, ok2 = false, ok3 = false, ok4 = false;
-    for (int i = 0; i < n; i++)
+    while (n > 1)
     {
-        if (numbers.find(text[i]) != string::npos)
+        int val = foo(n);
+        while (n % val == 0)
         {
-            ok1 = true;
-        }
-        else if (lower_case.find(text[i]) != string::npos)
-        {
-            ok2 = true;
-        }
-        else if (upper_case.find(text[i]) != string::npos)
-        {
-            ok3 = true;
-        }
-        else if (special_characters.find(text[i]) != string::npos)
-        {
-            ok4 = true;
+            n = n / val;
+            pf.push_back(val);
         }
     }
 
-    if ()
-    {
-        /* code */
-    }
-    
+    int prod = 1;
+    for (auto i : pf)
+        prod *= i;
+
+    std::cout << prod;
 }

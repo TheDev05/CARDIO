@@ -215,8 +215,8 @@ int32_t main()
     }
 }
 
-/* Recall Rule'5: Never Give Up & Keep Hustling! */
-/* Work hard in silence let success make the noise */
+/* Rule'5: Never Give Up & Keep Hustling */
+/* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
 void solve()
@@ -224,33 +224,47 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n;
+    int n;
     std::cin >> n;
 
-    if (n % 2 == 0)
+    vi num(n), res;
+    multimap<int, int> data;
+
+    loop(0, n)
     {
-        std::cout << n / 2 << " " << n / 2 << '\n';
-        rn;
+        std::cin >> num[i];
+        data.insert(mp(num[i], i));
     }
 
-    ll min = n - 1;
-    for (ll i = 2; i <= sqrt(n); i++)
+    int min = minin(num);
+
+    res = num;
+    srt(res);
+
+    for (int i = 0; i < n; i++)
     {
-        if (n % i == 0)
+        if (res[i] != num[i])
         {
-            ll div1 = i;
-            ll div2 = n / i;
+            if (gcd(res[i], num[i]) == min)
+            {
+                auto it1 = data.find(res[i]);
+                auto it2 = data.find(num[i]);
 
-            // db(div1);
-            // db(n - div1);
+                swap(num[i], num[it1->second]);
+                swap(it1->second, it2->second);
 
-            // db(div2);
-            // db(n - div2);
-
-            min = std::min(min, lcm(div1, abs(n - div1)));
-            min = std::min(min, lcm(div2, abs(n - div2)));
+                data.erase(data.find(res[i]));
+            }
         }
     }
 
-    std::cout << n - min << " " << min << '\n';
+    db(num);
+
+    if (res == num)
+    {
+        std::cout << "YES\n";
+        rn;
+    }
+    else
+        std::cout << "NO\n";
 }
