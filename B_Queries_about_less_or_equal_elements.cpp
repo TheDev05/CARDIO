@@ -204,7 +204,7 @@ int32_t main()
     // fillPrimes();
 
     int testCase = 1, gcode = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -224,47 +224,49 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, m;
+    std::cin >> n >> m;
 
-    vi num(n), res;
-    multimap<int, int> data;
+    vi num(n), res(m);
+    map<int, int> data, inox;
+
+    std::cin >> num;
+    srt(num);
 
     loop(0, n)
     {
-        std::cin >> num[i];
-        data.insert(mp(num[i], i));
+        data[num[i]] = i;
+        inox[num[i]]++;
     }
 
-    int min = minin(num);
+    std::cin >> res;
 
-    res = num;
-    srt(res);
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
-        if (res[i] != num[i])
+        auto it = data.lower_bound(res[i]);
+
+        if (num[0] > res[i])
         {
-            if (gcd(res[i], num[i]) == min)
+            std::cout << "0 ";
+            continue;
+        }
+
+        if (it == data.end())
+        {
+            std::cout << n << " ";
+        }
+        else
+        {
+            if (it->first == res[i])
             {
-                auto it1 = data.find(res[i]);
-                auto it2 = data.find(num[i]);
-
-                swap(num[i], num[it1->second]);
-                swap(it1->second, it2->second);
-
-                data.erase(data.find(res[i]));
+                std::cout << data[res[i]] + 1 << " ";
+            }
+            else
+            {
+                std::cout << (data[it->first] + 1) - inox[it->first] << " ";
             }
         }
     }
 
-    db(num);
-
-    if (res == num)
-    {
-        std::cout << "YES\n";
-        rn;
-    }
-    else
-        std::cout << "NO\n";
+    en;
 }
