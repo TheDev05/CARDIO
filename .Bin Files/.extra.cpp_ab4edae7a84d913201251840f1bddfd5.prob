@@ -1,0 +1,1 @@
+{"name":"Local: extra","url":"c:\\Users\\DELL\\OneDrive\\Documents\\Hare Krishna\\extra.cpp","tests":[{"id":1649863616323,"input":"1\n1000 100","output":""},{"id":1649863676043,"input":"1\n4 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\DELL\\OneDrive\\Documents\\Hare Krishna\\extra.cpp","group":"local","local":true}
