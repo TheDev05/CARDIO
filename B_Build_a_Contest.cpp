@@ -215,7 +215,7 @@ int32_t main()
     // fillPrimes();
 
     int testCase = 1, gcode = 1;
-    std::cin >> testCase;
+    // std::cin >> testCase;
 
     while (testCase--)
     {
@@ -235,44 +235,40 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n;
-    std::cin >> n; 
+    int k, n;
+    std::cin >> k >> n;
 
     vi num(n);
-    map<ll, ll> data;
+    map<int, int> data;
+ 
+    std::cin >> num;
+    int min = imax, inox = 1;
 
-    loop(0, n)
+    std::string result;
+    for (int i = 0; i < n; i++)
     {
-        std::cin >> num[i];
+        if (res.count(mp(data[num[i]], num[i])))
+        {
+            res.erase(mp(data[num[i]], num[i]));
+        }
+
         data[num[i]]++;
+
+        res.insert(mp(data[num[i]], num[i]));
+        if (res.size() == k)
+        {
+            auto it = res.begin();
+            if ((*it).first >= inox)
+            {
+                result += '1';
+                inox++;
+            }
+            else
+                result += '0';
+        }
+        else
+            result += '0';
     }
 
-    ll sum = sumof(num);
-    double mean = ((double)sum / n);
-
-    double val = (n - 2) * mean;
-    ll total = sum - ((ll)val);
-
-    srt(num);
-
-    ll count = 0;
-    for (ll i = 0; i < n; i++)
-    {
-        ll val1 = num[i];
-        ll val2 = total - val1;
-
-        data[val1]--;
-        
-        if (data[val1] == 0)
-        {
-            data.erase(val1);
-        }
-
-        if (data.count(val2))
-        {
-            count += data[val2];
-        }
-    }
-
-    std::cout << count << '\n';
+    std::cout << result << '\n';
 }
