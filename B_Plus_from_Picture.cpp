@@ -230,35 +230,17 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-string lost(int index1, int index2, std::string text, map<char, int> data)
+int check(vi array)
 {
-    std::string inox, result;
-    char alpha = 'A';
-
-    loop(0, 26)
+    for (int i = 0; i < array.size() - 1; i++)
     {
-        if (data.count(alpha) == false)
+        if (abs(array[i] - array[i + 1]) != 1)
         {
-            inox += alpha;
+            return (1);
         }
-
-        alpha++;
     }
 
-    int start = 0;
-    // db(index2-index1);
-    for (int i = index1; i < index2; i++)
-    {
-        if (text[i] == '?')
-        {
-            result += inox[start];
-            start++;
-        }
-        else
-            result += text[i];
-    }
-
-    return (result);
+    return (0);
 }
 
 void solve()
@@ -266,90 +248,105 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
+    int n, m, max = imin;
+    std::cin >> n >> m;
+
+    vector<string> num;
+    for (int i = 0; i < n; i++)
+    {
+        std::string text;
+        std::cin >> text;
+
+        num.pb(text);
+    }
+
+    vi left, right, data;
+    vi left_data, right_data;
+
     std::string text;
-    std::cin >> text;
-
-    if (text.size() < 26)
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "-1\n";
-        rn;
-    }
+        int count = 0, key = 1;
+        vi temp;
 
-    map<char, int> data;
-
-    int count = 0;
-    for (int i = 0; i < 26; i++)
-    {
-        if (text[i] == '?')
+        for (int j = 0; j < m; j++)
         {
-            count++;
-        }
-        else
-        {
-            data[text[i]]++;
-        }
-    }
-
-    if (data.size() + count == 26)
-    {
-        std::cout << "YES\n";
-        rn;
-    }
-
-    int index = 0, start, end;
-    bool ok = false;
-    for (int i = 26; i < text.size(); i++)
-    {
-        if (text[index] == '?')
-        {
-            count--;
-        }
-        else
-        {
-            data[text[index]]--;
-            if (data[text[index]] == 0)
+            if (num[i][j] == '*')
             {
-                data.erase(text[index]);
+                if (key)
+                {
+                    left.pb(i);
+                    key = 0;
+                }
+                count++;
+                temp.pb(j);
             }
         }
 
-        data[text[i]]++;
-
-        if (text[i] == '?')
+        if (key == 0)
         {
-            count++;
-        }
-        else
-        {
-            data[text[i]]++;
-        }
+            if (count > max)
+            {
+                data = temp;
+                max = count;
+            }
 
-        if (data.size() + count == 26)
-        {
-            start = index;
-            end = i + 1;
-
-            ok = true;
-            break;
+            left_data.pb(count);
         }
     }
 
-    if (ok)
+    for (int i = 0; i < m; i++)
     {
-        std::string result = lost(start, end, text, data);
-        // for (int i = 0; i < text.size(); i++)
-        // {
-        //     if (i == start)
-        //     {
-                std::cout << result;
-        //         i = end - 1;
-        //     }
-        //     else
-        //         std::cout << text[i];
-        // }
+        int count = 0, key = 1;
+        for (int j = 0; j < n; j++)
+        {
+            if (num[j][i] == '*')
+            {
+                if (key)
+                {
+                    right.pb(i);
+                    key = 0;
+                }
 
-        // rn;
+                count++;
+            }
+        }
+
+        if (key == 0)
+        {
+            right_data.pb(count);
+        }
     }
 
-    // std::cout << "-1\n";
+    if (count(all(left_data), 1) != left_data.size() - 1)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    if (count(all(right_data), 1) != right_data.size() - 1)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    if (left_data[0] != 1 || left_data[left_data.size() - 1] != 1)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    if (right_data[0] != 1 || right_data[right_data.size() - 1] != 1)
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    if (check(left) || check(right) || check(data))
+    {
+        std::cout << "NO\n";
+        rn;
+    }
+
+    std::cout << "YES\n";
 }

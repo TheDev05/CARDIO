@@ -235,22 +235,53 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
+    int n;
+    std::cin >> n;
+
+    std::deque<int> num(n);
+    loop(0, n) std::cin >> num[i];
+
+    int count = 0, max = imin;
     std::string text;
-    std::cin >> text;
 
-    int size = text.size();
-    int four = count(all(text), '4');
-
-    int seven = count(all(text), '7');
-    int first = ((int)(text[0] - '0'));
-
-    if (first >= 8)
+    for (int i = 0; num.size() > 0; i++)
     {
-        
+        if (num[0] > max && num[num.size() - 1] > max)
+        {
+            if (num[0] < num[num.size() - 1])
+            {
+                text += 'L';
+
+                max = num[0];
+                num.pop_front();
+            }
+            else
+            {
+                text += 'R';
+
+                max = num[num.size() - 1];
+                num.pop_back();
+            }
+        }
+        else if (num[0] > max)
+        {
+            text += 'L';
+
+            max = num[0];
+            num.pop_front();
+        }
+        else if (num[num.size() - 1] > max)
+        {
+            text += 'R';
+
+            max = num[num.size() - 1];
+            num.pop_back();
+        }
+        else
+            break;
+
     }
 
-    for (int i = 0; i < size(); i++)
-    {
-        
-    }
+    std::cout << text.size() << '\n';
+    std::cout << text << '\n';
 }
