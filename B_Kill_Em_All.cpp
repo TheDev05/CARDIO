@@ -37,7 +37,7 @@ using namespace std;
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * b) / gcd(a, b)
 #define srt(v) sort(v.begin(), v.end())
-#define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
+#define rsrt(v) sort(v.begin(), v.end(), greater<int>())
 #define loop(x, n) for (int i = x; i < n; ++i)
 #define xx cout << "Good 😊" << '\n';
 
@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -220,53 +220,46 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    vector<pair<int, string>> num;
-    for (int i = 0; i < n; i++)
+    vi num;
+    set<int> data;
+
+    loop(0, n)
     {
         int val;
         std::cin >> val;
 
-        std::string text;
-        std::cin >> text;
-
-        num.pb(mp(val, string));
+        data.insert(val);
     }
 
-    string text = "South";
-    bool ok = true;
+    for (auto i : data)
+        num.pb(i);
 
-    int south = 0, north = 0;
-    for (int i = 0; i < num.size(); i++)
+    rsrt(num);
+
+    int locate = k, sum = 0, count = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (north == 20000)
+        num[i] = num[i] - sum;
+        if (num[i] <= locate && num[i] > 0)
         {
-            
+            count++;
+            break;
         }
-
-        if (ok)
+        else if (num[i] <= 0)
         {
-            if (num[i].second != text)
-            {
-                std::cout << "NO\n";
-                rn;
-            }
-
-            ok = false;
-        }
-
-        if (num[i].second == "South")
-        {
-            right += num[i].first;
+            break;
         }
         else
-            left += num[i].first;
-
-        if (num[i].first == 20000)
         {
-            ok = true;
+            num[i] = 0;
+
+            count++;
+            sum += k;
         }
     }
+
+    std::cout << count << '\n';
 }

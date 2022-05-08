@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -220,23 +220,68 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vpi num(n);
-    std::cin >> num;
+    std::string text;
+    std::cin >> text;
 
-    std::string text = "10";
-    int index = 0;
+    int count = 0;
+    char inox;
 
+    vector<pair<char, int>> data;
     for (int i = 0; i < n; i++)
     {
-        std::cout << text[index];
-        index++;
-
-        if (index == 2)
+        int index = i, count = 0;
+        while (text[i] == text[index] && i < n)
         {
-            index = 0;
+            index++;
+            count++;
+        }
+
+        data.pb(mp(text[i], count));
+        i = index - 1;
+    }
+
+    int max = imin;
+    for (auto i : data)
+    {
+        if (i.second > max)
+        {
+            inox = i.first;
+            max = i.second;
         }
     }
+
+    // db(inox);
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (!(i & 1))
+        {
+            if (text[i] != text[i + 1])
+            {
+                text[i] = inox;
+                text[i + 1] = inox;
+
+                count++;
+            }
+        }
+    }
+
+    std::string temp;
+    for (int i = 0; i < n; i++)
+    {
+        temp += text[i];
+
+        int index = i;
+        while (text[i] == text[index] && index < n)
+        {
+            index++;
+        }
+
+        i = index - 1;
+    }
+
+    std::cout << count << " " << temp.size() << '\n';
 }

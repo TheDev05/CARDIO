@@ -220,23 +220,63 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vpi num(n);
-    std::cin >> num;
+    std::string text;
+    std::cin >> text;
 
-    std::string text = "10";
-    int index = 0;
+    vi num;
+    for (int i = 0; i < n; i++)
+    {
+        int val = ((int)(text[i] - '0'));
+
+        if (val == 0)
+        {
+            continue;
+        }
+
+        num.pb(val);
+    }
+
+    if (num.empty())
+    {
+        std::cout << "YES\n";
+        rn;
+    }
+
+    // db(num);
+
+    n = num.size();
+    int sum = 0;
 
     for (int i = 0; i < n; i++)
     {
-        std::cout << text[index];
-        index++;
+        sum += num[i];
+        int val = 0;
 
-        if (index == 2)
+        // db(sum);
+
+        for (int j = i + 1; j < n; j++)
         {
-            index = 0;
+            val += num[j];
+            if (val == sum)
+            {
+                val = 0;
+
+                if (j == n - 1)
+                {
+                    // db(sum);
+                    std::cout << "YES\n";
+                    rn;
+                }
+            }
+            else if (val > sum)
+            {
+                break;
+            }
         }
     }
+
+    std::cout << "NO\n";
 }

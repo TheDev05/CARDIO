@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -223,29 +223,42 @@ void solve()
     int n;
     std::cin >> n;
 
-    map<int, int> left, right;
-    while (n--)
-    {
-        int val1, val2;
-        std::cin >> val1 >> val2;
+    vi num(n);
+    bool ok = false;
 
-        int delta = val2 - val1;
-        int sum = val1 + val2;
-
-        left[sum]++;
-        right[delta]++;
-    }
-
+    map<int, int> data;
     int count = 0;
-    for (auto i : left)
+    loop(0, n)
     {
-        count += ((i.second) * (i.second - 1)) / 2;
+        std::cin >> num[i];
+        data[num[i]]++;
+
+        if (num[i] == 0)
+        {
+            count++;
+        }
     }
 
-    for (auto i : right)
+    if (count > 0)
     {
-        count += ((i.second) * (i.second - 1)) / 2;
+        std::cout << n - count << '\n';
+        rn;
     }
 
-    std::cout << count << '\n';
+    for (auto i : data)
+    {
+        if (i.second > 1)
+        {
+            ok = true;
+            break;
+        }
+    }
+
+    if (ok)
+    {
+        std::cout << n << '\n';
+        rn;
+    }
+
+    std::cout << 2 + (n - 1) << '\n';
 }

@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -220,23 +220,23 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vpi num(n);
-    std::cin >> num;
+    std::string text;
+    std::cin >> text;
 
-    std::string text = "10";
-    int index = 0;
-
-    for (int i = 0; i < n; i++)
+    int count = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        std::cout << text[index];
-        index++;
-
-        if (index == 2)
+        if (!(i & 1))
         {
-            index = 0;
+            if (text[i] != text[i + 1])
+            {
+                count++;
+            }
         }
     }
+
+    std::cout << count << '\n';
 }
