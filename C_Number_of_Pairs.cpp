@@ -231,14 +231,17 @@ void solve()
     {
         std::cin >> num[i];
         res.insert(num[i]);
+    }
 
+    srt(num);
+
+    loop(0, n)
+    {
         if (data.count(num[i]) == false)
         {
             data[num[i]] = i;
         }
     }
-
-    srt(num);
 
     for (int i = 0; i < num[i]; i++)
     {
@@ -267,6 +270,13 @@ void solve()
             continue;
         }
 
-        
+        if (it2 == res.end())
+        {
+            sum += (n)-data[*(it1)];
+        }
+        else
+            sum += data[*(it2)] - data[(*it1)];
     }
+
+    std::cout << sum << '\n';
 }
