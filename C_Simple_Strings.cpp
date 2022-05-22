@@ -223,67 +223,71 @@ void solve()
     std::string text;
     std::cin >> text;
 
-    if (isPalin(text))
+    set<char> num;
+    char inox = 'a';
+
+    loop(0, 26)
     {
-        std::cout << "YES\n";
-        std::cout << (text.size() / 2) + 1 << '\n';
-        rn;
+        num.insert(inox);
+        inox++;
     }
 
-    int count = 0, left, right;
-    for (int i = 0; i < text.size() / 2; i++)
+    vector<pair<char, int>> data;
+    for (int i = 0; i < text.size(); i++)
     {
-        if (text[i] != text[text.size() - 1 - i])
+        int index = i, count = 0;
+        while (text[i] == text[index] && index < text.size())
         {
-            left = i;
-            right = text.size() - 1 - i;
-
-            break;
-        }
-    }
-
-    bool ok1 = true, ok2 = true;
-    int res1 = left, res2 = right;
-
-    left++;
-    while (left < right)
-    {
-        if (text[left] != text[right])
-        {
-            ok1 = false;
-            break;
+            count++;
+            index++;
         }
 
-        left++;
-        right--;
+        data.pb(mp(text[i], count));
+        i = index - 1;
     }
 
-    left = res1;
-    right = res2;
+    // db(data);
 
-    right--;
-    while (left < right)
+    for (int i = 0; i < data.size(); i++)
     {
-        if (text[left] != text[right])
+        char inox;
+        if (data[i].second > 1)
         {
-            ok2 = false;
-            break;
+            char left = 'a', centre = 'a', right = 'a';
+
+            centre = data[i].first;
+            if (i != 0)
+            {
+                left = data[i - 1].first;
+            }
+
+            if (i != data.size() - 1)
+            {
+                right = data[i + 1].first;
+            }
+
+            num.erase(left);
+            num.erase(centre);
+            num.erase(right);
+
+            auto it = num.begin();
+            inox = (*it);
+
+            for (int j = 0; j < data[i].second; j++)
+            {
+                if (j & 1)
+                {
+                    std::cout << inox;
+                }
+                else
+                    std::cout << data[i].first;
+            }
+
+            num.insert(left);
+            num.insert(centre);
+            num.insert(right);
         }
-
-        left++;
-        right--;
+        else
+            std::cout << data[i].first;
     }
-
-    if (ok1)
-    {
-        std::cout << "YES\n";
-        std::cout << res1 + 1 << '\n';
-    }
-    else if (ok2)
-    {
-        std::cout << "YES\n";
-        std::cout << res2 + 1 << '\n';
-    }
-    else
-        std::cout << "NO\n";
 }

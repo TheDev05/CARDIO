@@ -215,75 +215,73 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
+int fool(vector<string> num, int k)
+{
+    int sum = 0;
+    for (int i = 0; i < num.size(); i++)
+    {
+        for (int j = 0; j < num[i].size(); j++)
+        {
+            if (num[i][j] == '.')
+            {
+                int index = j, count = 0;
+                while ((num[i][j] == num[i][index]) && (index < num[i].size()))
+                {
+                    index++;
+                    count++;
+                }
+
+                if (count >= k)
+                {
+                    sum += (count - k) + 1;
+                }
+
+                j = index - 1;
+            }
+        }
+    }
+
+    return (sum);
+}
+
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    std::string text;
-    std::cin >> text;
+    int n, m, k;
+    std::cin >> n >> m >> k;
 
-    if (isPalin(text))
+    vector<string> num, temp;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "YES\n";
-        std::cout << (text.size() / 2) + 1 << '\n';
-        rn;
+        std::string text;
+        std::cin >> text;
+
+        num.pb(text);
     }
 
-    int count = 0, left, right;
-    for (int i = 0; i < text.size() / 2; i++)
+    int sum = fool(num, k);
+    // db(sum);
+
+    for (int i = 0; i < m; i++)
     {
-        if (text[i] != text[text.size() - 1 - i])
+        std::string text;
+        for (int j = 0; j < n; j++)
         {
-            left = i;
-            right = text.size() - 1 - i;
-
-            break;
-        }
-    }
-
-    bool ok1 = true, ok2 = true;
-    int res1 = left, res2 = right;
-
-    left++;
-    while (left < right)
-    {
-        if (text[left] != text[right])
-        {
-            ok1 = false;
-            break;
+            text += num[j][i];
         }
 
-        left++;
-        right--;
+        temp.pb(text);
     }
 
-    left = res1;
-    right = res2;
+    sum += fool(temp, k);
+    // db(sum);
 
-    right--;
-    while (left < right)
+    if (k == 1)
     {
-        if (text[left] != text[right])
-        {
-            ok2 = false;
-            break;
-        }
-
-        left++;
-        right--;
+        sum = sum / 2;
     }
 
-    if (ok1)
-    {
-        std::cout << "YES\n";
-        std::cout << res1 + 1 << '\n';
-    }
-    else if (ok2)
-    {
-        std::cout << "YES\n";
-        std::cout << res2 + 1 << '\n';
-    }
-    else
-        std::cout << "NO\n";
+    std::cout << sum << '\n';
 }

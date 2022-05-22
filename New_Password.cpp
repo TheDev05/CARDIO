@@ -200,12 +200,12 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
-        // std::cout << "Case #" << gcode << ": ";
-        // gcode++;
+        std::cout << "Case #" << gcode << ": ";
+        gcode++;
 
         solve();
     }
@@ -220,70 +220,62 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
+    int n;
+    std::cin >> n;
+
     std::string text;
     std::cin >> text;
 
-    if (isPalin(text))
+    int upper = 0, lower = 0, dig = 0, other = 0;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "YES\n";
-        std::cout << (text.size() / 2) + 1 << '\n';
-        rn;
-    }
-
-    int count = 0, left, right;
-    for (int i = 0; i < text.size() / 2; i++)
-    {
-        if (text[i] != text[text.size() - 1 - i])
+        if (isupper(text[i]))
         {
-            left = i;
-            right = text.size() - 1 - i;
-
-            break;
+            upper++;
+        }
+        else if (islower(text[i]))
+        {
+            lower++;
+        }
+        else if (isdigit(text[i]))
+        {
+            dig++;
+        }
+        else if (text[i] == '#' || text[i] == '@' || text[i] == '*' || text[i] == '&')
+        {
+            other++;
         }
     }
 
-    bool ok1 = true, ok2 = true;
-    int res1 = left, res2 = right;
-
-    left++;
-    while (left < right)
+    if (upper == 0)
     {
-        if (text[left] != text[right])
+        text += 'A';
+    }
+
+    if (lower == 0)
+    {
+        text += 'a';
+    }
+
+    if (dig == 0)
+    {
+        text += '1';
+    }
+
+    if (other == 0)
+    {
+        text += '*';
+    }
+
+    if (text.size() < 7)
+    {
+
+        int delta = 7 - text.size();
+        for (int i = 0; i < delta; i++)
         {
-            ok1 = false;
-            break;
+            text += 'a';
         }
-
-        left++;
-        right--;
     }
 
-    left = res1;
-    right = res2;
-
-    right--;
-    while (left < right)
-    {
-        if (text[left] != text[right])
-        {
-            ok2 = false;
-            break;
-        }
-
-        left++;
-        right--;
-    }
-
-    if (ok1)
-    {
-        std::cout << "YES\n";
-        std::cout << res1 + 1 << '\n';
-    }
-    else if (ok2)
-    {
-        std::cout << "YES\n";
-        std::cout << res2 + 1 << '\n';
-    }
-    else
-        std::cout << "NO\n";
+    std::cout << text << '\n';
 }

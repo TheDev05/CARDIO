@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -220,70 +220,80 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    if (isPalin(text))
-    {
-        std::cout << "YES\n";
-        std::cout << (text.size() / 2) + 1 << '\n';
-        rn;
-    }
+    vi num(n);
+    std::cin >> num;
 
-    int count = 0, left, right;
-    for (int i = 0; i < text.size() / 2; i++)
+    int alice = 0, bob = 0;
+    int l = -1, r = n;
+    int sum1 = 0, sum2 = 0, count = 0;
+
+    while (l < r)
     {
-        if (text[i] != text[text.size() - 1 - i])
+        bool ok1 = true, ok2 = true;
+
+        // db(sum1);
+        // db(sum2);
+
+        l++;
+        while (l < r)
         {
-            left = i;
-            right = text.size() - 1 - i;
+            if (sum1 <= sum2)
+            {
+                sum1 += num[l];
+            }
+            else
+            {
+                l--;
+                break;
+            }
 
-            break;
-        }
-    }
+            if (ok1)
+            {
+                count++;
+                ok1 = false;
+            }
 
-    bool ok1 = true, ok2 = true;
-    int res1 = left, res2 = right;
-
-    left++;
-    while (left < right)
-    {
-        if (text[left] != text[right])
-        {
-            ok1 = false;
-            break;
-        }
-
-        left++;
-        right--;
-    }
-
-    left = res1;
-    right = res2;
-
-    right--;
-    while (left < right)
-    {
-        if (text[left] != text[right])
-        {
-            ok2 = false;
-            break;
+            l++;
         }
 
-        left++;
-        right--;
+        sum2 = 0;
+
+        // db(l);
+        // db(r);
+
+        r--;
+        while (l < r)
+        {
+            if (sum2 <= sum1)
+            {
+                sum2 += num[r];
+            }
+            else
+            {
+                r++;
+                break;
+            }
+
+            if (ok2)
+            {
+                count++;
+                ok2 = false;
+            }
+
+            r--;
+        }
+
+        alice += sum1;
+        bob += sum2;
+
+        // db(alice);
+        // db(bob);
+
+        sum1 = 0;
     }
 
-    if (ok1)
-    {
-        std::cout << "YES\n";
-        std::cout << res1 + 1 << '\n';
-    }
-    else if (ok2)
-    {
-        std::cout << "YES\n";
-        std::cout << res2 + 1 << '\n';
-    }
-    else
-        std::cout << "NO\n";
+    std::cout << count << " " << alice << " " << bob << '\n';
 }
