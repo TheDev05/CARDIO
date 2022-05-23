@@ -214,16 +214,6 @@ int32_t main()
 /* Rule'5: Never Give Up & Keep Hustling */
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
-map<int, int> inox;
-int fool(int val)
-{
-    if (inox[val] == val)
-    {
-        return (val);
-    }
-
-    return (fool(inox[val]));
-}
 
 void solve()
 {
@@ -233,29 +223,29 @@ void solve()
     int n;
     std::cin >> n;
 
-    vpi num(n), temp;
-    loop(0, n) std::cin >> num[i].first;
-    loop(0, n) std::cin >> num[i].second;
-
-    temp = num;
-
-    map<pair<int, int>, int> data;
-    for (int i = 0; i < n; i++)
+    vector<pair<pair<int, int>, int>> num(n), temp;
+    loop(0, n) std::cin >> num[i].first.first;
+    loop(0, n)
     {
-        data[mp(num[i].first, num[i].second)] = i + 1;
+        std::cin >> num[i].first.second;
+        num[i].second = i + 1;
     }
 
+    temp = num;
     srt(num);
+
+    vi data(n), res(n);
+    vpi result;
 
     bool ok = false;
     for (int i = 0; i < n - 1; i++)
     {
-        if (num[i].first > num[i + 1].first)
+        if (num[i].first.first > num[i + 1].first.first)
         {
             ok = true;
             break;
         }
-        else if (num[i].second > num[i + 1].second)
+        else if (num[i].first.second > num[i + 1].first.second)
         {
             ok = true;
             break;
@@ -268,39 +258,42 @@ void solve()
         rn;
     }
 
+    loop(0, n) data[num[i].second - 1] = i + 1;
+    iota(all(res), 1);
+
+    // db(num);
+    // db(res);
     // db(data);
 
-    vpi res;
     for (int i = 0; i < n; i++)
     {
-        res.pb(mp(i + 1, data[mp(num[i].first, num[i].second)]));
+        for (int j = i; j < n; j++)
+        {
+            if (res[i] == data[j])
+            {
+                if (i == j)
+                {
+                    break;
+                }
+                else
+                {
+                    for (int k = j; k > i; k--)
+                    {
+                        swap(data[k], data[k - 1]);
+                        result.pb(mp(k, k - 1));
+                    }
+
+                    break;
+                }
+            }
+        }
     }
 
-    // db(res);
-
-    loop(0, n) inox[i + 1] = i + 1;
-    vpi result;
-
-    for (int i = 0; i < res.size(); i++)
-    {
-        if (fool(res[i].second) == res[i].first)
-        {
-            continue;
-        }
-        else
-        {
-            result.pb(mp(res[i].first, fool(res[i].second)));
-            inox[res[i].first] = fool(res[i].second);
-        }
-    }
-
-    // db(result);
     std::cout << result.size() << '\n';
-    loop(0, result.size())
+    for (auto i : result)
     {
-        std::cout << result[i].first << " " << result[i].second << '\n';
-        swap(temp[result[i].first - 1], temp[result[i].second - 1]);
+        std::cout << i.first + 1 << " " << i.second + 1 << '\n';
     }
 
-    db(temp);
+    // db(data);
 }
