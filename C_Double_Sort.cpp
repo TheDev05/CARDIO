@@ -214,72 +214,93 @@ int32_t main()
 /* Rule'5: Never Give Up & Keep Hustling */
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
+map<int, int> inox;
+int fool(int val)
+{
+    if (inox[val] == val)
+    {
+        return (val);
+    }
+
+    return (fool(inox[val]));
+}
 
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, l, r;
-    std::cin >> n >> l >> r;
+    int n;
+    std::cin >> n;
 
-    vi num(n);
-    set<int> res;
-    map<int, set<int>> data;
+    vpi num(n), temp;
+    loop(0, n) std::cin >> num[i].first;
+    loop(0, n) std::cin >> num[i].second;
 
-    loop(0, n)
-    {
-        std::cin >> num[i];
+    temp = num;
 
-        res.insert(num[i]);
-        data[num[i]].insert(i);
-    }
-
-    int sum = 0;
+    map<pair<int, int>, int> data;
     for (int i = 0; i < n; i++)
     {
-        if (num[i] > r)
+        data[mp(num[i].first, num[i].second)] = i + 1;
+    }
+
+    srt(num);
+
+    bool ok = false;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (num[i].first > num[i + 1].first)
         {
-            continue;
+            ok = true;
+            break;
         }
-
-        int left, right;
-        if (num[i] <= l)
+        else if (num[i].second > num[i + 1].second)
         {
-            left = abs(l - num[i]);
-            right = abs(r - num[i]);
-        }
-        else if (num[i] > l && num[i] <= r)
-        {
-            left = 0;
-            right = abs(num[i] - r);
-        }
-
-        auto it = data[num[i]].begin();
-        data[num[i]].erase(it);
-
-        if (data[num[i]].size() == 0)
-        {
-            res.erase(num[i]);
-            data.erase(num[i]);
-        }
-
-        auto it1 = res.lower_bound(left);
-        auto it2 = res.upper_bound(right);
-
-        if (it1 == res.end())
-        {
-            continue;
-        }
-
-        auto inox1 = data.find(*it1);
-        auto inox2 = data.find(*it2);
-
-        for (auto j = inox1; j != inox2; j++)
-        {
-            sum += (*j).second.size();
+            ok = true;
+            break;
         }
     }
 
-    std::cout << sum << '\n';
+    if (ok)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+
+    // db(data);
+
+    vpi res;
+    for (int i = 0; i < n; i++)
+    {
+        res.pb(mp(i + 1, data[mp(num[i].first, num[i].second)]));
+    }
+
+    // db(res);
+
+    loop(0, n) inox[i + 1] = i + 1;
+    vpi result;
+
+    for (int i = 0; i < res.size(); i++)
+    {
+        if (fool(res[i].second) == res[i].first)
+        {
+            continue;
+        }
+        else
+        {
+            result.pb(mp(res[i].first, fool(res[i].second)));
+            inox[res[i].first] = fool(res[i].second);
+        }
+    }
+
+    // db(result);
+    std::cout << result.size() << '\n';
+    loop(0, result.size())
+    {
+        std::cout << result[i].first << " " << result[i].second << '\n';
+        swap(temp[result[i].first - 1], temp[result[i].second - 1]);
+    }
+
+    db(temp);
 }

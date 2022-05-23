@@ -220,66 +220,40 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, l, r;
-    std::cin >> n >> l >> r;
+    int n;
+    std::cin >> n;
 
-    vi num(n);
-    set<int> res;
-    map<int, set<int>> data;
+    vi num1(n);
+    std::cin >> num1;
 
-    loop(0, n)
+    int m;
+    std::cin >> m;
+
+    vi num2(m);
+    std::cin >> num2;
+
+    int index = num2[0] + 1;
+    for (int i = 1; i < m; i++)
     {
-        std::cin >> num[i];
+        index = index % n;
+        if (index == 0)
+        {
+            index = n;
+        }
 
-        res.insert(num[i]);
-        data[num[i]].insert(i);
+        // db(index);
+
+        index += num2[i];
     }
 
-    int sum = 0;
-    for (int i = 0; i < n; i++)
+    if (index > n)
     {
-        if (num[i] > r)
+        index = index % n;
+        if (index == 0)
         {
-            continue;
-        }
-
-        int left, right;
-        if (num[i] <= l)
-        {
-            left = abs(l - num[i]);
-            right = abs(r - num[i]);
-        }
-        else if (num[i] > l && num[i] <= r)
-        {
-            left = 0;
-            right = abs(num[i] - r);
-        }
-
-        auto it = data[num[i]].begin();
-        data[num[i]].erase(it);
-
-        if (data[num[i]].size() == 0)
-        {
-            res.erase(num[i]);
-            data.erase(num[i]);
-        }
-
-        auto it1 = res.lower_bound(left);
-        auto it2 = res.upper_bound(right);
-
-        if (it1 == res.end())
-        {
-            continue;
-        }
-
-        auto inox1 = data.find(*it1);
-        auto inox2 = data.find(*it2);
-
-        for (auto j = inox1; j != inox2; j++)
-        {
-            sum += (*j).second.size();
+            index = n;
         }
     }
 
-    std::cout << sum << '\n';
+    std::cout << num1[index - 1] << '\n';
 }

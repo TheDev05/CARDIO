@@ -220,66 +220,40 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, l, r;
-    std::cin >> n >> l >> r;
+    int n;
+    std::cin >> n;
 
-    vi num(n);
-    set<int> res;
-    map<int, set<int>> data;
+    vi num1(n);
+    std::cin >> num1;
 
-    loop(0, n)
+    int m;
+    std::cin >> m;
+
+    vi num2(m);
+    std::cin >> num2;
+
+    int max1 = maxin(num1);
+    int max2 = maxin(num2);
+
+    std::string text1, text2;
+    if (max1 > max2)
     {
-        std::cin >> num[i];
-
-        res.insert(num[i]);
-        data[num[i]].insert(i);
+        text1 += "Alice";
+        text2 += "Alice";
     }
 
-    int sum = 0;
-    for (int i = 0; i < n; i++)
+    if (max1 == max2)
     {
-        if (num[i] > r)
-        {
-            continue;
-        }
-
-        int left, right;
-        if (num[i] <= l)
-        {
-            left = abs(l - num[i]);
-            right = abs(r - num[i]);
-        }
-        else if (num[i] > l && num[i] <= r)
-        {
-            left = 0;
-            right = abs(num[i] - r);
-        }
-
-        auto it = data[num[i]].begin();
-        data[num[i]].erase(it);
-
-        if (data[num[i]].size() == 0)
-        {
-            res.erase(num[i]);
-            data.erase(num[i]);
-        }
-
-        auto it1 = res.lower_bound(left);
-        auto it2 = res.upper_bound(right);
-
-        if (it1 == res.end())
-        {
-            continue;
-        }
-
-        auto inox1 = data.find(*it1);
-        auto inox2 = data.find(*it2);
-
-        for (auto j = inox1; j != inox2; j++)
-        {
-            sum += (*j).second.size();
-        }
+        text1 += "Alice";
+        text2 += "Bob";
     }
 
-    std::cout << sum << '\n';
+    if (max1 < max2)
+    {
+        text1 += "Bob";
+        text2 += "Bob";
+    }
+
+    std::cout << text1 << '\n';
+    std::cout << text2 << '\n';
 }
