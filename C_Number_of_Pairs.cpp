@@ -224,62 +224,8 @@ void solve()
     std::cin >> n >> l >> r;
 
     vi num(n);
-    set<int> res;
     map<int, set<int>> data;
+    multiset<pair<int, int>> res;
 
-    loop(0, n)
-    {
-        std::cin >> num[i];
-
-        res.insert(num[i]);
-        data[num[i]].insert(i);
-    }
-
-    int sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (num[i] > r)
-        {
-            continue;
-        }
-
-        int left, right;
-        if (num[i] <= l)
-        {
-            left = abs(l - num[i]);
-            right = abs(r - num[i]);
-        }
-        else if (num[i] > l && num[i] <= r)
-        {
-            left = 0;
-            right = abs(num[i] - r);
-        }
-
-        auto it = data[num[i]].begin();
-        data[num[i]].erase(it);
-
-        if (data[num[i]].size() == 0)
-        {
-            res.erase(num[i]);
-            data.erase(num[i]);
-        }
-
-        auto it1 = res.lower_bound(left);
-        auto it2 = res.upper_bound(right);
-
-        if (it1 == res.end())
-        {
-            continue;
-        }
-
-        auto inox1 = data.find(*it1);
-        auto inox2 = data.find(*it2);
-
-        for (auto j = inox1; j != inox2; j++)
-        {
-            sum += (*j).second.size();
-        }
-    }
-
-    std::cout << sum << '\n';
+    
 }
