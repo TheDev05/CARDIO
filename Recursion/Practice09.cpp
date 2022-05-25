@@ -4,7 +4,6 @@
 using namespace std;
 
 vector<vector<int>> result;
-
 void get(vector<int> &temp, int index, vector<int> &num)
 {
     if (index == num.size())
