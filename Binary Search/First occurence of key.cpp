@@ -200,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -215,42 +215,6 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int fool(vi num)
-{
-    int n = num.size();
-    for (int i = 0; i < n; i++)
-    {
-        int left = i - 1, right = i + 1;
-        if (i == 0)
-        {
-            left = n - 1;
-        }
-        else if (i == n - 1)
-        {
-            right = 0;
-        }
-
-        if (num[left] == num[i] || num[i] == num[right])
-        {
-            return (0);
-        }
-
-        if (num[left] > num[i])
-        {
-            if (num[right] < num[i])
-            {
-                return (0);
-            }
-        }
-        else if (num[right] > num[i])
-        {
-            return (0);
-        }
-    }
-
-    return (1);
-}
-
 void solve()
 {
     // Reminder: TestCases are single/multiple?
@@ -259,31 +223,41 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n), data, rdata;
+    vi num(n);
     std::cin >> num;
 
-    srt(num);
+    int key;
+    std::cin >> key;
 
-    for (int i = 0; i < n / 2; i++)
+    int left = 0, right = n - 1;
+    while (left <= right)
     {
-        data.pb(num[i]);
-        data.pb(num[n - 1 - i]);
+        int mid = left + (right - left) / 2;
+        if (num[mid] == key)
+        {
+            if (mid == 0)
+            {
+                std::cout << "0\n";
+                rn;
+            }
+
+            if (num[mid] == num[mid - 1])
+            {
+                right = mid - 1;
+            }
+            else
+            {
+                std::cout << mid << '\n';
+                rn;
+            }
+        }
+        else if (num[mid] > key)
+        {
+            right = mid - 1;
+        }
+        else
+            left = mid + 1;
     }
 
-    if (n & 1)
-    {
-        data.pb(num[n / 2]);
-    }
-
-    rdata = data;
-    reverse(all(data));
-
-    if (fool(data) || fool(rdata))
-    {
-        std::cout << "YES\n";
-        std::cout << data;
-        en;
-    }
-    else
-        std::cout << "NO\n";
+    std::cout << "Not found\n";
 }

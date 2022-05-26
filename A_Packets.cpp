@@ -1,8 +1,8 @@
 /*
  Believe in your Karma & Keep chanting,
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+    "Hare Rama Hare Rama, Rama Rama Hare Hare,
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
  Happy Coding. <3
 */
@@ -46,45 +46,45 @@ vector<bool> isPrime(maxlimit, 1);
 
 bool isPalin(std::string text)
 {
-	int n = text.size();
-	loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
-	return true;
+    int n = text.size();
+    loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
+    return true;
 }
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	loop(2, maxlimit)
-	{
-		if (isPrime[i])
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    loop(2, maxlimit)
+    {
+        if (isPrime[i])
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
 struct MyComp
 {
-	// cmp() for set-pair, sort set by second value or index.
-	bool operator()(const pair<int, int> &x, const pair<int, int> &y) const
-	{
-		return x.second < y.second;
-	}
+    // cmp() for set-pair, sort set by second value or index.
+    bool operator()(const pair<int, int> &x, const pair<int, int> &y) const
+    {
+        return x.second < y.second;
+    }
 
-	// Call with: set<pair<int, int>, MyComp> data;
+    // Call with: set<pair<int, int>, MyComp> data;
 };
 
 #define db(x)          \
-	cerr << #x << " "; \
-	read(x);           \
-	cerr << endl;
+    cerr << #x << " "; \
+    read(x);           \
+    cerr << endl;
 
 void read(int t)
 {
-	cerr << t;
+    cerr << t;
 }
 void read(string t) { cerr << t; }
 void read(char t) { cerr << t; }
@@ -109,106 +109,106 @@ void read(multiset<T> v);
 template <class T, class V>
 void read(pair<T, V> p)
 {
-	cerr << " {";
-	read(p.first);
-	cerr << ",";
-	read(p.second);
-	cerr << "}";
+    cerr << " {";
+    read(p.first);
+    cerr << ",";
+    read(p.second);
+    cerr << "}";
 }
 
 template <class T>
 void read(vector<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T>
 void read(set<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T>
 void read(multiset<T> v)
 {
-	cerr << ": ";
-	for (T i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <class T, class V>
 void read(map<T, V> v)
 {
-	cerr << ": ";
-	for (auto i : v)
-	{
-		read(i);
-		cerr << " ";
-	};
+    cerr << ": ";
+    for (auto i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
 }
 
 template <typename T1, typename T2>
 istream &operator>>(istream &istream, pair<T1, T2> &p)
 {
-	return (istream >> p.first >> p.second);
+    return (istream >> p.first >> p.second);
 }
 template <typename T>
 istream &operator>>(istream &istream, vector<T> &v)
 {
-	for (auto &it : v)
-		cin >> it;
-	return istream;
+    for (auto &it : v)
+        cin >> it;
+    return istream;
 }
 template <typename T1, typename T2>
 ostream &operator<<(ostream &ostream, const pair<T1, T2> &p)
 {
-	return (ostream << p.first << " " << p.second);
+    return (ostream << p.first << " " << p.second);
 }
 template <typename T>
 ostream &operator<<(ostream &ostream, const vector<T> &c)
 {
-	for (auto &it : c)
-		cout << it << " ";
-	return ostream;
+    for (auto &it : c)
+        cout << it << " ";
+    return ostream;
 }
 
 void solve();
 int32_t main()
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
+    ios_base::sync_with_stdio(false);
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
 
-	cin.tie(NULL);
+    cin.tie(NULL);
 
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-	// fillPrimes();
+    // fillPrimes();
 
-	int testCases = 1, gcode = 1;
-	// std::cin >> testCases;
+    int testCases = 1, gcode = 1;
+    // std::cin >> testCases;
 
-	while (testCases--)
-	{
-		// std::cout << "Case #" << gcode << ": ";
-		// gcode++;
+    while (testCases--)
+    {
+        // std::cout << "Case #" << gcode << ": ";
+        // gcode++;
 
-		solve();
-	}
+        solve();
+    }
 }
 
 /* Rule'5: Never Give Up & Keep Hustling */
@@ -217,45 +217,12 @@ int32_t main()
 
 void solve()
 {
-	// Reminder: TestCases are single/multiple?
-	// 🌻|Hare Krishna|🌻
+    // Reminder: TestCases are single/multiple?
+    // 🌻|Hare Krishna|🌻
 
-	int n;
-	std::cin >> n;
+    int n;
+    std::cin >> n;
 
-	vi num(n);
-	iota(all(num), 1);
-
-	int key;
-	std::cin >> key;
-
-	int left = 0, right = n - 1;
-	int index;
-	bool ok = false;
-
-	// Binary Search
-	while (left < right)
-	{
-		int mid = (left + right) / 2;
-		if (num[mid] == key)
-		{
-			ok = true;
-
-			index = mid;
-			break;
-		}
-		else if (num[mid] > key)
-		{
-			right = mid - 1;
-		}
-		else
-			left = mid + 1;
-	}
-
-	if (ok)
-	{
-		std::cout << key << " found at index: " << index << '\n';
-	}
-	else
-		std::cout << key << " doesn't exist!\n";
+    int val = ceil(log10(n + 1) / log10(2));
+    std::cout << val << '\n';
 }
