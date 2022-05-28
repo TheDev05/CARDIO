@@ -215,117 +215,105 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
+int fool(char a, char b)
+{
+    int val = ((int)(a - '0'));
+    val = val * 10;
+    val = val + ((int)(b - '0'));
+
+    return (val);
+}
+
+pair<bool, string> check(std::string temp)
+{
+    std::string text, data = "01528";
+    for (int i = temp.size() - 1; i >= 0; i--)
+    {
+        if (temp[i] == '5')
+        {
+            text += '2';
+        }
+        else if (temp[i] == '2')
+        {
+            text += '5';
+        }
+        else
+            text += temp[i];
+    }
+
+    if (data.find(text[0]) != string::npos && data.find(text[1]) != string::npos && data.find(text[3]) != string::npos && data.find(text[4]) != string::npos)
+    {
+        return (mp(true, text));
+    }
+    else
+        return (mp(false, text));
+}
+
+std::string inox(int a, int b)
+{
+    string a1, a2, temp;
+
+    if (a < 10)
+        a1 += '0';
+
+    if (b < 10)
+        a2 += '0';
+
+    a1 += to_string(a);
+    temp = a1;
+
+    temp += ':';
+
+    a2 += to_string(b);
+    temp += a2;
+
+    return (temp);
+}
+
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int hour, min;
+    std::cin >> hour >> min;
 
-    vi num(n), data, res, dres;
-    bool ok = true;
+    std::string temp, text;
+    std::cin >> temp;
 
-    loop(0, n)
+    int left = fool(temp[0], temp[1]);
+    int right = fool(temp[3], temp[4]);
+
+    // db(left);
+    // db(right);
+
+    while (1)
     {
-        std::cin >> num[i];
-
-        if (num[i] <= 0)
+        temp = inox(left, right);
+        if (check(temp).first)
         {
-            ok = false;
-        }
-    }
+            text = check(temp).second;
 
-    if (ok)
-    {
-        std::cout << "YES\n";
-        rn;
-    }
+            int val1 = fool(text[0], text[1]);
+            int val2 = fool(text[3], text[4]);
 
-    int temp1 = 0, temp2 = 0;
-    loop(0, n)
-    {
-        temp1 += num[i];
-        temp2 += num[n - 1 - i];
-
-        res.pb(temp1);
-        dres.pb(temp2);
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        int index = i, sum = 0;
-        if (num[i] > 0)
-        {
-            while (num[index] > 0 && index < n)
+            if (val1 < hour && val2 < min)
             {
-                sum += num[index];
-                index++;
-            }
-        }
-        else if (num[i] < 0)
-        {
-            while (num[index] < 0 && index < n)
-            {
-                sum += num[index];
-                index++;
-            }
-        }
-        else
-        {
-            while (num[index] == 0 && index < n)
-            {
-                sum += num[index];
-                index++;
+                std::cout << temp << '\n';
+                rn;
             }
         }
 
-        i = index - 1;
-        data.pb(sum);
-    }
-
-    // db(data);
-
-    int max = imin, sum = 0;
-    for (int i = 0; i < data.size(); i++)
-    {
-        max = std::max(max, sum);
-        if ((sum + data[i]) >= 0)
+        right++;
+        if (right >= min)
         {
-            sum += data[i];
+            left++;
+            right = 0;
+
+            if (left >= hour)
+            {
+                left = 0;
+            }
         }
-        else
-        {
-            sum = 0;
-        }
-        max = std::max(max, sum);
     }
-
-    int total = sumof(num);
-    sum = max;
-
-    // db(max);
-    // db(sum);
-
-    if (total == sum)
-    {
-        if (find(all(res), 0) != res.end() || find(all(dres), 0) != dres.end())
-        {
-            std::cout << "NO\n";
-        }
-        else
-            std::cout << "YES\n";
-        rn;
-    }
-
-    // db(total);
-    // db(sum);
-    // db(max);
-
-    if (sum < total)
-    {
-        std::cout << "YES\n";
-    }
-    else
-        std::cout << "NO\n";
 }
