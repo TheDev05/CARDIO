@@ -220,54 +220,45 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    int inox = 1, min = imax;
+    vi num(n);
+    map<int, int, greater<>> data;
+
+    loop(0, n)
+    {
+        std::cin >> num[i];
+        data[num[i]]++;
+    }
+
+    int count = 0;
     while (1)
     {
-        if (inox >= 10e17)
+        int blank = k;
+        bool ok = true;
+
+        for (auto &i : data)
+        {
+            if ((i.second > 0) && i.first <= blank)
+            {
+                ok = false;
+
+                int val = blank / i.first;
+                val = std::min(val, i.second);
+
+                blank = blank - ((i.first) * val);
+                i.second = i.second - val;
+            }
+        }
+
+        if (ok)
         {
             break;
         }
 
-        int count = 0;
-        std::string text1, text2;
-
-        text1 = to_string(inox);
-        text2 = to_string(n);
-
-        for (int i = 0; i < text1.size(); i++)
-        {
-            bool ok = true;
-            for (int j = i; j < text2.size(); j++)
-            {
-                if (text1[i] != text2[j])
-                {
-                    count++;
-                    text2.erase(j, 1);
-                    j--;
-                }
-                else
-                {
-                    ok = false;
-                    break;
-                }
-            }
-
-            if (ok)
-            {
-                count++;
-                text2 += text1[i];
-            }
-        }
-
-        int delta = (text2.size() - text1.size());
-        count += abs(delta);
-
-        min = std::min(min, count);
-        inox = inox * 2;
+        count++;
     }
 
-    std::cout << min << '\n';
+    std::cout << count << '\n';
 }

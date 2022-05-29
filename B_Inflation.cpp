@@ -220,54 +220,40 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    int inox = 1, min = imax;
-    while (1)
+    vi num(n);
+    std::cin >> num;
+
+    double inox = (double)k / 100;
+    double sum = num[0], count = 0;
+
+    for (int i = 1; i < n; i++)
     {
-        if (inox >= 10e17)
+        double val = num[i] / sum;
+        int delta = 0;
+
+        if (val > inox)
         {
-            break;
-        }
+            double temp = ((double)num[i] / inox);
+            double dot = temp - sum;
 
-        int count = 0;
-        std::string text1, text2;
-
-        text1 = to_string(inox);
-        text2 = to_string(n);
-
-        for (int i = 0; i < text1.size(); i++)
-        {
-            bool ok = true;
-            for (int j = i; j < text2.size(); j++)
+            if ((num[i] / (floor(dot) + sum)) <= inox)
             {
-                if (text1[i] != text2[j])
-                {
-                    count++;
-                    text2.erase(j, 1);
-                    j--;
-                }
-                else
-                {
-                    ok = false;
-                    break;
-                }
+                sum += floor(dot);
+                delta = floor(dot);
             }
-
-            if (ok)
+            else if ((num[i] / (ceil(dot) + sum)) <= inox)
             {
-                count++;
-                text2 += text1[i];
+                sum += ceil(dot);
+                delta = ceil(dot);
             }
         }
 
-        int delta = (text2.size() - text1.size());
-        count += abs(delta);
-
-        min = std::min(min, count);
-        inox = inox * 2;
+        count += delta;
+        sum += num[i];
     }
 
-    std::cout << min << '\n';
+    std::cout << (int)count << '\n';
 }

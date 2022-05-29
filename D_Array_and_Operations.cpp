@@ -220,54 +220,38 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    int inox = 1, min = imax;
-    while (1)
+    vi num(n), res;
+    loop(0, n)
     {
-        if (inox >= 10e17)
-        {
-            break;
-        }
-
-        int count = 0;
-        std::string text1, text2;
-
-        text1 = to_string(inox);
-        text2 = to_string(n);
-
-        for (int i = 0; i < text1.size(); i++)
-        {
-            bool ok = true;
-            for (int j = i; j < text2.size(); j++)
-            {
-                if (text1[i] != text2[j])
-                {
-                    count++;
-                    text2.erase(j, 1);
-                    j--;
-                }
-                else
-                {
-                    ok = false;
-                    break;
-                }
-            }
-
-            if (ok)
-            {
-                count++;
-                text2 += text1[i];
-            }
-        }
-
-        int delta = (text2.size() - text1.size());
-        count += abs(delta);
-
-        min = std::min(min, count);
-        inox = inox * 2;
+        std::cin >> num[i];
     }
 
-    std::cout << min << '\n';
+    rsrt(num);
+
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (i < (k * 2))
+        {
+            res.pb(num[i]);
+        }
+        else
+            sum += num[i];
+    }
+
+    int index = k;
+    for (int i = 0; i < k; i++)
+    {
+        if (res[i] == res[index])
+        {
+            sum++;
+        }
+
+        index++;
+    }
+
+    std::cout << sum << '\n';
 }
