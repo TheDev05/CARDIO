@@ -220,5 +220,47 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    
+    int a, b, k;
+    std::cin >> a >> b >> k;
+
+    std::string text;
+    std::cin >> text;
+
+    text[text.size() - 1] = text[text.size() - 2];
+
+    vector<pair<char, int>> num;
+    for (int i = 0; i < text.size(); i++)
+    {
+        int index = i;
+        while (text[index] == text[i] && index < text.size())
+        {
+            index++;
+        }
+
+        num.pb(mp(text[i], i + 1));
+        i = index - 1;
+    }
+
+    reverse(all(num));
+
+    int sum = 0, inox = text.size();
+    for (int i = 0; i < num.size(); i++)
+    {
+        int val;
+        if (num[i].first == 'A')
+            val = a;
+        else
+            val = b;
+
+        sum += val;
+
+        if (sum > k)
+        {
+            break;
+        }
+
+        inox = num[i].second;
+    }
+
+    std::cout << inox << '\n';
 }
