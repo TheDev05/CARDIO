@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -222,79 +222,54 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int findsum(std::string text)
-{
-    int n = text.size();
-    int sum = 0;
-
-    loop(0, n - 1)
-    {
-        std::string temp;
-
-        temp = text[i];
-        temp += text[i + 1];
-
-        sum += stoi(temp);
-    }
-
-    return (sum);
-}
-
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    std::string text;
-    std::cin >> text;
+    vi num(3);
+    set<int> data;
 
-    int first = -1, last;
-    for (int i = 0; i < n; i++)
+    int max = imin;
+    loop(0, 3)
     {
-        if (first == -1 && text[i] == '1')
-            first = i;
+        std::cin >> num[i];
+        data.insert(num[i]);
 
-        if (text[i] == '1')
-            last = i;
-    }
-
-    if (k == 0 || first == -1)
-    {
-        std::cout << findsum(text) << '\n';
-        rn;
-    }
-
-    if (first == last)
-    {
-        if (first != n - 1)
+        if (n % num[i] == 0)
         {
-            if (k >= (n - 1) - last)
-            {
-                swap(text[last], text[n - 1]);
-            }
-            else if (k >= first)
-            {
-                swap(text[first], text[0]);
-            }
-        }
-    }
-    else
-    {
-        if (last != n - 1 && k >= (n - 1) - last)
-        {
-            swap(text[last], text[n - 1]);
-            k = k - ((n - 1) - last);
-        }
-
-        if (first != 0 && k >= first)
-        {
-            swap(text[first], text[0]);
-            k = k - first;
+            max = std::max((n / num[i]), max);
         }
     }
 
-    std::cout << findsum(text) << '\n';
+    rsrt(num);
+
+    int atom = 0, inox = n;
+    for (int i = 0; i < 3; i++)
+    {
+        int val = 1;
+        while ((n % num[i]) > num[0])
+        {
+            val++;
+            // n = n - num[i];
+            n = n / num[i];
+
+            db(n);
+
+            // if (data.count(n))
+            // {
+            //     inox = n;
+            //     atom += val;
+
+            //     val = 0;
+            // }
+        }
+
+        n = inox;
+    }
+
+    std::cout << std::max(atom, max) << '\n';
 }

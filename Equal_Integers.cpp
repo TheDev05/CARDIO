@@ -222,79 +222,35 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int findsum(std::string text)
-{
-    int n = text.size();
-    int sum = 0;
-
-    loop(0, n - 1)
-    {
-        std::string temp;
-
-        temp = text[i];
-        temp += text[i + 1];
-
-        sum += stoi(temp);
-    }
-
-    return (sum);
-}
-
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
+    int a, b;
+    std::cin >> a >> b;
 
-    std::string text;
-    std::cin >> text;
-
-    int first = -1, last;
-    for (int i = 0; i < n; i++)
+    if (a == b)
     {
-        if (first == -1 && text[i] == '1')
-            first = i;
-
-        if (text[i] == '1')
-            last = i;
-    }
-
-    if (k == 0 || first == -1)
-    {
-        std::cout << findsum(text) << '\n';
+        std::cout << "0\n";
         rn;
     }
 
-    if (first == last)
+    if (a > b)
     {
-        if (first != n - 1)
+        int delta = a - b;
+        if (delta % 2 == 0)
         {
-            if (k >= (n - 1) - last)
-            {
-                swap(text[last], text[n - 1]);
-            }
-            else if (k >= first)
-            {
-                swap(text[first], text[0]);
-            }
+            std::cout << delta / 2 << '\n';
+            rn;
         }
+        else
+            std::cout << ((delta + 1) / 2) + 1 << '\n';
+        rn;
     }
     else
     {
-        if (last != n - 1 && k >= (n - 1) - last)
-        {
-            swap(text[last], text[n - 1]);
-            k = k - ((n - 1) - last);
-        }
-
-        if (first != 0 && k >= first)
-        {
-            swap(text[first], text[0]);
-            k = k - first;
-        }
+        int delta = b - a;
+        std::cout << delta << "\n";
     }
-
-    std::cout << findsum(text) << '\n';
 }

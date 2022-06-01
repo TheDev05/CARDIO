@@ -222,79 +222,32 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int findsum(std::string text)
-{
-    int n = text.size();
-    int sum = 0;
-
-    loop(0, n - 1)
-    {
-        std::string temp;
-
-        temp = text[i];
-        temp += text[i + 1];
-
-        sum += stoi(temp);
-    }
-
-    return (sum);
-}
-
 void solve()
 {
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n, k;
-    std::cin >> n >> k;
-
     std::string text;
     std::cin >> text;
 
-    int first = -1, last;
-    for (int i = 0; i < n; i++)
+    int sum = text.size(), count = 0;
+    for (int i = 0; i < text.size(); i++)
     {
-        if (first == -1 && text[i] == '1')
-            first = i;
-
-        if (text[i] == '1')
-            last = i;
-    }
-
-    if (k == 0 || first == -1)
-    {
-        std::cout << findsum(text) << '\n';
-        rn;
-    }
-
-    if (first == last)
-    {
-        if (first != n - 1)
+        if (text[i] == '+')
         {
-            if (k >= (n - 1) - last)
-            {
-                swap(text[last], text[n - 1]);
-            }
-            else if (k >= first)
-            {
-                swap(text[first], text[0]);
-            }
+            count++;
         }
-    }
-    else
-    {
-        if (last != n - 1 && k >= (n - 1) - last)
+        else
         {
-            swap(text[last], text[n - 1]);
-            k = k - ((n - 1) - last);
+            count--;
         }
 
-        if (first != 0 && k >= first)
+        if (count < 0)
         {
-            swap(text[first], text[0]);
-            k = k - first;
+            count = 0;
+            sum += (i - 0) + 1;
         }
     }
 
-    std::cout << findsum(text) << '\n';
+    std::cout << sum << '\n';
 }

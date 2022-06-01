@@ -222,24 +222,6 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int findsum(std::string text)
-{
-    int n = text.size();
-    int sum = 0;
-
-    loop(0, n - 1)
-    {
-        std::string temp;
-
-        temp = text[i];
-        temp += text[i + 1];
-
-        sum += stoi(temp);
-    }
-
-    return (sum);
-}
-
 void solve()
 {
     // Reminder: TestCases are single/multiple?
@@ -248,53 +230,17 @@ void solve()
     int n, k;
     std::cin >> n >> k;
 
-    std::string text;
-    std::cin >> text;
-
-    int first = -1, last;
-    for (int i = 0; i < n; i++)
+    if (k & 1)
     {
-        if (first == -1 && text[i] == '1')
-            first = i;
-
-        if (text[i] == '1')
-            last = i;
-    }
-
-    if (k == 0 || first == -1)
-    {
-        std::cout << findsum(text) << '\n';
-        rn;
-    }
-
-    if (first == last)
-    {
-        if (first != n - 1)
-        {
-            if (k >= (n - 1) - last)
-            {
-                swap(text[last], text[n - 1]);
-            }
-            else if (k >= first)
-            {
-                swap(text[first], text[0]);
-            }
-        }
+        std::cout << "Yes\n";
     }
     else
     {
-        if (last != n - 1 && k >= (n - 1) - last)
+        if (n & 1)
         {
-            swap(text[last], text[n - 1]);
-            k = k - ((n - 1) - last);
+            std::cout << "No\n";
         }
-
-        if (first != 0 && k >= first)
-        {
-            swap(text[first], text[0]);
-            k = k - first;
-        }
+        else
+            std::cout << "Yes\n";
     }
-
-    std::cout << findsum(text) << '\n';
 }

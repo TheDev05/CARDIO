@@ -9,6 +9,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+using namespace chrono;
 
 #define int long long
 #define imax (9) * (1e18)
@@ -189,10 +190,11 @@ void solve();
 int32_t main()
 {
     ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    auto start1 = high_resolution_clock::now();
     std::cout << std::setprecision(10);
     std::cout << std::fixed;
-
-    cin.tie(NULL);
 
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
@@ -209,6 +211,11 @@ int32_t main()
 
         solve();
     }
+
+    auto stop1 = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop1 - start1);
+
+    // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
 /* Rule'5: Never Give Up & Keep Hustling */
@@ -220,76 +227,23 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    vi num(n);
-    set<int> data, even, odd;
-
-    int od = 0, ev = 0;
-    loop(0, n)
+    if (k == 2)
     {
-        std::cin >> num[i];
-        if (num[i] & 1)
-        {
-            odd.insert(i);
-            od++;
-        }
-        else
-        {
-            even.insert(i);
-            ev++;
-        }
-    }
-
-    int delta = abs(od - ev);
-    if (abs(delta) != 1 && abs(delta) != 0)
-    {
-        std::cout << "-1\n";
+        std::cout << "ODD\n";
         rn;
     }
 
-    int sum = 0, count = 0;
-    for (int i = 0; i < n; i++)
+    if (k == 1)
     {
-        for (int j = i + 1; j < n; j++)
+        if (n & 1)
         {
-            if (data.count(j))
-            {
-                count--;
-            }
-            else
-            {
-                if ((num[i] % 2 == 0) && (num[j] % 2 == 0))
-                {
-                    auto it = odd.begin();
-
-                    sum = sum - count;
-                    sum += ((*it) - (j));
-
-                    count++;
-
-                    data.insert((*it));
-                    odd.erase(it);
-                }
-                else if ((num[i] & 1) && (num[j] & 1))
-                {
-                    auto it = even.begin();
-
-                    sum = sum - count;
-                    sum += ((*it) - (j));
-
-                    count++;
-
-                    data.insert((*it));
-                    even.erase(it);
-                }
-
-                i = j - 1;
-                break;
-            }
+            std::cout << "ODD\n";
+            rn;
         }
     }
 
-    std::cout << sum << '\n';
+    std::cout << "EVEN\n";
 }
