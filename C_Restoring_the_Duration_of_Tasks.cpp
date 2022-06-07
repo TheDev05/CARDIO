@@ -230,13 +230,26 @@ void solve()
     int n;
     std::cin >> n;
 
-    int val = n / 2;
-    int delta = n - val;
+    vpi num(n);
+    loop(0, n) std::cin >> num[i].first;
+    loop(0, n) std::cin >> num[i].second;
 
-    if (delta == 2)
+    srt(num);
+
+    int inox = -1;
+    for (int i = 0; i < n; i++)
     {
-        val++;
+        if (num[i].first > inox)
+        {
+            inox = num[i].first;
+        }
+
+        if (num[i].first <= inox)
+        {
+            std::cout << num[i].second - inox << " ";
+            inox = num[i].second;
+        }
     }
 
-    std::cout << val - 1 << " " << val << " " << n - (val + (val - 1)) << '\n';
+    en;
 }

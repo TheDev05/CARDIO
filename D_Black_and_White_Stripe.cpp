@@ -227,16 +227,49 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    int val = n / 2;
-    int delta = n - val;
+    std::string text;
+    std::cin >> text;
 
-    if (delta == 2)
+    int count = 0, index = 0;
+    for (int i = 0; i < k; i++)
     {
-        val++;
+        if (text[i] == 'W')
+        {
+            count++;
+        }
     }
 
-    std::cout << val - 1 << " " << val << " " << n - (val + (val - 1)) << '\n';
+    if (count == 0)
+    {
+        std::cout << "0\n";
+        rn;
+    }
+
+    int min = count;
+    for (int i = k; i < n; i++)
+    {
+        if (text[i] == 'W')
+        {
+            count++;
+        }
+
+        if (text[index] == 'W')
+        {
+            count--;
+        }
+
+        if (count == 0)
+        {
+            std::cout << "0\n";
+            rn;
+        }
+
+        min = std::min(min, count);
+        index++;
+    }
+
+    std::cout << min << '\n';
 }

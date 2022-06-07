@@ -230,13 +230,50 @@ void solve()
     int n;
     std::cin >> n;
 
-    int val = n / 2;
-    int delta = n - val;
+    vi num(n), data(n), res;
 
-    if (delta == 2)
+    std::cin >> num;
+    std::cin >> data;
+
+    if (num == data)
     {
-        val++;
+        std::cout << "YES\n";
+        rn;
     }
 
-    std::cout << val - 1 << " " << val << " " << n - (val + (val - 1)) << '\n';
+    bool ok = true;
+    int inox;
+
+    loop(0, n)
+    {
+        int delta = num[i] - data[i];
+        res.pb(delta);
+    }
+
+    inox = maxin(res);
+
+    loop(0, n)
+    {
+        if (res[i] < 0)
+        {
+            ok = false;
+            break;
+        }
+
+        if (res[i] != inox)
+        {
+            if (res[i] < inox && data[i] != 0)
+            {
+                ok = false;
+                break;
+            }
+        }
+    }
+
+    if (ok)
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }
