@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -227,42 +227,21 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int n;
+    std::cin >> n;
 
-    if ((b - a) == k)
-    {
-        std::cout << "0\n";
-        rn;
-    }
+    vi x(n), y(n);
+    loop(0, n) std::cin >> x[i] >> y[i];
 
-    int sum = 0, delta;
-    if (a > b)
-    {
-        delta = a - b;
-        sum += (k / 2) ;
+    int my = 0, mx = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            if (abs(x[i] - x[j]) > mx)
+                mx = abs(x[i] - x[j]);
+            if (abs(y[i] - y[j]) > my)
+                my = abs(y[i] - y[j]);
+        }
 
-        sum += ((delta - 0) / 2) + 1;
-
-        // if (delta % 2 == 0)
-        // {
-        //     sum--;
-        // }
-    }
-    else
-    {
-        delta = b - a;
-        sum += ((k - delta) / 2) + 1;
-
-        // if ((delta & 1) && (k & 1))
-        // {
-        //     sum--;
-        // }
-        // else if ((delta % 2 == 0) && (k % 2 == 0))
-        // {
-        //     sum--;
-        // }
-    }
-
-    std::cout << sum << '\n';
+    std::cout << std::max(mx, my) * std::max(mx, my);
 }

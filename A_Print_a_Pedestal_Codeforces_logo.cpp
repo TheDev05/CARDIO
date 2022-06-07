@@ -227,42 +227,11 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int a, b, k;
-    std::cin >> a >> b >> k;
+    int n;
+    std::cin >> n;
 
-    if ((b - a) == k)
-    {
-        std::cout << "0\n";
-        rn;
-    }
-
-    int sum = 0, delta;
-    if (a > b)
-    {
-        delta = a - b;
-        sum += (k / 2) ;
-
-        sum += ((delta - 0) / 2) + 1;
-
-        // if (delta % 2 == 0)
-        // {
-        //     sum--;
-        // }
-    }
-    else
-    {
-        delta = b - a;
-        sum += ((k - delta) / 2) + 1;
-
-        // if ((delta & 1) && (k & 1))
-        // {
-        //     sum--;
-        // }
-        // else if ((delta % 2 == 0) && (k % 2 == 0))
-        // {
-        //     sum--;
-        // }
-    }
-
-    std::cout << sum << '\n';
+    std::cout << n - 3 << " "
+              << "2"
+              << " "
+              << "1\n";
 }
