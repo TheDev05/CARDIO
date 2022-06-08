@@ -4,61 +4,49 @@
     "Hare Rama Hare Rama, Rama Rama Hare Hare,
      Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
- Username: TheDev05, Happy Coding. <3
+ Happy Coding. <3
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-#define imax INT_MAX
-#define imin INT_MIN
+#define int long long
+#define imax (9) * (1e18)
+#define imin (-9) * (1e18)
 
-#define pi pair<ll, ll>
-#define ps pair<string, string>
-#define pis pair<ll, string>
-#define psi pair<string, ll>
+#define pi pair<int, int>
 #define mp make_pair
-#define f first
-#define s second
+#define ff first
+#define ss second
 
-#define mpi map<ll, ll>
-#define mps map<string, string>
-#define mpis map<ll, string>
-#define mpsi map<string, ll>
-#define mpic map<ll, char>
-#define mpci map<char, ll>
-
-#define vi vector<ll>
+#define vi vector<int>
 #define vs vector<string>
-#define vpi vector<pair<ll, ll>>
-#define sumof(v) accumulate(v.begin(), v.end(), (ll)0);
-#define vvi vector<vector<ll>>
+#define vpi vector<pair<int, int>>
+#define sumof(v) accumulate(v.begin(), v.end(), (int)0);
+#define vvi vector<vector<int>>
 #define pb emplace_back
-#define ppb pop_back
 
 #define en cout << '\n'
-#define ll long long
 #define ull unsigned long long
-#define ld long double
+#define double long double
 #define rn return
 #define all(x) (x).begin(), (x).end()
+#define sorted(x) is_sorted(all(x))
 #define maxin(v) *max_element(v.begin(), v.end())
 #define minin(v) *min_element(v.begin(), v.end())
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * b) / gcd(a, b)
 #define srt(v) sort(v.begin(), v.end())
-#define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
-#define loop(x, n) for (ll i = x; i < n; ++i)
-#define rloop(x, n) for (ll i = n - 1; i >= x; i--)
-#define db1(x) cout << #x << "[" << x << "]" << '\n';
+#define rsrt(v) sort(v.begin(), v.end(), greater<int>())
+#define loop(x, n) for (int i = x; i < n; ++i)
 #define xx cout << "Good 😊" << '\n';
 
-const ll maxlimit = 1e7 + 10;
+const int maxlimit = 1e7 + 10;
 vector<bool> isPrime(maxlimit, 1);
 
 bool isPalin(std::string text)
 {
-    ll n = text.size();
+    int n = text.size();
     loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
     return true;
 }
@@ -94,12 +82,10 @@ struct MyComp
     read(x);           \
     cerr << endl;
 
-void read(ll t)
+void read(int t)
 {
     cerr << t;
 }
-
-void read(int t) { cerr << t; }
 void read(string t) { cerr << t; }
 void read(char t) { cerr << t; }
 void read(double t) { cerr << t; }
@@ -207,19 +193,18 @@ int32_t main()
     std::cout << std::fixed;
 
     cin.tie(NULL);
-    cout.tie(NULL);
 
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
     // fillPrimes();
 
-    int testCase = 1, gcode = 1;
-    std::cin >> testCase;
+    int testCases = 1, gcode = 1;
+    std::cin >> testCases;
 
-    while (testCase--)
+    while (testCases--)
     {
-        // std::cout << "Case #" << gcode << ":" << '\n';
+        // std::cout << "Case #" << gcode << ": ";
         // gcode++;
 
         solve();
@@ -235,36 +220,38 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Hare Krishna|🌻
 
-    ll n, k;
+    int n, k;
     std::cin >> n >> k;
 
     vi num(n), res;
-    std::cin >> num;
+    loop(0, n)
+    {
+        std::cin >> num[i];
+    }
 
     rsrt(num);
 
-    for (ll i = 0; i < (2 * k); i++)
+    int sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        res.pb(num[i]);
-    }
-
-    ll num_sum = sumof(num);
-    ll res_sum = sumof(res);
-    map<ll, ll> data;
-
-    loop(0, res.size())
-    {
-        data[res[i]]++;
-    }
-
-    int count = 0, val = res.size() / 2;
-    for (auto i : data)
-    {
-        if (i.second > val)
+        if (i < (k * 2))
         {
-            count++;
+            res.pb(num[i]);
         }
+        else
+            sum += num[i];
     }
 
-    std::cout << (num_sum - res_sum) + (count / 2) << '\n';
+    int index = k;
+    for (int i = 0; i < k; i++)
+    {
+        if (res[i] == res[index])
+        {
+            sum++;
+        }
+
+        index++;
+    }
+
+    std::cout << sum << '\n';
 }
