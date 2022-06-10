@@ -230,18 +230,28 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi x(n), y(n);
-    loop(0, n) std::cin >> x[i] >> y[i];
+    int min1 = imax, min2 = imax;
+    int max1 = imin, max2 = imin;
 
-    int my = 0, mx = 0;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-        {
-            if (abs(x[i] - x[j]) > mx)
-                mx = abs(x[i] - x[j]);
-            if (abs(y[i] - y[j]) > my)
-                my = abs(y[i] - y[j]);
-        }
+    vpi num(n);
 
-    std::cout << std::max(mx, my) * std::max(mx, my);
+    loop(0, n)
+    {
+        std::cin >> num[i].first;
+        std::cin >> num[i].second;
+    }
+
+    loop(0, n)
+    {
+        min1 = std::min(min1, num[i].first);
+        max1 = std::max(max1, num[i].first);
+
+        min2 = std::min(min2, num[i].second);
+        max2 = std::max(max2, num[i].second);
+    }
+
+    int val1 = abs(min1 - max1);
+    int val2 = abs(min2 - max2);
+
+    std::cout << std::max(val1, val2) * std::max(val1, val2) << '\n';
 }

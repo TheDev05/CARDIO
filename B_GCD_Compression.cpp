@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -224,45 +224,116 @@ int32_t main()
 
 void solve()
 {
-    // Reminder: TestCases are single/multiple?
+    // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
     int n;
     std::cin >> n;
 
-    std::string text;
-    std::cin >> text;
+    n = n * 2;
 
-    vector<pair<char, int>> num;
-    for (int i = 0; i < n; i++)
+    vi num(n), even, odd;
+    loop(0, n)
     {
-        int index = i, count = 0;
-        while (text[i] == text[index] && index < n)
+        std::cin >> num[i];
+        if (num[i] & 1)
         {
-            count++;
-            index++;
+            odd.pb(i + 1);
         }
-
-        num.pb(mp(text[i], count));
-        i = index - 1;
+        else
+        {
+            even.pb(i + 1);
+        }
     }
 
-    n = num.size();
-    int sum = 1;
+    int sum = 0;
 
-    if (n == 1)
+    db(odd);
+    db(even);
+
+    if (odd.empty())
     {
-        int val = (num[0].second * (num[0].second + 1)) / 2;
-        std::cout << val % 998244353 << '\n';
+        loop(2, even.size())
+        {
+            if (!(i & 1))
+            {
+                std::cout << even[i] << " " << even[i + 1] << '\n';
 
+                sum += num[even[i] - 1];
+                sum += num[even[i + 1] - 1];
+            }
+        }
+
+        db(sum);
         rn;
     }
 
-    sum += num[0].second + num[n - 1].second;
-    if (num[0].first == num[n - 1].first)
+    if (even.empty() && (odd.size() % 2 == 0))
     {
-        sum += (num[0].second * num[n - 1].second);
+        loop(2, odd.size())
+        {
+            if (!(i & 1))
+            {
+                std::cout << odd[i] << " " << odd[i + 1] << '\n';
+
+                sum += num[odd[i] - 1];
+                sum += num[odd[i + 1] - 1];
+            }
+        }
+
+        db(sum);
+        rn;
     }
 
-    std::cout << sum % 998244353 << '\n';
+    if (odd.size() & 1)
+    {
+        loop(1, odd.size())
+        {
+            if (i & 1)
+            {
+                std::cout << odd[i] << " " << odd[i + 1] << '\n';
+
+                sum += num[odd[i] - 1];
+                sum += num[odd[i + 1] - 1];
+            }
+        }
+
+        loop(1, even.size())
+        {
+            if (i & 1)
+            {
+                std::cout << even[i] << " " << even[i + 1] << '\n';
+
+                sum += num[even[i] - 1];
+                sum += num[even[i + 1] - 1];
+            }
+        }
+
+        db(sum);
+        rn;
+    }
+
+    loop(0, odd.size())
+    {
+        if (!(i & 1))
+        {
+            std::cout << odd[i] << " " << odd[i + 1] << '\n';
+
+            sum += num[odd[i] - 1];
+            sum += num[odd[i + 1] - 1];
+        }
+    }
+
+    loop(2, even.size())
+    {
+        if (!(i & 1))
+        {
+            std::cout << even[i] << " " << even[i + 1] << '\n';
+
+            sum += num[even[i]-1];
+            sum += num[even[i + 1] - 1];
+        }
+    }
+
+    db(sum);
 }

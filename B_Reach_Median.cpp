@@ -224,34 +224,56 @@ int32_t main()
 
 void solve()
 {
-    // Reminder: TestCases are single/multiple?
+    // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    int min1 = imax, min2 = imax;
-    int max1 = imin, max2 = imin;
+    vi data, num(n);
+    std::cin >> num;
 
-    vpi num(n);
+    srt(num);
 
-    loop(0, n)
+    int mid = num[n / 2];
+
+    if (k == mid)
     {
-        std::cin >> num[i].first;
-        std::cin >> num[i].second;
+        std::cout << "0\n";
+        rn;
+    }
+    else if (k < mid)
+    {
+        for (int i = 0; i <= n / 2; i++)
+        {
+            if (num[i] >= k)
+            {
+                data.pb(num[i]);
+            }
+        }
+
+        reverse(all(data));
+    }
+    else
+    {
+        for (int i = n / 2; i < n; i++)
+        {
+            if (num[i] <= k)
+            {
+                data.pb(num[i]);
+            }
+        }
     }
 
-    loop(0, n)
-    {
-        min1 = std::min(min1, num[i].first);
-        max1 = std::max(max1, num[i].first);
+    data.pb(k);
+    // db(data);
 
-        min2 = std::min(min2, num[i].second);
-        max2 = std::max(max2, num[i].second);
+    int sum = 0;
+    for (int i = 1; i < data.size(); i++)
+    {
+        int delta = abs(data[i] - data[i - 1]);
+        sum += (delta * i);
     }
 
-    int val1 = abs(min1 - max1);
-    int val2 = abs(min2 - max2);
-
-    std::cout << std::max(val1, val2) * std::max(val1, val2) << '\n';
+    std::cout << sum << '\n';
 }

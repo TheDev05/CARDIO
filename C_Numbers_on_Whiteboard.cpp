@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -227,66 +227,26 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n, val = 0;
+    int n;
     std::cin >> n;
 
-    if (n == 1)
+    std::cout << "2\n";
+
+    if (n == 2)
     {
-        std::cout << "1\n";
+        std::cout << "1 2\n";
         rn;
     }
 
-    vi num, data;
-    int inox = 2;
+    std::cout << n << " " << n - 2 << '\n';
+    std::cout << n - 1 << " " << n - 1 << '\n';
 
-    for (int i = 0; i <= 10e5; i++)
+    int val = n - 3, sum = (n - 1) * 2;
+    for (int i = 0; i < n - 3; i++)
     {
-        val = inox * inox;
-        num.pb(val);
+        std::cout << sum / 2 << " " << val << '\n';
 
-        inox++;
+        sum = (sum / 2) + val;
+        val--;
     }
-
-    for (int i = 1; i <= sqrt(n); i++)
-    {
-        if (n % i == 0)
-        {
-            data.pb(i);
-            if ((n / i) != i)
-            {
-                data.pb(n / i);
-            }
-        }
-    }
-
-    srt(num);
-    srt(data);
-
-    // db(num);
-    // db(data);
-
-    int max = imin;
-    for (int i = 0; i < data.size(); i++)
-    {
-        bool ok = true;
-        for (int j = 0; j < num.size(); j++)
-        {
-            if (data[i] < num[j])
-            {
-                break;
-            }
-            else if (data[i] % num[j] == 0)
-            {
-                ok = false;
-                break;
-            }
-        }
-
-        if (ok)
-        {
-            max = std::max(data[i], max);
-        }
-    }
-
-    std::cout << max << '\n';
 }

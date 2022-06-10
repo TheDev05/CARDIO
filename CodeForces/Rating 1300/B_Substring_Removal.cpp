@@ -227,45 +227,42 @@ void solve()
     // Reminder: TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    const int mod = 1e9 + 7;
-
     int n;
     std::cin >> n;
 
-    std::string s;
-    std::cin >> s;
+    std::string text;
+    std::cin >> text;
 
-    int ans = 0, i = 0, l1 = 0, l2 = 0;
-    while (s[i] == s[0])
+    vector<pair<char, int>> num;
+    for (int i = 0; i < n; i++)
     {
-        l1++;
-        i++;
+        int index = i, count = 0;
+        while (text[i] == text[index] && index < n)
+        {
+            count++;
+            index++;
+        }
+
+        num.pb(mp(text[i], count));
+        i = index - 1;
     }
 
-    if (i == n)
+    n = num.size();
+    int sum = 1;
+
+    if (n == 1)
     {
-        if (n == 1)
-            std::cout << 1;
-        else
-            std::cout << n + 1;
+        int val = (num[0].second * (num[0].second + 1)) / 2;
+        std::cout << val % 998244353 << '\n';
+
         rn;
     }
 
-    i = n - 1;
-
-    while (s[i] == s[n - 1])
+    sum += num[0].second + num[n - 1].second;
+    if (num[0].first == num[n - 1].first)
     {
-        l2++;
-        i--;
+        sum += (num[0].second * num[n - 1].second);
     }
 
-    ans = l1 + l2 + 1;
-
-    if (s[0] == s[n - 1])
-    {
-        ans += l1 * l2;
-        ans %= 998244353;
-    }
-
-    std::cout << ans;
+    std::cout << sum % 998244353 << '\n';
 }
