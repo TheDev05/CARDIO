@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -227,24 +227,44 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n, k, a, b;
-    std::cin >> n >> k >> a >> b;
+    int n, k;
+    std::cin >> n >> k;
 
-    if (a == 1 && b == n)
+    vi num(n);
+    set<int> data;
+
+    loop(0, n)
     {
-        std::cout << "0\n";
-        rn;
+        std::cin >> num[i];
+        data.insert(num[i]);
     }
-    else if (a == 1)
+
+    int sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << abs(k - b) + 1 << '\n';
+        int index = i, min = imax;
+        while (num[i] >= num[index])
+        {
+            if (num[index] < num[i])
+            {
+                min = std::min(min, num[index]);
+            }
+
+            index++;
+        }
+
+        if (min = imax)
+        {
+            i = index;
+            continue;
+        }
+        else
+        {
+            sum += (num[i] - min) + num[index];
+        }
+
+        i = index;
     }
-    else if (b == n)
-    {
-        std::cout << abs(a - k) + 1 << '\n';
-    }
-    else
-    {
-        std::cout << std::min(abs(k - a), abs(k - b)) + abs(a - b) + 2 << '\n';
-    }
+
+    std::cout << sum << '\n';
 }

@@ -227,24 +227,35 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n, k, a, b;
-    std::cin >> n >> k >> a >> b;
+    int n, k;
+    std::cin >> n >> k;
 
-    if (a == 1 && b == n)
+    vi num(n);
+    std::cin >> num;
+
+    map<int, pair<int, int>> data;
+
+    int sum = 0, total = sumof(num);
+    int left = total;
+
+    srt(num);
+    // db(total);
+
+    loop(0, n)
     {
-        std::cout << "0\n";
-        rn;
+        data[n - i].first = left;
+        data[n - i].second = (left - num[i]);
+
+        left = left - num[i];
     }
-    else if (a == 1)
+
+    // db(data);
+
+    while (k--)
     {
-        std::cout << abs(k - b) + 1 << '\n';
-    }
-    else if (b == n)
-    {
-        std::cout << abs(a - k) + 1 << '\n';
-    }
-    else
-    {
-        std::cout << std::min(abs(k - a), abs(k - b)) + abs(a - b) + 2 << '\n';
+        int l, r;
+        std::cin >> l >> r;
+
+        std::cout << data[l].first - data[(l - r) + 1].second << '\n';
     }
 }
