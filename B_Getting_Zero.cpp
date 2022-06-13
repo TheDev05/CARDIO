@@ -226,42 +226,4 @@ void solve()
 {
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
-
-    int n;
-    std::cin >> n;
-
-    vi num(n);
-    std::cin >> num;
-
-    int inox = 32768;
-    for (int i = 0; i < n; i++)
-    {
-        if (num[i] % inox == 0)
-        {
-            data[i] = 0;
-            continue;
-        }
-
-        int delta;
-        if (num[i] < inox)
-        {
-            delta = inox;
-        }
-        else
-        {
-            int quot = ceil((double)num[i] / inox);
-            delta = (inox * quot) - num[i];
-        }
-
-        int count = 0, temp = num[i] * 2;
-        while (temp <= delta)
-        {
-            count++;
-
-            num[i] = temp;
-            temp = temp * 2;
-        }
-
-        data[i] = delta - num[i];
-    }
 }
