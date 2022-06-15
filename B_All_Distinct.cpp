@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -231,28 +231,38 @@ void solve()
     std::cin >> n;
 
     vi num(n);
-    std::cin >> num;
+    map<int, int> data;
 
-    int inox = 32768;
-    for (int i = 0; i < n; i++)
+    loop(0, n)
     {
-        int val = num[i], count = 0, min = imax;
-
-        if (val & 1)
-        {
-            val++;
-            count++;
-        }
-
-        while (count < 1000000)
-        {
-            int delta = ceil((double)val / inox);
-            min = std::min(((delta * inox) - val) + count, min);
-
-            val = val * 2;
-            count++;
-        }
-
-        std::cout << min << " ";
+        std::cin >> num[i];
+        data[num[i]]++;
     }
+
+    for (auto &i : data)
+    {
+        if (i.second > 1)
+        {
+            int delta = i.second - 1;
+            int val = delta / 2;
+
+            i.second = i.second - (val * 2);
+        }
+    }
+
+    int count = 0;
+    for (auto i : data)
+    {
+        if (i.second > 1)
+        {
+            count++;
+        }
+    }
+
+    if (count & 1)
+    {
+        std::cout << data.size() - 1 << '\n';
+    }
+    else
+        std::cout << data.size() << '\n';
 }

@@ -233,85 +233,57 @@ void solve()
     int n;
     std::cin >> n;
 
-    std::string left;
-
-    left = text[0];
-    left += text[1];
-
-    std::string right;
-
-    right = text[3];
-    right += text[4];
-
-    int l = stoi(left);
-    int r = stoi(right);
+    int l = 10 * (text[0] - '0') + (text[1] - '0');
+    int r = 10 * (text[3] - '0') + (text[4] - '0');
 
     int count = 0, hour = l, min = r;
     bool out = false;
 
-    set<string> data;
-    int x, y;
-
+    int x = 0, y = n;
     if (n > 60)
     {
         x = n / 60;
         y = n % 60;
     }
-    else
+
+    while (1)
     {
-        x = 0;
-        y = n;
-    }
-
-    for (int i = 0; i < 1000; i++)
-    {
-        int val1 = hour + x;
-        int val2 = min + y;
-
-        db(val1);
-        db(val2);
-
-        if (val2 > 59)
-        {
-            hour++;
-            min = 0;
-        }
-
-        if (val1 > 23)
-        {
-            hour = 0;
-            min = 0;
-        }
-
-        hour = val1 % 24;
-        min = val2 % 60;
-
+        std::string first, second;
         if (hour == l && min == r)
         {
-            break;
+            if (out)
+            {
+                break;
+            }
+
+            out = true;
         }
 
-        std::string temp, first, second;
         if (min < 10)
-        {
             second += '0';
-        }
 
         if (hour < 10)
-        {
             first += '0';
-        }
 
         first += to_string(hour);
         second += to_string(min);
 
-        temp += first;
-        temp += second;
-
+        std::string temp = first + second;
         if (isPalin(temp))
         {
             count++;
         }
+
+        hour = hour + x;
+        min = min + y;
+
+        if (min > 59)
+        {
+            hour++;
+        }
+
+        hour = hour % 24;
+        min = min % 60;
     }
 
     std::cout << count << '\n';

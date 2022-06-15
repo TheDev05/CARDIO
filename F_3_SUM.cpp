@@ -186,6 +186,8 @@ ostream &operator<<(ostream &ostream, const vector<T> &c)
     return ostream;
 }
 
+set<int> atom;
+
 void solve();
 int32_t main()
 {
@@ -202,7 +204,14 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
+
+    int inox = 3;
+    for (int i = 0; inox < 1e5; i++)
+    {
+        atom.insert(inox);
+        inox += 10;
+    }
 
     while (testCases--)
     {
@@ -230,29 +239,49 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num(n);
-    std::cin >> num;
+    vi num;
+    map<int, int> res;
 
-    int inox = 32768;
-    for (int i = 0; i < n; i++)
+    loop(0, n)
     {
-        int val = num[i], count = 0, min = imax;
+        int val;
+        std::cin >> val;
 
-        if (val & 1)
-        {
-            val++;
-            count++;
-        }
-
-        while (count < 1000000)
-        {
-            int delta = ceil((double)val / inox);
-            min = std::min(((delta * inox) - val) + count, min);
-
-            val = val * 2;
-            count++;
-        }
-
-        std::cout << min << " ";
+        val = val % 10;
+        res[val]++;
     }
+
+    for (auto i : res)
+    {
+        int count;
+        if (i.second > 3)
+        {
+            count = 3;
+        }
+        else
+            count = i.second;
+
+        for (int j = 0; j < count; j++)
+        {
+            num.pb(i.first);
+        }
+    }
+
+    for (int i = 0; i < num.size() - 2; i++)
+    {
+        for (int j = i + 1; j < num.size() - 1; j++)
+        {
+            for (int k = j + 1; k < num.size(); k++)
+            {
+                int sum = num[i] + num[j] + num[k];
+                if ((sum % 10) == 3)
+                {
+                    std::cout << "YES\n";
+                    rn;
+                }
+            }
+        }
+    }
+
+    std::cout << "NO\n";
 }

@@ -202,7 +202,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -227,32 +227,27 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    int n;
-    std::cin >> n;
-
-    vi num(n);
-    std::cin >> num;
-
-    int inox = 32768;
-    for (int i = 0; i < n; i++)
+    vector<string> num;
+    for (int i = 0; i < 8; i++)
     {
-        int val = num[i], count = 0, min = imax;
+        string temp;
+        std::cin >> temp;
 
-        if (val & 1)
+        num.pb(temp);
+    }
+
+    for (int i = 1; i <= 6; i++)
+    {
+        for (int j = 1; j <= 6; j++)
         {
-            val++;
-            count++;
+            if (num[i][j] == '#' && num[i - 1][j] == '.' && num[i + 1][j] == '.' && num[i][j - 1] == '.' && num[i][j + 1] == '.')
+            {
+                if (num[i - 1][j - 1] == '#' && num[i - 1][j + 1] == '#' && num[i + 1][j - 1] == '#' && num[i + 1][j + 1] == '#')
+                {
+                    std::cout << i + 1 << " " << j + 1 << '\n';
+                    rn;
+                }
+            }
         }
-
-        while (count < 1000000)
-        {
-            int delta = ceil((double)val / inox);
-            min = std::min(((delta * inox) - val) + count, min);
-
-            val = val * 2;
-            count++;
-        }
-
-        std::cout << min << " ";
     }
 }
