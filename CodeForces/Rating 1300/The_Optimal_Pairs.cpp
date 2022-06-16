@@ -1,10 +1,10 @@
 /*
-Believe in your Karma & Keep chanting,
+ Believe in your Karma & Keep chanting,
 
     "Hare Rama Hare Rama, Rama Rama Hare Hare,
-    Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
 
-Prayers. Practice. Patience.
+ Prayers. Practice. Patience.
 */
 
 #include <bits/stdc++.h>
@@ -230,106 +230,36 @@ void solve()
     int n;
     std::cin >> n;
 
-    std::string text1, text2;
-    std::cin >> text1 >> text2;
-
-    if (n == 1)
+    if (n == 4)
     {
-        if (text1 == text2)
-        {
-            std::cout << "YES\n";
-        }
-        else
-            std::cout << "NO\n";
+        std::cout << "3\n";
+        rn;
+    }
+    else if (n == 2)
+    {
+        std::cout << "1\n";
         rn;
     }
 
-    reverse(all(text1));
-    reverse(all(text2));
-
-    for (int i = 0; i < n; i++)
+    int count = 0;
+    for (int i = 2; i <= sqrt(n); i++)
     {
-        // db(text1);
-        // db(text2);
-
-        if (text1[i] != text2[i])
+        if (n % i == 0)
         {
-            if (i == n - 1)
+            if ((n / i) != i)
             {
-                std::cout << "NO\n";
-                rn;
+                count++;
             }
 
-            if (text2[i] == 'c')
-            {
-                std::cout << "NO\n";
-                rn;
-            }
-
-            if (text2[i] == 'a' && text1[i] != 'b')
-            {
-                std::cout << "NO\n";
-                rn;
-            }
-            else if (text2[i] == 'b' && text1[i] != 'c')
-            {
-                std::cout << "NO\n";
-                rn;
-            }
-
-            int index;
-            if (text2[i] == 'a')
-            {
-                for (int j = i; j < n; j++)
-                {
-                    if (text1[j] == 'a')
-                    {
-                        index = j;
-                        break;
-                    }
-                    else if (text1[j] == 'c')
-                    {
-                        std::cout << "NO\n";
-                        rn;
-                    }
-                }
-
-                // db(text1);
-                // db(text2);
-
-                for (int j = index; j > i; j--)
-                {
-                    swap(text1[j], text1[j - 1]);
-                }
-            }
-            else
-            {
-                for (int j = i; j < n; j++)
-                {
-                    if (text1[j] == 'b')
-                    {
-                        index = j;
-                        break;
-                    }
-                    else if (text1[j] == 'a')
-                    {
-                        std::cout << "NO\n";
-                        rn;
-                    }
-                }
-
-                for (int j = index; j > i; j--)
-                {
-                    swap(text1[j], text1[j - 1]);
-                }
-            }
+            count++;
         }
     }
-
-    if (text1 == text2)
+    
+    if (n % 2 == 0)
     {
-        std::cout << "YES\n";
+        std::cout << ((2 * (count)) + 2) - 1 << '\n';
+        rn;
     }
-    else
-        std::cout << "NO\n";
+
+    std::cout << 2 * (count) + 2 << '\n';
 }
