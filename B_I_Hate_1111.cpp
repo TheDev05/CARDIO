@@ -232,27 +232,15 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    map<int, int> data;
-    vi num, res;
-
-    for (int i = 0; i < text.size(); i++)
-    {
-        int val = ((int)(text[i] - '0'));
-        data[val]++;
-
-        num.pb(val);
-        res.pb(val);
-    }
-
-    srt(num);
-
-    if (data[res[res.size() - 1]] >= 2 && num == res)
+    if (n >= (n % 11) * 111)
     {
         std::cout << "YES\n";
     }
     else
+    {
         std::cout << "NO\n";
+    }
 }
