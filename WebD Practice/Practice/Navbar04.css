@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav .second ul {
+    background-color: black;
+    height: 60px;
+    width: 380px;
+    margin-left: 200px;
+    margin-top: -80px;
+    overflow: auto;
+    padding: 5px;
+}
+
+.nav .second ul li {
+    color: black;
+    list-style: none;
+    float: left;
+    margin-top: 14px;
+}
+
+.nav .second ul li a {
+    border: 2px solid black;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav .first ul {
+    background-color: black;
+    width: 100px;
+    height: 80px;
+    overflow: auto;
+}
+
+.nav .first ul li {
+    margin-top: 9px;
+    margin-left: 2px;
+}
+
+.nav .first ul li a {
+    text-decoration: none;
+    border: 2px solid black;
+    line-height: 42px;
+    padding: 6px;
+}
+
+.nav .third ul {
+    background-color: black;
+    color: white;
+    width: 250px;
+    height: 100px;
+    margin-top: -70px;
+    float: right;
+    overflow: auto;
+
+}
+
+
+.nav .third ul li {
+    margin-top: 20px;
+    margin-left: 11px;
+    float: left;
+    list-style: none;
+}
+
+.nav .third ul li a {
+    border: 2px solid black;
+    padding: 20px;
+
+}
+
+body{background-color: black;}

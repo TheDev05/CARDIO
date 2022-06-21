@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */
+    justify-content:center;
+    margin-top: 10px;
+    background-color: black;
+    height: 60px;
+    overflow: auto;
+}
+
+div{
+    margin-top: 15px;
+}
+
+nav div a {
+    line-height: 20px;
+    border: 2px solid black;
+    padding: 20px;
+    margin-left: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+nav div a:hover {
+    background-color: red;
+}

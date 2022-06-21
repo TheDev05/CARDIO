@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        h3 {
+            background-color: red;
+            color: white;
+            height: 80px;
+            text-align: center;
+            margin-top: 2px;
+            line-height: 78px;
+
+        }
+
+        form {
+            margin-top: -1%;
+            background-color: aqua;
+            border: 2px solid black;
+            padding: 10px;
+
+        }
+
+        .fname {
+            padding-left: 6%;
+            margin-left: 3%;
+            margin-top: 1%;
+        }
+
+        .sname {
+            padding-left: 6%;
+            margin-left: 4%;
+            margin-top: 2%;
+        }
+
+        .pname {
+            padding-left: 12%;
+            margin-left: 3%;
+            margin-top: 2%;
+        }
+
+        .gender {
+            margin-top: 2%;
+        }
+
+        .textarea {
+            margin-top: 1px;
+        }
+
+        #box {
+            margin-top: 0%;
+            width: 50%;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            width: 8%;
+            padding-left: 25px;
+            border-radius: 10px;
+            height: 47px;
+            margin-left: 13%;
+            margin-top: 1%;
+        }
+
+        #submit {
+            margin-top: 11px;
+            margin-left: -25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Form:</h3>
+    <form action="/Dev.php">
+        <div>Name: <input type="text" name="name" id="" placeholder="Enter Your Name" class="fname"></div>
+        <div>UID: <input type="number" name="uid" id="" class="sname" placeholder="Enter Your UID"></div>
+        <div>DOB: <input type="date" name="date" id="" class="pname"></div>
+        <div class="gender">Gender:
+            <br> <input type="radio" name="gender" id=""> Male
+            <br> <input type="radio" name="gender" id=""> Female
+            <br> <input type="radio" name="gender" id=""> Others
+        </div>
+
+        <div>
+            <p>Describe Yourself</p>
+            <textarea name="describe" id="box" cols="30" rows="10" placeholder="Write Here..."></textarea>
+        </div>
+        <button>
+            <p id="submit">Submit</p>
+        </button>
+
+    </form>
+
+
+</body>
+
+</html>

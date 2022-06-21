@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+</head>
+
+<body>
+
+    <h2>Payment</h2>
+    <form action="/backened.php">
+
+        <fieldset>
+            <legend>
+                <h3>Persnol Details</h3>
+            </legend>
+
+            <div>
+                Name: <input type="text" name="name" id=""></div>
+
+            <div>
+                Fathers Name: <input type="text" name="fname" id="">
+            </div>
+
+            <div>
+                Contact: <input type="number" name="contact" id="">
+            </div>
+
+            Gender:
+            <br>
+
+            <input type="radio" name="gender" id=""> Male
+            <input type="radio" name="gender" id=""> Female
+            <input type="radio" name="gender" id=""> Others
+
+        </fieldset>
+
+
+        <fieldset>
+            <legend>
+                <h3>Card Details</h3>
+            </legend>
+
+            <div>
+                Card Type:
+                <select name="cardtype" id="">
+                    <option value="" selected>--Choose One--</option>
+                    <option value="VISA">VISA</option>
+                    <option value="RuPAY">RuPAY</option>
+                    <option value="MasterCard">MasterCard</option>
+                </select>
+            </div>
+
+            <div>
+                Choose favorable colors:
+                <input type="checkbox" name="colors" id="">RED
+                <input type="checkbox" name="colors" id="">PINK
+                <input type="checkbox" name="colors" id="">BLUE
+                <input type="checkbox" name="colors" id="">ALL
+
+            </div>
+            <div>
+                Card Number: <input type="number" name="cardnumber" id="">
+            </div>
+            <div>
+                Exp date: <input type="date" name="" id="">
+            </div>
+        </fieldset>
+
+        <hr>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+
+</body>
+
+</html>

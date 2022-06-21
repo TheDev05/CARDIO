@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    height: 50px;
+    line-height: 50px;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+li {
+    float: left;
+    border-right: 1px solid black;
+    color: antiquewhite;
+}
+
+a {
+    display: block;
+    padding: 0 30px;
+    height: 50px;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: rgb(10, 93, 195);
+}
+
+.current a{
+    background-color: rgb(10, 93, 195);
+}
+

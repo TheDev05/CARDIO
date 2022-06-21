@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms & Input Tags</title>
+</head>
+
+<body>
+
+    <h2>Your Form</h2>
+    <form action="/backened.php">
+        <div>
+            Name: <input type="text">
+        </div>
+
+        <label for="1100">Email</label>
+        <div>
+            <input type="email" name="MyEmail" id="1100">
+        </div>
+
+        <div>
+            Call: <input type="number" name="MyContact">
+        </div>
+
+        <div>
+            Are You Eligible? <input type="checkbox" checked name="CheckBox">
+        </div>
+
+        <div>
+            Choose Your age:
+
+            18 <input type="radio" name="Radio">
+            19 <input type="radio" name="Radio">
+
+        </div>
+
+        <div>
+            Introduce Yourself:
+            <textarea name="Textarea"  cols="30" rows="10"></textarea>
+        </div>
+
+        <label for="select">Select ant three:</label>
+        <div>
+            <select name="options" id="select">
+                <option value="CGPA 9">CGPA 9</option>
+                <option value="CGPA 10">CGPA 10</option>
+                <option value="CGPA 8">CGPA 8</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="reset" value="Reset">
+        </div>
+        <div>
+            <input type="submit" value="Enter">
+        </div>
+    </form>
+
+</body>
+
+</html>
