@@ -207,7 +207,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -227,69 +227,58 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
+vector<int> fool(vi num)
+{
+    vi inox;
+
+    auto it = find(all(num), 1);
+    int index = it - num.begin();
+
+    for (int i = 0; i < num.size(); i++)
+    {
+        inox.pb(num[index]);
+
+        index++;
+
+        if (index == num.size())
+            index = 0;
+    }
+
+    return (inox);
+}
+
 void solve()
 {
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    int n = text.size();
+    vi num1(n), num2(n);
+    std::cin >> num1 >> num2;
 
-    int zero = 0, one = 0;
+    num1 = fool(num1);
+    num2 = fool(num2);
+
+    map<int, int> data1, inox1;
+    loop(0, n)
+    {
+        data1[num2[i]] = i;
+    }
+
     for (int i = 0; i < n; i++)
     {
-        if (text[i] == '0')
-        {
-            zero++;
-        }
-        else
-            one++;
+        int delta1 = data1[num1[i]] - i;
+        if (delta1 < 0)
+            delta1 += n;
+
+        inox1[delta1]++;
     }
 
     int count = 0;
-    loop(0, n - 1)
-    {
-        if (text[i] != text[i + 1])
-        {
-            count++;
-        }
-    }
+    for (auto i : inox1)
+        count = std::max(count, i.second);
 
-    if (count == 0 || count == 1)
-    {
-        std::cout << "0\n";
-        rn;
-    }
-
-    int sum1 = one, sum2 = zero;
-    int min = sum1;
-
-    for (int i = 0; i < n; i++)
-    {
-        if (text[i] == '1')
-        {
-            sum1--;
-        }
-        else
-            sum1++;
-
-        min = std::min(sum1, min);
-    }
-
-    min = std::min(min, sum2);
-    for (int i = 0; i < n; i++)
-    {
-        if (text[i] == '0')
-        {
-            sum2--;
-        }
-        else
-            sum2++;
-
-        min = std::min(sum2, min);
-    }
-
-    std::cout << min << '\n';
+    std::cout << count << '\n';
 }
