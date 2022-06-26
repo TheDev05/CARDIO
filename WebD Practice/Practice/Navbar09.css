@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    width: 20%;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+}
+
+nav div {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+nav div:hover{
+    background-color: red;
+}

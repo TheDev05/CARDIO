@@ -1,0 +1,33 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+nav {
+    display: flex;
+    background-color: black;
+    height: 60px;
+    justify-content: center;
+    overflow: auto;
+    margin-top: 2px;
+
+}
+
+a:hover {
+    background-color: red;
+}
+
+div {
+    margin-top: 18px;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    border: 2px solid black;
+    padding: 14px;
+
+}

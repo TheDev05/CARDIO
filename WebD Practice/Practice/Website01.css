@@ -1,0 +1,72 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.Header {
+    background-color: black;
+    grid-column: 1/4;
+}
+
+.Context1 {
+    background-color: yellow;
+}
+
+.Context2 {
+    background-color: green;
+}
+
+.Sidebar {
+    background-color: purple;
+    grid-column: 1/2;
+    grid-row: 2/4;
+}
+
+.Context3 {
+    background-color: cyan;
+    grid-column: 2/4;
+}
+
+.Footer {
+    background-color: navy;
+    grid-column: 1/4;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 80px 300px 300px 100px;
+    grid-template-columns: 400px auto auto;
+}
+
+#header-text {
+
+    margin: 0px 0px 0px 10px;
+    font-size: 30px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    background-color: black;
+    height: 80px;
+    margin-top: -40px;
+    justify-content:flex-end;
+    flex-direction: row;
+
+}
+
+nav a {
+    border: 2px solid black;
+    text-decoration: none;
+    color: white;
+    padding: 40px;
+    line-height: 70px;
+
+}
+
+nav a:hover{
+    background-color: red;
+}

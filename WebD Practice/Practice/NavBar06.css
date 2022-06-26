@@ -1,0 +1,28 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    background-color: black;
+    color: white;
+    overflow: auto;
+    margin-top: 2px;
+    height: 65px;
+}
+
+li {
+    list-style: none;
+    float: left;
+    border: 2px solid black;
+    padding: 18px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li:hover{
+    background-color: red;
+}

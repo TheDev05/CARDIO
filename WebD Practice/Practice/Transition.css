@@ -1,0 +1,44 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: burlywood;
+
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    background-color: red;
+    line-height: 10;
+    margin: 200px 0px 0px 650px;
+    box-shadow: 8px 8px 2px black;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.box:hover {
+    transition: background-color;
+    background-color: black;
+
+    transition: box-shadow;
+    box-shadow: 8px 8px 2px white;
+
+    transition: transform;
+    transform: rotate(360deg);
+
+    transition: transform;
+    /* transform: scale(2); */
+
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+
+}
+
+.box a {
+    text-decoration: none;
+    color: white;
+}

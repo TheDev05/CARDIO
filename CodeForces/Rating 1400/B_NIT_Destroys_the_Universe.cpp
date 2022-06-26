@@ -226,27 +226,59 @@ int32_t main()
 /* Rule'5: Never Give Up & Keep Hustling */
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
-    const int inf = 1e5 + 9;
 
 void solve()
 {
     // Reminder: Check TestCases are single/multiple?
     // 🌻|Jai Shree Krishna|🌻
 
-
     int n;
-    cin >> n;
-    vector<int> a(n);
-    // int a[n];
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-    for (int i = 0; i < n; i++)
-    {
-        int curr = 1;
-        while (curr <= a[i])
-            curr *= 2;
-        cout << curr / 2 << " ";
+    std::cin >> n;
 
-        cout << endl;
+    vi num(n), data;
+    std::cin >> num;
+
+    if (maxin(num) == 0)
+    {
+        std::cout << "0\n";
+        rn;
     }
+
+    loop(0, n)
+    {
+        data.pb(num[i]);
+        if (num[i] == 0)
+        {
+            int index = i;
+            while (num[i] == num[index] && index < n)
+            {
+                index++;
+            }
+
+            i = index - 1;
+        }
+    }
+
+    n = data.size();
+
+    int count = 0;
+    if (data[0] != 0)
+    {
+        count++;
+    }
+
+    if (data[data.size() - 1] != 0)
+    {
+        count++;
+    }
+
+    loop(0, data.size()) if (data[i] == 0) count++;
+    count--;
+
+    if (count >= 2)
+    {
+        std::cout << "2\n";
+    }
+    else
+        std::cout << count << '\n';
 }
