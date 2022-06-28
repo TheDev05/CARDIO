@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100wh;
+        }
+
+        header {
+            display: flex;
+            background-color: rgb(12, 12, 116);
+            width: 100%;
+            height: 110px;
+            position: fixed;
+            flex-direction: row;
+            justify-content: right;
+            overflow: hidden;
+            z-index: 1;
+
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            /* color: red; */
+            /* font-weight: 800; */
+            font-size: 130%;
+            transition: 0.1s;
+        }
+
+        .home,
+        .Blogs,
+        .News,
+        .Gallery,
+        .Join {
+            /* background-color:  rgb(12, 12, 116); */
+            /* background-color: red; */
+            width: 130px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0px;
+            margin: 1px;
+            transition: 0.2s;
+
+        }
+
+        .logo {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            height: 80px;
+            background-color: red;
+            width: 110px;
+            padding: 15px;
+            font-size: 200%;
+            line-height: 45px;
+            letter-spacing: 0px;
+            font-weight: 600;
+            color: rgb(255, 255, 255);
+        }
+
+        .illust {
+            position: absolute;
+            right: 0px;
+            top: 30%;
+
+            animation: animate 2s linear infinite;
+        }
+
+        @keyframes animate {
+
+            0%,
+            100% {
+                transform: translateY(-4px);
+            }
+
+            50% {
+                transform: translateY(4px);
+            }
+        }
+
+        .card {
+            position: absolute;
+            background: white;
+            border: 2px solid rgb(100%, 100%, 100%);
+            border-radius: 8px;
+            box-shadow: 1px 2px 3px 4px rgb(0, 0, 0, 0.2);
+            top: 150px;
+            left: 30px;
+            width: 720px;
+            height: 500px;
+
+            display: flex;
+            /* align-items: center; */
+            /* justify-content: center; */
+            padding: 20px;
+            font-weight: 400;
+            text-align: justify;
+            /* text-indent: 15px; */
+        }
+
+        .signature {
+            position: absolute;
+            top: 450px;
+            left: 20px;
+            letter-spacing: 0px;
+            font-weight: 500;
+        }
+
+        footer {
+            position: absolute;
+            background-color: rgb(12, 12, 116);
+            bottom: 0px;
+            width: 100%;
+            height: 20%;
+            top: 180%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .socials {
+            position: absolute;
+            display: flex;
+            top: 40%;
+            left: 43%;
+            /* background-color: red; */
+            width: 250px;
+            height: 50px;
+            flex-direction: row;
+            border-radius: 2px solid black;
+        }
+
+        .Facebook {
+            margin-right: 10px;
+        }
+
+        .Instagram {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">BlueButtons</div>
+        <div class="home"><a href="#" target="_blank">Home</a></div>
+        <div class="Blogs"><a href="#" target="_blank">Projects</a></div>
+        <div class="News"><a href="#" target="_blank">Random</a></div>
+        <div class="Gallery"><a href="#" target="_blank">Resume</a></div>
+        <div class="Join"><a href="#" target="_blank">Contact</a></div>
+    </header>
+
+    <div class="illust">
+        <img src="png.png" alt="Illust.png">
+    </div>
+    <div class="context">
+        <div class="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam aliquam reiciendis officia cum? Velit
+                unde, sequi ratione sapiente maxime nesciunt quos accusamus possimus exercitationem voluptate sit
+                dolorem ad
+                nemo nisi alias, cum odio eaque corrupti ullam delectus impedit vero similique sed adipisci. Suscipit
+                dolores consequuntur blanditiis eligendi incidunt praesentium magni. Lorem ipsum dolor sit, amet
+                consectetur
+                adipisicing elit. Ipsum praesentium expedita fugit earum veritatis velit quasi quisquam, quam dolor
+                esse,
+                sapiente dolores vero quae, similique deleniti porro enim labore necessitatibus neque amet repellat
+                ullam
+                tenetur laboriosam! Nam earum ab illo at sequi deleniti veritatis porro praesentium velit maiores! Eos,
+                autem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, illum. Dolorum eveniet corrupti
+                voluptatem veniam voluptas quaerat eius distinctio quae exercitationem, cupiditate debitis atque
+                expedita
+                itaque est consectetur perspiciatis. Neque dignissimos id accusamus ipsum suscipit voluptatem. Ea,
+                obcaecati? <span class="signature">Sincerely, Ankit D.</span></p>
+        </div>
+
+        <!-- Content -->
+
+        <footer>
+            <div class="socials">
+                <div class="Facebook"><a href="#">Facebook</a></div>
+                <div class="Instagram"><a href="#">Instagram</a></div>
+                <div class="Twitter"><a href="#">Twitter</a></div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
