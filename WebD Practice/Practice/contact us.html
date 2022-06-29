@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Button: Contact Us</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100wh;
+        }
+
+        header {
+            display: flex;
+            background-color: rgb(12, 12, 116);
+            width: 100%;
+            height: 110px;
+            position: fixed;
+            flex-direction: row;
+            justify-content: right;
+            overflow: hidden;
+            z-index: 2;
+
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            /* color: red; */
+            /* font-weight: 800; */
+            font-size: 130%;
+            transition: 0.1s;
+        }
+
+        .home,
+        .Blogs,
+        .News,
+        .Gallery,
+        .Join {
+            /* background-color:  rgb(12, 12, 116); */
+            /* background-color: red; */
+            width: 130px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0px;
+            margin: 1px;
+            transition: 0.2s;
+
+        }
+
+        .logo {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            height: 80px;
+            background-color: red;
+            width: 110px;
+            padding: 15px;
+            font-size: 200%;
+            line-height: 45px;
+            letter-spacing: 0px;
+            font-weight: 600;
+            color: rgb(255, 255, 255);
+        }
+
+        .context {
+            display: flex;
+            /* background-color: red; */
+            position: relative;
+            top: 110px;
+            /* color: white; */
+            width: 100%;
+            height: 100vh;
+
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .box {
+            background-color: white;
+            position: absolute;
+            right: 35px;
+            top: 70px;
+            width: 700px;
+            height: 500px;
+            border: 2px solid rgb(0%, 0%, 0%, 0.2);
+            box-shadow: 1px 2px 3px 4px rgb(0%, 0%, 0%, 0.2);
+            border-radius: 10px;
+        }
+
+        .form-box {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            width: 650px;
+            height: 450px;
+            position: absolute;
+            right: 60px;
+            top: 90px;
+        }
+
+        .btn {
+            display: flex;
+            background-color: rgb(12, 12, 116);
+            width: 95px;
+            position: absolute;
+            color: white;
+            height: 50px;
+            top: 300px;
+            left: 300px;
+            line-height: 50px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">BlueButtons</div>
+        <div class="home"><a href="#" target="_blank">Home</a></div>
+        <div class="Blogs"><a href="#" target="_blank">Projects</a></div>
+        <div class="News"><a href="#" target="_blank">Random</a></div>
+        <div class="Gallery"><a href="#" target="_blank">Resume</a></div>
+        <div class="Join"><a href="#" target="_blank">Contact</a></div>
+    </header>
+
+    <div class="context">
+
+        <div class="box">
+
+        </div>
+
+        <div class="form-box">
+            <form action="#">
+                Your Name: <input type="text"><br>
+                Email Address: <input type="email"><br>
+                Contact Number: <input type="number"><br>
+                Query(if any): <input type="text">
+                <div class="btn">Submit</div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
