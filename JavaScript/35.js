@@ -11,7 +11,7 @@ console.log(var2);
 var1 = 10;
 console.log(var1);
 
-//In case there is hortage of data in array
+//In case there is shortage of data in array
 let animals = ["Horse"];
 let [first, second, third] = animals;
 
