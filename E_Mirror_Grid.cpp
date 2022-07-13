@@ -227,29 +227,6 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int fool(vector<string> data)
-{
-    int min = imax;
-    for (int i = 0; i < data.size(); i++)
-    {
-        int sum = 0;
-        for (int j = 0; j < data[i].size(); j++)
-        {
-            for (int k = 0; k < data.size(); k++)
-            {
-                if (data[k][j] != data[i][j])
-                {
-                    sum++;
-                }
-            }
-        }
-
-        min = std::min(min, sum);
-    }
-
-    return (min);
-}
-
 void solve()
 {
     // Reminder: Check TestCases are single/multiple?
@@ -258,7 +235,7 @@ void solve()
     int n;
     std::cin >> n;
 
-    vector<string> num, odd, data;
+    vector<string> num;
     for (int i = 0; i < n; i++)
     {
         std::string text;
@@ -267,113 +244,52 @@ void solve()
         num.pb(text);
     }
 
-    // n is odd;
+    int lx = 0, rx = 0, brx = n - 1, blx = n - 1;
+    int ly = 0, ry = n - 1, bry = n - 1, bly = 0;
 
-    int val = n / 2;
-    int start = val;
-
-    if (n & 1)
+    int sum = 0, inox = n;
+    for (int i = 0; i < n / 2; i++)
     {
-        start++;
+        int lx1 = lx, rx1 = rx, brx1 = brx, blx1 = blx;
+        int ly1 = ly, ry1 = ry, bry1 = bry, bly1 = bly;
 
-        string inox;
-        for (int i = 0; i < val; i++)
+        for (int j = 0; j < inox - 1; j++)
         {
-            inox += num[val][i];
-        }
-        odd.pb(inox);
-        inox.clear();
+            map<char, int> data;
 
-        for (int i = 0; i < val; i++)
-        {
-            inox += num[i][val];
-        }
-        odd.pb(inox);
-        inox.clear();
+            char val1 = num[lx1][ly1];
+            char val2 = num[rx1][ry1];
+            char val3 = num[brx1][bry1];
+            char val4 = num[blx1][bly1];
 
-        for (int i = start; i < n; i++)
-        {
-            inox += num[val][i];
-        }
+            data[val1]++;
+            data[val2]++;
+            data[val3]++;
+            data[val4]++;
 
-        reverse(all(inox));
-        odd.pb(inox);
-        inox.clear();
+            ly1++;
+            rx1++;
+            bry1--;
+            blx1--;
 
-        for (int i = start; i < n; i++)
-        {
-            inox += num[i][val];
+            if (data.size() > 1)
+                sum += std::min(data['1'], data['0']);
         }
 
-        reverse(all(inox));
-        odd.pb(inox);
-        inox.clear();
+        lx++;
+        ly++;
+
+        rx++;
+        ry--;
+
+        brx--;
+        bry--;
+
+        blx--;
+        bly++;
+
+        inox = inox - 2;
     }
 
-    // db(odd);
-
-    std::string temp;
-    for (int i = 0; i < val; i++)
-    {
-        for (int j = 0; j < val; j++)
-        {
-            temp += num[i][j];
-        }
-    }
-    data.pb(temp);
-    temp.clear();
-
-    for (int i = 0; i < val; i++)
-    {
-        string atom;
-        for (int j = start; j < n; j++)
-        {
-            atom += num[i][j];
-        }
-
-        reverse(all(atom));
-        temp += atom;
-    }
-    data.pb(temp);
-    temp.clear();
-
-    for (int i = start; i < n; i++)
-    {
-        string atom;
-        for (int j = 0; j < val; j++)
-        {
-            atom += num[i][j];
-        }
-
-        reverse(all(atom));
-        temp += atom;
-    }
-
-    reverse(all(temp));
-    data.pb(temp);
-    temp.clear();
-
-    for (int i = start; i < n; i++)
-    {
-        for (int j = start; j < n; j++)
-        {
-            temp += num[i][j];
-        }
-    }
-
-    reverse(all(temp));
-    data.pb(temp);
-    temp.clear();
-
-    db(data);
-    db(odd);
-
-    int sum1 = fool(data);
-
-    if (n & 1)
-    {
-        sum1 += fool(odd);
-    }
-
-    std::cout << sum1 << '\n';
+    std::cout << sum << '\n';
 }
