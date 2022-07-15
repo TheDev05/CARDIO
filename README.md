@@ -7,7 +7,7 @@ On the chart below you may find most common orders of growth of algorithms speci
 
 Source: [Big O Cheat Sheet](http://bigocheatsheet.com/).
 
-Below is the list of some of the most used Big O notations and their performance comparisons against different sizes of the input data.
+Below is the list of some of the most used Big O notations & their performance comparisons against different sizes of the input data.
 
 | Big O Notation | Computations for 10 elements | Computations for 100 elements | Computations for 1000 elements  |
 | -------------- | ---------------------------- | ----------------------------- | ------------------------------- |
