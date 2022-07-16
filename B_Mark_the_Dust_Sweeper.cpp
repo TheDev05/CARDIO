@@ -235,19 +235,48 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    int n, a, b;
-    std::cin >> n >> a >> b;
+    int n;
+    std::cin >> n;
 
-    char inox = 'a';
-    for (int i = 1; i <= n; i++)
+    vi num(n), data;
+    std::cin >> num;
+
+    bool ok = false;
+    for (int i = 0; i < n - 1; i++)
     {
-        std::cout << inox++;
-        
-        if (i % b == 0)
+        if (num[i] != 0)
         {
-            inox = 'a';
+            ok = true;
+        }
+
+        if (ok)
+        {
+            data.pb(num[i]);
         }
     }
 
-    std::cout << "\n";
+    if (data.size() == 0)
+    {
+        std::cout << "0\n";
+        rn;
+    }
+
+    int sum = sumof(data);
+    for (int i = 0; i < data.size(); i++)
+    {
+        if (data[i] == 0)
+        {
+            int index = i, count = 0;
+            while (data[index] == 0 && index < data.size())
+            {
+                index++;
+                count++;
+            }
+
+            sum += count;
+            i = index - 1;
+        }
+    }
+
+    std::cout << sum << '\n';
 }
