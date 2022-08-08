@@ -235,36 +235,40 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    if (k == 0)
+    int left = 0, right = 0, up = 0, down = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (n & 1)
+        int x, y;
+        std::cin >> x >> y;
+
+        if (y == 0)
         {
-            std::cout << "1\n";
+            if (x > 0)
+            {
+                right = std::max(right, x);
+            }
+            else
+            {
+                x = abs(x);
+                left = std::max(left, x);
+            }
         }
         else
-            std::cout << "0\n";
-        rn;
+        {
+            if (y > 0)
+            {
+                up = std::max(up, y);
+            }
+            else
+            {
+                y = abs(y);
+                down = std::max(down, y);
+            }
+        }
     }
 
-    if (k <= n)
-    {
-        if (k & 1 && n & 1)
-        {
-            std::cout << "0\n";
-            rn;
-        }
-        else if (!(k & 1) && !(n & 1))
-        {
-            std::cout << "0\n";
-            rn;
-        }
-
-        std::cout << "1\n";
-        rn;
-    }
-
-    std::cout << abs(n - k) << '\n';
+    std::cout << up * 2 + down * 2 + left * 2 + right * 2 << '\n';
 }

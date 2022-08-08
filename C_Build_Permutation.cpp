@@ -195,6 +195,8 @@ ostream &operator<<(ostream &ostream, const vector<T> &c)
 }
 
 void solve();
+set<int> inox;
+
 int32_t main()
 {
     ios_base::sync_with_stdio(false);
@@ -208,6 +210,14 @@ int32_t main()
     // freopen("output.txt", "w", stdout);
 
     // fillPrimes();
+
+    for (int i = 0; i <= 1e6; i++)
+    {
+        if (ceil(sqrt(i)) == floor(sqrt(i)))
+        {
+            inox.insert(i);
+        }
+    }
 
     int testCases = 1, gcode = 1;
     std::cin >> testCases;
@@ -235,36 +245,26 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    if (k == 0)
+    vi num(n, 0);
+    set<int> data;
+
+    int atom = n;
+    for (int i = n - 1; i >= 0; i--)
     {
-        if (n & 1)
+        if (atom >= n || data.count(atom))
         {
-            std::cout << "1\n";
+            atom = (*inox.lower_bound(i)) - i;
         }
-        else
-            std::cout << "0\n";
-        rn;
+
+        num[i] = atom;
+        data.insert(atom);
+
+        atom++;
     }
 
-    if (k <= n)
-    {
-        if (k & 1 && n & 1)
-        {
-            std::cout << "0\n";
-            rn;
-        }
-        else if (!(k & 1) && !(n & 1))
-        {
-            std::cout << "0\n";
-            rn;
-        }
-
-        std::cout << "1\n";
-        rn;
-    }
-
-    std::cout << abs(n - k) << '\n';
+    std::cout << num;
+    en;
 }

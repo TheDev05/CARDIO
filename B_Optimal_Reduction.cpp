@@ -235,36 +235,47 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    if (k == 0)
+    vi num(n);
+    loop(0, n)
     {
-        if (n & 1)
+        std::cin >> num[i];
+    }
+
+    bool ok;
+    if (num[0] <= num[1])
+    {
+        ok = true;
+    }
+    else
+        ok = false;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (num[i - 1] > num[i])
         {
-            std::cout << "1\n";
+            ok = false;
+        }
+
+        if (ok)
+        {
+            if (num[i - 1] > num[i])
+            {
+                std::cout << "NO\n";
+                rn;
+            }
         }
         else
-            std::cout << "0\n";
-        rn;
+        {
+            if (num[i - 1] < num[i])
+            {
+                std::cout << "NO\n";
+                rn;
+            }
+        }
     }
 
-    if (k <= n)
-    {
-        if (k & 1 && n & 1)
-        {
-            std::cout << "0\n";
-            rn;
-        }
-        else if (!(k & 1) && !(n & 1))
-        {
-            std::cout << "0\n";
-            rn;
-        }
-
-        std::cout << "1\n";
-        rn;
-    }
-
-    std::cout << abs(n - k) << '\n';
+    std::cout << "YES\n";
 }
