@@ -230,46 +230,64 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
+int cmp1(pi a, pi b)
+{
+    if (a.second == b.second)
+    {
+        return (a.first > b.first);
+    }
+    else
+        return (a.second < b.second);
+}
+
+int cmp2(pi a, pi b)
+{
+    if (a.first == b.first)
+    {
+        return (a.second > b.second);
+    }
+    else
+        return (a.first < b.first);
+}
+
 void solve()
 {
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    int sum, n, a, b;
-    std::cin >> sum >> n >> a >> b;
+    int n;
+    std::cin >> n;
 
-    if (sum <= n * b)
+    vpi num(n);
+
+    loop(0, n) std::cin >> num[i].first;
+    loop(0, n) std::cin >> num[i].second;
+
+    sort(all(num), greater<>());
+    db(num);
+
+    int sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "-1\n";
-        rn;
+        if (num[i].first > num[i].second)
+        {
+            if (num[i].first > sum)
+            {
+                sum += num[i].second;
+            }
+            else
+                break;
+        }
+        else
+        {
+            if (num[i].first > sum)
+            {
+                sum = num[i].first - sum;
+            }
+            else
+                break;
+        }
     }
 
-    int quot = sum / a;
-    int left = sum - (a * quot);
-
-    int req = ((n - quot) * b) + 1;
-    int delta = req - left;
-
-    if (sum > a * n)
-    {
-        std::cout << n << '\n';
-        rn;
-    }
-
-    while (delta > 0)
-    {
-        int val1 = ceil((double)delta / a);
-        int val2 = a * val1;
-        int val3 = left + val2;
-
-        int temp1 = quot - val1;
-        int temp2 = (n - temp1) * b;
-
-        quot = temp1;
-        left = val3;
-        req = temp2;
-        delta = req - left;
-    }
-
-    std::cout << quot << '\n';
+    std::cout << sum << '\n';
 }
