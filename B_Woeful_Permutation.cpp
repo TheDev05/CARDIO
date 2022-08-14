@@ -230,16 +230,6 @@ int32_t main()
 /* Work hard in silence let your success be the noise */
 /* Rise, Grind and Repeat */
 
-int cmp(pi a, pi b)
-{
-    if (a.first == b.first)
-    {
-        return (a.second > b.second);
-    }
-    else
-        return (a.first < b.first);
-}
-
 void solve()
 {
     // Reminder: Check TestCases are single/multiple?
@@ -248,33 +238,21 @@ void solve()
     int n;
     std::cin >> n;
 
-    vpi num(n);
+    vi num(n);
+    iota(all(num), 1);
 
-    loop(0, n) std::cin >> num[i].first;
-    loop(0, n) std::cin >> num[i].second;
-
-    sort(all(num), cmp);
-    // db(num);
-
-    int inox = imax, sum = 0, res;
-    for (auto i : num)
+    int index = 0;
+    if (n & 1)
     {
-        sum += i.second;
+        index = 1;
     }
 
-    res = sum;
-
-    for (int i = 0; i < n; i++)
+    for (int i = index; i < n - 1; i++)
     {
-        sum = sum - num[i].second;
-        inox = std::min(std::max(num[i].first, sum), inox);
+        swap(num[i], num[i + 1]);
+        i++;
     }
 
-    if (res < inox)
-    {
-        std::cout << res << '\n';
-        rn;
-    }
-
-    std::cout << inox << '\n';
+    std::cout << num;
+    en;
 }
