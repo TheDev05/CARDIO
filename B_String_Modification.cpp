@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -231,48 +231,67 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
+    int n;
+    std::cin >> n;
+
     std::string text;
     std::cin >> text;
 
-    set<int> data;
-    int count = 0, index = 0;
-
-    for (int i = 0; i < text.size(); i++)
+    char inox = 'z';
+    loop(0, n)
     {
-        if (data.count(i))
+        inox = std::min(inox, text[i]);
+    }
+
+    // db(inox);
+
+    vi num1, num2;
+    for (int i = 0; i < n; i++)
+    {
+        if (text[i] == inox)
         {
-            continue;
-        }
-
-        if (text[i] == ')')
-        {
-            continue;
-        }
-
-        bool ok = true;
-        for (index = std::max(index + 1, i); index < text.size(); index++)
-        {
-            if (data.count(index))
-            {
-                continue;
-            }
-
-            if (text[index] == ')')
-            {
-                ok = false;
-
-                data.insert(index);
-                data.insert(i);
-
-                break;
-            }
-        }
-
-        if (ok)
-        {
-            break;
+            num1.pb(i);
         }
     }
 
-    std::cout << data.size() << '\n';
+    vector<pair<string, int>> data;
+    if (num1.size() > 0)
+    {
+        for (int i = 0; i < num1.size(); i++)
+        {
+            std::string temp;
+            int index = num1[i];
+
+            bool ok = false;
+            for (int j = 0; j < n; j++)
+            {
+                temp += text[index];
+                if (ok)
+                {
+                    index--;
+                }
+                else
+                    index++;
+
+                if (index == n)
+                {
+                    if ((n & 1) && ((num1[i] + 1) & 1) || (n % 2 == 0) && ((num1[i] + 1) % 2 == 0))
+                    {
+                        ok = true;
+                        index = num1[i] - 1;
+                    }
+                    else
+                        index = 0;
+                }
+            }
+            data.pb(mp(temp, num1[i] + 1));
+        }
+    }
+
+    // db(data);
+
+    srt(data);
+
+    std::cout << data[0].first << '\n';
+    std::cout << data[0].second << '\n';
 }

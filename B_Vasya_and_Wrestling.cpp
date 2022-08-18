@@ -231,48 +231,77 @@ void solve()
     // Reminder: Check TestCases are single/multiple?
     // |Jai Shree Krishna|
 
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    set<int> data;
-    int count = 0, index = 0;
+    vi num1, num2;
+    int sum1 = 0, sum2 = 0;
 
-    for (int i = 0; i < text.size(); i++)
+    int inox;
+    while (n--)
     {
-        if (data.count(i))
+        int val;
+        std::cin >> val;
+
+        if (val < 0)
         {
-            continue;
+            val = abs(val);
+            sum2 += val;
+            num2.pb(val);
+            inox = 2;
         }
-
-        if (text[i] == ')')
+        else
         {
-            continue;
-        }
-
-        bool ok = true;
-        for (index = std::max(index + 1, i); index < text.size(); index++)
-        {
-            if (data.count(index))
-            {
-                continue;
-            }
-
-            if (text[index] == ')')
-            {
-                ok = false;
-
-                data.insert(index);
-                data.insert(i);
-
-                break;
-            }
-        }
-
-        if (ok)
-        {
-            break;
+            val = abs(val);
+            sum1 += val;
+            num1.pb(val);
+            inox = 1;
         }
     }
 
-    std::cout << data.size() << '\n';
+    // db(sum1);
+    // db(sum2);
+
+    if (sum1 < sum2)
+    {
+        std::cout << "second\n";
+    }
+    else if (sum1 > sum2)
+    {
+        std::cout << "first\n";
+    }
+    else
+    {
+        for (int i = 0; i < std::min(num1.size(), num2.size()); i++)
+        {
+            if (num1[i] > num2[i])
+            {
+                std::cout << "first\n";
+                rn;
+            }
+            else if (num1[i] < num2[i])
+            {
+                std::cout << "second\n";
+                rn;
+            }
+        }
+
+        if (num1.size() > num2.size())
+        {
+            std::cout << "first\n";
+            rn;
+        }
+        else if (num1.size() < num2.size())
+        {
+            std::cout << "second\n";
+            rn;
+        }
+
+        if (inox == 1)
+        {
+            std::cout << "first\n";
+        }
+        else
+            std::cout << "second\n";
+    }
 }
