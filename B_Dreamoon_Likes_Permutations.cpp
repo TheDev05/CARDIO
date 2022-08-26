@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -234,41 +234,47 @@ void solve()
     int n;
     std::cin >> n;
 
-    if (n < 10)
+    vi num(n);
+    map<int, int> left, right;
+
+    int sumLeft = 0, sumRight = 0;
+    loop(0, n)
     {
-        std::cout << "codeforces";
-        loop(0, n - 1) std::cout << "s";
-        rn;
+        std::cin >> num[i];
+
+        right[num[i]]++;
+        sumRight += num[i];
     }
 
-    int val = pow(n, 0.1);
-    double rem = pow(n, 0.1) - (floor(pow(n, 0.1)));
-
-    // db(rem);
-
-    std::string atom = to_string(rem);
-    int extra = 0;
-
-    loop(0, atom.size())
+    vpi data;
+    for (int i = 0; i < n; i++)
     {
-        if (atom[i] == '.')
+        left[num[i]]++;
+        sumLeft += num[i];
+
+        sumRight -= num[i];
+        right[num[i]]--;
+
+        if (right[num[i]] == 0)
         {
-            extra = ((int)(atom[i + 1] - '0'));
-            break;
+            right.erase(num[i]);
+        }
+
+        if (i + 1 == left.size() && (n - i) - 1 == right.size())
+        {
+            int valLeft = (left.size() * (left.size() + 1)) / 2;
+            int valRight = (right.size() * (right.size() + 1)) / 2;
+
+            if (sumLeft == valLeft && sumRight == valRight)
+            {
+                data.pb(mp(left.size(), right.size()));
+            }
         }
     }
 
-    int count = 0;
-    std::string text = "codeforces";
-
-    for (int i = 0; i < 10; i++)
+    std::cout << data.size() << '\n';
+    for (int i = 0; i < data.size(); i++)
     {
-        for (int j = 0; j < val; j++)
-        {
-            std::cout << text[i];
-            count++;
-        }
+        std::cout << data[i].first << " " << data[i].second << '\n';
     }
-
-    loop(0, extra + 1) std::cout << "s";
 }
