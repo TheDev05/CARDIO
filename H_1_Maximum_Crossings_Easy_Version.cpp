@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -229,5 +229,23 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    
+    int n;
+    std::cin >> n;
+
+    vi num(n);
+    std::cin >> num;
+
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (num[j] <= num[i])
+            {
+                count++;
+            }
+        }
+    }
+
+    std::cout << count << '\n';
 }
