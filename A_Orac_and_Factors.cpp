@@ -47,7 +47,7 @@ using namespace chrono;
 #define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
 // This can also be used for multiset too, however deletion is not allowed!
-typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+// typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 const int maxlimit = 1e7 + 10;
 vector<bool> isPrime(maxlimit, 1);
@@ -229,33 +229,22 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    ordered_set res1, res2;
-    map<int, int> data1, data2;
+    k--;
 
-    vi num(n);
-    loop(0, n)
+    int i = 2;
+    while (i <= n)
     {
-        std::cin >> num[i];
-
-        res1.insert(num[i]);
-        data1[num[i]]++;
+        if (n % i == 0)
+        {
+            n += i;
+            break;
+        }
+        i++;
     }
-
-    int sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        sum += data1[num[i]] - 1;
-        sum += res1.order_of_key(num[i]);
-
-        sum -= data2[num[i]];
-        sum -= res2.order_of_key(num[i]);
-
-        data2[num[i]]++;
-        res2.insert(num[i]);
-    }
-
-    std::cout << sum << '\n';
+    
+    n += 2 * k;
+    std::cout << n << '\n';
 }
