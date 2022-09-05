@@ -235,20 +235,39 @@ void solve()
     std::string text;
     std::cin >> text;
 
-    if (n <= 2 * k)
+    if (k == 0)
     {
-        std::cout << "NO\n";
+        std::cout << "YES\n";
         rn;
     }
 
-    for (int i = 0; i < k; i++)
+    int count = 0;
+    bool ok = true;
+
+    for (int i = 0; i < n / 2; i++)
     {
-        if (text[i] != text[n - 1 - i])
+        if (text[i] == text[n - 1 - i])
         {
-            std::cout << "NO\n";
-            rn;
+            count++;
+        }
+        else
+        {
+            count++;
+            ok = false;
+
+            break;
         }
     }
 
-    std::cout << "YES\n";
+    if (ok && (n & 1))
+    {
+        count++;
+    }
+
+    if ((k + 1) <= count)
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }

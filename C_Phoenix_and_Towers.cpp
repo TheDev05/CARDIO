@@ -229,28 +229,64 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n, k, m;
+    std::cin >> n >> k >> m;
 
-    int sum = n;
-    int temp = 2;
+    vpi num(n);
 
-    if (n & 1)
+    set<pair<int, int>> inox;
+    set<pair<int, int>, greater<>> data;
+
+    map<int, vi> res;
+
+    loop(0, n)
     {
-        temp = n;
-        for (int i = 2; i <= sqrt(n); i++)
-        {
-            if (n % i == 0)
-            {
-                temp = i;
+        std::cin >> num[i].first;
+        num[i].second = i;
 
-                break;
-            }
+        data.insert(num[i]);
+    }
+
+    for (int i = 0; i < k; i++)
+    {
+        auto it = data.begin();
+
+        inox.insert(mp(it->first, i + 1));
+        res[i + 1].pb(it->second);
+
+        data.erase(it);
+    }
+
+    while (data.size())
+    {
+        auto it = data.begin();
+        auto ip = inox.begin();
+
+        int val1 = ip->first;
+        int index1 = ip->second;
+
+        int val2 = it->first;
+        int index2 = it->second;
+
+        inox.erase(ip);
+        inox.insert(mp(val1 + val2, index1));
+
+        res[index1].pb(index2);
+        data.erase(it);
+    }
+
+    // db(res);
+
+    vi atom(n);
+    for (auto j : res)
+    {
+        for (int i = 0; i < j.second.size(); i++)
+        {
+            atom[j.second[i]] = j.first;
         }
     }
 
-    k--;
-    sum += temp;
-
-    std::cout << sum + (k * 2) << '\n';
+    std::cout << "YES\n";
+    std::cout << atom;
+    en;
 }
