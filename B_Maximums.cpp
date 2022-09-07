@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -229,62 +229,14 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k, m;
-    std::cin >> n >> k >> m;
+    int t, n, inox = 0;
+    std::cin >> t;
 
-    vpi num(n);
-
-    set<pair<int, int>> inox;
-    set<pair<int, int>, greater<>> data;
-
-    map<int, vi> res;
-
-    loop(0, n)
+    while (t--)
     {
-        std::cin >> num[i].first;
-        num[i].second = i;
+        std::cin >> n;
+        std::cout << n + inox << " ";
 
-        data.insert(num[i]);
+        inox = std::max(inox, n + inox);
     }
-
-    for (int i = 0; i < k; i++)
-    {
-        auto it = data.begin();
-
-        inox.insert(mp(it->first, i + 1));
-        res[i + 1].pb(it->second);
-
-        data.erase(it);
-    }
-
-    while (data.size())
-    {
-        auto it = data.begin();
-        auto ip = inox.begin();
-
-        int val1 = ip->first;
-        int index1 = ip->second;
-
-        int val2 = it->first;
-        int index2 = it->second;
-
-        inox.erase(ip);
-        inox.insert(mp(val1 + val2, index1));
-
-        res[index1].pb(index2);
-        data.erase(it);
-    }
-
-    vi atom(n);
-    for (auto j : res)
-    {
-        for (int i = 0; i < j.second.size(); i++)
-        {
-            atom[j.second[i]] = j.first;
-        }
-    }
-
-    std::cout << "YES\n";
-    std::cout << atom;
-    en;
 }

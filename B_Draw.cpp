@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -229,62 +229,48 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k, m;
-    std::cin >> n >> k >> m;
+    int n;
+    std::cin >> n;
 
-    vpi num(n);
-
-    set<pair<int, int>> inox;
-    set<pair<int, int>, greater<>> data;
-
-    map<int, vi> res;
-
+    set<pair<int, int>> data;
     loop(0, n)
     {
-        std::cin >> num[i].first;
-        num[i].second = i;
+        int val1, val2;
+        std::cin >> val1 >> val2;
 
-        data.insert(num[i]);
+        data.insert(mp(val1, val2));
     }
 
-    for (int i = 0; i < k; i++)
+    vpi num;
+    for (auto i : data)
     {
-        auto it = data.begin();
-
-        inox.insert(mp(it->first, i + 1));
-        res[i + 1].pb(it->second);
-
-        data.erase(it);
+        num.pb(mp(i.first, i.second));
     }
 
-    while (data.size())
+    int count = 0, inox = 0;
+    bool ok = false;
+
+    for (int i = 0; i < num.size(); i++)
     {
-        auto it = data.begin();
-        auto ip = inox.begin();
-
-        int val1 = ip->first;
-        int index1 = ip->second;
-
-        int val2 = it->first;
-        int index2 = it->second;
-
-        inox.erase(ip);
-        inox.insert(mp(val1 + val2, index1));
-
-        res[index1].pb(index2);
-        data.erase(it);
-    }
-
-    vi atom(n);
-    for (auto j : res)
-    {
-        for (int i = 0; i < j.second.size(); i++)
+        if (std::min(num[i].first, num[i].second) >= inox)
         {
-            atom[j.second[i]] = j.first;
+            count += (std::min(num[i].first, num[i].second) - inox) + 1;
         }
+
+        if (ok)
+        {
+            count--;
+        }
+
+        if (num[i].first - num[i].second == 0)
+        {
+            ok = true;
+        }
+        else
+            ok = false;
+
+        inox = std::max(num[i].first, num[i].second);
     }
 
-    std::cout << "YES\n";
-    std::cout << atom;
-    en;
+    std::cout << count << '\n';
 }
