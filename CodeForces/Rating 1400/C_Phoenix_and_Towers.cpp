@@ -46,7 +46,7 @@ using namespace chrono;
 #define loop(x, n) for (int i = x; i < n; ++i)
 #define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
-// Below can be used for multiset too, however deletion is not allowed!
+// This can also be used for multiset too, however deletion is not allowed!
 // typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 const int maxlimit = 1e7 + 10;
@@ -228,42 +228,63 @@ int32_t main()
 
 void solve()
 {
-    // Reminder: Check TestCases are single/multiple?
-    // |Jai Shree Krishna|
-
-    int n, m, k;
-    std::cin >> n >> m >> k;
+    // || Jai Shree Krishna ||
+    int n, k, m;
+    std::cin >> n >> k >> m;
 
     vpi num(n);
-    vi data(n);
 
-    int val = 0;
+    set<pair<int, int>> inox;
+    set<pair<int, int>, greater<>> data;
+
+    map<int, vi> res;
+
     loop(0, n)
     {
         std::cin >> num[i].first;
         num[i].second = i;
 
-        val += num[i].first;
+        data.insert(num[i]);
     }
 
-    srt(num);
-    int delta = val / m;
-
-    int sum = 0, inox = 1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < k; i++)
     {
-        if (sum > delta)
-        {
-            sum = 0;
-            inox++;
-        }
+        auto it = data.begin();
 
-        sum += num[i].first;
-        data[num[i].second] = inox;
+        inox.insert(mp(it->first, i + 1));
+        res[i + 1].pb(it->second);
+
+        data.erase(it);
+    }
+
+    while (data.size())
+    {
+        auto it = data.begin();
+        auto ip = inox.begin();
+
+        int val1 = ip->first;
+        int index1 = ip->second;
+
+        int val2 = it->first;
+        int index2 = it->second;
+
+        inox.erase(ip);
+        inox.insert(mp(val1 + val2, index1));
+
+        res[index1].pb(index2);
+        data.erase(it);
+    }
+
+    vi atom(n);
+    for (auto j : res)
+    {
+        for (int i = 0; i < j.second.size(); i++)
+        {
+            atom[j.second[i]] = j.first;
+        }
     }
 
     std::cout << "YES\n";
-    std::cout << data;
-
+    std::cout << atom;
     en;
 }
