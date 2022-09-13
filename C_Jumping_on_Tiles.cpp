@@ -229,74 +229,49 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    std::string text;
+    std::cin >> text;
 
-    vpi num(n), left, right;
-    int left_sum = 0, right_sum = 0;
+    map<char, int> data;
+    char inox = 'a';
 
-    loop(0, n)
+    for (int i = 1; i <= 26; i++)
     {
-        std::cin >> num[i].first;
-        num[i].second = i;
+        data[inox] = i;
+        inox++;
     }
 
-    sort(all(num), greater<>());
+    int n = text.size();
 
-    for (int i = 0; i < n; i++)
+    int left = std::min(data[text[0]], data[text[n - 1]]);
+    int right = std::max(data[text[0]], data[text[n - 1]]);
+
+    vector<pair<int, int>> num;
+    for (int i = 1; i < n - 1; i++)
     {
-        if (left_sum == right_sum)
-        {
-            left.pb(num[i]);
-        }
-        else if (left_sum > right_sum)
-        {
-            right.pb(num[i]);
-        }
-        else
-            left.pb(num[i]);
+        num.pb(mp(data[text[i]], i + 1));
     }
 
-    db(left);
-    db(right);
-
-    vector<pair<int, pair<int, int>>> inox;
-    for (int i = 0; i < left.size(); i++)
+    deque<pair<int, int>> store;
+    for (int i = 0; i < num.size(); i++)
     {
-        if (left[i].first > 0)
+        if (num[i].first >= left && num[i].first <= right)
         {
-            for (int j = 0; j < right.size(); j++)
-            {
-                if (right[j].first > 0)
-                {
-                    if (left[i].first > right[j].first)
-                    {
-                        inox.pb(mp(std::min(left[i].first, right[j].first), mp(left[i].second, right[j].second)));
-
-                        left[i].first = left[i].first - right[j].first;
-                        right[j].first = 0;
-                    }
-                    else
-                    {
-                        inox.pb(mp(std::min(left[i].first, right[j].first), mp(left[i].second, right[j].second)));
-
-                        left[i].first = 0;
-                        right[j].first = right[j].first - left[i].first;
-
-                        break;
-                    }
-                }
-            }
+            store.pb(num[i]);
         }
     }
 
-    db(inox);
-
-    for (auto j : inox)
+    if (data[text[0]] < data[text[n - 1]])
     {
-        for (int i = 0; i < j.first; i++)
-        {
-            std::cout << j.second.first + 1 << " " << j.second.second + 1 << '\n';
-        }
+        sort(all(store));
     }
+    else
+        sort(all(store), greater<>());
+
+    store.push_front(mp(data[text[0]], 1));
+    store.push_back(mp(data[text[n - 1]], n));
+
+    std::cout << abs(data[text[0]] - data[text[n - 1]]) << " " << store.size() << '\n';
+    loop(0, store.size()) std::cout << store[i].second << " ";
+    en;
 }
