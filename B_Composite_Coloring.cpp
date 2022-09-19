@@ -229,38 +229,43 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vi num(n);
+    vi num(n), temp(n);
     std::cin >> num;
 
-    map<int, int> data;
-    for (int i = 0; i < n; i++)
+    map<int, vector<int>> data;
+    for (int i = 2; 1; i++)
     {
-        if (num[i] % k == 0)
+        for (int j = 0; j < n; j++)
         {
-            continue;
+            if (num[j] != -1 && num[j] % i == 0)
+            {
+                data[i].pb(j);
+                num[j] = -1;
+            }
         }
 
-        int temp = ceil((double)num[i] / k) * k;
-        int delta = temp - num[i];
-
-        data[delta]++;
+        if (maxin(num) == -1)
+        {
+            break;
+        }
     }
 
-    int max = imin;
+    // db(data);
+
+    int inox = 1;
     for (auto i : data)
     {
-        int val = (i.second - 1) * k;
-        max = std::max(max, (val + i.first));
+        for (auto j : i.second)
+        {
+            temp[j] = inox;
+        }
+
+        inox++;
     }
 
-    if (data.size() == 0)
-    {
-        std::cout << "0\n";
-        rn;
-    }
-
-    std::cout << max + 1 << '\n';
+    std::cout << data.size() << '\n';
+    std::cout << temp << '\n';
 }

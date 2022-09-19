@@ -214,8 +214,8 @@ int32_t main()
 
     while (testCases--)
     {
-        // std::cout << "Case #" << gcode << ": ";
-        // gcode++;
+        std::cout << "Case #" << gcode << ": ";
+        gcode++;
 
         solve();
     }
@@ -226,41 +226,53 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
+bool cmp1(pair<string, pair<int, int>> a, pair<string, pair<int, int>> b)
+{
+    if (a.first == b.first)
+    {
+        return (a.second.second < b.second.second);
+    }
+    else
+        return (a.first < b.first);
+}
+
+bool cmp2(pair<string, pair<int, int>> a, pair<string, pair<int, int>> b)
+{
+    if (a.second.first == b.second.first)
+    {
+        return (a.second.second < b.second.second);
+    }
+    else
+        return (a.second.first < b.second.first);
+}
+
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vi num(n);
-    std::cin >> num;
-
-    map<int, int> data;
+    vector<pair<string, pair<int, int>>> num1(n), num2;
     for (int i = 0; i < n; i++)
     {
-        if (num[i] % k == 0)
+        std::cin >> num1[i].first >> num1[i].second.first >> num1[i].second.second;
+    }
+
+    num2 = num1;
+
+    // db(num1);
+
+    sort(all(num1), cmp1);
+    sort(all(num2), cmp2);
+
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (num1[i] == num2[i])
         {
-            continue;
+            count++;
         }
-
-        int temp = ceil((double)num[i] / k) * k;
-        int delta = temp - num[i];
-
-        data[delta]++;
     }
 
-    int max = imin;
-    for (auto i : data)
-    {
-        int val = (i.second - 1) * k;
-        max = std::max(max, (val + i.first));
-    }
-
-    if (data.size() == 0)
-    {
-        std::cout << "0\n";
-        rn;
-    }
-
-    std::cout << max + 1 << '\n';
+    std::cout << count << '\n';
 }

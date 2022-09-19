@@ -232,35 +232,52 @@ void solve()
     int n, k;
     std::cin >> n >> k;
 
-    vi num(n);
-    std::cin >> num;
-
-    map<int, int> data;
+    deque<int> num(n);
     for (int i = 0; i < n; i++)
     {
-        if (num[i] % k == 0)
+        std::cin >> num[i];
+    }
+
+    vi data;
+    int count = 0;
+
+    loop(0, k)
+    {
+        int val;
+        std::cin >> val;
+
+        if (val == 1)
         {
-            continue;
+            count++;
         }
-
-        int temp = ceil((double)num[i] / k) * k;
-        int delta = temp - num[i];
-
-        data[delta]++;
+        else
+            data.pb(val);
     }
 
-    int max = imin;
-    for (auto i : data)
+    sort(all(num));
+    rsrt(data);
+
+
+    // db(num);
+    // db(data);
+
+    int sum = 0;
+    for (int i = 0; i < count; i++)
     {
-        int val = (i.second - 1) * k;
-        max = std::max(max, (val + i.first));
+        sum += (num.back() * 2);
+        num.pop_back();
     }
 
-    if (data.size() == 0)
+    for (int i = 0; i < data.size(); i++)
     {
-        std::cout << "0\n";
-        rn;
+        sum += num.back() + num.front();
+        num.pop_back();
+
+        for (int j = 0; j < data[i] - 1; j++)
+        {
+            num.pop_front();
+        }
     }
 
-    std::cout << max + 1 << '\n';
+    std::cout << sum << '\n';
 }
