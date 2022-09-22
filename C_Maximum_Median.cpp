@@ -251,6 +251,8 @@ void solve()
         }
         else
         {
+            inox += k / (i + 1);
+
             ok = false;
             break;
         }

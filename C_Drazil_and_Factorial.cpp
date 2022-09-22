@@ -241,40 +241,29 @@ void solve()
     for (int i = 0; i < n; i++)
     {
         int val = ((int)(text[i] - '0'));
-        if (val % 2 == 0)
+        if (val > 0 && val % 2 == 0)
         {
-            int temp = val / 2;
-            if (temp % 2 == 0)
+            if (val == 6)
             {
-                data[2] += temp;
-                data[val - 1]++;
-            }
-            else if (temp % 3 == 0)
-            {
-                if (data[2] >= 1)
-                {
-                    data[2]--;
-
-                    int dash = (val / 3) / 2;
-                    data[2] += dash;
-                    data[val - 1]++;
-                    data[3]++;
-                }
-                else
-                    data[val]++;
+                data[3]++;
+                data[5]++;
             }
             else
             {
-                data[val]++;
+                double temp = log2(val);
+                data[2] += temp;
+                data[val - 1]++;
             }
         }
-        else
+        else if (val == 9)
         {
-            data[val]++;
+            data[2]++;
+            data[7]++;
+            data[3] += 2;
         }
+        else
+            data[val]++;
     }
-
-    // db(data);
 
     for (auto i : data)
     {
