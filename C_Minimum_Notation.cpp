@@ -229,28 +229,45 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    std::string text;
+    std::cin >> text;
 
-    for (int i = 1; i <= n; i++)
+    vi num;
+    map<int, int> data;
+
+    for (int i = 0; i < text.size(); i++)
     {
-        if (i == 1)
-        {
-            std::cout << "1\n";
-        }
-        else if (i == 2)
-        {
-            std::cout << "1 1\n";
-        }
-        else if (i > 2)
-        {
-            std::cout << "1 ";
-            for (int j = 1; j <= i - 2; j++)
-            {
-                std::cout << "0 ";
-            }
+        int val = ((int)(text[i] - '0'));
 
-            std::cout << "1\n";
+        num.pb(val);
+        data[val]++;
+    }
+
+    // db(data);
+
+    int n = text.size();
+    for (int i = 0; i < n; i++)
+    {
+        auto it = data.begin();
+        int val = (it->first);
+
+        data[num[i]]--;
+        if (data[num[i]] == 0)
+        {
+            data.erase(num[i]);
+        }
+
+        if (val < num[i])
+        {
+            num[i]++;
+            if (num[i] > 9)
+                num[i] = 9;
         }
     }
+
+    srt(num);
+
+    for (auto i : num)
+        std::cout << i;
+    en;
 }

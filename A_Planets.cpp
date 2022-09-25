@@ -229,28 +229,23 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
-    for (int i = 1; i <= n; i++)
+    vi num(n);
+    map<int, int> data;
+
+    loop(0, n)
     {
-        if (i == 1)
-        {
-            std::cout << "1\n";
-        }
-        else if (i == 2)
-        {
-            std::cout << "1 1\n";
-        }
-        else if (i > 2)
-        {
-            std::cout << "1 ";
-            for (int j = 1; j <= i - 2; j++)
-            {
-                std::cout << "0 ";
-            }
-
-            std::cout << "1\n";
-        }
+        std::cin >> num[i];
+        data[num[i]]++;
     }
+
+    int sum = 0;
+    for (auto i : data)
+    {
+        sum += std::min(i.second, k);
+    }
+
+    std::cout << sum << '\n';
 }

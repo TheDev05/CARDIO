@@ -232,25 +232,50 @@ void solve()
     int n;
     std::cin >> n;
 
-    for (int i = 1; i <= n; i++)
-    {
-        if (i == 1)
-        {
-            std::cout << "1\n";
-        }
-        else if (i == 2)
-        {
-            std::cout << "1 1\n";
-        }
-        else if (i > 2)
-        {
-            std::cout << "1 ";
-            for (int j = 1; j <= i - 2; j++)
-            {
-                std::cout << "0 ";
-            }
+    vi num(n), res(n), data;
 
-            std::cout << "1\n";
+    std::cin >> num;
+    std::cin >> res;
+
+    int max = imin;
+    int inox;
+
+    vi temp1, temp2;
+    for (int i = 0; i < n; i++)
+    {
+        int val1 = res[i] + abs(num[i] - 1);
+        int val2 = res[i] + abs(num[i] - 2);
+
+        if (val1 > val2)
+        {
+            temp1.pb(val1);
+        }
+        else
+        {
+            temp2.pb(val1);
         }
     }
+
+    // db(temp1);
+    // db(temp2);
+
+    int min1 = minin(temp1);
+    int min2 = minin(temp2);
+
+    if (temp1.empty())
+    {
+        std::cout << min2 << '\n';
+        rn;
+    }
+    else if (temp2.empty())
+    {
+        std::cout << min1 << '\n';
+        rn;
+    }
+    else
+    {
+        int delta = abs(min1 - min2) / 2;
+        std::cout << std::max((min1 - delta), (min2 + delta)) << '\n';
+    }
+
 }
