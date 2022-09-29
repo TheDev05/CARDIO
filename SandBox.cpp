@@ -46,7 +46,7 @@ using namespace chrono;
 #define loop(x, n) for (int i = x; i < n; ++i)
 #define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
-// Below can be used for multiset too, however deletion is not allowed!
+// This can also be used for multiset too, however deletion is not allowed!
 // typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 const int maxlimit = 1e7 + 10;
@@ -226,59 +226,79 @@ int32_t main()
 	// cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
+vi queens(100, -1);
+bool check(int col, int row)
+{
+	for (int i = 0; i < row; i++)
+	{
+		int queensCol = queens[i];
+		int queensRow = i;
+
+		if (col == queensCol || abs(row - queensRow) == abs(col - queensCol))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+int fun(vector<vector<int>> &num, vi temp, int row)
+{
+	if (row == 8)
+	{
+		num->push_back(temp);
+		return (1);
+	}
+
+	int total = 0;
+	for (int col = 0; col < 8; col++)
+	{
+		if (check(col, row))
+		{
+			queens[row] = col;
+			temp.pb(col);
+
+			total += fun(row + 1);
+			temp.pop_back();
+			queens[row] = -1;
+		}
+	}
+
+	return (total);
+}
+
 void solve()
 {
-	// Reminder: Check TestCases are single/multiple?
-	// |Jai Shree Krishna|
+	// || Jai Shree Krishna ||
+	vvi num;
+	vi temp;
 
-	int n;
-	std::cin >> n;
+	fun(num, temp, 0);
 
-	vi num(n);
-	std::cin >> num;
-
-	int sum1 = 0, sum2 = 0;
+	vector<string> data;
 	for (int i = 0; i < n; i++)
 	{
-		if (i & 1)
+		std::string text;
+		for (int j = 0; j < n; j++)
 		{
-			sum1 += num[i];
+			text += '.';
 		}
-		else
-			sum2 += num[i];
+
+		data.pb(text);
 	}
 
-	int count = 0;
-	int temp1 = 0, temp2 = 0;
-
-	// db(sum1);
-	// db(sum2);
-
-	for (int i = 0; i < n; i++)
+	vector<vector<string>> res;
+	for (int i = 0; i < num.size(); i++)
 	{
-		if (i & 1)
+		vector<string> local;
+		for (int j = 0; j < num[i].size(); j++)
 		{
-			sum1 -= num[i];
-
-			if (temp1 + sum2 == temp2 + sum1)
-			{
-				count++;
-			}
-
-			temp1 += num[i];
+			local[j][num[j]] = 'Q';
 		}
-		else
-		{
-			sum2 -= num[i];
 
-			if (temp2 + sum1 == temp1 + sum2)
-			{
-				count++;
-			}
-
-			temp2 += num[i];
-		}
+		res.pb(local);
 	}
 
-	std::cout << count << '\n';
+	return (res);
 }
