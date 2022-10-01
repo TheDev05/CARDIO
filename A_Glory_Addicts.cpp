@@ -210,7 +210,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -229,27 +229,115 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, val, temp;
-    int sum1 = 0, sum2 = 0;
+    int n;
+    std::cin >> n;
 
-    std::cin >> n >> val >> temp;
+    vpi num(n);
 
-    vi num(n);
+    loop(0, n) std::cin >> num[i].first;
+    loop(0, n) std::cin >> num[i].second;
+
+    map<int, multiset<int, greater<>>> data, temp;
     for (int i = 0; i < n; i++)
     {
-        std::cin >> num[i];
+        data[num[i].first].insert(num[i].second);
+    }
 
-        if (num[i] <= val)
+    temp = data;
+
+    int sum1 = 0, sum2 = 0;
+    if (data[0].size() > 0)
+    {
+        auto it1 = data[0].end();
+        it1--;
+
+        sum1 += *it1;
+        data[0].erase(it1);
+
+        // 010101
+        for (int i = 1; data.size() > 0; i++)
         {
-            sum1 += num[i];
-
-            if (sum1 > temp)
+            if (i & 1)
             {
-                sum1 = 0;
-                sum2++;
+                auto it2 = data[1].begin();
+                if (it2 == data[1].end())
+                {
+                    break;
+                }
+
+                sum1 += (*it2) * 2;
+                data[1].erase(it2);
+            }
+            else
+            {
+                auto it1 = data[0].begin();
+                if (it1 == data[0].end())
+                {
+                    break;
+                }
+
+                sum1 += (*it1) * 2;
+                data[0].erase(it1);
+            }
+        }
+
+        for (auto i : data)
+        {
+            for (auto j : i.second)
+            {
+                sum1 += j;
             }
         }
     }
 
-    std::cout << sum2;
+    data = temp;
+
+    // 101010
+    if (data[1].size() > 0)
+    {
+        auto it1 = data[1].end();
+        it1--;
+
+        sum2 += *it1;
+        data[1].erase(it1);
+
+        for (int i = 0; data.size() > 0; i++)
+        {
+            if (i & 1)
+            {
+                auto it2 = data[1].begin();
+                if (it2 == data[1].end())
+                {
+                    break;
+                }
+
+                sum2 += (*it2) * 2;
+                data[1].erase(it2);
+            }
+            else
+            {
+                auto it1 = data[0].begin();
+                if (it1 == data[0].end())
+                {
+                    break;
+                }
+
+                sum2 += (*it1) * 2;
+                data[0].erase(it1);
+            }
+        }
+
+        for (auto i : data)
+        {
+            for (auto j : i.second)
+            {
+                sum2 += j;
+            }
+        }
+    }
+
+    // db(sum1);
+    // db(sum2);
+
+    std::cout << std::max(sum1, sum2) << '\n';
 }
