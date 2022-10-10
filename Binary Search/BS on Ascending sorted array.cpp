@@ -11,7 +11,7 @@
 using namespace std;
 
 #define int long long
-#define imax (9) * (1e18)
+#define imax (9) * (1e18)  
 #define imin (-9) * (1e18)
 
 #define pi pair<int, int>
