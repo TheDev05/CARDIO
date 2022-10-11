@@ -243,62 +243,72 @@ bool check(int col, int row)
 	return true;
 }
 
-int fun(vector<vector<int>> &num, vi temp, int row)
-{
-	if (row == 8)
-	{
-		num->push_back(temp);
-		return (1);
-	}
-
-	int total = 0;
-	for (int col = 0; col < 8; col++)
-	{
-		if (check(col, row))
-		{
-			queens[row] = col;
-			temp.pb(col);
-
-			total += fun(row + 1);
-			temp.pop_back();
-			queens[row] = -1;
-		}
-	}
-
-	return (total);
-}
-
 void solve()
 {
 	// || Jai Shree Krishna ||
-	vvi num;
-	vi temp;
 
-	fun(num, temp, 0);
+	int n, m, k;
+	std::cin >> n >> m >> k;
 
-	vector<string> data;
-	for (int i = 0; i < n; i++)
+	vi num(n);
+	std::cin >> num;
+
+	vector<pair<pair<int, int>, int>> data(m);
+	for (int i = 0; i < m; i++)
 	{
-		std::string text;
-		for (int j = 0; j < n; j++)
-		{
-			text += '.';
-		}
-
-		data.pb(text);
+		std::cin >> data[i].first.first;
+		std::cin >> data[i].first.second;
+		std::cin >> data[i].second;
 	}
 
-	vector<vector<string>> res;
-	for (int i = 0; i < num.size(); i++)
+	map<int, pair<int, int>> inox;
+	for (int i = 0; i < k; i++)
 	{
-		vector<string> local;
-		for (int j = 0; j < num[i].size(); j++)
-		{
-			local[j][num[j]] = 'Q';
-		}
+		int left, right;
+		std::cin >> left >> right;
 
-		res.pb(local);
+		left--;
+		right--;
+
+		for (int j = left; j <= right; j++)
+		{
+			int l = data[j].first.first - 1;
+			int r = data[j].first.second - 1;
+
+			if (inox.count(l) == false)
+			{
+				inox[l].first = 0;
+				inox[l].second = 0;
+			}
+
+			if (inox.count(r) == false)
+			{
+				inox[r].first = 0;
+				inox[r].second = 0;
+			}
+
+			inox[r].first += data[j].second;
+			if (l != 0)
+			{
+				inox[l].second += data[j].second;
+			}
+		}
 	}
 
-	return (res);
+	// db(inox);
+
+	int sum = 0, delta = 0;
+	for (int i = n - 1; i >= 0; i--)
+	{
+		sum += inox[i].first;
+
+		num[i] += sum;
+		num[i] -= delta;
+
+		delta += inox[i].second;
+	}
+
+	// db(num);
+
+	std::cout << num;
 }
