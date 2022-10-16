@@ -21,20 +21,22 @@ int main()
     ll n;
     std::cin >> n;
 
-    vector<ll> pf;
     while (n > 1)
     {
         ll val = foo(n);
         while (n % val == 0)
         {
             n = n / val;
-            pf.push_back(val);
+            pf[val]++;
         }
     }
 
-    ll prod = 1;
     for (auto i : pf)
-        prod *= i;
+        cout << i << " ";
 
-    std::cout << prod;
+    // ll prod = 1;
+    // for (auto i : pf)
+    //     prod *= i;
+
+    // std::cout << prod;
 }
