@@ -207,7 +207,7 @@ int32_t main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    // fillPrimes();
+    fillPrimes();
 
     int testCases = 1, gcode = 1;
     std::cin >> testCases;
@@ -226,44 +226,61 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
+int inox = 0;
+void fool(vi num, deque<int> temp, int index)
+{
+    if (index == num.size())
+    {
+        map<int, int> data;
+        for (auto i : temp)
+            data[i]++;
+
+        if (data.size() == 2 && temp.size() == 4)
+        {
+            inox++;
+        }
+
+        return;
+    }
+
+    temp.pb(num[index]);
+    fool(num, temp, index + 1);
+    
+    temp.pop_back();
+    fool(num, temp, index + 1);
+}
+
 void solve()
 {
     // || Jai Shree Krishna ||
     int n;
     std::cin >> n;
 
-    vi num(n);
-    map<int, set<int, greater<>>> data;
+    vi num;
+    set<int> data;
+
+    inox = 0;
 
     loop(0, n)
     {
-        std::cin >> num[i];
-        data[num[i]].insert(i + 1);
+        int val;
+        std::cin >> val;
+
+        data.insert(val);
     }
 
-    if (num[n - 1] == 1)
+    for (int i = 0; i < 10; i++)
     {
-        std::cout << 2 * n << '\n';
-        rn;
-    }
-
-    vector<pair<int, int>> inox;
-    for (auto i : data)
-    {
-        inox.pb(mp(i.first, *i.second.begin()));
-    }
-
-    int max = -1;
-    for (int i = 0; i < inox.size(); i++)
-    {
-        for (int j = i + 1; j < inox.size(); j++)
+        if (data.count(i) == false)
         {
-            if (gcd(inox[i].first, inox[j].first) == 1)
-            {
-                max = std::max(max, inox[i].second + inox[j].second);
-            }
+            num.pb(i);
         }
     }
 
-    std::cout << max << '\n';
+    db(num);
+
+    deque<int> temp;
+    fool(num, temp, 0);
+
+    std::cout << inox << '\n';
 }
