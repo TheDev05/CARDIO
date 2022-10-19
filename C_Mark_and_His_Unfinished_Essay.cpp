@@ -226,61 +226,36 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
-int inox = 0;
-void fool(vi num, deque<int> temp, int index)
-{
-    if (index == num.size())
-    {
-        map<int, int> data;
-        for (auto i : temp)
-            data[i]++;
-
-        if (data.size() == 2 && temp.size() == 4)
-        {
-            inox++;
-        }
-
-        return;
-    }
-
-    temp.pb(num[index]);
-    fool(num, temp, index + 1);
-    
-    temp.pop_back();
-    fool(num, temp, index + 1);
-}
-
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int n, m, k;
+    std::cin >> n >> m >> k;
 
-    vi num;
-    set<int> data;
+    std::string text;
+    std::cin >> text;
 
-    inox = 0;
-
-    loop(0, n)
+    while (m--)
     {
-        int val;
-        std::cin >> val;
+        int left, right;
+        std::cin >> left >> right;
 
-        data.insert(val);
-    }
+        left--;
+        right--;
 
-    for (int i = 0; i < 10; i++)
-    {
-        if (data.count(i) == false)
+        for (int i = left; i <= right; i++)
         {
-            num.pb(i);
+            text += text[i];
         }
     }
 
-    db(num);
+    while (k--)
+    {
+        int index;
+        std::cin >> index;
 
-    deque<int> temp;
-    fool(num, temp, 0);
+        index--;
 
-    std::cout << inox << '\n';
+        std::cout << text[index] << '\n';
+    }
 }
