@@ -210,7 +210,7 @@ int32_t main()
     fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -229,35 +229,14 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vector<string> num(n);
-    std::cin >> num;
+    vi num1(n), num2(n);
+    std::cin >> num1 >> num2;
 
-    std::string text;
-    std::cin >> text;
+    int sum1 = sumof(num1);
+    int sum2 = sumof(num2);
 
-    int val1 = 0;
-    int val2 = 0;
-
-    int len = text.size();
-    int min, max;
-
-    for (int i = 0; i < n; ++i)
-    {
-        if (num[i].size() < len)
-        {
-            val1++;
-        }
-        else if (num[i].size() == len)
-        {
-            val2++;
-        }
-    }
-
-    min = val1 / k * 5 + val1 + 1;
-    max = (val1 + val2 - 1) / k * 5 + val1 + val2;
-
-    std::cout << min << " " << max;
+    std::cout << (sum1 + sum2) - maxin(num2) << '\n';
 }
