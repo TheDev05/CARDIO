@@ -199,7 +199,7 @@ int32_t main()
     fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -218,27 +218,26 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, a, b, c;
-    std::cin >> n >> a >> b >> c;
+    int n;
+    std::cin >> n;
 
-    int inox = 4 - n % 4;
-    if (inox == 4)
+    vi num;
+
+    int inox = n / 2;
+    int val = ceil((double)n / 2);
+
+    for (int i = 0; i < inox; i++)
     {
-        std::cout << 0;
+        num.pb(val);
+        num.pb(val + inox);
+
+        val--;
     }
 
-    if (inox == 1)
+    if (n & 1)
     {
-        std::cout << std::min({a, b + c, 3 * c});
+        num.pb(1);
     }
 
-    if (inox == 2)
-    {
-        std::cout << std::min({2 * a, b, 2 * c});
-    }
-
-    if (inox == 3)
-    {
-        std::cout << std::min({3 * a, a + b, c});
-    }
+    std::cout << num << '\n';
 }
