@@ -1,7 +1,7 @@
 ### Big O Notation
 
 *Big O notation* is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
-On the chart below you may find most common orders of growth of algorithms specified in Big O notation.
+On the chart below you may find most common orders of growth of algorithms specified in Big-O notation.
 
 ![Big O graphs](./big-o-graph.png)
 
