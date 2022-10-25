@@ -47,7 +47,7 @@ using namespace chrono;
 #define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
 // This can be also used for multiset, however deletion is not allowed!
-// typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 const int maxlimit = 1e5 + 10;
 vector<bool> isPrime(maxlimit, 1);
@@ -199,7 +199,7 @@ int32_t main()
     fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -215,69 +215,45 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
-int fool(int val)
-{
-    for (int i = 2; i <= sqrt(val); i++)
-    {
-        if (val % i == 0)
-        {
-            return (i);
-        }
-    }
-
-    return val;
-}
-
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int n, m;
+    std::cin >> n >> m;
 
-    set<int> num;
-    map<int, set<int>> data;
+    vi num(n), res(m);
+    map<int, int> data;
 
-    while (n--)
+    for (int i = 0; i < n; i++)
     {
-        char inox;
-        int val;
+        std::cin >> num[i];
+        data[num[i]] = i;
+    }
 
-        std::cin >> inox >> val;
-        if (inox == '+')
+    std::cin >> res;
+
+    set<int> inox;
+    ordered_set point;
+
+    int sum = 0;
+    for (int i = 0; i < m; i++)
+    {
+        int index = data[res[i]];
+        auto it = inox.upper_bound(index);
+
+        if (it != inox.end())
         {
-            int n = val;
-            while (n > 1)
-            {
-                int temp = fool(n);
-                while (n % temp == 0)
-                {
-                    n = n / temp;
-                    data[temp].insert(val);
-                }
-            }
+            sum++;
         }
         else
         {
-            db(data);
-
-            int atom = val;
-            for (auto i : data[val])
-            {
-                if (i != atom)
-                {
-                    std::cout << atom << '\n';
-
-                    atom = -1;
-                    break;
-                }
-
-                atom += val;
-            }
-
-            if (atom != -1)
-            {
-                std::cout << atom << '\n';
-            }
+            int val = index - point.order_of_key(index);
+            sum += (val * 2) + 1;
         }
+
+        inox.insert(index);
+        point.insert(index);
     }
+
+    std::cout << sum << '\n';
 }
