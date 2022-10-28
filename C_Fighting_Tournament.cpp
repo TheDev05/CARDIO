@@ -253,7 +253,7 @@ void solve()
             auto it = inox.upper_bound(num[i]);
             if (it != inox.end())
             {
-                index2 = (it->second - i) - 1;
+                index2 = index1 + (it->second - i) - 1;
             }
             else
                 index2 = -2;
