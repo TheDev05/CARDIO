@@ -196,10 +196,10 @@ int32_t main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    fillPrimes();
+    // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -222,126 +222,16 @@ void solve()
     std::cin >> n >> k;
 
     vi num(n);
+    std::cin >> num;
 
-    map<int, int> data, locate;
-    map<int, pair<int, int>> inox;
-
-    set<int> point;
-
-    loop(0, n)
-    {
-        std::cin >> num[i];
-
-        point.insert(i);
-        data[num[i]] = i;
-        locate[i + 1] = num[i];
-    }
-
-    db(point);
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (i == n)
-        {
-            data[i] = -2;
-            break;
-        }
-
-        point.erase(data[i]);
-        data[i] = *point.begin();
-    }
-
-    db(data);
-
-    int max = imin;
+    int inox = 0;
     for (int i = 0; i < n; i++)
     {
-        max = std::max(max, num[i]);
-        int val1, val2;
+        int u = upper_bound(all(num), num[i] + k) - num.begin();
+        int k = u - i - 2;
 
-        val2 = data[num[i]];
-        if (val2 > 0)
-        {
-            val2 = (val2 - i) - 1;
-        }
-
-        if (max != num[i])
-        {
-            val1 = -1;
-            val2 = -1;
-        }
-        else
-            val1 = i;
-
-        inox[num[i]] = {val1, val2};
+        inox += ((k) * (k + 1)) / 2;
     }
 
-    db(inox);
-
-    while (k--)
-    {
-        int index, count;
-        std::cin >> index >> count;
-
-        int val = locate[index], res = 0;
-
-        int left = inox[val].first;
-        int right = inox[val].second;
-
-        if (left == -1)
-        {
-            std::cout << "0\n";
-            continue;
-        }
-
-        if (right == -2)
-        {
-            if (left == 0)
-            {
-                res = count;
-            }
-            else
-            {
-                if (count < left)
-                {
-                    res = 0;
-                }
-                else
-                    res = (count - left) + 1;
-            }
-        }
-        else if (left == 0 && right == 0)
-        {
-            res = 0;
-        }
-        else if (left == 0)
-        {
-            res = std::min(count, right);
-        }
-        else if (right == 0)
-        {
-            if (count < left)
-            {
-                res = 0;
-            }
-            else
-                res = 1;
-        }
-        else
-        {
-            right += left;
-            if (val < left)
-            {
-                res = 0;
-            }
-            else if (val > right)
-            {
-                res = (right - left) + 1;
-            }
-            else
-                res = (val - left) + 1;
-        }
-
-        std::cout << res << '\n';
-    }
+    std::cout << inox;
 }
