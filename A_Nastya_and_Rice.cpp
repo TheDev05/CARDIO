@@ -196,7 +196,7 @@ int32_t main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    fillPrimes();
+    // fillPrimes();
 
     int testCases = 1, gcode = 1;
     std::cin >> testCases;
@@ -218,130 +218,12 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n, a, b, c, d;
+    cin >> n >> a >> b >> c >> d;
 
-    vi num(n);
-
-    map<int, int> data, locate;
-    map<int, pair<int, int>> inox;
-
-    set<int> point;
-
-    loop(0, n)
-    {
-        std::cin >> num[i];
-
-        point.insert(i);
-        data[num[i]] = i;
-        locate[i + 1] = num[i];
-    }
-
-    db(point);
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (i == n)
-        {
-            data[i] = -2;
-            break;
-        }
-
-        point.erase(data[i]);
-        data[i] = *point.begin();
-    }
-
-    db(data);
-
-    int max = imin;
-    for (int i = 0; i < n; i++)
-    {
-        max = std::max(max, num[i]);
-        int val1, val2;
-
-        val2 = data[num[i]];
-        if (val2 > 0)
-        {
-            val2 = (val2 - i) - 1;
-        }
-
-        if (max != num[i])
-        {
-            val1 = -1;
-            val2 = -1;
-        }
-        else
-            val1 = i;
-
-        inox[num[i]] = {val1, val2};
-    }
-
-    db(inox);
-
-    while (k--)
-    {
-        int index, count;
-        std::cin >> index >> count;
-
-        int val = locate[index], res = 0;
-
-        int l = inox[val].first;
-        int right = inox[val].second;
-
-        if (l == -1)
-        {
-            std::cout << "0\n";
-            continue;
-        }
-
-        if (right == -2)
-        {
-            if (l == 0)
-            {
-                res = count;
-            }
-            else
-            {
-                if (count < l)
-                {
-                    res = 0;
-                }
-                else
-                    res = (count - l) + 1;
-            }
-        }
-        else if (l == 0 && right == 0)
-        {
-            res = 0;
-        }
-        else if (l == 0)
-        {
-            res = std::min(count, right);
-        }
-        else if (right == 0)
-        {
-            if (count < l)
-            {
-                res = 0;
-            }
-            else
-                res = 1;
-        }
-        else
-        {
-            right += l;
-            if (val < l)
-            {
-                res = 0;
-            }
-            else if (val > right)
-            {
-                res = (right - l) + 1;
-            }
-            else
-                res = (val - l) + 1;
-        }
-
-        std::cout << res << '\n';
-    }
+    int L = n * (a - b), R = n * (a + b);
+    if (R < c - d || c + d < L)
+        std::cout << "No\n";
+    else
+        std::cout << "Yes\n";
 }
