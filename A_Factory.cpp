@@ -199,7 +199,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -218,12 +218,25 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, a, b, c, d;
-    cin >> n >> a >> b >> c >> d;
+    int n, t;
+    std::cin >> n >> t;
 
-    int L = n * (a - b), R = n * (a + b);
-    if (R < c - d || c + d < L)
-        std::cout << "No\n";
-    else
-        std::cout << "Yes\n";
+    int rem = 0, total = n, k = 0;
+    int x = pow(2, k);
+
+    while (x <= t)
+    {
+        rem = (n * x) % t;
+
+        if (rem == 0)
+        {
+            std::cout << "Yes";
+            rn;
+        }
+
+        k++;
+        x = pow(2, k);
+    }
+
+    std::cout << "No";
 }
