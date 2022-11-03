@@ -261,16 +261,16 @@ void solve()
     // db(num);
     // db(data);
 
-    int sum = 0;
+    int total = 0;
     for (int i = 0; i < count; i++)
     {
-        sum += (num.back() * 2);
+        total += (num.back() * 2);
         num.pop_back();
     }
 
     for (int i = 0; i < data.size(); i++)
     {
-        sum += num.back() + num.front();
+        total += num.back() + num.front();
         num.pop_back();
 
         for (int j = 0; j < data[i] - 1; j++)
@@ -279,5 +279,5 @@ void solve()
         }
     }
 
-    std::cout << sum << '\n';
+    std::cout << total << '\n';
 }
