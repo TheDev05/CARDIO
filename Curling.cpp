@@ -307,4 +307,9 @@ void solve()
 
         std::cout << 0 << " " << count << '\n';
     }
+
+
+   
+    
+    
 }
