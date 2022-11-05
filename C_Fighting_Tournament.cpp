@@ -221,7 +221,7 @@ void solve()
     int n, k;
     std::cin >> n >> k;
 
-    vi num(n);
+    vector<int> num(n);
 
     map<int, int> data, locate;
     map<int, pair<int, int>> inox;
