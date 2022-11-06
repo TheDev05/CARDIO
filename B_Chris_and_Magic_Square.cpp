@@ -199,7 +199,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -218,29 +218,164 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, a, b, c, d;
-    std::cin >> n >> a >> b >> c >> d;
+    int n;
+    std::cin >> n;
 
-    int min1 = abs(a - b) * n;
-    int max1 = abs(a + b) * n;
-
-    db(min1);
-    db(max1);
-
-    int min2 = abs(c - d);
-    int max2 = abs(c + d);
-
-    db(min2);
-    db(max2);
-
-    if ((min1 >= min2 && min1 <= max2) || (max1 >= min2 && max1 <= max2) || (min2 >= min1 && min2 <= max1) || (max2 >= min1 && max2 <= max1))
+    vvi num;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "Yes\n";
+        vi temp(n);
+        std::cin >> temp;
+
+        num.pb(temp);
+    }
+
+    if (n == 1)
+    {
+        std::cout << "1\n";
+        rn;
+    }
+
+    set<int> data, res;
+    int inox;
+
+    for (int i = 0; i < n; i++)
+    {
+        bool ok = true;
+        int sum = 0;
+
+        for (int j = 0; j < n; j++)
+        {
+            if (num[i][j] == 0)
+            {
+                ok = false;
+            }
+
+            sum += num[i][j];
+        }
+
+        if (ok)
+        {
+            data.insert(sum);
+        }
+        else
+            inox = sum;
+    }
+
+    if (data.size() > 1)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+    else if (inox)
+    {
+        res.insert(*data.begin() - inox);
+        inox = 0;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            bool ok = true;
+            int sum = 0;
+
+            for (int j = 0; j < n; j++)
+            {
+                if (num[j][i] == 0)
+                {
+                    ok = false;
+                }
+
+                sum += num[j][i];
+            }
+
+            if (ok)
+            {
+                data.insert(sum);
+            }
+            else
+                inox = sum;
+        }
+    }
+
+    if (data.size() > 1)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+    else if (inox)
+    {
+        res.insert(*data.begin() - inox);
+        inox = 0;
+    }
+
+    int sum1 = 0, sum2 = 0;
+    bool ok1 = true, ok2 = true;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                if (num[i][j] == 0)
+                {
+
+                    ok1 = false;
+                }
+
+                sum1 += num[i][j];
+            }
+
+            if (i + j == n - 1)
+            {
+                if (num[i][j] == 0)
+                {
+                    ok2 = false;
+                }
+
+                sum2 += num[i][j];
+            }
+        }
+    }
+
+    if (ok1)
+    {
+        data.insert(sum1);
     }
     else
-        std::cout << "No\n";
-}
+    {
+        inox = sum1;
+        res.insert(*data.begin() - inox);
+        inox = 0;
+    }
 
-/*
-1 3 : 2 2
-*/
+    if (ok2)
+    {
+        data.insert(sum2);
+    }
+    else
+    {
+        inox = sum2;
+        res.insert(*data.begin() - inox);
+        inox = 0;
+    }
+
+    if (data.size() > 1 || res.size() > 1)
+    {
+        std::cout << "-1\n";
+        rn;
+    }
+
+    db(data);
+    db(res);
+
+    int delta = *res.begin();
+    if (delta <= 0)
+    {
+        delta = -1;
+    }
+
+    std::cout << delta << '\n';
+}
