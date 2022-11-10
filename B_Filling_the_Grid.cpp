@@ -35,6 +35,7 @@ using namespace chrono;
 #define ull unsigned long long
 #define double long double
 #define rn return
+#define MOD 1000000007
 #define all(x) (x).begin(), (x).end()
 #define sorted(x) is_sorted(all(x))
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -199,7 +200,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -215,18 +216,131 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
+int fool(int count)
+{
+    int a = 2, b = count, m = MOD;
+
+    a %= m;
+    int res = 1;
+
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a % m;
+        a = a * a % m;
+        b >>= 1;
+    }
+
+    return res;
+}
+
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int n, m;
+    std::cin >> n >> m;
 
-    if (n & (n - 1))
+    vi num1(n), num2(m);
+    std::cin >> num1 >> num2;
+
+    vvi data;
+    for (int j = 0; j < n; j++)
     {
-        std::cout << "YES\n";
+        vi temp(m);
+        loop(0, m) temp[i] = 0;
+
+        data.pb(temp);
     }
-    else
+
+    for (int i = 0; i < num1.size(); i++)
     {
-        std::cout << "NO\n";
+        for (int j = 0; j < num1[i]; j++)
+        {
+            data[i][j] = 1;
+        }
     }
+
+    for (int i = 0; i < m; i++)
+    {
+        int row = 0, points = 0;
+        while (row < n && data[row][i] != 0)
+        {
+            points++;
+            row++;
+        }
+
+        if (points > num2[i])
+        {
+            std::cout << "0\n";
+            rn;
+        }
+    }
+
+    for (int i = 0; i < num2.size(); i++)
+    {
+        for (int j = 0; j < num2[i]; j++)
+        {
+            data[j][i] = 1;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        int col = 0, points = 0;
+        while (col < m && data[i][col] != 0)
+        {
+            points++;
+            col++;
+        }
+
+        if (points > num1[i])
+        {
+            std::cout << "0\n";
+            rn;
+        }
+    }
+
+    map<int, int> left, right;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (left.count(i) == false)
+            {
+                left[i] = imax;
+            }
+
+            if (right.count(j) == false)
+            {
+                right[j] = imax;
+            }
+
+            if (data[i][j] == 0)
+            {
+                left[i] = std::min(left[i], j);
+                right[j] = std::min(right[j], i);
+            }
+        }
+    }
+
+    db(left);
+    db(right);
+
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (data[i][j] == 0)
+            {
+                if (left[i] < j && right[j] < i)
+                    count++;
+            }
+        }
+    }
+
+    db(count);
+
+    int val = fool(count);
+    std::cout << val;
 }
