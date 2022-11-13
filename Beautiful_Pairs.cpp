@@ -199,7 +199,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    std::cin >> testCases;
+    // std::cin >> testCases;
 
     while (testCases--)
     {
@@ -215,72 +215,42 @@ int32_t main()
     // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
 }
 
-bool fool(std::string text, int val1, int index)
-{
-    // db(val1);
-    if (index >= text.size())
-    {
-        db(val1);
-        return true;
-    }
-
-    if (text[index] == '0')
-    {
-        return false;
-    }
-
-    int val2 = 0;
-    for (int i = index; i < text.size(); i++)
-    {
-        val2 = (val2 * 10) + ((int)(text[i] - '0'));
-        if (val2 - val1 == 1)
-        {
-            db(val2);
-            db(val1);
-
-            return (fool(text, val2, i + 1));
-        }
-        else if (val2 - val1 > 1)
-        {
-            break;
-        }
-    }
-
-    return false;
-}
-
 void solve()
 {
     // || Jai Shree Krishna ||
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    if (text[0] == '0')
+    vi num1(n), num2(n);
+    std::cin >> num1 >> num2;
+
+    map<int, int> data1, data2;
+
+    loop(0, n) data1[num1[i]]++;
+    loop(0, n) data2[num2[i]]++;
+
+    srt(num1);
+    srt(num2);
+
+    int count = 0;
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "NO\n";
-        rn;
-    }
-
-    int n = text.size();
-
-    int inox = -1;
-    std::string res;
-
-    int val1 = 0;
-    for (int i = 0; i < n - 1; i++)
-    {
-        val1 = (val1 * 10) + ((int)(text[i] - '0'));
-        if (fool(text, val1, i + 1))
+        if (data1[num2[i]])
         {
-            inox = val1;
-            break;
+            count++;
+            data1[num2[i]]--;
+
+            if (data1[num2[i]] == 0)
+                data1.erase(num2[i]);
         }
     }
 
-    if (inox == -1)
-    {
-        std::cout << "NO\n";
-    }
+    // db(data1);
+
+    if (count != n)
+        count++;
     else
-        std::cout << "YES " << inox << '\n';
+        count--;
+
+    std::cout << count << '\n';
 }
