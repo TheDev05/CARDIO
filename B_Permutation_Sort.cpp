@@ -199,7 +199,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -219,31 +219,27 @@ void solve()
 {
     // || Jai Shree Krishna ||
     int n;
-    cin >> n;
-    
-    vector<int> freq(N);
-    for (int i = 0; i < n; i++)
+    std::cin >> n;
+
+    vi num(n), temp;
+    std::cin >> num;
+
+    temp = num;
+    srt(temp);
+
+    int ans = 2;
+    if (temp == num)
     {
-        int a;
-        cin >> a;
-        freq[a]++;
+        ans = 0;
     }
-    int ans = 0;
-    for (int i = 0; i < N; i++)
+    else if (num[0] == 1 || num[n - 1] == n)
     {
-        if (freq[i] < 1)
-        {
-            ans += i;
-            break;
-        }
+        ans = 1;
     }
-    for (int i = 0; i < N; i++)
+    else if (num[0] == n && num[n - 1] == 1)
     {
-        if (freq[i] < 2)
-        {
-            ans += i;
-            break;
-        }
+        ans = 3;
     }
-    cout << ans << '\n';
+
+    std::cout << ans << '\n';
 }
