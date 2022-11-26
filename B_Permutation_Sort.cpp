@@ -199,7 +199,7 @@ int32_t main()
     // fillPrimes();
 
     int testCases = 1, gcode = 1;
-    // std::cin >> testCases;
+    std::cin >> testCases;
 
     while (testCases--)
     {
@@ -218,72 +218,24 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, m;
-    std::cin >> n >> m;
+    int n;
+    std::cin >> n;
 
-    vector<vector<int>> num;
-    map<int, pair<vector<int>, int>> data;
+    vi num(n);
+    std::cin >> num;
 
-    map<int, multiset<int>> res1, res2;
-    for (int i = 0; i < n; i++)
+    if (is_sorted(all(num)))
     {
-        vi temp(m);
-        for (int j = 0; j < m; j++)
-        {
-            std::cin >> temp[i];
-
-            res1[temp[i]].insert(i + 1);
-            res2[temp[i]].insert(j + 1);
-        }
-
-        num.pb(temp);
+        std::cout << "0\n";
     }
-
-    for (auto i : res1)
+    else if (num[0] == n && num[n - 1] == 1)
     {
-        int val = 0;
-        for (auto j : i.second)
-        {
-            val += j;
-            data[i.first].first.pb(j);
-        }
-
-        data[i.first].second = val;
+        std::cout << "3\n";
     }
-
-    int sum = 0;
-    for (auto j : data)
+    else if (num[n - 1] == n || num[0] == 1)
     {
-        int inox = j.second.second;
-        for (int i = 0; i < j.second.first.size() - 1; i++)
-        {
-            inox -= j.second.first[i];
-            sum += inox - (j.second.first[i] * (j.second.first.size() - (i + 1)));
-        }
+        std::cout << "1\n";
     }
-
-    data.clear();
-    for (auto i : res2)
-    {
-        int val = 0;
-        for (auto j : i.second)
-        {
-            val += j;
-            data[i.first].first.pb(j);
-        }
-
-        data[i.first].second = val;
-    }
-
-    for (auto j : data)
-    {
-        int inox = j.second.second;
-        for (int i = 0; i < j.second.first.size() - 1; i++)
-        {
-            inox -= j.second.first[i];
-            sum += inox - (j.second.first[i] * (j.second.first.size() - (i + 1)));
-        }
-    }
-
-    std::cout << sum << '\n';
+    else
+        std::cout << "2\n";
 }

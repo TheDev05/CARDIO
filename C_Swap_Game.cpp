@@ -221,19 +221,14 @@ void solve()
     int n;
     std::cin >> n;
 
-    vi num;
-    int m = imax;
-    for (int i = 0; i < n; i++)
+    vi num(n);
+    std::cin >> num;
+
+    int min = minin(num);
+    if (min == num[0])
     {
-        int x;
-        std::cin >> x;
-
-        m = min(x, m);
-        num.pb(x);
-    }
-
-    if (num[0] == m)
         std::cout << "Bob\n";
+    }
     else
         std::cout << "Alice\n";
 }

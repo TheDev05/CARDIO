@@ -3,5 +3,8 @@ using namespace std;
 
 int main()
 {
-    f
+    for (int i = 1; i <= 1e5; i++)
+    {
+        cout << i << " ";
+    }
 }
