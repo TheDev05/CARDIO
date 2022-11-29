@@ -35,6 +35,7 @@ using namespace chrono;
 #define ull unsigned long long
 #define double long double
 #define rn return
+#define br break
 #define all(x) (x).begin(), (x).end()
 #define sorted(x) is_sorted(all(x))
 #define maxin(v) *max_element(v.begin(), v.end())
@@ -218,37 +219,115 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n, k;
-    std::cin >> n >> k;
+    int n;
+    std::cin >> n;
 
-    vi num(n), data;
+    vi num(n), temp;
     std::cin >> num;
 
-    int inox = 0;
-    data.pb(0);
+    temp = num;
+    srt(temp);
 
-    int min = 0, max = 0;
+    std::string text;
+    std::cin >> text;
+
+    bool ok = false;
     for (int i = 0; i < n; i++)
     {
-        inox += num[i];
-        data.pb(inox);
-
-        min = std::min(inox, min);
-        max = std::max(max, inox);
+        if (i == 0)
+        {
+            if (text[i] == '0' && temp[i] != num[i])
+            {
+                ok = true;
+                br;
+            }
+        }
+        else if (i == n - 1 && text[i - 1] == '0')
+        {
+            if (temp[i] != num[i])
+            {
+                ok = true;
+                br;
+            }
+        }
+        else
+        {
+            if (text[i] == '0' && text[i - 1] == '0')
+            {
+                if (temp[i] != num[i])
+                {
+                    ok = true;
+                    br;
+                }
+            }
+        }
     }
 
-    if (min < 0)
+    if (ok)
     {
-        max += abs(min);
-    }
-
-    if (max > k)
-    {
-        std::cout << "0\n";
+        std::cout << "NO\n";
         rn;
     }
 
-    db(max);
+    text += '0';
 
-    std::cout << (k - max) + 1 << '\n';
+    vector<pair<int, int>> data;
+    for (int i = 0; i < n; i++)
+    {
+        if (i == n - 1 && text[i - 1] == '0')
+        {
+            data.pb(mp(num[i], num[i]));
+        }
+        else if (i == 0 && text[i] == '0')
+        {
+            data.pb(mp(num[i], num[i]));
+        }
+        else if (text[i] == '0' && text[i - 1] == '0')
+        {
+            data.pb(mp(num[i], num[i]));
+        }
+        else
+        {
+            int index = i, min = imax, max = imin;
+            while (index < n)
+            {
+                if (text[index] == '1')
+                {
+                    max = std::max(max, num[index]);
+                    min = std::min(min, num[index]);
+
+                    index++;
+                }
+                else if (text[index] == '0')
+                {
+                    if (text[index - 1] == '1')
+                    {
+                        max = std::max(max, num[index]);
+                        min = std::min(min, num[index]);
+
+                        index++;
+                    }
+
+                    break;
+                }
+            }
+
+            data.pb(mp(min, max));
+            i = index - 1;
+        }
+    }
+
+    vi inox;
+    for (auto i : data)
+    {
+        inox.pb(i.first);
+        inox.pb(i.second);
+    }
+
+    if (is_sorted(all(inox)))
+    {
+        std::cout << "YES\n";
+    }
+    else
+        std::cout << "NO\n";
 }
