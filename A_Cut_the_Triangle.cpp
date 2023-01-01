@@ -219,32 +219,13 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int n;
-    std::cin >> n;
+    int a, b, x, y, p, q;
+    std::cin >> a >> b >> x >> y >> p >> q;
 
-    vector<pair<int, int>> num(n);
-    for (int i = 0; i < n; i++)
-    {
-        std::cin >> num[i].first;
-        num[i].second = i + 1;
-    }
+    double dist1 = sqrt((a - x) * (a - x) + (b - y) * (b - y));
+    double dist2 = sqrt((a - p) * (a - p) + (b - q) * (b - q));
+    double dist3 = sqrt((x - p) * (x - p) + (y - q) * (y - q));
 
-    srt(num);
-
-    map<int, int> data;
-    for (int i = 0; i < n - 1; i++)
-    {
-        int rem = num[i + 1].first % num[i].first;
-        if ((num[i + 1].first + rem) % num[i].first != 0)
-        {
-            rem = num[i].first - rem;
-        }
-
-        data[num[i + 1].second] = rem;
-        num[i + 1].first += rem;
-    }
-
-    std::cout << data.size() << '\n';
-    for (auto i : data)
-        std::cout << i.first << " " << i.second << "\n";
+    double max = std::max({dist1, dist2, dist3});
+    double val=sqrt()
 }
