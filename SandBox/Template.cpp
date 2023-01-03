@@ -1,111 +1,224 @@
 /*
- Believe-In-your-Karma & chant with me,
+     Jai Shree Krishna.
 
-	"Hare Rama Hare Rama, Rama Rama Hare Hare,
-	 Hare Krishna Hare Krishna, Krishna Krishna Hare Hare !!"
+     Hare Krishna Hare Krishna, Krishna Krishna Hare Hare,
+     Hare Rama Hare Rama, Rama Rama Hare Hare.
 
- Username: TheDev05, Happy Coding <3
+     Prayers. Practice. Patience.
 */
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
 using namespace std;
+using namespace __gnu_pbds;
+using namespace chrono;
 
-#define imax INT_MAX
-#define imin INT_MIN
+#define int long long
+#define imax (9) * (1e18)
+#define imin (-9) * (1e18)
 
-#define pi pair<ll, ll>
-#define ps pair<string, string>
-#define pis pair<ll, string>
-#define psi pair<string, ll>
+#define pi pair<int, int>
 #define mp make_pair
-#define f first
-#define s second
+#define ff first
+#define ss second
 
-#define mpi map<ll, ll>
-#define mps map<string, string>
-#define mpis map<ll, string>
-#define mpsi map<string, ll>
-#define mpic map<ll, char>
-#define mpci map<char, ll>
-
-#define vi vector<ll>
+#define vi vector<int>
 #define vs vector<string>
-#define vpi vector<pair<ll, ll>>
-#define sumof(v) accumulate(v.begin(), v.end(), 0);
-#define vvi vector<vector<ll>>
+#define vpi vector<pair<int, int>>
+#define sumof(v) accumulate(v.begin(), v.end(), (int)0);
+#define vvi vector<vector<int>>
 #define pb emplace_back
-#define ppb pop_back
 
 #define en cout << '\n'
-#define ll long long
 #define ull unsigned long long
-#define ld long double
+#define double long double
 #define rn return
+#define br break
 #define all(x) (x).begin(), (x).end()
+#define sorted(x) is_sorted(all(x))
 #define maxin(v) *max_element(v.begin(), v.end())
 #define minin(v) *min_element(v.begin(), v.end())
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * b) / gcd(a, b)
 #define srt(v) sort(v.begin(), v.end())
-#define rsrt(v) sort(v.begin(), v.end(), greater<ll>())
-#define loop(x, n) for (ll i = x; i < n; ++i)
-#define rloop(x, n) for (ll i = x; i >= n; i--)
-#define db(x) cout << #x << "[" << x << "]" << '\n';
-#define xx cout << "I am good!" << '\n'
+#define rsrt(v) sort(v.begin(), v.end(), greater<int>())
+#define loop(x, n) for (int i = x; i < n; ++i)
+#define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
-void solve();
+// This can be also used for multiset, however deletion is not allowed!
+// typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
-const ll maxlimit = 1e7 + 10;
+const int maxlimit = 1e5 + 10;
 vector<bool> isPrime(maxlimit, 1);
+
+bool isPalin(std::string text)
+{
+    int n = text.size();
+    loop(0, n / 2) if (text[i] != text[n - 1 - i]) return false;
+    return true;
+}
 
 void fillPrimes()
 {
-	isPrime[0] = isPrime[1] = false;
-	for (ll i = 2; i < maxlimit; i++)
-	{
-		if (isPrime[i] == true)
-		{
-			for (int j = 2 * i; j < maxlimit; j += i)
-			{
-				isPrime[j] = false;
-			}
-		}
-	}
+    isPrime[0] = isPrime[1] = false;
+    loop(2, maxlimit)
+    {
+        if (isPrime[i])
+        {
+            for (int j = 2 * i; j < maxlimit; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
 }
 
-int main()
+#define db(x)          \
+    cerr << #x << " "; \
+    read(x);           \
+    cerr << endl;
+
+void read(int t)
 {
-	ios_base::sync_with_stdio(false);
-	std::cout << std::setprecision(10);
-	std::cout << std::fixed;
-
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	// freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
-
-	// fillPrimes();
-
-	int testCase = 1;
-	// std::cin >> testCase;
-
-	while (testCase--)
-	{
-		solve();
-	}
+    cerr << t;
 }
 
-/* Check Single testCase or muntiple & 👌Never Give Up👌, Keep Hustling! */
+void read(string t) { cerr << t; }
+void read(char t) { cerr << t; }
+void read(double t) { cerr << t; }
+void read(bool t) { cerr << t; }
+
+template <class T, class V>
+void read(pair<T, V> p);
+
+template <class T>
+void read(vector<T> v);
+
+template <class T>
+void read(set<T> v);
+
+template <class T, class V>
+void read(map<T, V> v);
+
+template <class T>
+void read(multiset<T> v);
+
+template <class T, class V>
+void read(pair<T, V> p)
+{
+    cerr << " {";
+    read(p.first);
+    cerr << ",";
+    read(p.second);
+    cerr << "}";
+}
+
+template <class T>
+void read(vector<T> v)
+{
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
+}
+
+template <class T>
+void read(set<T> v)
+{
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
+}
+
+template <class T>
+void read(multiset<T> v)
+{
+    cerr << ": ";
+    for (T i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
+}
+
+template <class T, class V>
+void read(map<T, V> v)
+{
+    cerr << ": ";
+    for (auto i : v)
+    {
+        read(i);
+        cerr << " ";
+    };
+}
+
+template <typename T1, typename T2>
+istream &operator>>(istream &istream, pair<T1, T2> &p)
+{
+    return (istream >> p.first >> p.second);
+}
+template <typename T>
+istream &operator>>(istream &istream, vector<T> &v)
+{
+    for (auto &it : v)
+        cin >> it;
+    return istream;
+}
+template <typename T1, typename T2>
+ostream &operator<<(ostream &ostream, const pair<T1, T2> &p)
+{
+    return (ostream << p.first << " " << p.second);
+}
+template <typename T>
+ostream &operator<<(ostream &ostream, const vector<T> &c)
+{
+    for (auto &it : c)
+        cout << it << " ";
+    return ostream;
+}
+
+void solve();
+int32_t main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    auto start1 = high_resolution_clock::now();
+    std::cout << std::setprecision(10);
+    std::cout << std::fixed;
+
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+
+    // fillPrimes();
+
+    int testCases = 1, gcode = 1;
+    std::cin >> testCases;
+
+    while (testCases--)
+    {
+        // std::cout << "Case #" << gcode << ": ";
+        // gcode++;
+
+        solve();
+    }
+
+    auto stop1 = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop1 - start1);
+
+    // cerr << "Time: " << duration.count() / 1000 << "ms" << endl;
+}
 
 void solve()
-{}
+{
+    // || Jai Shree Krishna ||
+   
+}
 
-/* Reminder:
-1. Check Corner Cases, Least Input & Max Input.
-2. Check for Inputs: 0, 1, 2, 3 & n-2, n-1, n.
-3. Long Long vs Int vs unsigned.
-4. All input equal, Input Repeated, Negative.
-5. Time Complexity.
-6. Float-Double Precisions.
-*/
