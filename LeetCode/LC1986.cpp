@@ -5,6 +5,10 @@ int getCount(std::vector<int> &num, int k, std::vector<int> &sessions, int &min,
 {
     if (index >= num.size())
     {
+        for (auto i : sessions)
+            std::cout << i << " ";
+        std::cout << '\n';
+
         min = std::min(min, (int)sessions.size());
         return 0;
     }
@@ -14,7 +18,7 @@ int getCount(std::vector<int> &num, int k, std::vector<int> &sessions, int &min,
 
     for (int i = 0; i < sessions.size(); i++)
     {
-        if (sessions[i] + num[index] < k)
+        if (sessions[i] + num[index] <= k)
         {
             sessions[i] += num[index];
             getCount(num, k, sessions, min, index + 1);
