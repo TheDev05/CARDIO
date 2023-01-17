@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandBox11</title>
+    <script src="/Module 02/Tut39.js" defer></script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .context {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin-left: 380px;
+        }
+
+        .gparent {
+            background-color: red;
+        }
+
+        .parent {
+            background-color: green;
+            margin-left: 300px;
+        }
+
+        .child {
+            background-color: yellow;
+            margin-left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="context">
+        <div class="gparent box">
+            <div class="parent box">
+                <div class="child box">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

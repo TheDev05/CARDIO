@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Imp topics</title>
+    <script src="/Module 02/Tut28.js" defer></script>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .box {
+            background-color: red;
+            height: 200px;
+            width: 200px;
+            color: white;
+            margin: 20px;
+        }
+
+        .context {
+            height: 100vh;
+            width: 100wh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+      .grandparents{
+            margin-top: 10px;
+        }
+
+        .parent{
+            margin-left: 220px;
+
+        }
+
+        .child{
+            margin-left: 220px;
+            margin-top:-33%;
+        }  
+    </style>
+</head>
+
+<body>
+    <div class="context">
+        <div class="grandparents box">
+            grandparents
+            <div class="parent box">
+                parent
+                <div class="child box">
+                    child
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

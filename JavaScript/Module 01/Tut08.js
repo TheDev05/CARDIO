@@ -7,7 +7,7 @@ let lchar = 'x';
 
 console.log(typeof (lnumber));
 
-// javascript have noo "char" data typeof.
+// javascript have no "char" data typeof.
 console.log(typeof (lstring));
 console.log(typeof (lchar));
 

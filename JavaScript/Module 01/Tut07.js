@@ -1,6 +1,6 @@
 "use strict";
 
-let lstring = "   a   ";
+let lstring = "   a  b ";
 
 //trim function:
 console.log(lstring);
