@@ -4,23 +4,18 @@ using namespace std;
 int getCount(std::vector<int> &num, std::vector<std::vector<int>> &storage, int k, int index)
 {
     if (index >= num.size())
-    {
-        if (k == 0)
-            return 0;
-
-        return INT_MAX - 1;
-    }
+        return (k == 0) ? 1 : 0;
 
     if (storage[index][k] == -1)
     {
-        int val1 = INT_MAX, val2 = INT_MAX;
-        if (k - num[index] >= 0)
-        {
-            val1 = 1 + getCount(num, storage, k - num[index], index);
-        }
+        int val1 = 0, val2 = 0;
 
-        val2 = getCount(num, storage, k, index + 1);
-        storage[index][k] = std::min(val1, val2);
+        if (k - num[index] >= 0)
+            val1 = getCount(num, storage, k - num[index], index + 1);
+        if (k + num[index] < storage[0].size())
+            val2 = getCount(num, storage, k + num[index], index + 1);
+
+        storage[index][k] = val1 + val2;
     }
 
     return storage[index][k];
@@ -38,7 +33,5 @@ int main()
     }
 
     std::vector<std::vector<int>> storage(n, std::vector<int>(k + 1, -1));
-    int res = getCount(num, storage, k, 0);
-
-    std::cout << res;
+    std::cout << getCount(num, storage, k, 0);
 }
