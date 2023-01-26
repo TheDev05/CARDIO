@@ -219,8 +219,38 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
-    int a, b, c, d;
-    std::cin >> a >> b >> c >> d;
+    int n;
+    std::cin >> n;
 
-    
+    vi num(n);
+    int oddCount = 0, evenCount = 0;
+    vi odd, even;
+
+    for (int i = 0; i < n; i++)
+    {
+        std::cin >> num[i];
+        if (num[i] & 1)
+        {
+            odd.pb(i + 1);
+            oddCount++;
+        }
+        else
+        {
+            even.pb(i + 1);
+            evenCount++;
+        }
+    }
+
+    if (oddCount >= 1 && evenCount >= 2)
+    {
+        std::cout << "YES\n";
+        std::cout << odd[0] << " " << even[0] << " " << even[1] << '\n';
+    }
+    else if (oddCount >= 3)
+    {
+        std::cout << "YES\n";
+        std::cout << odd[0] << " " << odd[1] << " " << odd[2] << '\n';
+    }
+    else
+        std::cout << "NO\n";
 }
