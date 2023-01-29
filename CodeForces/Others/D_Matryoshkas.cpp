@@ -219,4 +219,43 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
+    int n;
+    std::cin >> n;
+
+    vi num(n);
+    std::cin >> num;
+
+    std::map<int, int> data;
+    for (auto i : num)
+        data[i]++;
+
+    int count = 0;
+    auto it = data.begin();
+
+    while (it != data.end())
+    {
+        if (it->second > 0)
+        {
+            auto ip = it;
+            ip++;
+
+            data[it->first]--;
+            count++;
+
+            int val = it->first;
+            for (ip; ip != data.end(); ip++)
+            {
+                if (ip->second > 0 && (ip->first - val) == 1)
+                    data[ip->first]--;
+                else
+                    break;
+
+                val = ip->first;
+            }
+        }
+        else
+            it++;
+    }
+
+    std::cout << count << '\n';
 }

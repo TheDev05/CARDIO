@@ -219,4 +219,28 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
+    int n, a, b;
+    std::cin >> n >> a >> b;
+
+    vi num(n - 1, a - b);
+
+    int sum = sumof(num);
+    int delta = sum - b;
+
+    for (int i = 0; (i < n - 1 && delta > 0); i++)
+    {
+        if (delta >= num[i] - 1)
+        {
+            delta = delta - (num[i] - 1);
+            num[i] = num[i] - (num[i] - 1);
+        }
+        else
+        {
+            num[i] = num[i] - delta;
+            break;
+        }
+    }
+
+    num.pb(a - b);
+    std::cout << num << '\n';
 }

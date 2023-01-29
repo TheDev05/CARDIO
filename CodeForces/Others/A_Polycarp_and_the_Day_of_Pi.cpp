@@ -219,4 +219,19 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
+    std::string text = "3141592653589793238462643383279502884197";
+    
+    std::string temp;
+    std::cin >> temp;
+
+    int count = 0;
+    for (int i = 0; i < temp.size(); i++)
+    {
+        if (temp[i] == text[i])
+            count++;
+        else
+            break;
+    }
+
+    std::cout << count << '\n';
 }

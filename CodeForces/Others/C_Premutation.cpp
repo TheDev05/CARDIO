@@ -219,4 +219,40 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
+    int n;
+    std::cin >> n;
+
+    std::map<int, map<int, int>> data;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n - 1; j++)
+        {
+            int val;
+            std::cin >> val;
+
+            data[j][val]++;
+        }
+    }
+
+    vi num;
+    set<int> inox;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        vpi temp;
+        for (auto j : data[i])
+            temp.pb(mp(j.second, j.first));
+
+        sort(temp.begin(), temp.end(), greater<>());
+        for (int k = 0; k < temp.size(); k++)
+        {
+            if (inox.count(temp[k].second) == false)
+            {
+                num.pb(temp[k].second);
+                inox.insert(temp[k].second);
+            }
+        }
+    }
+
+    std::cout << num << '\n';
 }
