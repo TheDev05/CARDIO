@@ -36,28 +36,34 @@ int main()
     // std::cout << it->second;
 
     std::vector<int> storage(num.size(), 1);
+    std::map<int, int> local;
 
-    int result = 0;
+    int result = 1;
     for (int i = 0; i < num.size(); i++)
     {
         int max = 0;
-        std::map<int, int> data;
-
         for (int j = i - 1; j >= 0; j--)
         {
-            data[storage[j]]++;
             if (num[j] < num[i])
                 max = std::max(max, storage[j]);
         }
 
         storage[i] = 1 + max;
-        result = std::max(result, data[max]);
+        result = std::max(result, storage[i]);
     }
 
-    std::cout << result;
+    int max = 0;
+    while (result)
+    {
+        int count = 0;
+        for (int i = 0; i < storage.size(); i++)
+        {
+            if (storage[i] == result)
+                count++;
+        }
+        max = std::max(max, count);
+        result--;
+    }
 
-    // for (auto i : data)
-    //     std::cout << i.first << " " << i.second << '\n';
-
-    // std::cout << data[result];
+    std::cout << max;
 }
