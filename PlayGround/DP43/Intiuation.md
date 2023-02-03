@@ -1,4 +1,4 @@
-Standard LIS technique
+# Standard LIS technique
 
 1. for printing only size use LIS (MEMO/TAB)
 2. for printing the required array or subsequence use Linear LIS with following intiution :
