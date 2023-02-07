@@ -15,25 +15,31 @@ public:
     }
 };
 
-void Preorder(std::vector<int> &num, TreeNode *root)
+void Postorder(std::vector<int> &num, TreeNode *root)
 {
     if (root == NULL)
         return;
 
-    std::stack<TreeNode *> q;
-    q.push(root);
+    std::stack<TreeNode *> st1, st2;
+    st1.push(root);
 
-    while (q.size())
+    while (st1.size())
     {
-        TreeNode *temp = q.top();
-        q.pop();
+        TreeNode *temp = st1.top();
 
-        if (temp->right != NULL)
-            q.push(temp->right);
+        st2.push(temp);
+        st1.pop();
+
         if (temp->left != NULL)
-            q.push(temp->left);
+            st1.push(temp->left);
+        if (temp->right != NULL)
+            st1.push(temp->right);
+    }
 
-        num.push_back(temp->val);
+    while (st2.size())
+    {
+        num.push_back(st2.top()->val);
+        st2.pop();
     }
 }
 
@@ -45,7 +51,7 @@ int main()
     root->right = new TreeNode(3);
 
     std::vector<int> num;
-    Preorder(num, root);
+    Postorder(num, root);
 
     for (auto i : num)
         std::cout << i << " ";
