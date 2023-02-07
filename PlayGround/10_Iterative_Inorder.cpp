@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// we traverse all unvisited nodes first in (Left+Root+Right) then when encouter with visited nodes, we simply print them.
+// we traverse all unvisited nodes first in order of (Left + Root + Right) then when encouter with visited nodes, we simply print them.
 
 class Node
 {

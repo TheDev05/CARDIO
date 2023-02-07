@@ -15,6 +15,8 @@ public:
     }
 };
 
+// Root + Left + Right
+
 void Preorder(std::vector<int> &num, TreeNode *root)
 {
     if (root == NULL)
