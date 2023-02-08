@@ -15,6 +15,7 @@ public:
     }
 };
 
+// Left + Right + Root
 void Postorder(std::vector<int> &num, TreeNode *root)
 {
     if (root == NULL)
