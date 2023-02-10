@@ -22,10 +22,17 @@ void Levelorder(TreeNode *root, std::vector<std::vector<int>> &num)
     std::queue<TreeNode *> storage;
     storage.push(root);
 
+    int toggle = 0;
     while (storage.size())
     {
         int size = storage.size();
-        std::vector<int> temp;
+        std::vector<int> temp(size);
+
+        int index = 0;
+        if (toggle & 1)
+            index = 0;
+        else
+            index = size - 1;
 
         for (int i = 0; i < size; i++)
         {
@@ -37,10 +44,12 @@ void Levelorder(TreeNode *root, std::vector<std::vector<int>> &num)
             if (local->right != NULL)
                 storage.push(local->right);
 
-            temp.push_back(local->val);
+            temp[abs((size - 1) - index)] = local->val;
+            index++;
         }
 
         num.push_back(temp);
+        toggle++;
     }
 }
 
