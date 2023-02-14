@@ -14,12 +14,13 @@ public:
     }
 };
 
-void traverse(Node *root, std::map<int, std::map<int, std::vector<int>>> &num, int i, int j)
+void traverse(Node *root, std::map<int, std::map<int, int>> &num, int i, int j)
 {
     if (root == NULL)
         return;
 
-    num[i][j].push_back(root->val);
+    // For many value at (j) : As we are traversing preorder the right value is inserted as last to our DS
+    num[i][j] = (root->val);
     traverse(root->left, num, i - 1, j + 1);
     traverse(root->right, num, i + 1, j + 1);
 
@@ -33,20 +34,23 @@ int main()
     root->left = new Node(2);
     root->right = new Node(3);
 
-    std::map<int, std::map<int, std::vector<int>>> num;
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+
+    root->left->right->left = new Node(8);
+    root->left->right->right = new Node(9);
+
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+
+    std::map<int, std::map<int, int>> num;
     traverse(root, num, 0, 0);
 
     std::vector<int> result;
     for (auto i : num)
     {
-        for (auto j : i.second)
-        {
-            auto last = j.second.end();
-            last--;
-
-            result.push_back(*last);
-            break;
-        }
+        auto temp = i.second.rbegin();
+        result.push_back(temp->second);
     }
 
     for (auto i : result)
