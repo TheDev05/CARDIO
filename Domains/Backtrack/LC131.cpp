@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isValid(std::string text)
+bool isPalin(std::string text)
 {
     for (int i = 0; i < text.size() / 2; i++)
     {
         if (text[i] != text[text.size() - 1 - i])
-            return false;
+            return 0;
     }
 
-    return true;
+    return 1;
 }
 
-int getText(std::string text, std::vector<std::string> &temp, std::vector<std::vector<std::string>> &num, int index)
+int getCount(std::string text, std::vector<std::string> temp, std::vector<std::vector<std::string>> &num, int index)
 {
     if (index >= text.size())
     {
@@ -24,10 +24,10 @@ int getText(std::string text, std::vector<std::string> &temp, std::vector<std::v
     for (int i = index; i < text.size(); i++)
     {
         local += text[i];
-        if (isValid(local))
+        if (isPalin(local))
         {
             temp.push_back(local);
-            getText(text, temp, num, i + 1);
+            getCount(text, temp, num, i + 1);
             temp.pop_back();
         }
     }
@@ -40,8 +40,9 @@ int main()
     std::string text;
     std::cin >> text;
 
-    std::vector<std::string> temp;
     std::vector<std::vector<std::string>> num;
+    std::vector<std::string> temp;
 
-    getText(text, temp, num, 0);
+    getCount(text, temp, num, 0);
+    std::cout << num.size();
 }
