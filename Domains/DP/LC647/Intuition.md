@@ -1,6 +1,6 @@
 # Count of Palindromes
 
-We, at first deduce all substring (n*(n+1))/2 with help of matrix/ DP table,
+We, at first deduce all substring (n*(n+1))/2 with help of matrix/ DP table, genrate DP table
 as,
 
 "ANKIT" : A to A(A), then A to B(AB), then A to C (ABC)...and so on
