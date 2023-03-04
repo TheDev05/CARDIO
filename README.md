@@ -5,7 +5,7 @@ On the chart below you may find most common orders of growth of algorithms speci
 
 ![Big O graphs](./big-o-graph.png)
 
-Source:- [Big O Cheat Sheet](http://bigocheatsheet.com/).
+Source: [Big O Cheat Sheet](http://bigocheatsheet.com/).
 
 Below is the list of some of the most used Big O notations & their performance comparisons against different sizes of the input data.
 
