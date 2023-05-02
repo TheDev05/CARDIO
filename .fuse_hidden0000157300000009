@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        int n;
+        std::cin >> n;
+
+        std::vector<int> num(n);
+        std::set<int> res;
+
+        long long neg = 0, pos = 0, zro = 0, sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            std::cin >> num[i];
+            sum += num[i];
+
+            if (num[i] > 0)
+                pos++;
+            else if (num[i] < 0)
+                neg++;
+            else
+                zro++;
+
+            if (num[i] != 0)
+                res.insert(abs(num[i]));
+        }
+
+        bool ok = true;
+        if (pos + zro >= 3 || neg + zro >= 3 || (res.size() > 1 && sum != 0 && n != 3))
+            ok = false;
+
+        if (pos == 0 && neg == 0)
+            ok = true;
+
+        if (ok)
+            std::cout << "YES\n";
+        else
+            std::cout << "NO\n";
+    }
+}
