@@ -35,7 +35,6 @@ void traverse(Node *root, int &delta, int &max, int &min)
     max = temp1;
     min = temp2;
 
-    return;
 }
 
 int main()
