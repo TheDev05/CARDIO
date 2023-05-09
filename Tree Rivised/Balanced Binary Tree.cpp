@@ -14,9 +14,21 @@ public:
     }
 };
 
-int traverse(Node*root)
+int traverse(Node *root)
 {
-    
+    if (root == NULL)
+        return 0;
+
+    int left = traverse(root->left);
+    int right = traverse(root->right);
+
+    if (std::min(left, right) == -1)
+        return -1;
+
+    if (abs(left - right) > 1)
+        return -1;
+
+    return 1 + std::max(left, right);
 }
 
 int main()

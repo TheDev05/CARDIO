@@ -8,12 +8,11 @@
 */
 
 #include <bits/stdc++.h>
-
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
 
 using namespace std;
+using namespace __gnu_pbds;
 using namespace chrono;
 
 #define int long long
@@ -48,11 +47,9 @@ using namespace chrono;
 #define loop(x, n) for (int i = x; i < n; ++i)
 #define xx cout << "❁ जय श्री कृष्णा ❁" << '\n';
 
-// Change int to pair<int,int> for multiset (deletion), use ordered_set.order_of_key({num[i], -1}) & ordered_set.find_by_order(num[i])
-typedef tree<pair<int, int>, null_type,
-             less<pair<int, int>>, rb_tree_tag,
-             tree_order_statistics_node_update>
-    ordered_set;
+// This can be also used for multiset, however deletion is not allowed!
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+
 const int maxlimit = 1e5 + 10;
 vector<bool> isPrime(maxlimit, 1);
 
@@ -222,4 +219,35 @@ int32_t main()
 void solve()
 {
     // || Jai Shree Krishna ||
+    int n, l, r;
+    std::cin >> n >> l >> r;
+
+    std::vector<int> num(n);
+    ordered_set data, removed;
+
+    for (int i = 0; i < n; i++)
+    {
+        std::cin >> num[i];
+        data.insert(num[i]);
+    }
+
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int left = 0, right = 0;
+        if (num[i] < l)
+        {
+            left = abs(num[i] - l);
+            right = abs(num[i] - r);
+        }
+        else if (num[i] >= l && num[i] <= r)
+            right = abs(num[i] - r);
+
+        sum += data.order_of_key(right + 1) - data.order_of_key(left);
+        removed.insert(num[i]);
+
+        sum -= removed.order_of_key(right + 1) - removed.order_of_key(left);
+    }
+
+    std::cout << sum << '\n';
 }
