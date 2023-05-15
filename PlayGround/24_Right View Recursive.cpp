@@ -19,7 +19,9 @@ void traverse(Node *root, std::map<int, int> &num, int j)
     if (root == NULL)
         return;
 
-    num[j] = root->val;
+    if (store.count(j) == false)
+        store[j] = root->val;
+
     traverse(root->left, num, j + 1);
     traverse(root->right, num, j + 1);
 
