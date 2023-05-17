@@ -13,25 +13,25 @@ int32_t main()
         int n;
         std::cin >> n;
 
-        std::vector<int> num(n), temp;
+        std::vector<int> temp(n), num;
 
-        int pos = 0, neg = 0, right = 0;
-        for (auto &i : num)
+        int last = -1;
+        for (int i = 0; i < n; i++)
         {
-            std::cin >> i;
+            std::cin >> temp[i];
 
-            if (i != 0)
-                temp.push_back(i);
+            if (temp[i] != 0)
+                last = i;
+        }
 
-            if (i > 0)
-                pos += i;
-            else
-                neg += i;
+        for (int i = 0; i < last + 1; i++)
+        {
+            num.push_back(temp[i]);
         }
 
         if (n == 1)
         {
-            if (num[0] == 0)
+            if (temp[0] == 0)
                 std::cout << "Yes\n";
             else
                 std::cout << "No\n";
@@ -39,14 +39,30 @@ int32_t main()
             continue;
         }
 
-        if (temp.size() == 0)
+        if (last == -1)
         {
             std::cout << "Yes\n";
             continue;
         }
 
+        int inox = 0;
         bool ok = true;
-        if (temp[temp.size() - 1] > 0 || num[0] <= 0 || pos + neg != 0 || temp[0] + temp[1] == 0 || temp[n - 1] + temp[n - 2] == 0)
+
+        for (int i = 0; i < num.size() - 1; i++)
+        {
+            if (num[i] < inox)
+                inox = inox - num[i];
+            else
+                inox = -(num[i] - inox);
+
+            if (inox == 0)
+                ok = false;
+        }
+
+        if (num[num.size() - 1] > 0 || num[0] <= 0)
+            ok = false;
+
+        if (inox != num[num.size() - 1])
             ok = false;
 
         if (ok)
