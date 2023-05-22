@@ -11,7 +11,7 @@ public:
     {
         this->val = temp;
         this->left = this->right = NULL;
-    }
+    } 
 };
 
 void traverse(Node *root, std::map<int, int> &store, int level)
