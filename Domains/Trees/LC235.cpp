@@ -3,7 +3,7 @@ using namespace std;
 
 // Task: Try without using extra variable, direct resturn the required node
 
-class Node
+class Node 
 {
 public:
     int val;
