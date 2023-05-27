@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Task: Try without using extra variable, direct resturn the required node
+// Task: Try without using extra variable, direct return the required node
 
 class Node 
 {
