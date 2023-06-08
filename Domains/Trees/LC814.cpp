@@ -14,18 +14,15 @@ public:
     }
 };
 
-TreeNode *traverse(TreeNode *root, TreeNode *temp)
+TreeNode *traverse(TreeNode *root)
 {
     if (root == NULL)
         return NULL;
 
-    TreeNode *dash1 = traverse(root->left, temp);
-    TreeNode *dash2 = traverse(root->right, temp);
+    root->left = traverse(root->left);
+    root->right = traverse(root->right);
 
-    root->left = dash1;
-    root->right = dash2;
-
-    if (dash1 == NULL && dash2 == NULL && root->val == 0)
+    if (root->left == NULL && root->right == NULL && root->val == 0)
         return NULL;
 
     return root;
@@ -38,6 +35,5 @@ int main()
     root->left = new TreeNode(2);
     root->right = new TreeNode(3);
 
-    TreeNode *temp = root;
-    traverse(root, temp);
+    return traverse(root);
 }
