@@ -1,59 +1,69 @@
-// @thedev05
 #include <bits/stdc++.h>
 using namespace std;
 
-int foo(std::vector<int> &num)
+#define int long long
+
+int result(std::vector<int> &num, std::set<int> even, std::set<int> odd, std::set<int> skip, bool toggle)
 {
-    int n = num.size();
+    int sum = 0, index = 0;
+    int n = num.size(), count = 0;
 
-    std::set<int> even, odd;
-    for (int i = 0; i < n; i++)
+    while (index < n)
     {
-        if (i)
+        while (skip.count(index) && index < n)
         {
-            if (num[i] & 1)
-                odd.insert(i);
-            else
-                even.insert(i);
-        }
-    }
-
-    int left = 0, inox = num[0], result = 0;
-    for (int i = 1; i < n; i++)
-    {
-        if (even.count(i) == false && odd.count(i) == false)
-        {
-            left--;
-            continue;
+            index++;
+            count--;
         }
 
-        if ((inox & 1) && (num[i] & 1))
-        {
-            result += abs(i - *even.begin());
-            result -= left;
+        if (index >= n)
+            break;
 
-            left++;
+        if (toggle == false && (num[index] & 1))
+        {
+            if (even.empty())
+            {
+                sum = INT_MAX;
+                break;
+            }
+
+            sum += abs(index - *even.begin()) - count;
+
+            skip.insert(*even.begin());
             even.erase(*even.begin());
+
+            count++;
         }
-        else if (inox % 2 == 0 && num[i] % 2 == 0)
+        else if (toggle && num[index] % 2 == 0)
         {
-            result += abs(i - *odd.begin());
-            result -= left;
+            if (odd.empty())
+            {
+                sum = INT_MAX;
+                break;
+            }
 
-            left++;
+            sum += abs(index - *odd.begin()) - count;
+
+            skip.insert(*odd.begin());
             odd.erase(*odd.begin());
+
+            count++;
+        }
+        else
+        {
+            even.erase(index);
+            odd.erase(index);
+
+            index++;
         }
 
-        inox = num[i];
-
-        even.erase(i);
-        odd.erase(i);
+        toggle = !toggle;
     }
 
-    return result;
+    return sum;
 }
 
-int main()
+int32_t main()
 {
     int t;
     std::cin >> t;
@@ -63,50 +73,34 @@ int main()
         int n;
         std::cin >> n;
 
-        std::vector<int> num(n), temp;
+        std::vector<int> num(n);
+        std::set<int> even, odd, skip;
 
-        int even = 0, odd = 0;
         for (int i = 0; i < n; i++)
         {
             std::cin >> num[i];
 
             if (num[i] & 1)
-                odd++;
+                odd.insert(i);
             else
-                even++;
+                even.insert(i);
         }
 
-        if ((n & 1) && abs(even - odd) != 1)
+        if (n == 1)
+        {
+            std::cout << "0\n";
+            continue;
+        }
+
+        if (abs((int)even.size() - (int)odd.size()) > 1)
         {
             std::cout << "-1\n";
             continue;
         }
 
-        if ((n % 2 == 0) && abs(even - odd) != 0)
-        {
-            std::cout << "-1\n";
-            continue;
-        }
+        int sum1 = result(num, even, odd, skip, 0);
+        int sum2 = result(num, even, odd, skip, 1);
 
-        temp = num;
-        reverse(temp.begin(), temp.end());
-
-        bool ok = true;
-        for (int i = 0; i < n; i++)
-        {
-            if (num[i] != num[n - 1 - i])
-                ok = false;
-        }
-
-        int count1 = foo(num), count2 = foo(temp);
-        if (std::min(count1, count2) != 0 && ok)
-        {
-            count1 = count2 = (n & 1) ? (n / 2) : (n / 2) - 1;
-        }
-
-        if (std::min(count1, count2) == -1)
-            std::cout << std::max(count1, count2) << '\n';
-        else
-            std::cout << std::min(count1, count2) << '\n';
+        std::cout << std::min(sum1, sum2) << '\n';
     }
 }
