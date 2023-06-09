@@ -25,3 +25,10 @@ Check for 3 condition using a single 0-9 loop,
 a. Exist in row of not
 b. Exist in col or not
 c. Exist in 3x3 matix or not (IMP: use some mathematical tricks)
+
+# Leetcode: All Nodes at distance k
+
+For movement downward we have BFS, DFS etc but When we need to move upward we use `Map` to store parent values for each node so that we can know and traverse backward for every node to its parent.
+
+1. Store parent values in `parent map` 
+2. Traverse radially outward, like ripple in water, note that any node can move in 3 direction downward left or right or upward. Use BFS and store all 3 values whhich is k distant from target node.
