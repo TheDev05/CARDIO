@@ -40,3 +40,11 @@ Complete binary tree means, all levels are filled except(possibly) last level is
 For a complete binary tree the count of all nodes is: 2^n-1 or pow(2,n)-1 or (1<<2)-1
 
 To check if they are complete of not, just check the extreme left height and extreme right height, if both heights are equal tree is complete return value using formulla else move to left and right subtree and after returning return both's value adding 1(of current root).
+
+# LeetCode : Binary Search Tree Iterator
+
+O(1) for Next() & HasNext() function and O(h) for space:
+use ```Left (Root) Right``` technique as we know this is Inorder traversal, first put all extreme left nodes in stack, then pop with every next() call, when poping check for its right if there is right again put all its left nodes in stack, this way we use stack only for H elements resulting O(H) space complexity.
+
+Why Stack?
+Using stack the last node will pop at first
