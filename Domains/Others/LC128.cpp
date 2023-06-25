@@ -15,11 +15,6 @@ int main()
         st.insert(i);
 
     int max = 0, last = 0;
-
-    // for (auto i : st)
-    //     std::cout << i << " ";
-    // std::cout << '\n';
-
     for (auto i = st.begin(); i != st.end(); i++)
     {
         int count = 1;
