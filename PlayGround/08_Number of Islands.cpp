@@ -17,8 +17,8 @@ int main()
     }
 
     std::map<std::pair<int, int>, int> data;
-
     int inox = 1;
+    
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
