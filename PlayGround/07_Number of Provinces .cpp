@@ -56,5 +56,6 @@ int main()
         }
     }
 
-    std::cout << count;
+
+    std::cout << count << '\n';
 }
