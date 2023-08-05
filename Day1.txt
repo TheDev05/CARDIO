@@ -1,0 +1,98 @@
+#Social apps:
+
+1. Facebook: 
+Frontend: HTML, CSS, C++, Java
+Backend: PHP
+Servers: MYSQL
+Benfits: make friends from all over the world
+Issues: Time comsuming, create addiction
+
+2. Instagram
+Frontend: HTML, CSS, C++, Java, Javascript
+Backend: PHP
+Servers: Cassandra, MYSQL
+Benfits: can post pictures of yours and your family
+Issues: Time consuming, Crea
+
+3. Whatsapp: 
+Frontend: HTML, CSS, C++, Java
+
+#CODES:
+
+Java:
+System.out.println(“Good morning Bupinder mam and other mam welcome to cu”);
+
+C:
+	printf(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+Python:
+	print(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+HTML:
+	Good morning Bupinder mam and other mam welcome to cu
+
+
+C++:
+	cout<<(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+JS:
+	console.log(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+React.js:
+	Console.log(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+OR
+Good morning Bupinder mam and other mam welcome to cu
+
+
+CSS:
+	.classname::before{
+		content: “Good morning Bupinder mam and other mam welcome to cu”;
+	}
+
+
+Kotlin:
+	print(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+Flutter:
+	print(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+Dart:
+	print(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+scss:
+	.classname::before{
+		content: “Good morning Bupinder mam and other mam welcome to cu”;
+	}	
+
+
+php:
+	<? 
+		echo “Good morning Bupinder mam and other mam welcome to cu”;
+	?>
+
+
+Typescript:
+	console.log(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+Swift:
+	print(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+C#:
+	using system;
+	Console.WriteLine(“Good morning Bupinder mam and other mam welcome to cu”);
+
+
+
+#Python one liner CODE
+print(input("Enter First Name and Second Name: ").split()[-1])
