@@ -48,3 +48,10 @@ use ```Left (Root) Right``` technique as we know this is Inorder traversal, firs
 
 Why Stack?
 Using stack the last node will pop at first
+
+# Leetcode : Surrounded Regions
+
+Approach: all the region which hold any boundry part will be = 'O', rest converted to 'X'
+first store all boundry elements in queue and apply BFS, along with store all visited element as 1 in second matrix `vis`, now convert all element of given matrix to 'X', after than run over `vis` and convert elements to 'O' which is in `vis` because they are somehow connected to boundry.
+
+Note : we can't use DFS because, it will became greedy approach, answer will be wrongly outputed.
