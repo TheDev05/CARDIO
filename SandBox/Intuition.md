@@ -55,3 +55,11 @@ Approach: all the region which hold any boundry part will be = 'O', rest convert
 first store all boundry elements in queue and apply BFS, along with store all visited element as 1 in second matrix `vis`, now convert all element of given matrix to 'X', after than run over `vis` and convert elements to 'O' which is in `vis` because they are somehow connected to boundry.
 
 Note : we can't use DFS because, it will became greedy approach, answer will be wrongly outputed.
+
+# Leetcode: Find Eventual Safe States
+
+If all adjacent nodes of any node is visted, i.e call comes to that node that means all their adjacent nodes are terminal node or they don't have any adjacent nodes, hence that parent node is safe node
+
+so all nodes with `pathvis[] = 0` is safe node, because we are assigning 0 to pathvis at last of all node's adjacent call, that means all call is performed
+
+Note: all the nodes which is either a part of loop, or somehow adjacent to any loop are not safe node.
