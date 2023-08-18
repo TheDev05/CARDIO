@@ -63,3 +63,15 @@ If all adjacent nodes of any node is visted, i.e call comes to that node that me
 so all nodes with `pathvis[] = 0` is safe node, because we are assigning 0 to pathvis at last of all node's adjacent call, that means all call is performed
 
 Note: all the nodes which is either a part of loop, or somehow adjacent to any loop are not safe node.
+
+# Leetcode: Cheapest flight with k stops
+
+comment extracted from striver's YT video, graph series:
+
+Just make sure in the if check you put the condition as (cost + edW < dist[adjNode]) and not (dist[Node] + edW < dist[adjNode]) or else edge case will fail
+
+MISCONCEPTION: we can save some space in the queue nd do queue<pair<stop,node>>  coz distance is already obtainable from dis[ ], so why maintain it specifically in the queue?
+
+ANS: no coz in the queue we store the distance coming from a specific parent node ie a particular path , nd that path is used for further exploration when we take it out of the queue nd consider that paths distance ...but there can be other paths as well...dis[ ] can't maintain the paths, it just stores the path with minimum distance, which may not guarantee the path with least stops(which is our top priority)...hence we have to maintain the instance of the distance of a particular node in the queue
+
+
