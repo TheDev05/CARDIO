@@ -26,8 +26,6 @@ int main()
     }
 
     std::queue<std::pair<int, std::pair<int, int>>> inox;
-
-    std::vector<int> stops(n, 1e7);
     std::vector<int> dist(n, 1e7);
 
     inox.push({src, {0, 0}});
@@ -41,17 +39,18 @@ int main()
 
         inox.pop();
 
+        if (len > k)
+            continue;
+
         for (auto i : num[node])
         {
             int adjNode = i.first;
             int adjLen = i.second;
 
-            if ((len + 1 == stops[adjNode] && val + adjLen < dist[adjNode]) || (len + 1 < stops[adjNode]))
+            if (val + adjLen < dist[adjNode])
             {
                 dist[adjNode] = val + adjLen;
-                stops[adjNode] = len + 1;
-
-                inox.push({adjNode, {stops[adjNode], dist[adjNode]}});
+                inox.push({adjNode, {len + 1, dist[adjNode]}});
             }
         }
     }
