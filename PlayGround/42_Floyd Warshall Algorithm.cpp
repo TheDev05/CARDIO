@@ -32,6 +32,8 @@ int main()
             for (int j = 0; j < n; j++)
             {
                 num[i][j] = std::min(num[i][j], num[i][v] + num[v][j]);
+                if (i == j)
+                    num[i][j] = 0;
             }
         }
     }
