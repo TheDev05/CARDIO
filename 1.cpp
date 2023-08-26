@@ -3,48 +3,92 @@ using namespace std;
 
 int main()
 {
-    std::string text;
-    std::cin >> text;
+    int n;
+    std::cin >> n;
 
-    std::string vowel = "aeiou";
-
-    std::map<char, int> data;
-    char inox = 'a';
-
-    for (int i = 0; i < 27; i++)
+    std::vector<std::vector<std::string>> logs;
+    for (int i = 0; i < n; i++)
     {
-        data[inox] = i;
-        inox++;
+        std::vector<std::string> temp(3);
+        for (auto &j : temp)
+            std::cin >> j;
+
+        logs.push_back(temp);
     }
 
-    std::set<char> vow;
-    int cons = 0;
-
-    for (auto i : text)
+    std::map<pair<string, string>, int> data;
+    for (int i = 0; i < logs.size(); i++)
     {
-        if (vowel.find(i) == std::string::npos)
-            cons++;
-        else
-            vow.insert(i);
-    }
 
-    // if (vow.size() == 1 && cons == 0)
-    //     return -1;
+        std::string user, date, time;
 
-    int min = INT_MAX;
-    for (int i = 0; i < vowel.size(); i++)
-    {
-        int sum = 0;
-        for (int j = 0; j < text.size(); j++)
+        user = logs[i][0];
+        date = logs[i][2];
+        time = logs[i][1];
+
+        int hour = stoi(time.substr(0, 2));
+        int min = stoi(time.substr(3, 2));
+        int sec = stoi(time.substr(6, 2));
+
+        if (hour >= 24)
+            continue;
+        if (min > 60)
+            continue;
+        if (sec > 60)
+            continue;
+
+        int month = stoi(date.substr(5, 2));
+        int day = stoi(date.substr(8, 2));
+        int year = stoi(date.substr(0, 4));
+
+        if (month > 12 || month <= 0)
+            continue;
+        if (day > 31 || day <= 0)
+            continue;
+
+        if (month == 02)
         {
-            if (vow.count(text[j]))
+            if (day > 29)
+                continue;
+
+            if (year % 400 == 0)
             {
-                sum += abs(data[text[j]] - data[vowel[i]]);
+                if (day != 29)
+                    continue;
+            }
+            else if (year % 100 == 0)
+            {
+                if (day != 28)
+                    continue;
+            }
+            else if (year % 4 == 0)
+            {
+                if (day != 29)
+                    continue;
             }
         }
 
-        min = std::min(sum, min);
+        data[{user, date}]++;
     }
 
-    std::cout << (cons * 10) + min;
+    std::vector<std::vector<std::string>> result;
+    for (auto i : data)
+    {
+        std::vector<std::string> temp;
+
+        temp.push_back(i.first.first);
+        temp.push_back(i.first.second);
+        temp.push_back(to_string(i.second));
+
+        result.push_back(temp);
+    }
+
+    // return result;
+
+    for (auto i : result)
+    {
+        for (auto j : i)
+            std::cout << j << " ";
+        std::cout << '\n';
+    }
 }
