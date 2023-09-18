@@ -1,41 +1,104 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node
+class TreeNode
 {
 public:
     int val;
-    Node *left, *right;
+    TreeNode *left, *right;
 
-    Node(int temp)
+    TreeNode(int temp)
     {
         this->val = temp;
         this->left = this->right = NULL;
     }
 };
 
-void traverse(Node *root, std::queue<Node *> &inox, std::map<Node *, Node *> &parent, int start)
+void traverse(TreeNode *root, std::map<TreeNode *, TreeNode *> &parent, TreeNode *&init, int start)
 {
     if (root == NULL)
         return;
 
-    if (root->val == start)
-        inox.push(root);
+    std::queue<TreeNode *> inox;
+    inox.push(root);
 
-    traverse(root->left, inox, start);
-    traverse(root->right, inox, start);
+    while (inox.size())
+    {
+        int size = inox.size();
+        for (int i = 0; i < size; i++)
+        {
+            auto it = inox.front();
+            inox.pop();
+
+            if (it->left)
+            {
+                parent[it->left] = it;
+                inox.push(it->left);
+            }
+
+            if (it->right)
+            {
+                inox.push(it->right);
+                parent[it->right] = it;
+            }
+
+            if (it->val == start)
+                init = it;
+        }
+    }
 }
 
 int main()
 {
-    Node *root = new Node(1);
+    TreeNode *root = new TreeNode(1);
 
-    root->left = new Node(2);
-    root->right = new Node(3);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
 
     int start;
     std::cin >> start;
 
-    std::queue<Node *> inox;
-    traverse(root, inox, start);
+    std::map<TreeNode *, TreeNode *> parent;
+    TreeNode *init = NULL;
+
+    traverse(root, parent, init, start);
+
+    std::queue<TreeNode *> inox;
+    std::set<TreeNode *> vis;
+
+    inox.push(init);
+    vis.insert(init);
+
+    int count = 0;
+    while (inox.size())
+    {
+        int size = inox.size();
+        count++;
+
+        for (int i = 0; i < size; i++)
+        {
+            auto it = inox.front();
+            inox.pop();
+
+            if (it->left && vis.count(it->left) == false)
+            {
+                inox.push(it->left);
+                vis.insert(it->left);
+            }
+
+            if (it->right && vis.count(it->right) == false)
+            {
+                inox.push(it->right);
+                vis.insert(it->right);
+            }
+
+            if (vis.count(parent[it]) == false)
+            {
+                inox.push(parent[it]);
+                vis.insert(parent[it]);
+            }
+        }
+    }
+
+    std::cout << count;
 }
