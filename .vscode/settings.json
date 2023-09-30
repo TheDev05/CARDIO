@@ -74,6 +74,7 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
-    "cph.general.onceMaintainerMessage": false
+    "cph.general.onceMaintainerMessage": false,
+    "cph.general.saveLocation": ""
     
 }
