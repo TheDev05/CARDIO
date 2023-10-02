@@ -74,4 +74,14 @@ Just make sure in the if check you put the condition as (cost + edW < dist[adjNo
 
 Coz in the queue we store the distance coming from a specific parent node ie a particular path , nd that path is used for further exploration when we take it out of the queue nd consider that paths distance ...but there can be other paths as well...dis[ ] can't maintain the paths, it just stores the path with minimum distance, which may not guarantee the path with least stops(which is our top priority)...hence we have to maintain the instance of the distance of a particular node in the queue
 
+# 2870. Minimum Number of Operations to Make Array Empty
+
+Except '1', every number can be splitted in the form of 2 and 3, then first try to split in 3 as far as possible but keep in mind, the remainder after splitting number by 3 must divide by 2.
+
+look at the first leetcode submiision: https://leetcode.com/submissions/detail/1064677343/
+
+// 2 3 22 23 33 223 233 2223 2233 2333 3333 22333
+// 2 3 4 5 6 7 8 9 10 11 12 13
+
+
 
