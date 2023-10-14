@@ -1,0 +1,1 @@
+{"name":"Local: LC886","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC886.cpp","tests":[{"id":1697219188769,"input":"4\n3\n1 2\n1 3\n2 4","output":""},{"id":1697219445803,"input":"3\n3\n1 2\n1 3\n2 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC886.cpp","group":"local","local":true}
