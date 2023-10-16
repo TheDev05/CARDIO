@@ -1,0 +1,1 @@
+{"name":"Local: LC990","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC990.cpp","tests":[{"id":1697430557612,"input":"2\na==b\na!=b","output":""},{"id":1697430584398,"input":"2\na==b\nb==a","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC990.cpp","group":"local","local":true}
