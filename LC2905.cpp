@@ -18,7 +18,7 @@ int main()
         data[i]++;
 
     std::deque<int> store;
-    for (int i = 0; i < deltaIndex + 1; i++)
+    for (int i = 0; i < std::min(deltaIndex + 1, (int)num.size()); i++)
     {
         store.push_back(num[i]);
 
@@ -27,33 +27,51 @@ int main()
             data.erase(num[i]);
     }
 
-    data[num[deltaIndex]]++;
+    data[store.back()]++;
 
     int delta1 = data.begin()->first;
     int delta2 = data.rbegin()->first;
 
-    int ans = 0;
-    if (abs(delta1 - store.front()) >= deltaSum || abs(delta1 - store.front()) >= deltaSum)
-        ans = 0;
+    std::cout << store.size();
 
-    for (int i = deltaIndex + 1; i <= (num.size() - deltaIndex); i++)
+    int index1 = -1, index2 = -1;
+    if ((store.size() == deltaIndex + 1) && (abs(delta1 - store.front()) >= deltaSum || abs(delta2 - store.front()) >= deltaSum))
+        index1 = 0;
+
+    if (index1 == -1)
     {
-        data[store.front()]--;
-        if (data[store.front()] == 0)
-            data.erase(store.front());
-        store.pop_front();
+        for (int i = deltaIndex + 1; i < num.size(); i++)
+        {
+            data[store.back()]--;
+            if (data[store.back()] == 0)
+                data.erase(store.back());
 
-        int delta1 = data.begin()->first;
-        int delta2 = data.rbegin()->first;
+            store.pop_front();
+            store.push_back(num[i]);
 
-        if (abs(delta1 - store.front()) >= deltaSum || abs(delta1 - store.front()) >= deltaSum)
-            ans = i;
+            int delta1 = data.begin()->first;
+            int delta2 = data.rbegin()->first;
 
-        data[num[i]]--;
-        if (data[num[i]] == 0)
-            data.erase(num[i]);
-        store.push_back(num[i]);
+            for (auto k : store)
+                std::cout << k << " ";
+            std::cout << '\n';
+
+            if (store.size() == deltaIndex + 1 && (abs(delta1 - store.front()) >= deltaSum || abs(delta2 - store.front()) >= deltaSum))
+            {
+                index1 = i - deltaIndex;
+                break;
+            }
+        }
     }
 
-    std::cout << ans;
+    for (int i = index1; i < num.size(); i++)
+    {
+        if (abs(index1 - i) >= deltaIndex && abs(num[index1] - num[i]) >= deltaSum)
+        {
+            index2 = i;
+            break;
+        }
+    }
+
+    std::cout << index1 << " " << index2;
 }
