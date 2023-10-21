@@ -1,0 +1,1 @@
+{"name":"Local: LC1559","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1559.cpp","tests":[{"id":1697870125338,"input":"4 4\na a a a\na b b a\na b b a\na a a a","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1559.cpp","group":"local","local":true}
