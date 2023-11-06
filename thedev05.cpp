@@ -8,5 +8,5 @@ int thedev05()
 
 int main()
 {
-    std::cout << thedev05();
+    thedev05();
 }
