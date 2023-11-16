@@ -1,5 +1,5 @@
 {
-    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "*.c": "c",
         "array": "cpp",
@@ -72,9 +72,11 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "concepts": "cpp"
     },
     "cph.general.onceMaintainerMessage": false,
-    "cph.general.saveLocation": ""
+    "cph.general.saveLocation": "",
+    "C_Cpp.default.cppStandard": "gnu++20"
     
 }
