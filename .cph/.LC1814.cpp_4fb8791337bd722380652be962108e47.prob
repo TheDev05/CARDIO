@@ -1,0 +1,1 @@
+{"name":"Local: LC1814","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1814.cpp","tests":[{"id":1700533859971,"input":"4\n42 11 1 97","output":""},{"id":1700533914162,"input":"5\n13 10 35 24 76","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1814.cpp","group":"local","local":true}
