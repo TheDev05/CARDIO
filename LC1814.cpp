@@ -10,7 +10,7 @@ int main()
     for (auto &i : num)
         std::cin >> i;
 
-    int res = 0;
+    int res = 0, mod = 1e9 + 7;
     auto rev = [&](auto &&rev, int val)
     {
         if (val < 1)
@@ -22,7 +22,7 @@ int main()
         return rev(rev, val);
     };
 
-    std::map<int, int> data;
+    std::map<long long, long long> data;
     for (auto &i : num)
     {
         rev(rev, i);
@@ -31,9 +31,12 @@ int main()
         data[i]++;
     }
 
-    int count = 0;
+    long long count = 0;
     for (auto &i : data)
-        count += (i.second-- * i.second) / 2;
+    {
+        count += ((i.second * (i.second - 1)) / 2) % mod;
+        count = count % mod;
+    }
 
     std::cout << count;
 }
