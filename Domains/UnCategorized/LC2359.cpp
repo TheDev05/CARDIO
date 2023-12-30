@@ -1,55 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-std::pair<int, int> traverse(std::vector<int> adj[], int n, int n1, int n2)
+void traverse(std::vector<int> &num, std::vector<int> &vis, int node)
 {
-    std::vector<int> vis(n, -1);
-    std::queue<std::pair<int, int>> inox;
+    std::queue<int> inox;
 
-    inox.push({n1, 0});
-    vis[n1] = 0;
-
-    while (inox.size())
-    {
-        int it = inox.front().first;
-        int dist = inox.front().second;
-        inox.pop();
-
-        for (auto i : adj[it])
-        {
-            if (vis[i] == -1)
-            {
-                vis[i] = dist + 1;
-                inox.push({i, dist + 1});
-            }
-        }
-    }
-
-    std::vector<int> temp(n, -1);
-
-    inox.push({n2, 0});
-    temp[n2] = 0;
+    inox.push(node);
+    vis[node] = 0;
 
     while (inox.size())
     {
-        int it = inox.front().first;
-        int dist = inox.front().second;
-        inox.pop();
-
-        if (vis[it] != -1)
-            return {it, vis[it]};
-
-        for (auto i : adj[it])
+        auto size = inox.size();
+        for (int i = 0; i < size; i++)
         {
-            if (temp[i] == -1)
-            {
-                temp[i] = dist + 1;
-                inox.push({i, dist + 1});
-            }
+            auto it = inox.front();
+            inox.pop();
+
+            int temp = num[it];
+            if (temp == -1)
+                continue;
+
+            if (vis[temp] == -1)
+                inox.push(temp), vis[temp] = vis[it] + 1;
         }
     }
-
-    return {-1, 1e6};
 }
 
 int main()
@@ -64,28 +38,22 @@ int main()
     int n1, n2;
     std::cin >> n1 >> n2;
 
-    std::vector<int> adj[n];
-    for (int i = 0; i < n; i++)
+    std::vector<int> data1(num.size(), -1);
+    std::vector<int> data2(num.size(), -1);
+
+    traverse(num, data1, n1);
+    traverse(num, data2, n2);
+
+    int dist = INT_MAX, node = -1;
+    for (int i = 0; i < data1.size(); i++)
     {
-        if (num[i] >= 0)
-            adj[i].push_back(num[i]);
+        if (std::min(data1[i], data2[i]) != -1)
+        {
+            if (dist > std::max(data1[i], data2[i]))
+                dist = std::max(data1[i], data2[i]),
+                node = i;
+        }
     }
 
-    auto it1 = traverse(adj, n, n1, n2);
-    int node1 = it1.first;
-    int dist1 = it1.second;
-
-    auto it2 = traverse(adj, n, n2, n1);
-    int node2 = it2.first;
-    int dist2 = it2.second;
-
-    int res = 0;
-    if (dist1 < dist2)
-        res = node1;
-    else if (dist1 > dist2)
-        res = node2;
-    else
-        res = std::min(node1, node2);
-
-    std::cout << res;
+    std::cout << node;
 }
