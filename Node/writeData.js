@@ -1,4 +1,4 @@
-const { connectMongo } = require("./MongoDB");
+const { connectMongo } = require("./DbConnect");
 
 async function writeData() {
   try {
@@ -12,7 +12,7 @@ async function writeData() {
       img: "demo",
     });
 
-    if (response) console.log("Inserted");
+    console.log(response);
   } catch (error) {
     console.log(error);
   }

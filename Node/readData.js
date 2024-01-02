@@ -1,4 +1,4 @@
-const { connectMongo } = require("./MongoDB");
+const { connectMongo } = require("./DbConnect");
 
 async function readData() {
   try {

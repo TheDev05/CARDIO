@@ -5,9 +5,10 @@ const path =
 async function connectMongo() {
   try {
     await mongoose.connect(path);
-
     const db = mongoose.connection.db;
+    
     const collection = db.collection("food_items");
+    console.log("Connected to DB");
 
     return collection;
   } catch (error) {

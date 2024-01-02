@@ -15,7 +15,7 @@
 const express = require("express");
 const app = express();
 
-const validate = require("./Middleware").validator;
+const { validator: validate } = require("./Middleware");
 
 // const validate = (req, res, next) => {
 //   console.log("Validatore");
@@ -29,5 +29,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Running");
+  console.log("Running at Port 3000");
 });
+
