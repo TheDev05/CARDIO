@@ -1,77 +1,68 @@
-const mongoose = require("mongoose");
-const { Schema } = require("mongoose");
+const { DbConnect } = require("./DbConnect");
 
-const { connectMongo: db } = require("./DbConnect");
+// RESTful APIs & accesing express instances & methods
+const express = require("express");
+const app = express();
 
-async function writeDB() {
+/* Calling NodeJs in-built M'ware function (express.json())
+ to parse client requests from Json(string) to Js Object */
+app.use(express.json());
+
+// Reading Data
+app.get("/", async (req, res) => {
   try {
-    const collection = db();
-    const schema = new Schema({
-      name: String,
-    });
-
-    // Now the collection "food_items" have schema and renamed as user
-    const user = mongoose.model("food_items", schema);
-    const response = await user.create({ name: "Biryani" });
+    const collection = await DbConnect();
+    const response = await collection.findOne(req.body);
 
     console.log(response);
+    res.send(response);
   } catch (error) {
     console.log(error);
   }
-}
+});
 
-// writeDB();
-
-async function readDB() {
+// Creating Data
+app.post("/", async (req, res) => {
   try {
-    const collection = db();
-    const schema = new Schema({
-      name: String,
-    });
+    const collection = await DbConnect();
+    const response = await collection.create(req.body);
 
-    const user = mongoose.model("food_items", schema);
-    const response = await user.find({ name: "Biryani" });
     console.log(response);
+    res.send(response);
   } catch (error) {
     console.log(error);
   }
-}
+});
 
-// readDB();
-
-async function updateDB() {
+// Updating Data
+app.put("/", async (req, res) => {
   try {
-    const collection = db();
-    const schema = new Schema({
-      name: String,
-    });
-    const newCollection = mongoose.model("food_items", schema);
-    const response = await newCollection.updateMany(
-      { name: "Biryani" },
-      { name: "Ankit" }
-    );
+    const collection = await DbConnect();
+
+    // updateOne accept two params, first to search and second for updation
+    const response = await collection.updateOne({ name: "Ankit" }, req.body);
 
     console.log(response);
+    res.send(response);
   } catch (error) {
     console.log(error);
   }
-}
+});
 
-// updateDB();
-
-async function deleteDB() {
+// Delete Data
+app.delete("/", async (req, res) => {
   try {
-    const collection = db();
-    const schema = new Schema({
-      name: String,
-    });
-    const newCollection = mongoose.model("food_items", schema);
-    const response = await newCollection.deleteMany({ name: "Ankit" });
+    const collection = await DbConnect();
+    const response = await collection.deleteOne(req.body);
 
     console.log(response);
+    res.send(response);
   } catch (error) {
     console.log(error);
   }
-}
+});
 
-// deleteDB();
+// server (here local host, our system) will listen at PORT 3000
+app.listen(3000, () => {
+  console.log("Listening at 3000");
+});
