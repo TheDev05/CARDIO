@@ -53,21 +53,21 @@ int main()
 
     Node *head = traverse(num);
 
-    Node *tortoise = head, *hare = head;
+    Node *slow = head, *fast = head;
     Node *mid = NULL;
 
     while (1)
     {
-        mid = hare;
+        mid = fast;
 
-        if (tortoise->next && tortoise->next->next)
-            tortoise = tortoise->next->next,
-            hare = hare->next;
+        if (slow->next && slow->next->next)
+            slow = slow->next->next,
+            fast = fast->next;
         else
             break;
     }
 
-    if (tortoise->next && tortoise->next->next == NULL)
+    if (slow->next && slow->next->next == NULL)
         mid = mid->next;
 
     std::cout << mid->val;
