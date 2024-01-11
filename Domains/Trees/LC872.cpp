@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node
+class TreeNode
 {
 public:
     int val;
-    Node *left, *right;
+    TreeNode *left, *right;
 
-    Node(int temp)
+    TreeNode(int temp)
     {
         this->val = temp;
         this->left = this->right = NULL;
     }
 };
 
-void traverse(Node *root, std::vector<int> &num)
+void traverse(TreeNode *root, std::vector<int> &num)
 {
     if (root == NULL)
         return;
@@ -30,11 +30,11 @@ void traverse(Node *root, std::vector<int> &num)
 
 int main()
 {
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
 
-    Node *temp = root;
+    TreeNode *temp = root;
 
     std::vector<int> num1, num2;
     traverse(root, num1);
