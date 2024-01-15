@@ -6,22 +6,21 @@ int main()
     std::string text1, text2;
     std::cin >> text1 >> text2;
 
-    std::map<char, int> mp1, mp2;
-    for (auto i : text1)
-        mp1[i]++;
-
-    for (auto i : text2)
-        mp2[i]++;
+    std::vector<int> data(26, 0);
+    for (int i = 0; i < text1.size(); i++)
+    {
+        data[(int)text1[i] - (int)'a']++;
+    }
 
     int sum = 0;
-    for (auto i : mp1)
-        if (mp2.contains(i.first))
-            sum += abs(i.second - mp2[i.first]), mp2.erase(i.first);
+    for (int i = 0; i < text2.size(); i++)
+    {
+        if (data[(int)text2[i] - (int)'a'] > 0)
+            data[(int)text2[i] - (int)'a']--;
         else
-            sum += i.second;
+            sum++;
+    }
 
-    for (auto i : mp2)
-        sum += i.second;
-
+    sum += accumulate(begin(data), end(data), 0);
     std::cout << sum;
 }

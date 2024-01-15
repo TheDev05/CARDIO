@@ -14,24 +14,15 @@ int main()
     for (auto i : num)
         data[i]++;
 
-    for (auto i : data)
-        std::cout << i.second << " ";
-
     int count = 0;
     for (auto i : data)
-    {
-        int sum = 0;
-        for (int j = 3; j <= i.second; j += 3)
+        if (i.second == 1)
         {
-            if (j > i.second)
-                break;
-
-            if ((i.second - j) % 2 == 0)
-                sum = j;
+            count = -1;
+            break;
         }
-
-        count += (sum / 3) + ((i.second - sum) / 2);
-    }
+        else
+            count += ceil((double)i.second / 3);
 
     std::cout << count;
 }
