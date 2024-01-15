@@ -1,0 +1,1 @@
+{"name":"Local: LC1247","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1247.cpp","tests":[{"id":1705292601079,"input":"xxy\nyyx","output":""},{"id":1705296509130,"input":"xxyy\nyyxx","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC1247.cpp","group":"local","local":true}
