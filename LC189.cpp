@@ -48,11 +48,9 @@ int main()
     // num = res;
 
     // Third Approach:
-    while (k--)
-    {
-        num.insert(num.begin(), num.back());
-        num.pop_back();
-    }
+    reverse(begin(num), end(num));
+    reverse(begin(num), begin(num) + k);
+    reverse(begin(num) + k, end(num));
 
     for (auto i : num)
         std::cout << i << " ";
