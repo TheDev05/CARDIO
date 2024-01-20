@@ -1,0 +1,1 @@
+{"name":"Local: LC931","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC931.cpp","tests":[{"id":1705744951392,"input":"3 3\n2 1 3\n6 5 4\n7 8 9","output":"13"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC931.cpp","group":"local","local":true}
