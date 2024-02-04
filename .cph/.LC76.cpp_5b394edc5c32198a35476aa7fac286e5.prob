@@ -1,0 +1,1 @@
+{"name":"Local: LC76","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC76.cpp","tests":[{"id":1707056219196,"input":"ADOBECODEBANC\nABC","output":""},{"id":1707057749124,"input":"a\naa","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC76.cpp","group":"local","local":true}
