@@ -1,0 +1,1 @@
+{"name":"Local: LC2966","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC2966.cpp","tests":[{"id":1707069527920,"input":"9\n1 3 4 8 7 9 3 5 1\n2","output":""},{"id":1707069558325,"input":"6\n1 3 3 2 7 3\n3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC2966.cpp","group":"local","local":true}
