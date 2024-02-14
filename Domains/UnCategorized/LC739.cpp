@@ -10,26 +10,29 @@ int main()
     for (auto &i : num)
         std::cin >> i;
 
-    std::map<int, std::set<int>> idx;
-    for (int i = 0; i < num.size(); i++)
-        idx[num[i]].insert(i);
+    std::stack<std::pair<int, int>> st;
+    std::vector<int> res(n, 0);
 
-    std::vector<int> res;
     for (int i = 0; i < num.size(); i++)
     {
-        int temp = INT_MAX;
-        auto locate = idx.lower_bound(num[i]);
-
-        for (auto ip = ++locate; ip != idx.end(); ip++)
+        if (st.empty())
+            st.push({num[i], i});
+        else
         {
-            if (auto it = ip->second.lower_bound(i); it != ip->second.end())
-                temp = std::min(temp, *it - i);
+            while (st.size() && st.top().first < num[i])
+            {
+                res[st.top().second] = std::abs(i - st.top().second);
+                st.pop();
+            }
+
+            st.push({num[i], i});
         }
+    }
 
-        if (temp == INT_MAX)
-            temp = 0;
-
-        res.push_back(temp);
+    while (st.size())
+    {
+        res[st.top().second] = 0;
+        st.pop();
     }
 
     for (auto i : res)
