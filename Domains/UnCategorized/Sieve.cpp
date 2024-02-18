@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int max_size = 1e5 + 1;
+int max_size = 1e6 + 1;
 std::vector<bool> isPrime(max_size, true);
 
 void fillPrime()
