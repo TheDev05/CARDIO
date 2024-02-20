@@ -14,29 +14,58 @@ int main()
         for (auto &j : i)
             std::cin >> j;
 
-    std::map<int, int> data;
+    sort(num.begin(), num.end());
+
     std::set<std::pair<int, int>> inox;
+    std::map<int, int> data;
+    std::map<int, int> res;
 
     for (int i = 0; i < num.size(); i++)
     {
+        for (auto i : inox)
+            std::cout << i.first << " " << i.second << '\n';
+        std::cout << '\n';
+
         if (inox.size())
         {
-            int idx = inox.begin()->second, val = inox.begin()->first;
-            if (inox.begin()->first <= num[i][0])
+            if (inox.begin()->first < num[i][0])
             {
-                while (inox.size() && inox.begin()->first <= num[i][0])
+                int idx = INT_MAX, val = 0;
+                while (inox.size() && inox.begin()->first < num[i][0])
                 {
-                    val = inox.begin()->first;
-                    idx = inox.begin()->second;
+                    if (inox.begin()->second < idx)
+                        idx = inox.begin()->second,
+                        val = inox.begin()->first;
 
+                    res[inox.begin()->second] = inox.begin()->first;
                     inox.erase(inox.begin());
                 }
-            }
-            else if (inox.size() >= n)
-                inox.erase(inox.begin());
 
-            inox.insert({val + (num[i][1] - num[i][0]), idx});
-            data[idx]++;
+                if (inox.size() < idx)
+                {
+                    idx = inox.size();
+                    val = res[inox.size()];
+                }
+
+                inox.insert({val + (num[i][1] - num[i][0]), idx}),
+                    data[idx]++;
+            }
+            else
+            {
+                if (inox.size() < n)
+                    inox.insert({num[i][1], i}), data[i]++;
+                else
+                {
+                    int val = inox.begin()->first;
+                    int idx = inox.begin()->second;
+
+                    res[inox.begin()->second] = inox.begin()->first;
+                    inox.erase(inox.begin());
+
+                    inox.insert({val + (num[i][1] - num[i][0]), idx});
+                    data[idx]++;
+                }
+            }
         }
         else
             inox.insert({num[i][1], i}),
@@ -46,19 +75,10 @@ int main()
     for (auto i : data)
         std::cout << i.first << " " << i.second << '\n';
 
-    int max = 0, res = 0;
+    int max = 0, ans = 0;
     for (auto i : data)
         if (i.second > max)
-            max = i.second, res = i.first;
+            max = i.second, ans = i.first;
 
-    std::cout << res;
+    std::cout << ans;
 }
-
-/*
-12 1
-13 3
-19 0
-19 2
-
-
-*/
