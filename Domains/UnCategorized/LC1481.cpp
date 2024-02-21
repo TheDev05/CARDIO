@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void thedev05()
+int main()
 {
     int n;
     std::cin >> n;
@@ -17,36 +17,24 @@ void thedev05()
     for (auto i : num)
         data[i]++;
 
-    std::deque<std::pair<int, int>> inox;
+    std::vector<std::pair<int, int>> temp;
     for (auto i : data)
-        inox.push_back({i.second, i.first});
+        temp.push_back({i.second, i.first});
 
-    sort(begin(inox), end(inox));
+    sort(begin(temp), end(temp));
 
-    for (auto i : inox)
-        std::cout << i.first << " " << i.second << '\n';
-
-    int res = inox.size();
-    while (inox.size() && k)
+    int count = 0;
+    for (int i = 0; i < temp.size(); i++)
     {
-        int temp = inox.front().second;
-        int count = inox.front().first;
+        if (k > 0)
+            if (temp[i].first > k)
+                temp[i].first -= k, k = 0;
+            else
+                k -= temp[i].first, temp[i].first = 0;
 
-        if (k >= count)
-            k = k - count, count = 0;
-        else
-            count = count - k, k = 0;
-
-        if (count == 0)
-            res--, inox.pop_front();
-        else
-            break;
+        if (temp[i].first == 0)
+            count++;
     }
 
-    std::cout << res;
-}
-
-int main()
-{
-    thedev05();
+    std::cout << temp.size() - count;
 }
