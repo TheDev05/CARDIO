@@ -28,15 +28,15 @@ int main()
     std::priority_queue<std::pair<int, std::pair<int, int>>, std::vector<std::pair<int, std::pair<int, int>>>, greater<std::pair<int, std::pair<int, int>>>> inox;
     std::vector<int> dist(n, INT_MAX);
 
-    // dist, (node, k)
-    inox.push({0, {src, 1}});
+    // k, (dist, node)
+    inox.push({1, {0, src}});
     dist[src] = 1;
 
     while (inox.size())
     {
-        int distance = inox.top().first;
-        int node = inox.top().second.first;
-        int temp = inox.top().second.second;
+        int temp = inox.top().first;
+        int distance = inox.top().second.first;
+        int node = inox.top().second.second;
         inox.pop();
 
         if (temp >= k)
@@ -47,7 +47,7 @@ int main()
             if (distance + adjDist < dist[adjNode])
             {
                 dist[adjNode] = distance + adjDist;
-                inox.push({dist[adjNode], {adjNode, temp + 1}});
+                inox.push({temp+1, {dist[adjNode], adjNode}});
             }
         }
     }
