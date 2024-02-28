@@ -43,4 +43,6 @@ int main()
             if (traverse(adj, vis, i))
                 std::cout << "NO";
     }
+
+    std::cout << "YES";
 }
