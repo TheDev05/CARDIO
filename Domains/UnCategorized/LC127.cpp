@@ -1,6 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void traverse(std::unordered_map<int, std::string> &res2, std::vector<std::vector<int>> &result, std::vector<std::vector<std::string>> &dash, std::vector<std::string> temp, int idx)
+{
+    if (idx >= result.size())
+    {
+        dash.push_back(temp);
+        return;
+    }
+
+    for (int i = 0; i < result[idx].size(); i++)
+    {
+        temp.push_back(res2[result[idx][i]]);
+        traverse(res2, result, dash, temp, idx + 1);
+        temp.pop_back();
+    }
+}
+
 int main()
 {
     std::string start, end;
@@ -13,42 +29,29 @@ int main()
     for (auto &i : num)
         std::cin >> i;
 
-    std::unordered_map<std::string, int> res1;
-    std::unordered_map<int, std::string> res2;
-
-    for (int i = 0; i < num.size(); i++)
-    {
-        res1[num[i]] = i;
-        res2[i] = num[i];
-    }
-
-    std::set<std::string> data;
+    std::unordered_set<std::string> data;
     std::queue<std::string> inox;
-    std::vector<std::vector<int>> result;
 
     inox.push(start);
 
     for (auto i : num)
         data.insert(i);
 
-    int count = 0, max = 0;
+    int ans = 0;
     while (inox.size())
     {
         int size = inox.size();
-        count++;
+        ans++;
 
-        std::vector<int> temp;
         for (int idx = 0; idx < size; idx++)
         {
             std::string text = inox.front();
-            temp.push_back(res1[text]);
-
-            data.erase(text);
             inox.pop();
 
             if (text == end)
-                return count;
+                return ans;
 
+            std::unordered_set<std::string> store;
             for (auto it = data.begin(); it != data.end(); it++)
             {
                 std::string temp = *it;
@@ -60,21 +63,13 @@ int main()
                             count++;
 
                     if (count == 1)
-                        inox.push(temp);
+                        inox.push(temp),
+                            store.insert(temp);
                 }
             }
+
+            for (auto i : store)
+                data.erase(i);
         }
-
-        result.push_back(temp);
-        max = std::max(max, temp.size());
     }
-
-    std::vector<std::vector<std::string>> dash;
-    traverse(res2, result, dash);
-
-    /*
-    
-    */
-
-    std::cout << count;
 }
