@@ -25,23 +25,39 @@ bool traverse(TreeNode *root)
     int idx = 0;
     while (inox.size())
     {
-        int size = inox.size(), prev = 0;
+        int size = inox.size();
+        std::vector<int> temp;
+
         for (int i = 0; i < size; i++)
         {
             auto it = inox.front();
             inox.pop();
+
+            std::cout << it->val << " ";
+
+            if (idx & 1)
+            {
+                if (it->val & 1)
+                    return false;
+
+                if (temp.size() && it->val > temp.back())
+                    return false;
+            }
+            else
+            {
+                if (it->val % 2 == 0)
+                    return false;
+
+                if (temp.size() && it->val < temp.back())
+                    return false;
+            }
 
             if (it->left)
                 inox.push(it->left);
             if (it->right)
                 inox.push(it->right);
 
-            if ((idx & 1) && ((prev && prev <= it->val) || (it->val & 1)))
-                return false;
-            if (!(idx & 1) && ((prev && prev >= it->val) || !(it->val & 1)))
-                return false;
-
-            prev = it->val;
+            temp.push_back(it->val);
         }
 
         idx++;
@@ -54,8 +70,8 @@ int main()
 {
     TreeNode *root = new TreeNode(1);
 
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
+    root->left = new TreeNode(8);
+    root->right = new TreeNode(5);
 
-    traverse(root);
+    std::cout << traverse(root);
 }
