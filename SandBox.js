@@ -224,7 +224,89 @@ res.send({"success":"login succesful"})
 }
 })
 
+// ***
 
+import {useReducer, createContext} from react;
 
+const cartContext = createContext();
 
+const reduce=(state, action)=>{
+    switch(action.type)
+    {
+        case "ADD" : return [...state, action.value];
+        case "REMOVE" : state.filter((state_value)=>{return action.value != state_value})
+    }
+}
 
+const cart = (children)=>{
+    const [state, dispatch] = useReducer(reduce,[]);
+<CartContext.provider value = {state, dispatch}>
+    {children}
+</CartContext.provider>
+}
+
+exoprts {cart, cartContext};
+
+import {CartContext} from ".path";
+import {useContext} from react;
+
+const dispatch = useContext(cartContext);
+
+<button onclick={()=>{dispatch({action.value:"APPLE", action.type:"ADD"})}}>click</button>
+
+// ***
+
+const express=require('express');
+const app = express();
+
+const bcrypt = require('bcrypt';)
+
+app.use(express.json());
+
+app.get('/signup',async(req, res)=>{
+const collection=await db();
+const response = await collection.findOne({email:req.email});
+if(response)
+{
+    res.send({"error":"user already"})
+}else{
+
+    const salt = bcrypt.gensalt(10);
+    const crypted = bcrypt.hash(req.password, salt);
+
+    collection.create({
+        email:req.email,
+        password:crypted
+    })
+
+    res.send({"success":"user created"});
+}
+})
+
+app.get('/login',async(res, res)=>{
+const collection=await db();
+const response = await collection.findOne({email:req.email});
+if(response)
+{
+if(bcrypt.compare(req.password, response.password))
+{
+    res.send({"success":"user login"})
+}else res.send({"error":"invalid password"});
+}else{
+    res.send({"error":"user not found"})
+}
+})
+
+// ***
+
+localStorage.setItem('token', id);
+localStorage.getItem('token');
+
+//*** 
+
+/*
+    1. MongoDB connection
+    2. useContext & useReducer
+    3. BcryptJs
+    4. JWT storage
+*/

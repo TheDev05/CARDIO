@@ -24,5 +24,3 @@ async function DbConnect() {
 }
 
 module.exports = { DbConnect };
-
-// jwt: localStorage.setitme-getitem
