@@ -44,17 +44,9 @@ int main()
                 if (temp == "")
                     temp = k;
 
-                bool ok = true;
-                for (int p = 0; p < std::min(temp.size(), k.size()); p++)
-                {
-                    if (k[p] > temp[p])
-                    {
-                        ok = false;
-                        break;
-                    }
-                }
-
-                if (ok && k.size() < temp.size())
+                if (k.size() == temp.size())
+                    temp = std::min(temp, k);
+                else if (k.size() < temp.size())
                     temp = k;
             }
         }
