@@ -1,0 +1,1 @@
+{"name":"Local: Merge Sort","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/Sortings/Merge Sort.cpp","tests":[{"id":1711467209092,"input":"5\n4 1 2 3 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/Sortings/Merge Sort.cpp","group":"local","local":true}
