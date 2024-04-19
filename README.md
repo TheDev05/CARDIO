@@ -34,7 +34,7 @@ Below is the list of some of the most used Big O notations & their performance c
 | **AVL Tree**            | log(n)    | log(n)    | log(n)    | log(n)    |           |
 | **Bloom Filter**        | -         | 1         | 1         | -         | False positives are possible while searching |
 
-### Array Sorting Algorithms Complexity
+### Array Sorting Algorithms Complexity.
 
 | Name                  | Best            | Average             | Worst               | Memory    | Stable    | Comments  |
 | --------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |
