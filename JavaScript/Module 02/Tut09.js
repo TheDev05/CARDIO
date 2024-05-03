@@ -4,7 +4,6 @@
 // textContext & inner Text
 
 const val = document.getElementById("heading");
-console.log(val);
 
 // We can assign new value
 // val.textContent = "Hello World";
