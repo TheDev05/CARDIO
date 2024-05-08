@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Labrada:ital@1&display=swap");
+
+* {
+  font-family: "Labrada", serif;
+  font-size: 22px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.form-context {
+  /* background-color: red; */
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  left: 60%;
+  top: 20%;
+}
+
+.navbar-brand {
+  /* background-color: red ; */
+  font-size: 20%;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 600;
+  /* background-color: red; */
+  /* color: red; */
+}
+
+img {
+  width: 40%;
+  height: 20%;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  /* background-color: red; */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.context {
+  display: flex;
+  flex-direction: row;
+}
+
+.gallery img {
+  height: 45%;
+  width: 20%;
+}
+
+.reader {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 110px;
+}
+
+.title {
+  position: relative;
+  /* left: 40%; */
+  /* background-color: red; */
+}
+
+.title h2 {
+  position: relative;
+}
+
+.gallery, .gallery_box {
+  position: relative;
+}
+
+.gallery img {
+  margin: 10px;
+  position: relative;
+  left: 7%;
+}
+
+.gallery img:hover {
+  filter: contrast(80%);
+  transition: 0.5s;
+}
+
+form {
+  background-color: #6d6d6dda;
+  border: 0.2px solid black;
+  padding: 20px;
+  color: white;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  top: 110%;
+  height: 160px;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.socials > a {
+  position: relative;
+  margin-right: 10px;
+  color: white;
+}
+
+@media only screen and (max-width: 850px) {
+  .form-context {
+    width: 100%;
+    left: 0px;
+    padding: 12%;
+    position: relative;
+  }
+
+  .context > img {
+    display: none;
+  }
+}
