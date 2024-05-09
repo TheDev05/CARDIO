@@ -70,7 +70,8 @@ img {
   position: relative;
 }
 
-.gallery, .gallery_box {
+.gallery,
+.gallery_box {
   position: relative;
 }
 
