@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link 
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script src="admin-dashboard.js"></script>
+    <link rel="stylesheet" href="admin-dashboard.css" />
+ 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>   
+  <body> 
+    <div class="container-fluid context">
+      <div class="content"> 
+        <!-- <div class="total"><h4>Total Users:</h4></div> -->
+        <div class="data-head"><h4>Users</h4></div>
+        <button class="logout-admin">Log out</button>
+        <table class="table data">
+          <thead>
+            <tr> 
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

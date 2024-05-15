@@ -1,47 +1,61 @@
 * {
-  margin: 0px;
   padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
 }
 
 .context {
   width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* background-color: red; */
 }
 
-.context img {
+.gateway {
+  /* background-color: red; */
+  height: 30%;
   width: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 
-form {
-  width: 40%;
-  font-size: 22px;
+.gateway > * {
+  margin: 0px 20px 0px 20px;
 }
 
-form > input {
-  width: 50%;
+.admin,
+.guest {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
 }
 
-form > * {
-  padding: 10px;
+a {
+  color: black;
 }
 
-form > button {
-  position: relative;
-  left: 10px;
+a:hover {
+  text-decoration: none;
+  color: black;
 }
 
-/* Media Query */
-@media only screen and (max-width: 780px) {
-  .context img {
-    display: none;
+@media screen and (max-width: 800px) {
+  .context {
+    flex-direction: column;
   }
 
-  form {
-    width: 100%;
+  .admin,
+  .guest {
+    width: 40%;
+    height: 40%;
   }
 }

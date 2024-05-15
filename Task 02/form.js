@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  if (Cookies.get("email")) {
+  } else {
+    // alert("login first");
+    window.location.href = "guest-login.html";
+  }
   $("#myForm").validate({
     rules: {
       email: {
@@ -21,6 +26,13 @@ $(document).ready(function () {
       city: "Please enter your city",
     },
   });
+
+  $(".logout").click(() => {
+    Cookies.remove("email");
+    window.location.href = "guest-login.html";
+  });
+
+  $("#email").attr("value", Cookies.get("email"));
 
   const submit = async () => {
     try {
@@ -45,7 +57,6 @@ $(document).ready(function () {
           contact,
         }),
       });
-
       alert("data sent");
     } catch (error) {
       console.error("Error:", error);

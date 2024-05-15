@@ -1,0 +1,53 @@
+$(document).ready(() => {
+  console.log("object");
+
+  const submit = async () => {
+    try {
+      let fname = $("#firstName").val();
+      let lname = $("#lastName").val();
+      let email = $("#email").val();
+      let password = $("#password").val();
+
+      let response = await fetch("http://localhost:5000/guest-register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fname,
+          lname,
+          email,
+          password,
+        }),
+      });
+
+      //   alert("data sent");
+      const temp = await response.json();
+      console.log(temp);
+
+      if (temp.success) {
+        
+        $.toast({
+          heading: "Can I add <em>icons</em>?",
+          text: 'Yes! check this <a href="https://github.com/kamranahmedse/jquery-toast-plugin/commits/master">update</a>.',
+          hideAfter: false,
+          icon: "success",
+        });
+
+        // alert(temp.message);
+        Cookies.set("email", email);
+
+        window.location.href = "guest-login.html";
+      } else {
+        alert(temp.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  $("#myForm").submit(function (e) {
+    e.preventDefault(true);
+    submit();
+  });
+});
