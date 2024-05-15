@@ -26,17 +26,9 @@ $(document).ready(() => {
       console.log(temp);
 
       if (temp.success) {
-        
-        $.toast({
-          heading: "Can I add <em>icons</em>?",
-          text: 'Yes! check this <a href="https://github.com/kamranahmedse/jquery-toast-plugin/commits/master">update</a>.',
-          hideAfter: false,
-          icon: "success",
-        });
-
         // alert(temp.message);
         Cookies.set("email", email);
-
+        $(".register_btn").prop("disabled", false);
         window.location.href = "guest-login.html";
       } else {
         alert(temp.message);
@@ -44,10 +36,13 @@ $(document).ready(() => {
     } catch (error) {
       console.log(error);
     }
+
+    $(".register_btn").prop("disabled", false);
   };
 
   $("#myForm").submit(function (e) {
     e.preventDefault(true);
+    $(".register_btn").prop("disabled", true);
     submit();
   });
 });
