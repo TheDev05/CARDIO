@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  console.log("object");
+  // console.log("object");
 
   const submit = async () => {
     try {

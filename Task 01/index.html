@@ -6,221 +6,1087 @@
     <title>Denso Transport</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
+    <!-- <script src="index.js" defer></script> -->
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      .custom-navbar {
+        background-color: #5ea56f;
+        height: 110px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+      }
+
+      li > a {
+        color: white;
+      }
+
+      .table {
+        /* background-color: red; */
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        color: white;
+        /* left: 1%; */
+      }
+
+      .left {
+        background-color: red;
+        height: 100%;
+        padding: 20%;
+      }
+
+      .right {
+        background-color: #5ea56fe1;
+        height: 95%;
+        /* width: 75%; */
+        padding: 4%;
+      }
+
+      .right input {
+        padding: 8px;
+        margin: 10px 0px;
+      }
+
+      .right-btn {
+        width: 180px;
+        height: 50px;
+        border: none;
+        background-color: #222b3c;
+        color: white;
+      }
+
+      .title {
+        font-weight: 900;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .top-strip {
+        /* background-color: rgb(30, 0, 255); */
+      }
+
+      .container-fluid > .row > [class^="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      @media only screen and (max-width: 994) {
+        .logo-post {
+          display: none;
+        }
+
+        .logo-pre {
+          display: block;
+        }
+      }
+
+      @media only screen and (min-width: 994) {
+        .logo-post {
+          display: block;
+        }
+
+        .logo-pre {
+          display: none;
+        }
+      }
+
+      * {
+        box-sizing: border-box !important;
+        transition: ease all 0.5s;
+      }
+
+      h1 a,
+      h2 a,
+      h3 a,
+      h4 a,
+      h5 a,
+      h6 a {
+        color: #212121;
+        text-decoration: none !important;
+        opacity: 1;
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      ul,
+      li,
+      ol {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+
+      p {
+        margin: 20px;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      a {
+        color: #222222;
+        text-decoration: none;
+        outline: none !important;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      :focus {
+        outline: 0;
+      }
+
+      .paddind_bottom_0 {
+        padding-bottom: 0 !important;
+      }
+
+      .btn-custom {
+        margin-top: 20px;
+        background-color: transparent !important;
+        border: 2px solid #ddd;
+        padding: 12px 40px;
+        font-size: 16px;
+      }
+
+      .lead {
+        font-size: 18px;
+        line-height: 30px;
+        color: #767676;
+        margin: 0;
+        padding: 0;
+      }
+
+      .form-control:focus {
+        border-color: #ffffff !important;
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+      }
+
+      .navbar-form input {
+        border: none !important;
+      }
+
+      .badge {
+        font-weight: 500;
+      }
+
+      blockquote {
+        margin: 20px 0 20px;
+        padding: 30px;
+      }
+
+      button {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .full {
+        float: left;
+        width: 100%;
+      }
+
+      .layout_padding {
+        padding-top: 90px;
+        padding-bottom: 0px;
+      }
+
+      .padding_0 {
+        padding: 0px;
+      }
+
+      .header_top {
+        width: 100%;
+        float: left;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      .header_left {
+        width: 25%;
+        float: left;
+      }
+      .header_right {
+        width: 25%;
+        float: left;
+      }
+      .header_middle {
+        width: 25%;
+        float: left;
+      }
+      .header_middle_1 {
+        width: 25%;
+        float: left;
+      }
+
+      .call_text {
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: #ffffff;
+        padding-top: 5px;
+      }
+      .call_text a {
+        color: #ffffff;
+      }
+      .padding_left_0 {
+        padding-left: 15px;
+      }
+      .header_section {
+        width: 100%;
+        float: left;
+        background-image: url(../images/banner-bg.png);
+        width: fit-content;
+        background-repeat: no-repeat;
+        height: auto;
+        background-size: 100%;
+      }
+      .menu_section {
+        width: 100%;
+        float: left;
+        background-color: #222b3c;
+        height: auto;
+      }
+      .mobile_menu {
+        width: 100%;
+        float: left;
+        background-color: rgb(31, 182, 108, 0.8);
+        height: auto;
+      }
+      .logo_mobile {
+        width: 20%;
+        float: left;
+        padding-bottom: 20px;
+        display: none;
+      }
+      .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 32px;
+        padding-left: 32px;
+        font-size: 10px;
+        font-family: "Times New Roman", Times, serif;
+        text-transform: uppercase;
+      }
+      .navbar-light .navbar-nav .nav-link {
+        color: #fff;
+      }
+      .active-home {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .active {
+        /* background-color: #1bda78; */
+      }
+      .navbar-light .navbar-nav .active > .nav-link,
+      .navbar-light .navbar-nav .nav-link.active,
+      .navbar-light .navbar-nav .nav-link.show,
+      .navbar-light .navbar-nav .show > .nav-link {
+        color: #fff;
+        background-color: #2fc678;
+      }
+      .bg-light {
+        background-color: transparent !important;
+      }
+      .navbar-light .navbar-nav .nav-link:focus,
+      .navbar-light .navbar-nav .nav-link:hover {
+        color: #ffffff;
+        background-color: #2fc678;
+      }
+      .navbar {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+      }
+
+      .banner_section {
+        width: 100%;
+        float: left;
+        height: auto;
+        background-size: 100%;
+        padding-bottom: 82px;
+      }
+      .your_text {
+        width: 100%;
+        float: left;
+        font-size: 46px;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-left: 20px;
+      }
+      .your_text::after {
+        content: "";
+        position: absolute;
+        background-color: #1bda78;
+        width: 5px;
+        height: 102px;
+        left: 0;
+        top: 16px;
+      }
+      .there_text {
+        width: 90%;
+        float: left;
+        font-size: 18px;
+        color: #fff;
+      }
+      .about_bg {
+        width: 100%;
+        float: left;
+      }
+      .read_bt {
+        width: 170px;
+        float: left;
+        margin-top: 30px;
+        margin-left: 20px;
+      }
+      .read_bt a {
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #2bca78;
+        text-align: center;
+        padding: 10px 0px;
+      }
+      .input_main {
+        width: 100%;
+        float: left;
+        background-color: rgb(32, 213, 120, 0.5);
+        height: auto;
+        padding-bottom: 20px;
+      }
+      .request_text {
+        width: 100%;
+        float: left;
+        font-size: 30px;
+        color: #ffffff;
+        border-bottom: 0px solid#49bcfe;
+        padding-left: 10px;
+      }
+      .get_text {
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: #fff;
+        margin-left: 10px;
+        margin-bottom: 0px;
+      }
+      .email-bt {
+        background-color: #fff;
+        border-bottom: 1px solid #fffcf4;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        color: #bec0bf;
+        width: 95%;
+        height: 30px;
+        font-size: 20px;
+        padding: 20px 20px 20px 20px;
+        margin-bottom: 10px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .send_bt {
+        width: 170px;
+        /* float: left; */
+        background-color: #222b3c;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        height: 50px;
+      }
+
+      .send_bt a {
+        color: white;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .header_middle,
+        .header_middle_1,
+        .header_right {
+          display: none;
+        }
+      }
+
+      .navbar {
+        position: relative;
+        right: 50px;
+        font-size: 10px !important;
+      }
+
+      .left-cor {
+        background-color: none;
+      }
+    </style>
   </head>
   <body>
-    <div class="context">
-      <div class="navbar-top">
-        <div class="logo"><img src="images/logo.png" alt=""></div>
-        <div class="call-us">CALL US: +01234567890</div>
-        <div class="email">demo@gmail.com</div>
-        <input class="search" type="search" name="" placeholder="Search" id="">
-        </div>
-        <div class="navbar-bottom">
-            <div class="home">HOME</div>
-            <div class="about">ABOUT</div>
-            <div class="transport">TRANSPORT</div>
-            <div class="news">NEWS</div>
-            <div class="clients">CLIENTS</div>
-            <div class="contact">CONTACT US</div>
-            <div class="login">LOGIN</div>
-            <div class="register">REGISTER</div>
-        </div>
-        <div class="container-fluid banner">
-            <img src="images/banner-bg.png" alt="text h">
-            <div class="left">
-                <div class="head">
-                    <h2>
-                        AUTOS & </br>TRANSPORTATION
-                    </h2>
+    <div class="header_section">
+      <div class="mobile_menu">
+        <div class="container">
+          <div class="header_top">
+            <div class="header_left">
+              <div class="logo">
+                <a href="index.html"><img src="images/logo.png" /></a>
+              </div>
+            </div>
+            <div class="header_middle">
+              <div class="call_text">
+                <a href="#"
+                  ><img src="images/call-icon.png" /><span
+                    class="padding_left_0"
+                    >Call Us : +01 1234567890</span
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="header_middle_1">
+              <div class="call_text">
+                <a href="#"
+                  ><img src="images/mail-icon.png" /><span
+                    class="padding_left_0"
+                    >demo1@gmail.com</span
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="header_right">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <input
+                      class="form-control border"
+                      type="search"
+                      value="search"
+                      id="example-search-input"
+                    />
+                    <span class="input-group-append">
+                      <div class="input-group-text">
+                        <i class="fa fa-search"></i>
+                      </div>
+                    </span>
+                  </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolores porro, at sequi itaque veritatis repellendus vel molestiae, possimus quia deserunt? Quo autem exercitationem ?</p>
-                <button class="btn1">CONTACT US</button>
+              </div>
             </div>
-            <div class="right">
-                <h5>Professinol Services</h5>
-                <h2>Get Your Transport Quotes</h2>
-                <input type="text" placeholder="Location" name="" id="">
-                <input type="text" placeholder="To destination" name="" id="">
-                <input type="text" placeholder="Email" name="" id="">
-                <input type="text" placeholder="Contact Number" name="" id="">
-                <button class="btn2">Get Now Quote</button>
-            </div>
-            
+          </div>
         </div>
       </div>
-     <div class="container-fluid secondPage">
-        <h1 class="title1">WELCOME TO DENSO TRANSPORT</h1>
-        <div class="details1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae omnis dolorem placeat corporis labore ad nulla quasi, reiciendis consectetur eius, dicta hic sint, exercitationem autem. Rerum nobis ut placeat minus tenetur, reiciendis accusamus beatae veritatis officiis eius, fugit adipisci iste. Esse optio est recusandae, ut assumenda cum. Iste, cupiditate eveniet?</div>
-        <h1 class="title2">SERVICES</h1>
-        <div class="details2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur nihil modi quae laboriosam veritatis.</div>
+      <div class="menu_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo_mobile">
+              <a href="index.html"><img src="images/logo.png" /></a>
+            </div>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active active-home" href="index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="transport.html">Transport</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="news.html">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="clients.html">Clients</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Register</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
 
-        <div class="card">
-            <div class="card1">
-            <img src="images/flight-icon.png" alt="">
+      <!-- second page -->
+
+      <!-- header section end -->
+      <!-- banner section start -->
+      <div class="banner_section layout_padding">
+        <div class="container">
+          <div id="main_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-md-6 left-cor">
+                    <h1 class="your_text">
+                      High<br />
+                      study educations
+                    </h1>
+                    <p class="there_text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam
+                    </p>
+                    <div class="read_bt"><a href="#">Read More</a></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact_bg">
+                      <div class="input_main">
+                        <div class="container">
+                          <p class="get_text">Get your transport quote</p>
+                          <h2 class="request_text">Get your transport quote</h2>
+                          <form action="/action_page.php">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Location"
+                                name="Location"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="To destination"
+                                name="To destination"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Email"
+                                name="Email"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Contact Number"
+                                name="Contact Number"
+                              />
+                            </div>
+                          </form>
+                          <div class="send_bt">
+                            <a href="#">Get Now quote</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h1 class="your_text">
+                      High<br />
+                      1study educations
+                    </h1>
+                    <p class="there_text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam
+                    </p>
+                    <div class="read_bt"><a href="#">Read More</a></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact_bg">
+                      <div class="input_main">
+                        <div class="container">
+                          <p class="get_text">Get your transport quote</p>
+                          <h2 class="request_text">Get your transport quote</h2>
+                          <form action="/action_page.php">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Location"
+                                name="Location"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="To destination"
+                                name="To destination"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Email"
+                                name="Email"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Contact Number"
+                                name="Contact Number"
+                              />
+                            </div>
+                          </form>
+                          <div class="send_bt">
+                            <a href="#">Get Now quote</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h1 class="your_text">
+                      High<br />
+                      study educations
+                    </h1>
+                    <p class="there_text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam
+                    </p>
+                    <div class="read_bt"><a href="#">Read More</a></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact_bg">
+                      <div class="input_main">
+                        <div class="container">
+                          <p class="get_text">Get your transport quote</p>
+                          <h2 class="request_text">Get your transport quote</h2>
+                          <form action="/action_page.php">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Location"
+                                name="Location"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="To destination"
+                                name="To destination"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Email"
+                                name="Email"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="email-bt"
+                                placeholder="Contact Number"
+                                name="Contact Number"
+                              />
+                            </div>
+                          </form>
+                          <div class="send_bt">
+                            <a href="#">Get Now quote</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#main_slider"
+              role="button"
+              data-slide="prev"
+            >
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#main_slider"
+              role="button"
+              data-slide="next"
+            >
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- banner section end -->
+
+      <div class="row">
+        <div class="col-md-12 pg2">
+          <h1 class="title1">WELCOME TO DENSO TRANSPORT</h1>
+          <div class="details1">
+            Lorem ipsum dolor sit amet adipisicing elit. Vitae omnis dolorem
+            placeat corporis labore ad nulla quasi, reiciendis consectetur eius,
+            dicta hic sint, exercitationem autem. Rerum nobis ut placeat minus
+            tenetur, reiciendis accuDebitis vero, sint laudantium numquam saepe
+            voluptatibus. Cupiditate deleniti veritatis neque similique eos
+            earum exercitationem nihil aliquid velit voluptatibus. Officiis,
+            doloremque labore earum fuga tenetur incidunt voluptatibus corporis
+            tempora iure. Doloremque sed dolorum optio, aspernatur, vero id
+            nostrum, quam laboriosam exercitationem deserunt aut. Modi nostrum
+            earum consequuntur, quibusdam illum labore impedit similique in
+            exercitationem. A perferendis laborum quibusdam quis reiciendis
+            voluptatum dolores illo in eius. Aliquid aut iure vero possimus
+            rerum, assumenda adipisci rem corrupti ab provident consequuntur
+            alias incidunt veritatis nisi. Officiis aut omnis nisi nostrum
+            reiciendis possimus ullam autem error incidunt, dolor eaque debitis
+            voluptas facere maiores quisquam eligendi neque magni nesciunt
+            perspiciatis unde. Pariatur ipsam voluptatibus aliquam, aut odio
+            quia quasi consectetur mollitia, doloribus provident error delectus
+            in magni?
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 pg2-1">
+          <h1 class="title2">SERVICES</h1>
+          <div class="details2">
+            Lorem ipsum dolor sit amet adipisicing elit. Vitae omnis dolorem
+            placeat corporis labore ad nulla quasi, reiciendis consectetur eius,
+            dicta hic sint, exercitationem autem. Rerum nobis ut placeat minus
+            tenetur, reiciendis accuDebitis vero, sint laudantium numquam saepe
+            voluptatibus. Cupiditate deleniti veritatis neque similique eos
+            earum exercitationem nihil aliquid velit voluptatibus. Officiis,
+            doloremque labore earum fuga tenetur incidunt voluptatibus corporis
+            tempora iure. Doloremque sed dolorum optio, aspernatur, vero id
+            nostrum, quam laboriosam exercitationem deserunt aut. Modi nostrum
+            earum consequuntur, quibusdam illum labore impedit similique in
+            exercitationem. A perferendis laborum quibusdam quis reiciendis
+            voluptatum dolores illo in eius. Aliquid aut iure vero possimus
+            rerum, assumenda adipisci rem corrupti ab provident consequuntur
+            alias incidunt veritatis nisi. Officiis aut omnis nisi nostrum
+            reiciendis possimus ullam autem error incidunt, dolor eaque debitis
+            voluptas facere maiores quisquam eligendi neque magni nesciunt
+            perspiciatis unde. Pariatur ipsam voluptatibus aliquam, aut odio
+            quia quasi consectetur mollitia, doloribus provident error delectus
+            in magni?
+          </div>
+        </div>
+      </div>
+
+      <div class="row circle">
+        <div class="col">
+          <div class="card1">
+            <img src="images/flight-icon.png" alt="" />
             <h5>FLY ANYWHERE</h5>
-            </div>
-            <div class="card2">
-            <img src="images/ship-icon.png" alt="">
+          </div>
+        </div>
+        <div class="col">
+          <div class="card2">
+            <img src="images/ship-icon.png" alt="" />
             <h5>CARGO SERVICE</h5>
-            </div>
-            <div class="card3">
-            <img src="images/truck-icon.png" alt="">
+          </div>
+        </div>
+        <div class="col">
+          <div class="card3">
+            <img src="images/truck-icon.png" alt="" />
             <h5>COURIER SERVICES</h5>
-            </div>
-            <div class="card4">
-            <img src="images/package-icon.png" alt="">
+          </div>
+        </div>
+        <div class="col">
+          <div class="card4">
+            <img src="images/package-icon.png" alt="" />
             <h5>BOX STORAGE</h5>
-            </div>
-            <div class="card5">
-            <img src="images/shield-icon.png" alt="">
-               <h5> 100% SAFE</h5>
-            </div>
+          </div>
         </div>
-        <button class="btn3">READ MORE</button>
-
-        <div class= "container-fluid about-transport">
-            <div class="about-transport-left">
-                <h1>ABOUT TRANSPORT</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolorem fuga cupiditate tenetur voluptate voluptatibus necessitatibus dolore quisquam atque cum nobis eos commodi ullam minima dolor obcaecati, pariatur doloremque voluptates!</p>
-                <button class="btn4">READ MORE</button>
-            </div>
-            <div class="about-transport-right">
-                <img src="images/about-bg.png" alt="">
-            </div>
+        <div class="col">
+          <div class="card5">
+            <img src="images/shield-icon.png" alt="" />
+            <h5>100% SAFE</h5>
+          </div>
         </div>
-     </div>
-
-     <!-- latest -->
-     <div class="container-fluid news-container">
-        <h2>LATEST NEWS AND EVENTS</h2>
-        <div class="collection">
-            <div class="cards">
-                <div class="cards-top">
-                    <img src="images/img-1.png" alt="">
-                </div>
-                <div class="circle">01<br> Sep</div>
-                <div class="cards-bottom">
-                    <div class="cards-head">
-                        <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ratione dignissimos dolore, neque aspernatur voluptatem similique quasi harum unde? Voluptatum saepe placeat nemo officia distinctio pariatur dignissimos doloremque magnam magni?</p>
-                </div>
-            </div>
-    
-            <div class="cards">
-                <div class="cards-top">
-                    <img src="images/img-2.png" alt="">
-                </div>
-                <div class="circle">02<br> Sep</div>
-                <div class="cards-bottom">
-                    <div class="cards-head">
-                        <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ratione dignissimos dolore, neque aspernatur voluptatem similique quasi harum unde? Voluptatum saepe placeat nemo officia distinctio pariatur dignissimos doloremque magnam magni?</p>
-                </div>
-            </div>
-    
-            <div class="cards">
-                <div class="cards-top">
-                    <img src="images/img-3.png" alt="">
-                </div>
-                <div class="circle">03<br> Sep</div>
-                <div class="cards-bottom">
-                    <div class="cards-head">
-                        <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ratione dignissimos dolore, neque aspernatur voluptatem similique quasi harum unde? Voluptatum saepe placeat nemo officia distinctio pariatur dignissimos doloremque magnam magni?</p>
-                </div>
-            </div>
+      </div>
+      <div class="row btn-810">
+        <div class="col">
+          <button class="btn3">READ MORE</button>
         </div>
-        <button class="btn5">Read More</button>
-     </div>
-     <div class="container-fluid testimonial">
-        <div class="test-box">
-            <img src="images/client-bg.png" alt="">
-            <div class="content-box">
-            <h2>Testimonial</h2>
-            <div class="cards-hub">
-                <div class="card6">
-                    <div class="card6-top">
-                        <div class="name">Consectetur</div>
-                    </div>
-                    <div class="card6-bottom">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit exercitationem numquam rem nobis atque facere Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi nisi, voluptates assumenda soluta tenetur accusantium odit magnam dolorem illo maxime. consequatur necessitatibus illo neque? Vel.</div>
-                </div>
+      </div>
 
-                <div class="card6">
-                    <div class="card6-top">
-                        <div class="name">Consectetur</div>
-                    </div>
-                    <div class="card6-bottom">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit exercitationem numquam rem nobis atque facere Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi nisi, voluptates assumenda soluta tenetur accusantium odit magnam dolorem illo maxime. consequatur necessitatibus illo neque? Vel.</div>
-                </div>
-            </div>
-            </div>
+      <div class="row transport">
+        <div class="col-md-6">
+          <div class="about-transport-left">
+            <h1>ABOUT TRANSPORT</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              dolorem fuga cupiditate tenetur voluptate voluptatibus
+              necessitatibus dolore quisquam atque cum nobis eos commodi ullam
+              minima dolor obcaecati, pariatur doloremque voluptates!
+            </p>
+            <button class="btn4">READ MORE</button>
+          </div>
         </div>
-     </div>
+        <div class="col-md-6">
+          <div class="about-transport-right">
+            <img src="images/about-bg.png" alt="" />
+          </div>
+        </div>
+      </div>
 
-     <div class="form">
-        <h2>REQUEST A CALL BACK</h2>
-            <input type="text" placeholder="Name" name="" id="">
-            <input type="text" placeholder="Email" name="" id="">
-            <input type="text" placeholder="Phone Number" name="" id="">
-            <input type="text" class="message" placeholder="Message" name="" id="">
-        <button class="form-btn">SEND</button>
-     </div>
-     <div class="container-fluid strip">
-        <div class="strip-call">Call Now +01 1234567890</div>
-        <div class="strip-location">Location</div>
-        <div class="strip-email">demo@gmail.com</div>
-     </div>
+      <div class="row news"><h2>LATEST NEWS AND EVENTS</h2></div>
+      <div class="row news">
+        <div class="col">
+          <div class="cards">
+            <div class="cards-top">
+              <img src="images/img-1.png" alt="" />
+            </div>
+            <div class="circle">
+              01<br />
+              Sep
+            </div>
+            <div class="cards-bottom">
+              <div class="cards-head">
+                <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+                ratione dignissimos dolore, neque aspernatur voluptatem
+                similique quasi harum unde? Voluptatum saepe placeat nemo
+                officia distinctio pariatur dignissimos doloremque magnam magni?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="cards">
+            <div class="cards-top">
+              <img src="images/img-2.png" alt="" />
+            </div>
+            <div class="circle">
+              02<br />
+              Sep
+            </div>
+            <div class="cards-bottom">
+              <div class="cards-head">
+                <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+                ratione dignissimos dolore, neque aspernatur voluptatem
+                similique quasi harum unde? Voluptatum saepe placeat nemo
+                officia distinctio pariatur dignissimos doloremque magnam magni?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="cards">
+            <div class="cards-top">
+              <img src="images/img-3.png" alt="" />
+            </div>
+            <div class="circle">
+              03<br />
+              Sep
+            </div>
+            <div class="cards-bottom">
+              <div class="cards-head">
+                <h5>LIBERALISATION OF AIR CARGO INDUSTRY</h5>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+                ratione dignissimos dolore, neque aspernatur voluptatem
+                similique quasi harum unde? Voluptatum saepe placeat nemo
+                officia distinctio pariatur dignissimos doloremque magnam magni?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-     <div class="footer">
-        <div class="footer-left">
+      <div class="row test">
+        <h2>Testimonial</h2>
+      </div>
+      <div class="row test">
+        <div class="col">
+          <div class="card6">
+            <div class="card6-top">
+              <div class="name">Consectetur</div>
+            </div>
+            <div class="card6-bottom">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              exercitationem numquam rem nobis atque facere Lorem ipsum, dolor
+              sit amet consectetur adipisicing elit. Commodi nisi, voluptates
+              assumenda soluta tenetur accusantium odit magnam dolorem illo
+              maxime. consequatur necessitatibus illo neque? Vel.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card6">
+            <div class="card6-top">
+              <div class="name">Consectetur</div>
+            </div>
+            <div class="card6-bottom">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              exercitationem numquam rem nobis atque facere Lorem ipsum, dolor
+              sit amet consectetur adipisicing elit. Commodi nisi, voluptates
+              assumenda soluta tenetur accusantium odit magnam dolorem illo
+              maxime. consequatur necessitatibus illo neque? Vel.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row request-form">
+        <div class="col">
+          <div class="form">
+            <h2>REQUEST A CALL BACK</h2>
+            <input type="text" placeholder="Name" name="" id="" />
+            <input type="text" placeholder="Email" name="" id="" />
+            <input type="text" placeholder="Phone Number" name="" id="" />
+            <input
+              type="text"
+              class="message"
+              placeholder="Message"
+              name=""
+              id=""
+            />
+            <button class="form-btn">SEND</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="container-fluid strip">
+            <div class="strip-call">Call Now +01 1234567890</div>
+            <div class="strip-location">Location</div>
+            <div class="strip-email">demo@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-left">
             <div class="footer-head">
-                <img src="images/footer-logo.png" alt="">
+              <img src="images/footer-logo.png" alt="" />
             </div>
-            <div class="footer-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut molestias sequi odio inventore cumque rerum blanditiis commodi natus culpa, praesentium sint eos, nam quasi a, facere explicabo quam voluptatum aliquid.</div>
+            <div class="footer-desc">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut
+              molestias sequi odio inventore cumque rerum blanditiis commodi
+              natus culpa, praesentium sint eos, nam quasi a, facere explicabo
+              quam voluptatum aliquid.
+            </div>
             <div class="footer-social">Instagram Twitter Facebook</div>
+          </div>
         </div>
-        <div class="footer-right">
-           <div class="quota1">
-             <div class="links"><b>Information</b></div>
+        <div class="col-md-2">
+          <div class="quota1">
+            <div class="links"><b>Information</b></div>
             <div class="links">Lorem, ipsum dolor.</div>
             <div class="links">Lorem, ipsum dolor.</div>
             <div class="links">Lorem, ipsum dolor.</div>
             <div class="links">Lorem, ipsum dolor.</div>
             <div class="links">Lorem, ipsum dolor.</div>
             <div class="links">Lorem, ipsum dolor.</div>
-           </div>
-           <div class="quota2">
-             <div class="links"><b>Helpful Links</b></div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-           </div>
-           <div class="quota3">
-             <div class="links"><b>Supported</b></div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-            <div class="links">Lorem, ipsum dolor.</div>
-           </div>
+          </div>
         </div>
-     </div>
-     <div class="container-fluid strip">
-        © 2024 All Right Reserved.
-     </div>
+        <div class="col-md-2">
+          <div class="quota1">
+            <div class="links"><b>Information</b></div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="quota1">
+            <div class="links"><b>Information</b></div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+            <div class="links">Lorem, ipsum dolor.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="container-fluid strip">© 2024 All Right Reserved.</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
