@@ -26,20 +26,13 @@ int main()
     int sum = 0;
     for (auto i : data)
     {
-        std::cout << i.first << ": " << '\n';
+        int total = num.size();
         for (auto j : i.second)
-            sum += j.second * (num.size() - j.second);
-
-        std::cout << sum << "\n";
+        {
+            sum += j.second * (total - j.second);
+            total -= j.second;
+        }
     }
 
     std::cout << sum;
-
-    // int sum = 0;
-    // for (int i = 0; i < num.size() - 1; i++)
-    // {
-    //     sum += traverse(num[i], num[i + 1]);
-    // }
-
-    // std::cout << sum;
 }
