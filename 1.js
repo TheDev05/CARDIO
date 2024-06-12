@@ -1,43 +1,43 @@
-document
-  .getElementById("sendMessageBtn")
-  .addEventListener("click", sendSMS);
-  
-  async function sendSMS(request) {
-    // Generate a random OTP
-    const otp = Math.floor(1000 + Math.random() * 9000); 
-    const apiKey = 'YzWjhJR5rkix0Af6SSo8gQ';
-    const recipientNumber = request.phone_number;
-    const expiresAt = new Date(Date.now() + 2 * 60 * 1000); // Expiration time set to 2 minutes from now
+document.getElementById("sendMessageBtn").addEventListener("click", sendOTP);
 
-    const senderId = 'SMSHUB';
-    const title = request.title;
-    const message = `Welcome to the ${title} powered by SMSINDIAHUB. Your OTP for registration is ${otp}`;
-    const flashsms = '0'; // Set to 1 for flash SMS, 0 for normal SMS
-    const dc = '0'; // Data coding scheme: 0 for plain text, 8 for Unicode
-    const gatewayId = '2'; // Gateway ID
+async function sendOTP() {
+  const phone_number = "917764897552";
+  const title = "dev-app";
 
-    const apiUrl = 'http://cloud.smsindiahub.in/vendorsms/pushsms.aspx';
+  const apiKey = "hSFE65TaakWuFH2b2Hf1hQ";
+  const senderId = "SMSHUB";
+  const otp = Math.floor(1000 + Math.random() * 9000); // Generate a random OTP
+  const message = `Welcome to the ${title} powered by SMSINDIAHUB. Your OTP for registration is ${otp}`;
+  const flashsms = "0"; // Set to 1 for flash SMS, 0 for normal SMS
+  const dc = "0"; // Data coding scheme: 0 for plain text, 8 for Unicode
+  const gatewayId = "2"; // Gateway ID
 
-    try {
-        const response = await fetch(`${apiUrl}?APIKey=${apiKey}&msisdn=${recipientNumber}&sid=${senderId}&msg=${message}&fl=${flashsms}&dc=${dc}&gwid=${gatewayId}`, {
-            method: 'GET'
-        });
+  console.log(title, message);
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-        }
+  const url = `http://cloud.smsindiahub.in/vendorsms/pushsms.aspx?APIKey=${apiKey}&msisdn=${phone_number}&sid=${senderId}&msg=${message}&fl=${flashsms}&dc=${dc}&gwid=${gatewayId}`;
 
-        const body = await response.text(); // Assuming the response is plain text
-        console.log(body);
-    } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
+
+    const body = await response.text();
+
+    // Handle OTP storage logic here (e.g., store OTP in a database with an expiration time)
+
+    return {
+      message: "OTP sent successfully",
+      status: 1,
+      data: body,
+      otp: otp, // Return OTP for further processing (e.g., storing in a database)
+    };
+  } catch (error) {
+    console.error("Error:", error);
+    return {
+      message: "Error sending OTP",
+      status: 0,
+      error: error.message,
+    };
+  }
 }
-
-// Example request object
-const request = {
-    phone_number: '917764897552',
-    title: 'EventTitle'
-};
-
-sendSMS(request);
