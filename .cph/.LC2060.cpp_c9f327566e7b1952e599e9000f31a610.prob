@@ -1,0 +1,1 @@
+{"name":"Local: LC2060","url":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC2060.cpp","tests":[{"id":1731592743994,"input":"2\n11 6\n6","output":"3"},{"id":1731592758358,"input":"3\n15 10 10\n7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/C2F0E325F0E31F03/CARDIO/Hare Krishna/LC2060.cpp","group":"local","local":true}
