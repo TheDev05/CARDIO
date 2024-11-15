@@ -83,5 +83,31 @@ look at the first leetcode submiision: https://leetcode.com/submissions/detail/1
 // 2 3 22 23 33 223 233 2223 2233 2333 3333 22333
 // 2 3 4 5 6 7 8 9 10 11 12 13
 
+# 875 Koko Eating
+
+Related : 2064. Minimized Maximum of Products Distributed to Any Store &
+1011. Capacity To Ship Packages Within D Days
+
+Get or Find a frame/window/portion size so that all the given values, data, articles get used/combines/eaten/shiped in a d days/ h hours/ x condition
+
+```
+Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+Output: 15
+Explanation: A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+1st day: 1, 2, 3, 4, 5
+2nd day: 6, 7
+3rd day: 8
+4th day: 9
+5th day: 10
+```
+
+Slight changed, here item is stack or pile, can put only 1 pile item in 1 box
+```
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+```
+
+
+
 
 
