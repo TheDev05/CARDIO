@@ -10,16 +10,24 @@ int main()
     for (auto &i : num)
         std::cin >> i;
 
-    std::map<std::string, std::vector<std::string>> data;
-    for (auto i : num)
+    std::map<std::map<char, int>, std::vector<std::string>> data;
+    for (int i = 0; i < num.size(); i++)
     {
-        std::string temp = i;
-        sort(temp.begin(), temp.end());
+        std::map<char, int> temp;
+        for (auto j : num[i])
+            temp[j]++;
 
-        data[temp].push_back(i);
+        data[temp].push_back(num[i]);
     }
 
     std::vector<std::vector<std::string>> res;
     for (auto i : data)
         res.push_back(i.second);
+
+    for (auto i : res)
+    {
+        for (auto j : i)
+            std::cout << j << " ";
+        std::cout << '\n';
+    }
 }
